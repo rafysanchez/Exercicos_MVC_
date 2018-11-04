@@ -1,0 +1,113 @@
+﻿
+@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model IEnumerable<FiltroGridViewModel>
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<script>
+    var objExc = "Preparacao De Pagamento";
+    var urld = '@Url.Action("Delete", "PreparacaoDePagamento")';
+    function Edit(id, editar) {
+
+        if (editar) {
+            AbrirModal("Lista/Boletos transmitido com sucesso, não são permitidas alterarações após a transmissão.");
+            return false;
+        }
+
+        if (navigator.onLine != true) {
+            AbrirModal("Erro de conexão");
+            return false;
+        }
+
+        AbrirDetalhe('@Url.Action("Edit")' + '?id=' + id + '&tipo=a');
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-10">
+        <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+        <label class="margR10">
+            <input type="checkbox" id="idSelecionar" name="nmRetransmitirTodos" value="0" />
+            <small class="margL10">Selecionar Todos</small>
+        </label>
+        <button id="btnReTransmitir" type="button" class="btn btn-sm btn-primary">
+            <i class="fa fa-share"></i>Retransmitir
+        </button>
+    </div>
+</div>
+
+<br />
+
+
+<div class="margT0">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+            <form method="post" action=@Url.Content("~/PagamentoContaUnica/" + controller+ "/DownloadFile/") id="frmExport">
+                <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroOpInicial)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroOpFinal)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().PreparacaoPagamentoTipo)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Total)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Data)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().StatusProdesp)</th>
+
+                            <th><label>Todos</label></th>
+                            <th><label>Ações</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <td>@Html.DisplayFor(modelItem => item.NumeroOpInicial)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NumeroOpFinal)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PreparacaoPagamentoTipo)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Total)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                                <td><text title="@item.MensagemProdesp">@Html.DisplayFor(modelItem => item.StatusProdesp)</text></td>
+
+                                @if (item.CadastroCompleto && !item.TransmitidoProdesp)
+                                {
+                                    <td class="text-center"><input type="checkbox" data-button='Transmitir' class="idRetrasmitir margL5" name="nmRetransmitir" value="@item.Id" /></td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+
+                                <td style="width: 100px;">
+                                    @if (!item.TransmitidoProdesp)
+                                    {
+                                        <button class="btn btn-xs btn-info margL7" type="button" hidden="hidden" data-button="Editar" title="Alterar" onclick="Edit(@item.Id, @(item.TransmitidoSiafem ? "true" : "false"))"><i class="fa fa-edit"></i></button>
+                                    }
+                                    <button class="btn btn-xs btn-primary margL7" type="button" data-button="Visualizar" title="Visualizar" onclick="AbrirDetalhe('@Url.Action("Edit", new {id = item.Id, tipo = "c"})')"><i class="fa fa-search"></i></button>
+                                    <button class="btn btn-xs btn-success margL7" type="button" id="Create" data-button="Cadastrar" title="Cadastar A partir desta" onclick="AbrirDetalhe('@Url.Action("CreateThis", new {id = item.Id})')"><i class="fa fa-plus"></i></button>
+                                    @if (item.TransmitidoProdesp)
+                                    {
+                                        <button class="btn btn-xs btn-warning margL7" type="button" data-button="Imprimir" title="Imprimir" onclick="ImprimirOp(@item.Id)"><i class="fa fa-print"></i></button>
+                                    }
+                                    @if (!item.TransmitidoProdesp)
+                                    {
+                                        <button class="btn btn-xs btn-danger margL7" type="button" data-button="Excluir" id="@item.Id" name="@item.Id" title="Excluir" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'Excluir', objExc, @item.Id, this)"><i class="fa fa-trash"></i></button>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

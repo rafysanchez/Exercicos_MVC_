@@ -1,0 +1,68 @@
+﻿
+@{
+    bool acesso = ViewBag.AcessoSiafem;
+
+    ViewBag.Title = "Alterar Senha";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="divAlterarSenha" class="col-md-12">
+    <h2>Alterar Senha</h2>
+
+    <div id="divPainelAlterarSenha" class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("AlterarSenha", "Usuario", FormMethod.Post, new { name = "frmPainelAlterarSenha", id = "frmPainelAlterarSenha" }))
+            {
+                <div class="row">
+                    <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER" style="float: left">Senha Atual:  </label><h5><span class="label label-info" style="white-space:normal">@(acesso == true ? "* SIAFEM" : "")</span></h5>
+                            <input id="txtSenhaAtual" name="txtSenhaAtual" type="password" class="form-control" maxlength="12" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER" style="float: left">Nova Senha:  </label><h5><span class="label label-info" style="white-space:normal">@(acesso == true ? "* SIAFEM" : "")</span></h5>
+                            <input id="txtNovaSenha" name="txtNovaSenha" type="password" class="form-control" maxlength="12" />
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER" style="float: left">Confirmar Senha: </label><h5><span class="label label-info" style="white-space:normal">@(acesso == true ? "* SIAFEM" : "")</span></h5>
+                            <input id="txtConfirmarSenha" name="txtConfirmarSenha" type="password" class="form-control" maxlength="12" />
+                        </div>
+                    </div>
+
+                    @if (acesso)
+                    {
+                        <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                            <div class="input-group-sm">
+                                <h5><span class="label label-info" style="white-space:normal">* A senha do SIAFEM será alterada.</span></h5>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <button type="button" class="btn btn-sm btn-primary" onclick="javascript: window.location.href = '/Home/Index';"><i class="fa fa-arrow-left"></i> Voltar</button>
+                            <button id="btnSalvar" type="submit" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            }
+                        </div>
+                    </div>
+</div>
+@Html.Partial("_modalSenhaAlterada")
+
+@section script{
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/js/scriptAlterarSenha.js"></script>
+    <script>
+        
+        function FechaModalSenhaAlterada() {
+            ModalSistema(false, '#modalSenhaAlterada');
+            window.location.href = '/Home/Index';
+        }
+    </script>
+}

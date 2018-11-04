@@ -1,0 +1,193 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaDer.Models
+
+
+@model Sids.Prodesp.Model.Entity.PagamentoContaUnica.PagamentoDer.ArquivoRemessa
+
+
+@{
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title = (Model.Id > 1 ? (tipo == "a" || tipo == "i" ? "Alterar" : "Visualizar") : "Cadastrar") + " Preparação de Arquivo Remessa ";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string msgRetorno = ViewBag.MsgRetorno;
+
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var action = ViewContext.RouteData.GetRequiredString("action");
+    var rotuloInicial = "Nº de Geração do Arquivo";
+    //var rotuloOpFinal = "Nº da Ordem de Pagamento Final";
+
+    //bool transmitirProdesp = Convert.ToBoolean(Model.TransmitidoProdesp);
+
+}
+
+<script>
+    window.area = @Html.Raw(Json.Encode(area));
+    window.controller = @Html.Raw(Json.Encode(controller));
+    window.action = @Html.Raw(Json.Encode(action));
+
+    window.Entity = @Html.Raw(Json.Encode(Model));
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+
+    var obj = 'ArquivoRemessa';
+    var ModelItem = @Html.Raw(Json.Encode(Model));
+    var urlVoltar = '@Url.Action("AtualizarIndex", new { Area = "PagamentoContaDer" })';
+</script>
+
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+<div class="col-md-12">
+    <h2>@ViewBag.Title</h2>
+
+    <div id="divPainelCadastrar" class="panel panel-default">
+
+        <div class="panel-body">
+            @using (Html.BeginForm("DownloadFile", "ArquivoRemessa", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("Codigo", Model.Id, new { @id = "Codigo" })
+
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm has-feedback" style="width:20%;">
+                        @Html.LabelFor(model => model.NumeroGeracao, rotuloInicial, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+                        @Html.TextBoxFor(model => model.NumeroGeracao, new { @class = "form-control lockProdesp ", @ReadOnly = "True", style = "width:90%" })
+                    </div>
+                    @if (tipo == "c")
+                    {
+                        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                            @Html.LabelFor(model => model.DataCadastro, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                            <div class="input-group-sm">
+                                @Html.TextBoxFor(model => model.DataCadastro, new { @class = "form-control datepicker lockProdesp data", @maxlength = 12 })
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                            @Html.LabelFor(model => model.DataTrasmitido, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                            <div class="input-group-sm">
+                                @Html.TextBoxFor(model => model.DataTrasmitido, new { @class = "form-control datepicker lockProdesp data", @maxlength = 12 })
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                if (msgRetorno != null)
+                {
+                    <div class='row'>
+                        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-6 col-md-6  form-group-sm form-group has-feedback">
+                            <div id="retornoTransmissao">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Msg Retornada da Transmissão</label>
+                                <div class="input-group-sm">
+                                    @Html.TextArea("MsgRetorno", msgRetorno, new { @class = "form-control", @ReadOnly = "True" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+
+
+
+
+                <br />
+                <div class="row">
+                    <div class="col-sm-12 col-lg-2 col-md-2   form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.CodigoConta, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.CodigoConta, new { @class = "form-control lockProdesp codConta", @maxlength = 3 })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback" style="width:20%;">
+                        @Html.LabelFor(model => model.DataPreparacao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.DataPreparacao, new { @class = "form-control datepicker lockProdesp data", @maxlength = 12 })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.DataPagamento, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.DataPagamento, new { @class = "form-control datepicker lockProdesp data", @maxlength = 12 })
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                @Html.Partial("~/Areas/PagamentoContaDer/Views/Shared/_DadoAssinatura.cshtml", ViewBag.DadoAssinatura as DadoAssinaturaViewModel)
+
+
+                <div class="row">
+@if (tipo != "c")
+{
+                    <div id="divbtnConsultar" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+                        <label class="invisible">Consultar</label>
+                        <div class="input-group-sm">
+                            <button id="btnConsultar" type="button" class="btn btn-primary btn-sm lockProdesp" onclick="ConsultarOrgaoDataVenc2()"><i class="fa fa-search"></i>  Consultar</button>
+                        </div>
+                    </div>
+}
+                </div>
+                
+
+                @Html.Partial("~/Areas/PagamentoContaDer/Views/Shared/_DadoPagamentoContaUnicaContas.cshtml", ViewBag.DadoPreparacaoPagamentoContas as DadoPagamentoContaUnicaContasViewModel)
+
+
+                <div class="row">
+                    <div class="col-sm-3 col-lg-3 col-md-3">
+                        @if (Model.StatusProdesp != "S")
+                        {
+                            <button type='button' id='btnCancelar' class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Cancelar</button>
+                            <button type='button' id='btnSalvar' class='btn btn-sm btn-success'><i class='fa fa-save'></i> Salvar</button>
+                            <button type='button' id='btnTransmitir' class='btn btn-sm btn-primary'><i class='fa fa-share'></i> Transmitir</button>
+
+                        }
+                        else
+                        {
+                            <button type="button" id="btnAtualizarIndex" class="btn btn-sm btn-primary" onclick="javascript: AtualizarIndex();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                        }
+                        <button type="button" id="btnVoltar" class="btn btn-sm btn-primary" onclick="javascript: window.history.back();"><i class="fa fa-arrow-left"></i> Voltar</button>
+
+                    </div>
+                    @if (tipo != "c")
+                    {
+                        <div class="col-md-6 text-left">
+                            <label class="control-label">OBS.: O código da impressora deve ter sido informado e a </label>
+                            <label class="control-label">impressora preparada para impressão de relatório de 132 colunas.</label>
+                        </div>
+
+                    }
+                </div>
+            }
+        </div>
+
+    </div>
+
+</div>
+
+@section script {
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+
+    <script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+    <script src="~/Content/js/Consultas.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+    <script src="~/Content/js/scriptImpressao.js"></script>
+
+    <script src="~/Content/js/PagamentoContaDer/ArquivoRemessa.js"></script>
+    <script src="~/Content/js/PagamentoContaDer/ArquivoRemessaApoio.js"></script>
+    <script src="~/Content/js/PagamentoContaDer/ArquivoRemessaValidator.js"></script>
+    <script src="~/Content/js/PagamentoContaDer/ArquivoRemessaListar.js"></script>
+
+}
+

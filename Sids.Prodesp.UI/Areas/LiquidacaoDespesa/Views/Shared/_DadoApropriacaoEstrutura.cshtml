@@ -1,0 +1,113 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model DadoApropriacaoEstruturaViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    bool disabledMode = !controller.Contains("Rap");
+}
+<div class="row" id="DadoApropriacaoEstrutura">
+
+    @if (controller == "RapRequisicao")
+    {
+        <div id="divAnoExercicio" class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.AnoExercicio, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.AnoExercicio, Model.AnoExercicioListItens, "", new { @class = "form-control" })
+            </div>
+        </div>
+    }
+
+    @if (controller == "Subempenho" || controller == "RapRequisicao")
+    {
+        <div id="divRegional" class='col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.Regional, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @if (!disabledMode)
+                {
+                    @Html.DropDownListFor(model => model.Regional, Model.RegionalListItems, "", new { @class = "form-control lockProdesp", @id = "Orgao" })
+                }
+                else
+                {
+                    @Html.DropDownListFor(model => model.Regional, Model.RegionalListItems, "", new { @class = "form-control lockProdesp", disabled = true, @id= "Orgao" })
+                }
+            </div>
+        </div>
+    }
+
+    @if (controller == "Subempenho" || controller == "RapRequisicao" || controller == "RapAnulacao")
+    {
+
+
+        <div id="divPrograma" class='col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.ProgramaId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @if (!disabledMode)
+                {
+                    @Html.DropDownListFor(model => model.ProgramaId, Model.ProgramaListItems, "Selecione", new { @class = "form-control lockProdesp", @id="Programa"})
+                }
+                else
+                {
+                    @Html.DropDownListFor(model => model.ProgramaId, Model.ProgramaListItems, "", new { @class = "form-control lockProdesp", @id = "Programa", disabled = true })
+                }
+            </div>
+        </div>
+    }
+
+    <div id="divNatureza" class='col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback'>
+        @Html.LabelFor(model => model.Natureza, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class="input-group-sm">
+            @if (!disabledMode)
+            {
+                @Html.DropDownListFor(model => model.Natureza, Model.NaturezaListItems, "Selecione", new { @class = "form-control lockProdesp" })
+            }
+            else
+            {
+                @Html.DropDownListFor(model => model.Natureza, Model.NaturezaListItems, "", new { @class = "form-control lockProdesp", disabled = true })
+            }
+        </div>
+    </div>
+   
+    @if (!controller.Contains("RapRequisicao") && !controller.Contains("RapAnulacao"))
+    {
+    <div id="divCodigoAplicacaoObra" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp">
+        @Html.LabelFor(model => model.CodigoAplicacaoObra, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @if (!disabledMode)
+            {
+                @Html.TextBoxFor(model => model.CodigoAplicacaoObra, new { @class = "form-control lockProdesp obra", @maxlength = 8 })
+            }
+            else
+            {
+                @Html.TextBoxFor(model => model.CodigoAplicacaoObra, new { @class = "form-control lockProdesp obra", @maxlength = 8, @ReadOnly = true })
+            }
+        </div>
+    </div>
+
+    <div id="divNaturezaSubempenho" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp">
+        @Html.LabelFor(model => model.NaturezaSubempenhoId, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @if (!disabledMode)
+            {
+                @Html.DropDownListFor(model => model.NaturezaSubempenhoId, Model.NaturezaSubempenhoListItems, "", new { @class = "form-control lockProdesp" })
+            }
+            else
+            {
+                @Html.DropDownListFor(model => model.NaturezaSubempenhoId, Model.NaturezaSubempenhoListItems, "", new { @class = "form-control lockProdesp", @disabled = "disabled" })
+            }
+        </div>
+    </div>
+    
+
+    }
+
+    @if (controller.Contains("Rap"))
+    {
+        <div id="divTipoServicoId" class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback ">
+            @Html.LabelFor(model => model.TipoServicoId, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.TipoServicoId, Model.TipoServicoListItems, "Selecione", new { @class = "form-control " })
+            </div>
+        </div>
+    }
+</div>

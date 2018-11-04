@@ -1,0 +1,41 @@
+﻿@using Sids.Prodesp.UI.Areas.Seguranca.Models.Funcionalidade
+@{
+    FuncionalidadeViewModel filtro = ViewBag.Filtro;
+    if (filtro == null)
+    {
+        filtro = new FuncionalidadeViewModel();
+    }
+}
+@using (Html.BeginForm("Index", "Funcionalidade", FormMethod.Post, new { name = "form_filtro", id = "form_filtro" }))
+{
+    <h3 class="margT0 tituloItensPagina">Filtros</h3>
+    <hr class="margT0" />
+        <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group">
+            <label class="control-label label-form-DER">Nome:</label>
+            @Html.TextBox("txtNome", filtro.Nome, new { @class = "form-control", @maxlength = "100" })
+        </div>
+        <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group">
+            <label class="control-label label-form-DER">Detalhes:</label>
+            @Html.TextBox("txtDetalhe", filtro.Detalhes, new { @class = "form-control", @maxlength = "200" })
+        </div>
+        <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group">
+            <label class="control-label label-form-DER">Caminho Físico:</label>
+            @Html.TextBox("txtUrl", filtro.CaminhoFisico, new { @class = "form-control", @maxlength = "200" })
+        </div>
+
+        <div class='row'>
+            <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+            <button type="submit" id="btnPesquisar" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-Buscar"></i> Pesquisar</button>
+            <button type="button" id="Create" class="btn btn-sm btn-warning" onclick="javascript: window.location.href = '@Url.Action("Create","Funcionalidade",new {Area = "Seguranca"})';"><i class="glyphicon glyphicon-plus"></i> Cadastrar</button>
+            <button type="button" id="btnLimpar" class="btn btn btn-sm btn-success" onclick="javascript: limparFormulario($('#form_filtro'));"><i class="glyphicon glyphicon-refresh"></i> Limpar</button>
+         </div>
+
+        <div class='row'>
+            <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+            </div>
+        </div>
+}

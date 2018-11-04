@@ -1,0 +1,140 @@
+﻿<div class="modal fade" id="modalImprimir" tabindex="-1" data-focus-on="input:first" role="dialog" aria-labelledby="modalImprimir-label">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="modalImprimir-label">Emissão da Relação de Ordens de Débito</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row margT10">
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="CodigoConta">C&#243;digo da Conta</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input ReadOnly="ReadOnly" class="form-control lockProdesp" id="CodigoConta"  name="CodigoConta" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="DataTransmitidoProdesp">Data da Preparacao da OP</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input ReadOnly="ReadOnly" class="form-control" id="DataTransmitidoProdesp" name="DataTransmitidoProdesp" type="text" value="" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margT10">
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="CodigoAutorizadoAssinatura">C&#243;digo da Assinatura</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input class="form-control lockProdesp number" id="CodAssAutorizado" maxlength="5" name="CodigoAutorizadoAssinatura" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="CodigoAutorizadoGrupo">Grupo</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input ReadOnly="ReadOnly" class="form-control" id="txtAutorizadoGrupo" name="CodigoAutorizadoGrupo" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="CodigoAutorizadoOrgao">&#211;rg&#227;o</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input ReadOnly="ReadOnly" class="form-control" id="txtAutorizadoOrgao" name="CodigoAutorizadoOrgao" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="NomeAutorizadoAssinatura">Nome</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input ReadOnly="ReadOnly" class="form-control" id="txtAutorizadoNome" name="NomeAutorizadoAssinatura" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="DescricaoAutorizadoCargo">Cargo</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input ReadOnly="ReadOnly" class="form-control" id="txtAutorizadoCargo" name="DescricaoAutorizadoCargo" type="text" value="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row margT10">
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="CodigoExaminadoAssinatura">C&#243;digo da Assinatura</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input class="form-control lockProdesp number" id="CodAssExaminado" maxlength="5" name="CodigoExaminadoAssinatura" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="CodigoExaminadoGrupo">Grupo</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input ReadOnly="ReadOnly" class="form-control prodesp" id="txtExaminadoGrupo" name="CodigoExaminadoGrupo" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="CodigoExaminadoOrgao">&#211;rg&#227;o</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input ReadOnly="ReadOnly" class="form-control prodesp" id="txtExaminadoOrgao" name="CodigoExaminadoOrgao" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="NomeExaminadoAssinatura">Nome</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input ReadOnly="ReadOnly" class="form-control prodesp" id="txtExaminadoNome" name="NomeExaminadoAssinatura" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" for="DescricaoExaminadoCargo">Cargo</label><span class="text-danger"></span>
+                        <div class="input-group-sm">
+                            <input ReadOnly="ReadOnly" class="form-control prodesp" id="txtExaminadoCargo" name="DescricaoExaminadoCargo" type="text" value="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row margB35">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h5><strong>Conta Pagamento</strong></h5>
+                        <hr class="margT5" />
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER" for="NumeroBanco">Banco</label><span class='text-danger'></span>
+                                <div class="input-group-sm">
+                                    <input ReadOnly="ReadOnly" class="form-control lockProdesp" id="NumeroBanco" maxlength="3" name="NumeroBanco" type="text" value="" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER" for="NumeroAgencia">Ag&#234;ncia</label><span class='text-danger'></span>
+                                <div class="input-group-sm">
+                                    <input ReadOnly="ReadOnly" class="form-control lockProdesp " id="NumeroAgencia" maxlength="5" name="NumeroAgencia" type="text" value="" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER" for="NumeroConta">Conta</label><span class='text-danger'></span>
+                                <div class="input-group-sm">
+                                    <input ReadOnly="ReadOnly" class="form-control lockProdesp " id="NumeroConta" maxlength="10" name="NumeroConta" type="text" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-3 text-left margT10">
+                        <button class="btn btn-sm btn-danger" onclick="FecharModal('#modalImprimir')"><span class="glyphicon glyphicon-remove"></span>  Cancelar</button>
+                        <button class="btn btn-sm btn-success" onclick="Imprimir();"><span class="glyphicon glyphicon-print"></span>  Imprimir</button>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <label class="control-label">OBS.: O código da impressora deve ter sido informado e a </label>
+                        <label class="control-label">impressora preparada para impressão de relatório de 132 colunas.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

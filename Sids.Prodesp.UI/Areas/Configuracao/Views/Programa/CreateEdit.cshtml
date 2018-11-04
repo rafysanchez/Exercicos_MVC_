@@ -1,0 +1,63 @@
+﻿@model Sids.Prodesp.Model.Entity.Configuracao.Programa
+
+@{
+    var Anos = ViewBag.Anos;
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title = (Model.Codigo > 0 ? (tipo == "a" ? "Alterar" : "Visualizar") : "Cadastrar") + " Programa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    var value = "";
+    var urlVoltar = '@Url.Action("AtualizarIndex", "Programa", new { Area = "Configuracao" }, null)';
+</script>
+
+<div id="divContent" class="col-md-12">
+    <h2>Cadastrar Programa</h2>
+
+    @Html.AntiForgeryToken()
+    <div id="divPainelcadastrar" class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("Save", "Programa", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.HiddenFor(model => model.Codigo, new { @id = "Codigo" })
+                <div class="row">
+                    <div class="col-sm-12 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger">*</span> Ano Referência</label>
+                        <div class="input-group-sm">
+                            @Html.DropDownList("Ano", new SelectList(Anos, "Value", "Text", (Model.Ano > 0? Model.Ano.ToString() : DateTime.Now.Year.ToString())), "Selecione", new { @class = "form-control", @id = "Ano" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger">*</span> PTRES</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Ptres, new { @class = "form-control", @id = "Ptres", @maxlength = "6" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger">*</span> CFP</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Cfp, new { @class = "form-control cfp", @id = "Cfp", @maxlength = "16" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-5  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger">*</span> Programa</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control", @id = "Descricao", @maxlength = "60" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                        <button type="button" id="btnCancelar" class="btn btn-sm btn-danger"><i class="fa fa-close">&nbsp;</i>Cancelar</button>
+                        <button type="submit" id="btnSalvar" class="btn btn-sm btn-success"><i class="fa fa-save">&nbsp;</i>Salvar</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/js/scriptPrograma.js"></script>
+}

@@ -1,0 +1,31 @@
+﻿CREATE SCHEMA [pagamento]
+    AUTHORIZATION [dbo];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

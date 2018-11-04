@@ -1,0 +1,120 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model DadoDesdobramentoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+<div class="outros issqn">
+
+    <br />
+    <hr style="height:1pt;" />
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Dados do Desdobramento</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-3 col-md-1  form-group-sm form-group has-feedback prodesp issqn outros">
+            @Html.LabelFor(model => model.DocumentoTipoId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.DocumentoTipoId, Model.DocumentoTipoListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3 col-md-1  form-group-sm form-group has-feedback issqn outros">
+            @Html.LabelFor(model => model.NumeroDocumento, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroDocumento, new { @class = "form-control lockProdesp lockSiafem", @maxlength = "19" })
+            </div>
+        </div>
+        @if (controller == "Desdobramento")
+        {
+
+            <div class="col-sm-12 col-lg-2 col-md-1  form-group-sm form-group has-feedback issqn">
+                @Html.LabelFor(model => model.CodigoServico, new {@class = "control-label label-form-DER"})<span class='text-danger'></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.CodigoServico, new {@class = "form-control lockProdesp gestao", @maxlength = "5"})
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-2 col-md-1  form-group-sm form-group has-feedback issqn">
+                @Html.LabelFor(model => model.ValorDistribuido, new {@class = "control-label label-form-DER issqn"})<span class='text-danger'></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.ValorDistribuido, new {@class = "form-control lockProdesp issqn real", @maxlength = "17"})
+                    @Html.ValidationMessageFor(x => x.ValorDistribuido)
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-1 col-md-2 form-group-sm form-group has-feedback issqn outros">
+                <label class="invisible">Consultar</label>
+                <div class="input-group-btn">
+                    <button id="btnConsultar" type="button" class="btn btn-primary btn-sm lockProdesp lockSiafem outros issqn" onclick="DesdobramentoApoio()"><i class="fa fa-search"></i> Consultar</button>
+
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-12 col-lg-1 col-md-2 form-group-sm form-group has-feedback issqn outros">
+                <label class="invisible">Consultar</label>
+                <div class="input-group-btn">
+
+                    <button id="btnConsultar" type="button" class="btn btn-primary btn-sm lockProdesp lockSiafem outros issqn" onclick="PoopUpDesdobrmento()"><i class="fa fa-search"></i> Consultar</button>
+                </div>
+            </div>
+        }
+    </div>
+
+@if (controller == "Desdobramento")
+{
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback issqn">
+            @Html.LabelFor(model => model.DescricaoServico, new {@class = "control-label label-form-DER"})<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.DescricaoServico, new {@class = "form-control lockProdesp", @maxlength = "", @ReadOnly = "ReadOnly"})
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback issqn outros">
+            @Html.LabelFor(model => model.DescricaoCredor, new {@class = "control-label label-form-DER"})<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.DescricaoCredor, new {@class = "form-control lockProdesp", @maxlength = "", @ReadOnly = "ReadOnly"})
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3 col-md-2  form-group-sm form-group has-feedback issqn outros">
+            @Html.LabelFor(model => model.NomeReduzidoCredor, new {@class = "control-label label-form-DER"})<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NomeReduzidoCredor, new {@class = "form-control lockProdesp", @maxlength = "40", @ReadOnly = "ReadOnly"})
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback outros">
+            @Html.LabelFor(model => model.TipoDespesa, new {@class = "control-label label-form-DER"})<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.TipoDespesa, new {@class = "form-control evento lockProdesp"})
+            </div>
+        </div>
+        
+
+
+        <div class="col-sm-12 col-lg-2 col-md-1  form-group-sm form-group has-feedback outros">
+            <label class="control-label label-form-DER outros">Valor Dcto. Original</label>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorDistribuido, new { @class = "form-control outros lockProdesp outros real", @maxlength = "17", @id = "ValorDistribuidoOutros" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3 col-md-4  form-group-sm form-group has-feedback issqn outros">
+            <input type="checkbox" class="lockProdesp" id="AceitaCredor" name="nmRetransmitirTodos" @(Model.AceitaCredor? "checked='checked'":"") style="margin-top:23pt; margin-right:0pt; padding-right:0pt; padding-left:2pt; font-size: 9pt; font-weight: bold;" value="0" />
+            @Html.LabelFor(model => model.AceitaCredor, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        </div>
+    </div>
+}
+</div>

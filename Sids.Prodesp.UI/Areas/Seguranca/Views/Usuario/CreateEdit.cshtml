@@ -1,0 +1,157 @@
+﻿@using Sids.Prodesp.UI.Areas.Seguranca.Models.Usuario
+@model Sids.Prodesp.Model.Entity.Seguranca.Usuario
+
+@{
+    UsuarioViewModel filtro = ViewBag.Filtro;
+    List<DtoPerfilUsuarioViewModel> perfil = ViewBag.Perfil;
+    if (filtro == null)
+    {
+        filtro = new UsuarioViewModel();
+    }
+
+    if (perfil == null)
+    {
+        perfil = new List<DtoPerfilUsuarioViewModel>();
+    }
+
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title = (Model.Codigo > 0 ? (tipo == "a" ? "Alterar" : "Visualizar") : "Cadastrar") + " Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section script{
+    <script src="~/Content/BootstrapValidator/js/bootstrapvalidator.js"></script>
+    <script src="~/Content/js/scriptUsuario.js"></script>
+    <script>
+        var ModelItem = @Html.Raw(Json.Encode(Model));
+        var urlVoltar = '@Url.Action("AtualizarIndex", "Usuario", new { Area = "Seguranca"}, null)';
+    </script>
+}
+
+<div id="divContent" class="col-md-12">
+    <h2>Cadastrar Usuário</h2>
+
+    <div id="divPainelCadastrar" class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("Save", "Usuario", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+
+                <fieldset>
+                    @Html.HiddenFor(model => model.Codigo, new { @id = "Codigo" })
+                    <div class="row">
+                        <div class="bloco">
+                            <div class="col-sm-12 col-lg-7 col-md-8 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER"><span class="text-danger">* </span>Nome Completo:</label>
+                                    @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", @maxlength = 100 })
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-3 col-md-4 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER"><span class="text-danger">* </span>Login:</label>
+                                    @Html.TextBoxFor(model => model.ChaveDeAcesso, new { @class = "form-control", @maxlength = 100 })
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-2 col-md-4 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER"><span class="text-danger">* </span>CPF:</label>
+                                    @Html.TextBoxFor(model => model.CPF, new { @class = "form-control cpf" })
+                                </div>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+
+                        <div class="bloco">
+                            <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER"><span class="text-danger">* </span>E-mail:</label>
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @maxlength = 100 })
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER"><span class="text-danger">* </span>Regional:</label>
+                                    @Html.DropDownList("ddlRegional", new SelectList(filtro.Regional, "Id", "Descricao", filtro.RegionalId), "Selecione", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER">Área:</label>
+                                    @Html.DropDownList("ddlArea", new SelectList(filtro.Area, "Id", "Descricao", filtro.AreaId), "Selecione", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+
+                        <div class="bloco">
+                            <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER">Sistema:</label>
+                                    @Html.DropDownList("ddlSistema", new SelectList(filtro.Sistema, "Id", "Descricao", filtro.SistemaId), "Selecione", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            @*<div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group">
+                                    <label class="control-label label-form-DER"><span class="text-danger">* </span>Senha SIAFEM:</label>
+                                    <input type="password" id="txtSenhaSiafem" class="form-control" />
+                                </div>*@
+
+                            <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER"><span class="text-danger">* </span>Senha:</label>
+                                    @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", @type = "password", @maxlength="12" })
+                                </div>
+                            </div>
+                           <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group">
+                                <label class="control-label label-form-DER">Acessa SIAFEM:</label><br />
+                                <input type="checkbox" id="txtSiafen" name="txtSiafen" class="form-control" style="width: auto;cursor:pointer;display: block;float: left;cursor:pointer;border: none;" @(Model.AcessaSiafem == true ? "checked" : "" ) />
+                                <h5><span class="label label-info" style="white-space:normal; margin-left:10px;">* Usuário com acesso SIAFEM.</span></h5>
+                            </div>
+                            @*<div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group">
+                                <label class="control-label label-form-DER">Acessa SIAFEM:</label>
+                                <div class="form-control">
+                                    <label><input type="checkbox" id="txtSiafen" name="txtSiafen" class="" >
+                                        <span class="label label-info" style="">* Usuário com acesso SIAFEM.</span>
+                                    </label>
+                                </div>
+                            </div>*@
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                            <label class="control-label label-form-DER">Perfis:</label>
+                            <hr class="margT0" />
+                            <div class="input-group-sm">
+                                <table id="tblAcoes" name="tblAcoes" class="table table-striped table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-1"></th>
+                                            <th class="col-md-11">Perfil</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in perfil)
+                                        {
+                                            <tr>
+                                                <td class="text-center"><input type="checkbox" value="@item.Id" id="perfil" name="perfil" @(item.Associado == true ? "checked" : "" ) /></td>
+                                                <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                            <button type="button" id="btnCancelar" class="btn btn-sm btn-danger"><i class="fa fa-close">&nbsp;</i>Cancelar</button>
+                            <button type="button" id="btnVoltar" onclick="javascript: AtualizarIndex();"></button>
+                            <button type="submit" id="btnSalvar" class="btn btn-sm btn-success"><i class="fa fa-save">&nbsp;</i>Salvar</button>
+                        </div>
+
+                    </div>
+
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>

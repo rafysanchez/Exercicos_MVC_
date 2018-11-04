@@ -1,0 +1,92 @@
+﻿@using Sids.Prodesp.Model.Entity.Seguranca
+@using Sids.Prodesp.UI.Areas.Seguranca.Models.Perfil
+@model Perfil
+
+
+
+@{
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title = (Model.Codigo > 0 ? (tipo == "a" ? "Alterar" : "Visualizar") : "Cadastrar") + " Perfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    List<MenuViewModel> menuList = ViewBag.Funcionalidades ?? new List<MenuViewModel>();
+}
+@section script{
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/js/scriptPerfil.js"></script>
+    <script>
+        var ModelItem = @Html.Raw(Json.Encode(Model));
+        var urlVoltar = '@Url.Action("AtualizarIndex", "Perfil", new { Area = "Seguranca"}, null)';
+    </script>
+}
+
+
+<div id="divContent" class="col-md-12">
+    <h2>Cadastrar Perfil</h2>
+
+    @Html.AntiForgeryToken()
+    <div id="divPainelCadastrar" class="panel panel-default">
+        <div class="panel-body">
+
+            @using (Html.BeginForm("Save", "Perfil", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.HiddenFor(model => model.Codigo, new { @id = "Codigo" })
+                <div class="row">
+                    <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger">* </span>Nome:</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control", @maxlength = "100" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-8 col-md-8 form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER">Detalhes:</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Detalhe, new { @class = "form-control", @maxlength = "200" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                        <div class="tree well">
+
+                            <ul class="margB0">
+                                <label class="control-label label-form-DER">Funcionalidade:</label>
+                                @foreach (var menu in menuList)
+                                {
+                                    <li>
+                                        <span><i class="fa fa-plus"></i> @Html.DisplayFor(modelItem => menu.Descricao)</span>
+                                        <ul class="">
+                                            @foreach (var item in menu.FuncionalidadeAcoes)
+                                            {
+                                                <li style="display: none;">
+                                                    <span><i class="fa fa-plus"></i> @Html.DisplayFor(modelItem => item.Funcionalidade)</span>
+                                                    <ul>
+                                                        @foreach (var acao in item.Acoes)
+                                                        {
+                                                            <li style="display: none;">
+                                                                <input type="checkbox" value="@acao.FuncionalidadeAcaoId" data-acaoId="@acao.Id" @(acao.Associado == true ? "checked" : "" ) /> @Html.DisplayFor(modelItem => acao.Descricao)
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                        <button type="button" id="btnCancelar" class="btn btn-sm btn-danger"><i class="fa fa-close">&nbsp;</i>Cancelar</button>
+                        <button type="button" id="btnVoltar" onclick="javascript: AtualizarIndex();"></button>
+                        <button type="submit" id="btnSalvar" class="btn btn-sm btn-success"><i class="fa fa-save">&nbsp;</i>Salvar</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

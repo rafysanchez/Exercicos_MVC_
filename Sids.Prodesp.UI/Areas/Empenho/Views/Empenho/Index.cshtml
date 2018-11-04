@@ -1,0 +1,56 @@
+﻿@using Sids.Prodesp.Model.Base.Empenho
+@using Sids.Prodesp.UI.Areas.Empenho.Models
+
+@model IEnumerable<FiltroGridViewModel>
+
+@{ 
+    ViewBag.Title = "Listar Empenho";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    FiltroViewModel filtro = ViewBag.Filtro ?? new FiltroViewModel();
+}
+
+<script>
+    var obj = "Empenho/Empenho";
+    var objExc = "Empenho";
+    var urld = '@Url.Action("Delete", "Empenho")';
+
+    var controller = @Html.Raw(Json.Encode(ViewContext.RouteData.GetRequiredString("controller")));
+
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+    var estruturaInfo = @Html.Raw(Json.Encode(ViewBag.Estrutura));
+    var programasInfo = @Html.Raw(Json.Encode(ViewBag.Programas));
+    var selecionado = @Html.Raw(Json.Encode(ViewBag.Programa));
+    //var ModelItem = @Html.Raw(Json.Encode(Model));
+</script>
+
+<link rel="stylesheet" href="~/Content/DataTable/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="~/Content/DataTable/css/jquery.dataTables.min.css" />
+
+<div class="col-md-12">
+    <h2>Pesquisa de Empenho</h2>
+
+    @Html.Partial("_Mensagem")
+
+    <div class="panel panel-default" id="">
+        <div class="panel-body">
+
+            @using (Html.BeginForm("Index", "Empenho", FormMethod.Post, new { name = "form_filtro", id = "form_filtro" }))
+            {
+                Html.RenderPartial("_Filtro", filtro);
+            }
+
+            @Html.Partial("~/Areas/Empenho/Views/Shared/_FiltroGrid.cshtml", Model)
+
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/js/Empenho/EmpenhoListar.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+    <script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+    <script src="~/Content/js/scriptImpressao.js"></script>
+}

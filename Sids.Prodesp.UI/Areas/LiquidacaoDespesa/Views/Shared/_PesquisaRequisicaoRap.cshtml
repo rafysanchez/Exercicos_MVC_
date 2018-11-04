@@ -1,0 +1,61 @@
+﻿
+@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model PesquisaRequisicaoRapViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div id="PesquisaRequisicaoRap">
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Consultar Requisição de RAP Prodesp</h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+
+    <div class="row">
+
+        <div id="pesquisaRequisicaorap" class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroRequisicaoRap, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroRequisicaoRap, new { @class = "form-control  requisicao", @maxlength = 17 })
+            </div>
+        </div>
+
+        <div id="divbtnConsultarRap" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            <label class="invisible">Consultar</label>
+            <div class="input-group-sm">
+                <button id="btnConsultar" type="button" class="btn btn-primary btn-sm" onclick="requisicaoAnulacaoRap()"><i class="fa fa-search"></i>  Consultar</button>
+            </div>
+        </div>
+
+        @if (controller == "RapAnulacao")
+        {
+            <div id="divCodigoTarefa" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback ">
+                @Html.LabelFor(model => model.CodigoTarefa, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.CodigoTarefa, new { @class = "form-control lockProdesp", @maxlength = 2, @readonly = "true" })
+                </div>
+            </div>
+
+            <div id="divCodigoDespesa" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback  ">
+                @Html.LabelFor(model => model.CodigoDespesa, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.CodigoDespesa, new { @class = "form-control lockProdesp", @maxlength = 2, @readonly = "true" })
+                </div>
+            </div>
+
+            <div id="divCodigoAplicacaoObra" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp">
+                @Html.LabelFor(model => model.CodigoAplicacaoObra, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.CodigoAplicacaoObra, new { @class = "form-control lockProdesp obra", @maxlength = 8, @readonly = "true" })
+                </div>
+            </div>
+        }
+    </div>
+</div>

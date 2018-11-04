@@ -1,0 +1,58 @@
+﻿@model Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.ListaDeBoletos.DadoListaBoletosViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Dados da Lista de Boletos</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp issqn outros">
+            @Html.LabelFor(model => model.CodigoUnidadeGestora, htmlAttributes: new { @class = "control-label" })
+            <div class="input-group-sm">
+                @Html.EditorFor(model => model.CodigoUnidadeGestora, new { htmlAttributes = new { @class = "form-control unidGest lockSiafem" } })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp issqn outros">
+            @Html.LabelFor(model => model.CodigoGestao, htmlAttributes: new { @class = "control-label" })
+            <div class="input-group-sm">
+                @Html.EditorFor(model => model.CodigoGestao, new { htmlAttributes = new { @class = "form-control gestao lockSiafem" } })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp issqn outros">
+            @Html.LabelFor(model => model.DataEmissao, htmlAttributes: new { @class = "control-label" })
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.DataEmissao, new { @class = "form-control data datepicker lockSiafem", @maxlength = 12 })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp issqn outros">
+            @Html.LabelFor(model => model.NumeroCnpjcpfFavorecido, htmlAttributes: new { @class = "control-label" })
+            <div class="input-group-sm">
+                @Html.EditorFor(model => model.NumeroCnpjcpfFavorecido, new { htmlAttributes = new { @class = "form-control cnpjcpfUgCredor lockSiafem", @maxLength = "14" } })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp issqn outros">
+            @Html.LabelFor(model => model.NomeLista, htmlAttributes: new { @class = "control-label" })
+            <div class="input-group-sm">
+                @Html.EditorFor(model => model.NomeLista, new { htmlAttributes = new { @class = "form-control lockSiafem", @maxLength="45" } })
+            </div>
+        </div>
+
+    </div>
+</div>
+

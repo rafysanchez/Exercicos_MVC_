@@ -1,0 +1,66 @@
+﻿
+@{
+    bool acesso = ViewBag.AcessaSiafem;
+    bool senhaSiafemExpirada = ViewBag.SenhaSiafemExpirada;
+    string titulo;
+    ViewBag.Title = "Alterar Senha";
+}
+
+<div id="modalAlteraSenhaSiafem" class="modal fade" data-backdrop="static" data-keyboard="false">
+
+    @using (Html.BeginForm("Home", "Index", FormMethod.Post, new { @id = "frmPainelAlterarSenha" }))
+    {
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="ModalAlterarSenha(false, '#modalAlteraSenhaSiafem')"><span aria-hidden="true">&times;</span></button>
+@if (acesso && senhaSiafemExpirada)
+{
+    titulo = "Senha Expirada no SIAFEM";
+}
+else
+{
+    titulo = "Atualizar Senha" + (acesso ? "- SIAFEM" : "");
+}
+                    @titulo
+                </div>
+                <div class="modal-body">
+                    <div class="col-sm-12 col-lg-12 col-md-4 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER"><span class="text-danger">* </span>Senha Atual:</label>
+                            <input type="password" id="txtSenhaAtual" name="txtSenhaAtual" class="form-control" maxlength="12" />
+                        </div>
+                        @if (acesso && senhaSiafemExpirada)
+                        {
+                            <h5><span class="label label-info" style="white-space:normal">* Mesma senha do SIAFEM.</span></h5>
+                        }
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-md-4 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER"><span class="text-danger">* </span>Nova Senha:</label>
+                            <input type="password" id="txtNovaSenha" name="txtNovaSenha" class="form-control"  maxlength="12" />
+                        </div>
+                        @if (acesso && !senhaSiafemExpirada)
+                        {
+                            <h5><span class="label label-info" style="white-space:normal">* Mesma senha do SIAFEM.</span></h5>
+                        }
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-md-4 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER"><span class="text-danger">* </span>Confirmação Senha:</label>
+                            <input type="password" id="txtConfirmarSenha" name="txtConfirmarSenha" class="form-control" />
+                        </div>
+                        @if (acesso && !senhaSiafemExpirada)
+                        {
+                            <h5><span class="label label-info" style="white-space:normal">* Mesma senha do SIAFEM.</span></h5>
+                        }
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+                <div class="modal-footer footer-modal">
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-retweet"></i> Atualizar</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    }
+</div><!-- /.modal -->

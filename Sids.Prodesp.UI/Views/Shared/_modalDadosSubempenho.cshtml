@@ -1,0 +1,132 @@
+﻿<div class="modal fade scroll" id="modalDadosSubempenho" tabindex="-1" role="dialog" data-focus-on="input:first" aria-labelledby="modalConsultaContrato-label">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalConsultaContrato-label">Dados do Subempenho</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label">Nº da Apropriação / Subempenho</label>
+                        <input id="txtNumSubempenho" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Nº do Processo</label>
+                        <input id="txtNumSubempenhoProcesso" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Nº Contrato</label>
+                        <input id="txtNumSubempenhoContrato" type="text" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="row margT10">
+                    <div class="col-md-2">
+                        <label class="control-label">Órgão</label>
+                        <input id="txtSubempenhoOrgao" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-7">
+                        <label class="control-label">CFP / CED</label>
+                        <input id="txtSubempenhoCfp" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Código da Aplicação</label>
+                        <input id="txtNumSubempenhoAplicacao" type="text" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="row margT10">
+                    <div class="col-md-3">
+                        <label class="control-label">Valor Original</label>
+                        <input id="txtSubempenhoValorOriginal" type="text" class="form-control data" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Valor Real</label>
+                        <input id="txtSubempenhoValorReal" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Valor Anulado</label>
+                        <input id="txtSubempenhoValorAnulado" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Saldo</label>
+                        <input id="txtSubempenhoSaldo" type="text" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="row margT10">
+                    <div class="col-md-3">
+                        <label class="control-label">Tafera</label>
+                        <input id="txtSubempenhoTarefa" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Data Real</label>
+                        <input id="txtSubempenhoDataReal" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Data Reg.</label>
+                        <input id="txtSubempenhoDataReg" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Data de Vencimento</label>
+                        <input id="txtSubempenhoDataVenc" type="text" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="row margT10">
+                    <div class="col-md-3">
+                        <label class="control-label">Credor</label>
+                        <textarea id="txtSubempenhoCredor" type="text" class="form-control" disabled style="height: 60px; width: 250px; margin: 0px -107.5px 0px 0px;"></textarea>
+                    </div>
+                </div>
+
+                <div class="row ">
+                </div>
+                <fieldset class="form-group">
+                    <legend>Autorizado</legend>
+                    <div class="col-md-5">
+                        <label class="control-label">Nome</label>
+                        <input id="txtSubempenhoAutorizadoNome" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Cargo</label>
+                        <input id="txtSubempenhoAutorizadoCargo" type="text" class="form-control" disabled />
+                    </div>
+                </fieldset>
+
+
+                <fieldset class="form-group" style="border: 1px">
+                    <legend>Examinado</legend>
+                    <div class="col-md-5">
+                        <label class="control-label">Nome</label>
+                        <input id="txtSubempenhoExaminadoNome" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Cargo</label>
+                        <input id="txtSubempenhoExaminadoCargo" type="text" class="form-control" disabled />
+                    </div>
+
+                </fieldset>
+
+
+                <fieldset class="form-group">
+                    <legend>Responsável</legend>
+
+                    <div class="col-md-5">
+                        <label class="control-label">Nome</label>
+                        <input id="txtSubempenhoResponsavelNome" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Cargo</label>
+                        <input id="txtSubempenhoResponsavelCargo" type="text" class="form-control" disabled />
+                    </div>
+
+                </fieldset>
+
+                <div class="row margT10">
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-primary" onclick="dadosContrato('modalDadosSubempenho')"><i class="fa fa-arrow-left"></i> Voltar</button>
+                        <button class="btn btn-sm btn-warning" onclick="ConfirmarSubEmpenho($('txtNumSubempenho').val())" data-dismiss="modal">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

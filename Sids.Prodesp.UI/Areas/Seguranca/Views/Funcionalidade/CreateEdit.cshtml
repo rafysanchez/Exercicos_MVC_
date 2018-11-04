@@ -1,0 +1,125 @@
+﻿@using Sids.Prodesp.UI.Areas.Seguranca.Models.Funcionalidade
+@model Sids.Prodesp.Model.Entity.Seguranca.Funcionalidade
+
+
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true)
+
+
+
+@{
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title = (Model.Codigo > 0 ? (tipo == "a" ? "Alterar" : "Visualizar") : "Cadastrar") + " Funcionalidade";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<Sids.Prodesp.Model.Entity.Seguranca.Url> urlItens = ViewBag.URL;
+
+    List<DtoAcoesFuncionalidades> acoes = ViewBag.Acoes;
+
+    List<Sids.Prodesp.Model.Entity.Seguranca.Menu> menus = ViewBag.Menus;
+
+    if (acoes == null)
+    {
+        acoes = new List<DtoAcoesFuncionalidades>();
+    }
+
+    if (menus == null)
+    {
+        menus = new List<Sids.Prodesp.Model.Entity.Seguranca.Menu>();
+    }
+}
+
+@section script{
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/js/scriptFuncionalidade.js"></script>
+    <script>
+        var urlVoltar = '@Url.Action("AtualizarIndex", "Funcionalidade", new { Area = "Seguranca"}, null)';
+    </script>
+}
+@using (Html.BeginForm("Save", "Funcionalidade", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+    <fieldset>
+        <div id="divContent" class="col-md-12">
+            <h2>Alterar Funcionalidade</h2>
+            @Html.HiddenFor(model => model.Codigo, new { @id = "Codigo" })
+            <div id="divPainelCadastrar" class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="form-group-sm form-group">
+                            <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER"><span class="text-danger">* </span>Nome:</label>
+                                    @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", @maxlength = "100" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER"><span class="text-danger">* </span>Detalhes:</label>
+                                    @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control", @maxlength = "200" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                                <div class="input-group-sm">
+                                    <label class="control-label label-form-DER"><span class="text-danger">* </span>Caminho Físico:</label>
+                                    @Html.DropDownListFor(model => model.MenuUrlId, new SelectList(urlItens, "Id", "DescricaoUrl", Model.MenuUrlId), "Selecione", new { @class = "form-control selectpicker", @id = "MenuUrlId" })
+                                    @*@Html.TextBoxFor(model => model.URL, new { @class = "form-control" })*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group-sm form-group">
+                            <div class="col-sm-8 col-lg-4 col-md-4 form-group-sm form-group">
+                                <label class="control-label label-form-DER"><span class="text-danger">* </span>Menu:</label>
+                                <div class="selectContainer">
+                                    <div class="input-group-sm">
+                                        @Html.DropDownListFor(model => model.MenuId, new SelectList(menus, "Codigo", "Descricao", Model.MenuId), "Selecione", new { @class = "form-control selectpicker", @id = "cbxMenu" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                            <label class="control-label label-form-DER">Ações:</label>
+                            <hr class="margT0" />
+                            <div class="input-group-sm">
+                                <table id="tblAcoes" name="tblAcoes" class="table table-striped table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-1"></th>
+                                            <th class="col-md-11">Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in acoes)
+                                        {
+                                            <tr>
+                                                <td class="text-center"><input type="checkbox" id="@item.Id" name="acao" @(item.Associado == true ? "checked" : "") /></td>
+                                                <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                            <button type="button" id="btnCancelar" class="btn btn-sm btn-danger"><i class="fa fa-close">&nbsp;</i>Cancelar</button>
+                            <button type="button" id="btnVoltar" onclick="javascript: AtualizarIndex();"></button>
+                            <button type="submit" id="btnSalvar" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Salvar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </fieldset>
+
+}

@@ -1,0 +1,81 @@
+﻿
+@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model DadoPreparacaoPagamentoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+<div class="orgaoDespData documentoGerador">
+
+    <br />
+    <hr style="height:1pt;" />
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Dados da Preparação de Pagamento</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.AnoExercicio, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.AnoExercicio, new { @class = "form-control lockProdesp yearExPicker ano", maxlength = "4" })
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12 col-lg-2 col-md-2   form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoConta, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoConta, new { @class = "form-control lockProdesp codConta", @maxlength = 3})
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroBanco, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroBanco, new { @class = "form-control lockProdesp banco" , @maxlength = 3 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroAgencia, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroAgencia, new { @class = "form-control lockProdesp agencia", @maxlength = 5 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroConta, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroConta, new { @class = "form-control lockProdesp ", @maxlength = 11 })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="divRegional" class='col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback orgaoDespData'>
+            @Html.LabelFor(model => model.Regional, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                    @Html.DropDownListFor(model => model.Regional, Model.RegionalListItems, "Selecione", new { @class = "form-control lockProdesp", @id = "Orgao" })
+            </div>
+        </div>
+        
+        <div class='col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback orgaoDespData'>
+            @Html.LabelFor(model => model.DataVencimento, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class='input-group-sm'>
+                @Html.TextBoxFor(model => model.DataVencimento, new { @class = "form-control data datepicker lockProdesp data" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback orgaoDespData">
+            @Html.LabelFor(model => model.TipoDespesa, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.TipoDespesa, new { @class = "form-control lockProdesp tpDespesa", @maxlength = 2 })
+            </div>
+        </div>
+    </div>
+</div>

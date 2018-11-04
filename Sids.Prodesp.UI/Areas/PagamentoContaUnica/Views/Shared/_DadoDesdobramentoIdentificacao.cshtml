@@ -1,0 +1,80 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.Desdobramento
+
+@model DadoDesdobramentoIdentificacaoViewModel
+
+<div id="identificacaoForm" class="outros issqn">
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback issqn">
+            @Html.LabelFor(model => model.Tipo, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.Tipo, Model.DesdobramentoTipoListItems, "Selecione", new { @class = "form-control lockProdesp", @id = "Tipo", @name = "Tipo" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback issqn outros">
+            @Html.LabelFor(model => model.ReduzidoCredor, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ReduzidoCredor, new { @class = "form-control autoComplete lockProdesp", maxlength = "14", @id="ReduzidoCredor", @name = "ReduzidoCredor" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback outros">
+            @Html.LabelFor(model => model.ValorPercentual, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorPercentual, new { @class = "form-control lockProdesp percentual", @maxlength = "6" })
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 form-group-sm outros" style="margin-top: 25px; padding-left:5pt; padding-right:5pt; ">
+            <label class="label-control">ou</label>
+        </div>
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback issqn">
+            @Html.LabelFor(model => model.ValorDistribuicao, new { @class = "control-label label-form-DER issqn" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorDistribuicao, new { @class = "form-control real lockProdesp", @maxlength = "14" })
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2  form-group-sm form-group has-feedback issqn">
+            @Html.LabelFor(model => model.BaseCalc, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.BaseCalc, new { @class = "form-control lockProdesp percentual", @maxlength = "6", @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback outros issqn">
+            <label class="outros">Valor</label>
+            @Html.LabelFor(model => model.ValorDesdobrado, new { @class = "control-label label-form-DER issqn" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorDesdobrado, new { @class = "form-control lockProdesp real", @maxlength = "14" })
+            </div>
+        </div>
+        
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback prodesp issqn">
+            @Html.LabelFor(model => model.ReterId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.ReterId, Model.ReterListItems, "Selecione", new { @class = "form-control lockProdesp" })
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row issqn outros">
+        <div class="input-group-btn">
+            <div id="divnewIdenficacao" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                <button id="newIdenficacao" type="button" class="btn btn-primary btn-sm lockProdesp lockSiafisico lockSiafem"><i class="fa fa-plus"></i>  Adicionar</button>
+            </div>
+
+            <div id="divsaveIdentificacao" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                <button id="saveIdentificacao" type="button" class="btn btn-primary btn-sm lockProdesp lockSiafisico lockSiafem"><i class="fa fa-save"></i>  Salvar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

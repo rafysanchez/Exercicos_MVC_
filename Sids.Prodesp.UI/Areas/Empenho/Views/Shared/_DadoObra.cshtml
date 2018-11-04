@@ -1,0 +1,53 @@
+﻿@using Sids.Prodesp.UI.Areas.Empenho.Models
+@model DadoObraViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+<div id="dadosObra">
+    <div class="row siafem">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Dados da Obra (SIAFEM - Informar somente quando a natureza do Empenho é de Obra). </h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+        <div></div>
+        <fieldset class="row siafem">
+            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                @Html.LabelFor(model => model.TipoObraId, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.TipoObraId, new { @class = "form-control lockSiafem", @maxlength = 6 })
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                @Html.LabelFor(model => model.CodigoUGObra, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.CodigoUGObra, new { @class = "form-control lockSiafem", @maxlength = 6 })
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                @Html.LabelFor(model => model.NumeroAnoContrato, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.NumeroAnoContrato, new { @class = "form-control lockSiafem", @maxlength = 4 })
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                @Html.LabelFor(model => model.NumeroMesContrato, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.NumeroMesContrato, new { @class = "form-control lockSiafem", @maxlength = 2 })
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                @Html.LabelFor(model => model.NumeroObra, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.NumeroObra, new { @class = "form-control lockSiafem", @maxlength = 9 })
+                </div>
+            </div>
+
+        </fieldset>
+    </div>

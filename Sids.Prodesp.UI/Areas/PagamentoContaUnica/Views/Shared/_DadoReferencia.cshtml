@@ -1,0 +1,31 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model DadoReferenciaViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div id="DadoReferencia" class="prodesp documentoGerador siafisico">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div id="divReferencia" class="col-sm-12 col-lg-5 col-md-5  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Referencia, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Referencia, new { @class = "form-control lockProdesp lockSiafisico", @maxlength = "60" })
+            </div>
+        </div>
+
+    </div>
+
+</div>

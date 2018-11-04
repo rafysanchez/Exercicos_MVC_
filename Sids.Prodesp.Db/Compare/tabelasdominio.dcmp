@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataComparison>
+  <Version>10</Version>
+  <ConnectionProperties1>
+    <ConnectionString>Data Source=D-BOA-BP139567\SQLEXPRESS;Initial Catalog=dbSIDS_Dev_20180329;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</ConnectionString>
+    <FullDisplayName>D-BOA-BP139567\SQLEXPRESS.dbSIDS_Dev_20180329 (PRODESP-SEDE\810861)</FullDisplayName>
+  </ConnectionProperties1>
+  <ConnectionProperties2>
+    <ConnectionString>Data Source=(local)\SQLEXPRESS;Initial Catalog=dbSIDS_Hom_20180316;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</ConnectionString>
+    <FullDisplayName>(local)\SQLEXPRESS.dbSIDS_Hom_20180316 (PRODESP-SEDE\810861)</FullDisplayName>
+  </ConnectionProperties2>
+  <SessionSettings>Default</SessionSettings>
+</DataComparison>

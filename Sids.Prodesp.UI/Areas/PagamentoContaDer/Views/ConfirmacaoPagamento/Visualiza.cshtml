@@ -1,0 +1,133 @@
+﻿@model List<Sids.Prodesp.UI.Areas.PagamentoContaDer.Models.ConfirmacaoPagamentoFiltroViewModel>
+@{
+    ViewBag.Title = "Visualizar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="divContent" class="col-md-12">
+    <h1>Visualizar Confirmação de Pagamento</h1>
+    @Html.AntiForgeryToken()
+    <div id="divPainelCadastrarConfirmacaoPagamento" class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 form-inline">
+                    <label class="label-control">Informe o sistema:</label>
+                    <input for="TipoSistema" type="checkbox" name="sistemaDer1" value="Prodesp" checked="checked" disabled="disabled"/> Prodesp
+                    <input for="TipoSistema" type="checkbox" name="sistemaDer1" value="SIAFEM" checked="checked" disabled="disabled"/> SIAFEM
+                </div>
+            </div>
+            <div class="row padB20 padT20">
+                <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                    @Html.LabelFor(x=> x.FirstOrDefault().DataCadastro, new {@class= "control-label label-form-DER", id= "lblDataCadastro", name= "lblDataCadastro" })
+                    <div class="input-group-sm">
+                        @Html.TextBoxFor(x=> x.FirstOrDefault().DataCadastro, new { @class= "form-control data datepicker data", id= "DataCadastro", name= "DataCadastro", disabled="disabled" })
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                    @Html.LabelFor(x => x.FirstOrDefault().DataTransmitidoProdesp, new { @class = "control-label label-form-DER", id = "lblDataTransmissao", name = "lblDataTransmissao" })
+                    <div class="input-group-sm">
+                        @Html.TextBoxFor(x => x.FirstOrDefault().DataPreparacao, new { @class = "form-control data datepicker data", id = "DataPreparacao", name = "DataPreparacao", disabled = "disabled" })
+                    </div>
+                </div>
+            </div>
+            <div class="row padB20">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <h3 id="tituloDesdobramento">Tipo de Confirmação</h3>
+                    <hr style="margin-left: 15px; margin-right: 15px;" />
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                            @Html.LabelFor(x => x.FirstOrDefault().TipoConfirmacao, new { @class = "label-control", id = "lblTipoConfirmacao", name = "lblTipoConfirmacao" })
+                            @Html.DropDownListFor(x => x.FirstOrDefault().TipoConfirmacao, (SelectList)ViewBag.DropdownTipoConfirmacao, "Selecione", new { @class = "form-control", @id = "TipoConfirmacao", Name = "opcoesConfirmacao", disabled = "disabled" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pagamentoPorDocumentoC">
+                <div class="row padB20">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h3 id="tituloDesdobramento">Consulta Pagamentos a Confirmar</h3>
+                        <hr style="margin-left: 15px; margin-right: 15px;" />
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 form-group-sm form-group has-feedback">
+                                @Html.LabelFor(x => x.FirstOrDefault().lstTipoDocumento, new { @class = "control-label label-form-DER", id = "lblTipoDocumento", name = "lblTipoDocumento" })
+                                <div class="input-group-sm">
+                                    @Html.DropDownListFor(x => x.FirstOrDefault().lstTipoDocumento, (SelectList)ViewBag.DropdownTipoDocumentoCadastro, "Selecione", new { @class = "form-control", @id = "TipoDocumento", Name = "TipoDocumento", disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                                @Html.LabelFor(x => x.FirstOrDefault().NumeroDocumento, new { @class = "control-label label-form-DER", id = "lblNumeroDocumento", name = "lblNumeroDocumento" })
+                                @Html.TextBoxFor(x => x.FirstOrDefault().NumeroDocumento, new { @class = "form-control", id = "NumeroDocumento", name = "NumeroDocumento", disabled = "disabled" })
+                                @Html.ValidationMessageFor(x => x.FirstOrDefault().NumeroDocumento)
+                            </div>
+                            <div class="col-md-3 col-lg-3 form-group-sm form-group has-feedback">
+                                    @Html.LabelFor(x => x.FirstOrDefault().lstTipoPagamento, new { @class = "control-label label-form-DER", id = "lblTipoPagamento", name = "lblTipoPagamento" })
+                                    <div class="input-group-sm">
+                                        @Html.DropDownListFor(x => x.FirstOrDefault().lstTipoPagamento, (SelectList)ViewBag.DropdownListTipoPagamento, "Selecione", new { @class = "form-control", @id = "TipoPagamento", Name = "TipoPagamento", disabled = "disabled" })
+                                    </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                                @Html.LabelFor(x => x.FirstOrDefault().DataConfirmacao, new { @class = "control-label label-form-DER", id = "lblDataConfirmacao", name = "lblDataConfirmacao" })
+                                <div class="input-group-sm">
+                                    @Html.TextBoxFor(x => x.FirstOrDefault().DataConfirmacao, new { @class = "form-control data datepicker data", data_intervalo = "inicial", maxlength = 10, id = "DataInicial", name = "DataConfirmacao", placeholder = "__/__/____", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(x => x.FirstOrDefault().DataConfirmacao)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pagamentoPorLoteC" style="display:none">
+                <div class="row padB20">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h3 id="tituloDesdobramento">Consulta Pagamentos a Confirmar</h3>
+                        <hr style="margin-left: 15px; margin-right: 15px;" />
+                        <div class="row">
+                            <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                                @Html.LabelFor(x => x.FirstOrDefault().NumeroConta, new { @class = "control-label label-form-DER", id = "lblConta", name = "lblConta" })
+                                @Html.TextBoxFor(x => x.FirstOrDefault().NumeroConta, new { @class = "form-control", id = "NumeroConta", name = "NumeroConta", disabled = "disabled" })
+                            </div>
+                            <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                                @Html.LabelFor(x => x.FirstOrDefault().DataPreparacao, new { @class = "control-label label-form-DER", id = "lblDataPreparacao", name = "lblDataPreparacao" })
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Data da Preparação</label>
+                                <div class="input-group-sm">
+                                    @Html.TextBoxFor(x => x.FirstOrDefault().DataPreparacao, new { @class = "form-control data datepicker data", id = "DataPreparacao", name = "DataPreparacao", disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3 form-group-sm form-group has-feedback">
+                                @Html.LabelFor(x => x.FirstOrDefault().TipoPagamento, new { @class = "control-label label-form-DER", id = "lblTipoPagamento", name = "lblTipoPagamento" })
+                                <div class="input-group-sm">
+                                    @Html.DropDownListFor(x => x.FirstOrDefault().lstTipoPagamento, (SelectList)ViewBag.DropdownListTipoPagamento, "Selecione", new { @class = "form-control", @id = "TipoPagamento", Name = "TipoPagamento", disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                                @Html.LabelFor(x => x.FirstOrDefault().DataConfirmacao, new { @class = "control-label label-form-DER", id = "lblDataConfirmacao", name = "lblDataConfirmacao" })
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Data da Confirmação</label>
+                                <div class="input-group-sm">
+                                    @Html.TextBoxFor(x => x.FirstOrDefault().DataConfirmacao, new { @class = "form-control data datepicker data", id = "DataConfirmacao", name = "DataConfirmacao", disabled = "disabled" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resultadosBusca">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                       @using (Ajax.BeginForm("Visualizar", "ConfirmacaoPagamento", new AjaxOptions { HttpMethod = "Get" }, new { id = "frm-filtro-ConfirmacaoPagamento" }))
+                       {
+                           Html.RenderPartial("_FiltroGrid");
+                       }
+                    </div>
+                </div>
+            </div>
+            <div class="row margT10">
+                <div class="col-md-12 form-group-sm">
+                    <button class="btn btn-primary" onclick="history.go(-1)"><i class="fa fa-arrow-left"></i> Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Styles.Render("~/bundles/ConfirmacaoPagamentoCss")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/ConfirmacaoPagamentoJs")

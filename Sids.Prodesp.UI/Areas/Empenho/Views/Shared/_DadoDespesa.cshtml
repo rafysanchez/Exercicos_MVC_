@@ -1,0 +1,52 @@
+﻿@using Sids.Prodesp.UI.Areas.Empenho.Models
+
+@model DadoDespesaViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div class="row prodesp">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina"></h3>
+        <hr class="margT10" />
+    </div>
+</div>
+
+<div class="row prodesp">
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp">
+        @Html.LabelFor(model => model.DescricaoAutorizadoSupraFolha, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.DescricaoAutorizadoSupraFolha, new { @class = "form-control lockProdesp NoEspecial", @id = "AutorizadoSupraFolha", @maxlength = 4 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp">
+        @Html.LabelFor(model => model.CodigoEspecificacaoDespesa, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.CodigoEspecificacaoDespesa, new { @class = "form-control lockProdesp expec", @id = "EspecDespesa", @maxlength = 3 })
+        </div>
+    </div>
+</div>
+
+<div class="row prodesp">
+    
+    <div class="col-sm-12 col-lg-7 col-md-7 form-group-sm form-group has-feedback prodesp" style="width: 760px;">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Especificação da Despesa (Prodesp)</label>
+        <div class="input-group-sm">
+            <div id="DescEspecificacaoDespesa" name="DescEspecDespesa" class="input-group-sm txtarea prodesp" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;">
+                <input type="text" class="Proximo lockprodesp area" maxlength="79" />
+                <input type="text" class="Proximo lockprodesp area" maxlength="79" />
+                <input type="text" class="Proximo lockprodesp area" maxlength="79" />
+                <input type="text" class="Proximo lockprodesp area" maxlength="79" />
+                <input type="text" class="Proximo lockprodesp area" maxlength="79" />
+                <input type="text" class="Proximo lockprodesp area" maxlength="79" />
+                <input type="text" class="Proximo lockprodesp area" maxlength="79" />
+                <input type="text" class="Proximo lockprodesp area" maxlength="79" />
+                <input type="text" class="Proximo lockprodesp area" maxlength="79" />
+                
+            </div>
+        </div>
+    </div>
+
+</div>

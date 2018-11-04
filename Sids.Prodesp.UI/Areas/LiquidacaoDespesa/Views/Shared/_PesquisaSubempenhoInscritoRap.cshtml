@@ -1,0 +1,40 @@
+﻿
+@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model PesqSubempInscritoRapViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div id="SubempenhoInscritoRap">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Consultar Subempenho Inscrito em RAP</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row siafem">
+        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroSubempenho, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroSubempenho, new { @class = "form-control lockProdesp lockSiafem Subempenho", @maxlength="15"})
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroRecibo, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroRecibo, new { @class = "form-control lockProdesp lockSiafem", @maxLength="9"})
+            </div>
+        </div>
+
+        <div id="divbtnConsultar" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            <label class="invisible">Consultar</label>
+            <div class="input-group-sm">
+                <button id="btnConsultar" type="button" class="btn btn-primary btn-sm lockProdesp lockSiafem" onclick="SubempenhoInscricaoRap();"><i class="fa fa-search"></i>  Consultar</button>
+            </div>
+        </div>
+    </div>
+</div>

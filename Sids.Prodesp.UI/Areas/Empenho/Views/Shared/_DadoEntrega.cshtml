@@ -1,0 +1,64 @@
+﻿@using Sids.Prodesp.UI.Areas.Empenho.Models
+
+@model DadoEntregaViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div class="row siafisico">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina">Dados da Entrega</h3>
+        <hr class="margT10" />
+    </div>
+</div>
+
+<div class="row siafisico">
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.DataEntregaMaterialSiafisico, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.DataEntregaMaterialSiafisico, new { @class = "form-control data datepicker lockSiafisico" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.DescricaoLogradouroEntrega, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.DescricaoLogradouroEntrega, new { @class = "form-control lockSiafisico", @maxlength = 45 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.DescricaoBairroEntrega, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.DescricaoBairroEntrega, new { @class = "form-control lockSiafisico", @maxlength = 45 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.DescricaoCidadeEntrega, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.DescricaoCidadeEntrega, new { @class = "form-control lockSiafisico", @maxlength = 45 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.NumeroCEPEntrega, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.NumeroCEPEntrega, new { @class = "form-control lockSiafisico cep", @maxlength = 9 })
+        </div>
+    </div>
+</div>
+
+<div class="row siafisico">
+    <div class="col-sm-12 col-lg-7 col-md-7  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.DescricaoInformacoesAdicionaisEntrega, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            <div id="DescricaoInformacoesAdicionaisEntrega" name="DescricaoInformacoesAdicionaisEntrega" class="input-group-sm txtarea siafisico" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;">
+                <input type="text" class="Proximo lockSiafisico area" maxlength="70" />
+                <input type="text" class="Proximo lockSiafisico area" maxlength="70" />
+                <input type="text" class="Proximo lockSiafisico area" maxlength="70" />
+            </div>
+        </div>
+    </div>
+</div>

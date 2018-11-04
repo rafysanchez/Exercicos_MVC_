@@ -1,0 +1,17 @@
+﻿<div id="ModalConfirmar" class="modal fade" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" onclick="FecharModal('#modalConfirmar')"><span aria-hidden="true">&times;</span></button>
+                Confirmação
+            </div>
+            <div class="modal-body text-center">
+                <span id="value"><i class="fa fa-warning text-warning"></i></span>
+            </div>
+            <div class="modal-footer footer-modal">
+                <button type="button" class="btn btn-sm btn-danger" onclick="javascript: window.history.back(); FecharModal('#ModalConfirmar');"><i class="fa fa-check"></i> Sim</button>
+                <button type="button" class="btn btn-sm btn-primary" onclick="FecharModal('#ModalConfirmar');"><i class="fa fa-close"></i> Não</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

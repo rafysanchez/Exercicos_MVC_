@@ -1,0 +1,96 @@
+﻿@using Sids.Prodesp.Model.Extension
+@using Sids.Prodesp.UI.Areas.Configuracao.Models.Estrutura
+@model Sids.Prodesp.Model.Entity.Configuracao.Estrutura
+
+@{
+    FiltroViewModel filtro = ViewBag.Filtro ?? new FiltroViewModel();
+
+    var FiltroPrograma = filtro.Programas.Select(x => new SelectListItem { Selected = (filtro.Programa == x.Codigo), Value = x.Codigo.ToString(), Text = x.Cfp.Formatar("00.000.0000.0000") + " " + x.Descricao });
+
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title = (Model.Codigo > 0 ? (tipo == "a" ? "Alterar" : "Visualizar") : "Cadastrar") + " Estrutura";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    var value = "";
+    var obj = "a operação";
+    var programasInfo = @Html.Raw(Json.Encode(ViewBag.Filtro.Programas));
+    var selecionado = @Html.Raw(Json.Encode(ViewBag.Filtro.Programa));
+    var urlVoltar = '@Url.Action("AtualizarIndex", "Estrutura", new { Area = "Configuracao" }, null)';
+</script>
+
+<div id="divContent" class="col-md-12">
+    <h2>Cadastrar Estrutura</h2>
+    @Html.AntiForgeryToken()
+
+    <div id="divPainelcadastrar" class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("Save", "Estrutura", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.HiddenFor(model => model.Codigo, new { @id = "Codigo" })
+                <h3 class="margT0 tituloItensPagina">Selecionar Programa</h3>
+                <hr class="margT0" />
+                <div class="row">
+                    <div class="col-sm-12 col-md-2 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER"><span class="text-danger">*</span> Ano Referência</label>
+                            @Html.DropDownList("AnoExercicio", new SelectList(filtro.Anos, "Value", "Text", filtro.Ano), "Selecione", new { @class = "form-control", @id = "AnoExercicio" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-5 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER"><span class="text-danger">*</span> Programa</label>
+                            @Html.DropDownList("Programa", FiltroPrograma, "Selecione", new { @class = "form-control", @id = "Programa" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12">
+                        <h3 class="margT0 tituloItensPagina">Preencher</h3>
+                        <hr class="margT0" />
+                    </div>
+                    <div class="col-sm-12 col-md-5 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER">Nomenclatura</label>
+                            @Html.TextBoxFor(model => model.Nomenclatura, new { @class = "form-control", @id = "Nomenclatura", @maxlength = "45" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER">Natureza</label>
+                            @Html.TextBoxFor(model => model.Natureza, new { @class = "form-control natureza", @id = "Natureza", @maxlength = "9" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER">Macro</label>
+                            @Html.TextBoxFor(model => model.Macro, new { @class = "form-control macro", @id = "Macro", @maxlength = "6" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-1 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER">Fonte</label>
+                            @Html.DropDownList("Fonte", new SelectList(filtro.Fontes, "Value", "Text", Model.Fonte), "", new { @class = "form-control", @id = "Fonte" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="control-label label-form-DER">Código da Aplicação</label>
+                            @Html.TextBoxFor(model => model.Aplicacao, new { @class = "form-control apl", @id = "Aplicacao", @maxlength = "9" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                        <button type="button" id="btnCancelar" class="btn btn-sm btn-danger"><i class="fa fa-close">&nbsp;</i>Cancelar</button>
+                        <button type="submit" id="btnSalvar" class="btn btn-sm btn-success"><i class="fa fa-save">&nbsp;</i>Salvar</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+    <script src="~/Content/js/scriptEstrutura.js"></script>
+}

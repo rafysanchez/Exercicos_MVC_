@@ -1,0 +1,159 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model IEnumerable<FiltroGridViewModel>
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var labelTitle = string.Empty;
+    var labelTitleProdesp = string.Empty;
+    var sistema = controller.Contains("Rap") ? "SIAFEM" : "SIAFEM/SIAFISICO";
+    var status = string.Format("Status {0}", sistema);
+    var labelValor = string.Format("Valor");
+
+    switch (controller)
+    {
+        case "Subempenho":
+            labelTitle = "Subempenho";
+            labelTitleProdesp = "Nº do Empenho Prodesp";
+            break;
+        case "SubempenhoCancelamento":
+            labelTitle = "Canc. do Sub.";
+            labelTitleProdesp = "Nº do Subempenho Prodesp";
+            break;
+        case "RapInscricao":
+            labelTitle = "Inscrição de RAP";
+            labelTitleProdesp = "Nº do Empenho Prodesp";
+            break;
+        case "RapRequisicao":
+            labelTitle = "Requisição de RAP";
+            labelTitleProdesp = "Nº do Empenho Prodesp";
+            break;
+        case "RapAnulacao":
+            labelTitle = "Anulação de RAP";
+            labelTitleProdesp = "Nº do Empenho Prodesp";
+            break;
+    }
+
+    var lblNumeroEmpenhoProdesp = string.Format("Nº {0} Prodesp", labelTitle);
+    var lblNumeroOriginalSiafemSiafisico = string.Format("Nº {0} {1}", labelTitle, sistema);
+}
+
+<script>
+    function Edit(id, editar) {
+        
+        if (editar) {
+            AbrirModal("Apropriação/Subempenho transmitido com sucesso, não são permitidas alterarações após a transmissão.");
+            return false;
+        }
+
+        if (navigator.onLine != true) {
+            AbrirModal("Erro de conexão");
+            return false;
+        }
+
+        AbrirDetalhe('@Url.Action("Edit")' + '?id=' + id + '&tipo=a');
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-10">
+        <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+        <label class="margR10">
+            <input type="checkbox" id="idSelecionar"  name="nmRetransmitirTodos" value="0" />
+            <small class="margL10">Selecionar Todos</small>
+        </label>
+        <button id="btnReTransmitir" type="button" class="btn btn-sm btn-primary">
+            <i class="fa fa-share"></i>Retransmitir
+        </button>
+    </div>
+</div>
+
+<br />
+
+
+<div class="margT0">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+            <form method="post" action=@Url.Content("~/LiquidacaoDespesa/" +controller+ "/DownloadFile/") id="frmExport">
+                <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroSubempenhoProdesp, lblNumeroEmpenhoProdesp)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroSubempenhoSiafemSiafisico, lblNumeroOriginalSiafemSiafisico)</th>
+                            @if (controller.Contains("Rap"))
+                            {
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ServicoTipoId)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().DataCadastro)</th>
+                            }
+                            else
+                            {
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().CenarioSiafemSiafisico)</th>
+                            }
+                            @if(controller.Contains("Rap"))
+                            { 
+                             <th>@Html.LabelFor(x => x.FirstOrDefault().ValorTotal, labelValor)</th>
+                            }
+                            @if (!controller.Contains("Rap"))
+                            {
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().ValorTotal)</th>
+                            }
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().StatusProdesp)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().StatusSiafemSiafisico, status)</th>
+                            <th><label>Todos</label></th>
+                            <th><label>Ações</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <td>@Html.DisplayFor(modelItem => item.NumeroSubempenhoProdesp)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NumeroSubempenhoSiafemSiafisico)</td>
+                                @if (controller.Contains("Rap"))
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.ServicoTipoId)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.DataCadastro)</td>
+                                }
+                                else
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.CenarioSiafemSiafisico)</td>
+                                }
+                                <td>@Html.DisplayFor(modelItem => item.ValorTotal)</td>
+                                <td><text title="@item.MensagemProdesp">@Html.DisplayFor(modelItem => item.StatusProdesp)</text></td>
+                                <td><text title="@item.MensagemSiafemSiafisico">@Html.DisplayFor(modelItem => item.StatusSiafemSiafisico)</text></td>
+                                @if (item.CadastroCompleto && ((item.TransmitirSiafem && !item.TransmitidoSiafem) || (item.TransmitirSiafisico && !item.TransmitidoSiafisico) || (item.TransmitirProdesp && !item.TransmitidoProdesp)))
+                                {
+                                    <td class="text-center"><input type="checkbox" data-button='Transmitir' class="idRetrasmitir margL5" name="nmRetransmitir" value="@item.Id" /></td> 
+                                }
+                                else
+                                {
+                                    <td></td> 
+                                }
+                                
+                                <td style="width: 37px;">
+                                    <button class="btn btn-xs btn-info margL7" type="button" hidden="hidden" data-button="Editar" title="Alterar" onclick="Edit(@item.Id, @(((item.TransmitidoSiafem == true || item.TransmitidoSiafisico == true) && (item.TransmitidoProdesp == true || item.CenarioSiafemSiafisico == "Nota de Lançamento CT Obras" || item.CenarioSiafemSiafisico == "Nota Lançamento de Contrato – NLCONTRATO" || item.CenarioSiafemSiafisico == "Nota de Lançamento de Liquidação de Empenho – NLEMLIQ" )) ? "true" : "false"))"><i class="fa fa-edit"></i></button>
+                                    <button class="btn btn-xs btn-primary margL7" type="button" data-button="Visualizar" title="Visualizar" onclick="AbrirDetalhe('@Url.Action("Edit", new {id = item.Id, tipo = "c"})')"><i class="fa fa-search"></i></button>
+                                    @if (item.TransmitidoSiafem || item.TransmitidoSiafisico)
+                                    {
+                                        <button class="btn btn-xs btn-primary margL7" type="button" data-button="Imprimir" title="Imprimir" onclick="Imprimir(@item.Id,'@controller',$('#frmExport'))"><i class="fa fa-print"></i></button>
+                                    }
+                                    @if (!item.TransmitidoSiafem && !item.TransmitidoSiafisico && !item.TransmitidoProdesp)
+                                    {
+                                        <button class="btn btn-xs btn-danger margL7" type="button" data-button="Excluir" id="@item.Id" name="@item.Id" title="Excluir" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'Excluir', objExc, '@item.NumeroSubempenhoProdesp', this)"><i class="fa fa-trash"></i></button>
+                                    }
+                                    <button class="btn btn-xs btn-success margL7" type="button" id="Create" data-button="Cadastrar" title="Cadastar A partir desta" onclick="AbrirDetalhe('@Url.Action("CreateThis", new { id = item.Id })')"><i class="fa fa-plus"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:vhi-fault="urn:xmlns:attachmate:vhi-ws:fault" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:tns="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsrf-rw="http://docs.oasis-open.org/wsrf/rw-2" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" name="Integracao_DER_SIAFEM_PagtoContaUnica" targetNamespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="urn:xmlns:attachmate:vhi-ws:fault" location="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/vhi-base-fault.wsdl" />
+  <import namespace="http://docs.oasis-open.org/wsrf/rw-2" location="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/rw-2.wsdl" />
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/Pool_IntegracaoPagtoContaUnica.xsd" namespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica" />
+      <xsd:import schemaLocation="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/ws-addr-wsdl.xsd" namespace="http://www.w3.org/2006/05/addressing/wsdl" />
+    </xsd:schema>
+  </types>
+  <message name="Procedure_AnulacaoDesdobramento">
+    <part name="parameters" element="tns:Procedure_AnulacaoDesdobramento" />
+  </message>
+  <message name="Procedure_AnulacaoDesdobramentoResponse">
+    <part name="parameters" element="tns:Procedure_AnulacaoDesdobramentoResponse" />
+  </message>
+  <message name="Procedure_BloqueioPagtoDoc">
+    <part name="parameters" element="tns:Procedure_BloqueioPagtoDoc" />
+  </message>
+  <message name="Procedure_BloqueioPagtoDocResponse">
+    <part name="parameters" element="tns:Procedure_BloqueioPagtoDocResponse" />
+  </message>
+  <message name="Procedure_BloqueioPagtoDocApoio">
+    <part name="parameters" element="tns:Procedure_BloqueioPagtoDocApoio" />
+  </message>
+  <message name="Procedure_BloqueioPagtoDocApoioResponse">
+    <part name="parameters" element="tns:Procedure_BloqueioPagtoDocApoioResponse" />
+  </message>
+  <message name="Procedure_CancelamentoOP">
+    <part name="parameters" element="tns:Procedure_CancelamentoOP" />
+  </message>
+  <message name="Procedure_CancelamentoOPResponse">
+    <part name="parameters" element="tns:Procedure_CancelamentoOPResponse" />
+  </message>
+  <message name="Procedure_CancelamentoOPApoio">
+    <part name="parameters" element="tns:Procedure_CancelamentoOPApoio" />
+  </message>
+  <message name="Procedure_CancelamentoOPApoioResponse">
+    <part name="parameters" element="tns:Procedure_CancelamentoOPApoioResponse" />
+  </message>
+  <message name="Procedure_ConfirmacaoPagtoOP">
+    <part name="parameters" element="tns:Procedure_ConfirmacaoPagtoOP" />
+  </message>
+  <message name="Procedure_ConfirmacaoPagtoOPResponse">
+    <part name="parameters" element="tns:Procedure_ConfirmacaoPagtoOPResponse" />
+  </message>
+  <message name="Procedure_ConfirmacaoPagtoOPApoio">
+    <part name="parameters" element="tns:Procedure_ConfirmacaoPagtoOPApoio" />
+  </message>
+  <message name="Procedure_ConfirmacaoPagtoOPApoioResponse">
+    <part name="parameters" element="tns:Procedure_ConfirmacaoPagtoOPApoioResponse" />
+  </message>
+  <message name="Procedure_ConfirmacaoPagtoOrgao">
+    <part name="parameters" element="tns:Procedure_ConfirmacaoPagtoOrgao" />
+  </message>
+  <message name="Procedure_ConfirmacaoPagtoOrgaoResponse">
+    <part name="parameters" element="tns:Procedure_ConfirmacaoPagtoOrgaoResponse" />
+  </message>
+  <message name="Procedure_ConsultaCredorReduzido">
+    <part name="parameters" element="tns:Procedure_ConsultaCredorReduzido" />
+  </message>
+  <message name="Procedure_ConsultaCredorReduzidoResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaCredorReduzidoResponse" />
+  </message>
+  <message name="Procedure_ConsultaDesdobramento">
+    <part name="parameters" element="tns:Procedure_ConsultaDesdobramento" />
+  </message>
+  <message name="Procedure_ConsultaDesdobramentoResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaDesdobramentoResponse" />
+  </message>
+  <message name="Procedure_ConsultaPagtosPrepararOrgao">
+    <part name="parameters" element="tns:Procedure_ConsultaPagtosPrepararOrgao" />
+  </message>
+  <message name="Procedure_ConsultaPagtosPrepararOrgaoResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaPagtosPrepararOrgaoResponse" />
+  </message>
+  <message name="Procedure_ConsultaPagtosPrepararSDFF">
+    <part name="parameters" element="tns:Procedure_ConsultaPagtosPrepararSDFF" />
+  </message>
+  <message name="Procedure_ConsultaPagtosPrepararSDFFResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaPagtosPrepararSDFFResponse" />
+  </message>
+  <message name="Procedure_DesbloqueioPagtoDoc">
+    <part name="parameters" element="tns:Procedure_DesbloqueioPagtoDoc" />
+  </message>
+  <message name="Procedure_DesbloqueioPagtoDocResponse">
+    <part name="parameters" element="tns:Procedure_DesbloqueioPagtoDocResponse" />
+  </message>
+  <message name="Procedure_DesdobramentoISSQN">
+    <part name="parameters" element="tns:Procedure_DesdobramentoISSQN" />
+  </message>
+  <message name="Procedure_DesdobramentoISSQNResponse">
+    <part name="parameters" element="tns:Procedure_DesdobramentoISSQNResponse" />
+  </message>
+  <message name="Procedure_DesdobramentoISSQNApoio">
+    <part name="parameters" element="tns:Procedure_DesdobramentoISSQNApoio" />
+  </message>
+  <message name="Procedure_DesdobramentoISSQNApoioResponse">
+    <part name="parameters" element="tns:Procedure_DesdobramentoISSQNApoioResponse" />
+  </message>
+  <message name="Procedure_DesdobramentoOutros">
+    <part name="parameters" element="tns:Procedure_DesdobramentoOutros" />
+  </message>
+  <message name="Procedure_DesdobramentoOutrosResponse">
+    <part name="parameters" element="tns:Procedure_DesdobramentoOutrosResponse" />
+  </message>
+  <message name="Procedure_DesdobramentoOutrosApoio">
+    <part name="parameters" element="tns:Procedure_DesdobramentoOutrosApoio" />
+  </message>
+  <message name="Procedure_DesdobramentoOutrosApoioResponse">
+    <part name="parameters" element="tns:Procedure_DesdobramentoOutrosApoioResponse" />
+  </message>
+  <message name="Procedure_PreparacaoPagtoDocGerador">
+    <part name="parameters" element="tns:Procedure_PreparacaoPagtoDocGerador" />
+  </message>
+  <message name="Procedure_PreparacaoPagtoDocGeradorResponse">
+    <part name="parameters" element="tns:Procedure_PreparacaoPagtoDocGeradorResponse" />
+  </message>
+  <message name="Procedure_PreparacaoPagtoDocGeradorApoio">
+    <part name="parameters" element="tns:Procedure_PreparacaoPagtoDocGeradorApoio" />
+  </message>
+  <message name="Procedure_PreparacaoPagtoDocGeradorApoioResponse">
+    <part name="parameters" element="tns:Procedure_PreparacaoPagtoDocGeradorApoioResponse" />
+  </message>
+  <message name="Procedure_PreparacaoPagtoOrgao">
+    <part name="parameters" element="tns:Procedure_PreparacaoPagtoOrgao" />
+  </message>
+  <message name="Procedure_PreparacaoPagtoOrgaoResponse">
+    <part name="parameters" element="tns:Procedure_PreparacaoPagtoOrgaoResponse" />
+  </message>
+  <message name="Procedure_PreparacaoPagtoOrgaoApoio">
+    <part name="parameters" element="tns:Procedure_PreparacaoPagtoOrgaoApoio" />
+  </message>
+  <message name="Procedure_PreparacaoPagtoOrgaoApoioResponse">
+    <part name="parameters" element="tns:Procedure_PreparacaoPagtoOrgaoApoioResponse" />
+  </message>
+  <message name="wsResourceCreate">
+    <part name="parameters" element="tns:wsResourceCreate" />
+  </message>
+  <message name="wsResourceCreateResponse">
+    <part name="parameters" element="tns:wsResourceCreateResponse" />
+  </message>
+  <message name="wsResourceDestroy">
+    <part name="parameters" element="tns:wsResourceDestroy" />
+  </message>
+  <message name="wsResourceDestroyResponse">
+    <part name="parameters" element="tns:wsResourceDestroyResponse" />
+  </message>
+  <portType name="Integracao_DER_SIAFEM_PagtoContaUnicaPortType">
+    <operation name="Procedure_AnulacaoDesdobramento">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramento" message="tns:Procedure_AnulacaoDesdobramento" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramentoResponse" message="tns:Procedure_AnulacaoDesdobramentoResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramentoResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramentoResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramentoResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramentoResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramentoResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramentoResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramentoResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramentoResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_AnulacaoDesdobramentoResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_BloqueioPagtoDoc">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDoc" message="tns:Procedure_BloqueioPagtoDoc" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocResponse" message="tns:Procedure_BloqueioPagtoDocResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_BloqueioPagtoDocApoio">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoio" message="tns:Procedure_BloqueioPagtoDocApoio" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoioResponse" message="tns:Procedure_BloqueioPagtoDocApoioResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoioResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoioResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoioResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoioResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoioResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoioResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoioResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoioResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_BloqueioPagtoDocApoioResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_CancelamentoOP">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOP" message="tns:Procedure_CancelamentoOP" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPResponse" message="tns:Procedure_CancelamentoOPResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_CancelamentoOPApoio">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoio" message="tns:Procedure_CancelamentoOPApoio" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoioResponse" message="tns:Procedure_CancelamentoOPApoioResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoioResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoioResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoioResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoioResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoioResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoioResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoioResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoioResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_CancelamentoOPApoioResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConfirmacaoPagtoOP">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOP" message="tns:Procedure_ConfirmacaoPagtoOP" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPResponse" message="tns:Procedure_ConfirmacaoPagtoOPResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConfirmacaoPagtoOPApoio">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoio" message="tns:Procedure_ConfirmacaoPagtoOPApoio" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoioResponse" message="tns:Procedure_ConfirmacaoPagtoOPApoioResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoioResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoioResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoioResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoioResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoioResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoioResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoioResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoioResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOPApoioResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConfirmacaoPagtoOrgao">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgao" message="tns:Procedure_ConfirmacaoPagtoOrgao" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgaoResponse" message="tns:Procedure_ConfirmacaoPagtoOrgaoResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgaoResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgaoResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgaoResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgaoResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgaoResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgaoResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgaoResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgaoResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConfirmacaoPagtoOrgaoResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaCredorReduzido">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzido" message="tns:Procedure_ConsultaCredorReduzido" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzidoResponse" message="tns:Procedure_ConsultaCredorReduzidoResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzidoResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzidoResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzidoResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzidoResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzidoResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzidoResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzidoResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzidoResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaCredorReduzidoResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaDesdobramento">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramento" message="tns:Procedure_ConsultaDesdobramento" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramentoResponse" message="tns:Procedure_ConsultaDesdobramentoResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramentoResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramentoResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramentoResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramentoResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramentoResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramentoResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramentoResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramentoResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaDesdobramentoResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaPagtosPrepararOrgao">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgao" message="tns:Procedure_ConsultaPagtosPrepararOrgao" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgaoResponse" message="tns:Procedure_ConsultaPagtosPrepararOrgaoResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgaoResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgaoResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgaoResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgaoResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgaoResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgaoResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgaoResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgaoResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararOrgaoResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaPagtosPrepararSDFF">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFF" message="tns:Procedure_ConsultaPagtosPrepararSDFF" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFFResponse" message="tns:Procedure_ConsultaPagtosPrepararSDFFResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFFResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFFResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFFResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFFResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFFResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFFResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFFResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFFResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_ConsultaPagtosPrepararSDFFResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_DesbloqueioPagtoDoc">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDoc" message="tns:Procedure_DesbloqueioPagtoDoc" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDocResponse" message="tns:Procedure_DesbloqueioPagtoDocResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDocResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDocResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDocResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDocResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDocResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDocResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDocResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDocResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesbloqueioPagtoDocResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_DesdobramentoISSQN">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQN" message="tns:Procedure_DesdobramentoISSQN" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNResponse" message="tns:Procedure_DesdobramentoISSQNResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_DesdobramentoISSQNApoio">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoio" message="tns:Procedure_DesdobramentoISSQNApoio" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoioResponse" message="tns:Procedure_DesdobramentoISSQNApoioResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoioResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoioResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoioResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoioResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoioResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoioResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoioResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoioResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoISSQNApoioResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_DesdobramentoOutros">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutros" message="tns:Procedure_DesdobramentoOutros" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosResponse" message="tns:Procedure_DesdobramentoOutrosResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_DesdobramentoOutrosApoio">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoio" message="tns:Procedure_DesdobramentoOutrosApoio" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoioResponse" message="tns:Procedure_DesdobramentoOutrosApoioResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoioResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoioResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoioResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoioResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoioResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoioResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoioResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoioResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_DesdobramentoOutrosApoioResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_PreparacaoPagtoDocGerador">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGerador" message="tns:Procedure_PreparacaoPagtoDocGerador" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorResponse" message="tns:Procedure_PreparacaoPagtoDocGeradorResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_PreparacaoPagtoDocGeradorApoio">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoio" message="tns:Procedure_PreparacaoPagtoDocGeradorApoio" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoioResponse" message="tns:Procedure_PreparacaoPagtoDocGeradorApoioResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoioResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoioResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoioResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoioResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoioResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoioResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoioResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoioResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoDocGeradorApoioResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_PreparacaoPagtoOrgao">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgao" message="tns:Procedure_PreparacaoPagtoOrgao" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoResponse" message="tns:Procedure_PreparacaoPagtoOrgaoResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_PreparacaoPagtoOrgaoApoio">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoio" message="tns:Procedure_PreparacaoPagtoOrgaoApoio" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoioResponse" message="tns:Procedure_PreparacaoPagtoOrgaoApoioResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoioResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoioResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoioResponse" name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoioResponse" name="UserFault" message="vhi-fault:UserFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoioResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoioResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoioResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoioResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/Procedure_PreparacaoPagtoOrgaoApoioResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+    <operation name="wsResourceCreate">
+      <input wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/wsResourceCreate" message="tns:wsResourceCreate" />
+      <output wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/wsResourceCreateResponse" message="tns:wsResourceCreateResponse" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/wsResourceCreateResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/wsResourceCreateResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/wsResourceCreateResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/wsResourceCreateResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/wsResourceCreateResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica/Integracao_DER_SIAFEM_PagtoContaUnicaPortType/wsResourceCreateResponse" name="ResourceUnavailableFault" message="wsrf-rw:ResourceUnavailableFault" />
+    </operation>
+    <operation name="wsResourceDestroy">
+      <input wsa:Action="http://docs.oasis-open.org/wsrf/rlw-2/ImmediateResourceTermination/DestroyRequest" message="tns:wsResourceDestroy" />
+      <output wsa:Action="http://docs.oasis-open.org/wsrf/rlw-2/ImmediateResourceTermination/DestroyResponse" message="tns:wsResourceDestroyResponse" />
+      <fault wsa:Action="http://docs.oasis-open.org/wsrf/rlw-2/ImmediateResourceTermination/DestroyResponse" name="InvalidAddressingHeaderFault" message="vhi-fault:InvalidAddressingHeaderFault" />
+      <fault wsa:Action="http://docs.oasis-open.org/wsrf/rlw-2/ImmediateResourceTermination/DestroyResponse" name="MessageAddressingHeaderRequiredFault" message="vhi-fault:MessageAddressingHeaderRequiredFault" />
+      <fault wsa:Action="http://docs.oasis-open.org/wsrf/rlw-2/ImmediateResourceTermination/DestroyResponse" name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault wsa:Action="http://docs.oasis-open.org/wsrf/rlw-2/ImmediateResourceTermination/DestroyResponse" name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault wsa:Action="http://docs.oasis-open.org/wsrf/rlw-2/ImmediateResourceTermination/DestroyResponse" name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault wsa:Action="http://docs.oasis-open.org/wsrf/rlw-2/ImmediateResourceTermination/DestroyResponse" name="ResourceUnknownFault" message="wsrf-rw:ResourceUnknownFault" />
+    </operation>
+  </portType>
+  <binding name="Integracao_DER_SIAFEM_PagtoContaUnicaPortBinding" type="tns:Integracao_DER_SIAFEM_PagtoContaUnicaPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsaw:UsingAddressing required="false">
+    </wsaw:UsingAddressing>
+    <operation name="Procedure_AnulacaoDesdobramento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_BloqueioPagtoDoc">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_BloqueioPagtoDocApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_CancelamentoOP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_CancelamentoOPApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConfirmacaoPagtoOP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConfirmacaoPagtoOPApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConfirmacaoPagtoOrgao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaCredorReduzido">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaDesdobramento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaPagtosPrepararOrgao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaPagtosPrepararSDFF">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_DesbloqueioPagtoDoc">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_DesdobramentoISSQN">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_DesdobramentoISSQNApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_DesdobramentoOutros">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_DesdobramentoOutrosApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_PreparacaoPagtoDocGerador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_PreparacaoPagtoDocGeradorApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_PreparacaoPagtoOrgao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_PreparacaoPagtoOrgaoApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="wsResourceCreate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="wsResourceDestroy">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidAddressingHeaderFault">
+        <soap:fault use="literal" name="InvalidAddressingHeaderFault" namespace="" />
+      </fault>
+      <fault name="MessageAddressingHeaderRequiredFault">
+        <soap:fault use="literal" name="MessageAddressingHeaderRequiredFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="Integracao_DER_SIAFEM_PagtoContaUnicaService">
+    <port name="Integracao_DER_SIAFEM_PagtoContaUnicaPort" binding="tns:Integracao_DER_SIAFEM_PagtoContaUnicaPortBinding">
+      <soap:address location="http://10.72.1.40:9680/vhi-xe/session/Pool_IntegracaoPagtoContaUnica" />
+    </port>
+  </service>
+</definitions>

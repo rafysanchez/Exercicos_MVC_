@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11, IE=10, IE=9, IE=8, chrome=1" />
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/android-icon-36x36.png" />
+    @*@Styles.Render(BundleTable.Bundles.ResolveBundleUrl("~/bundles/styles1", true))*@
+    @Styles.Render("~/bundles/styles1")
+</head>
+@{
+    var usuario = Sids.Prodesp.Application.App.AutenticacaoService.GetUsuarioLogado() ?? new Sids.Prodesp.Model.Entity.Seguranca.Usuario();
+}
+
+<body id="bodyDER">
+
+    <div class="modal fade" id="divLoading">
+        <div class="modal-dialog modal-m">
+            <span class="loading-image"></span>
+            <span>
+                Carregando...
+            </span>
+        </div>
+    </div>
+    <!-- Navigation -->
+
+    <div class="navbar navbar-fixed-top topo-DER">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 logo-Layout">
+                    <a class="cursor-pointer" onclick="javascript: location.href = '@Url.Action("Index", "Home", new {Area = ""}, null)';">
+                        <img src="~/Content/images/logo_der.png" width="100" />
+                    </a>
+
+                </div>
+                <div class="col-md-8">
+                    <div class="topo-TituloSistema-DER text-center">
+                        <h3 class="margT10">SIDS – SISTEMA DE INTEGRAÇÃO DER-SIAFEM</h3>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="topo-botoes-DER">
+                        <button class="btn btn-xs btn-primary" title="Configurar Impressora" data-toggle="modal" data-target="#modalImpressora" onclick="modalImpressora();"><i class="fa fa-print"></i></button>
+                        <button class="btn btn-xs btn-warning" title="Alterar Senha" onclick="javascript: location.href = '@Url.Action("AlterarSenha", "Usuario", new {Area = "Seguranca"}, null)';"><i class="fa fa-key"></i></button>
+                        <button class="btn btn-xs btn-danger" title="Logout" onclick="javascript: location.href = '@Url.Action("EncerrarSessao", "Login", new {Area = ""}, null)';"><i class="glyphicon glyphicon-log-out"></i></button><br />
+                        <label class="small margT5">DP/CIP</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <nav class="navbar navbar-DER navbar-fixed-top margT60" role="navigation">
+        <div class="container padL0">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*<a class="navbar-brand" href="#">Start Bootstrap</a>*@
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                @Html.Partial("_mainMenu")
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+        <div class="navbar navbar-default navbar-breadcrumb margB0">
+            <div class="container">
+                <ol class="breadcrumb margB0 padL0 small">
+                    @if (ViewContext.RouteData.Values["controller"].ToString() != "Home")
+                    {
+                        @Html.ActionLink("Home", "Index", "Home", new { Area = "" }, null)
+                        <li class="active">
+                            / @ViewContext.RouteData.Values["controller"].ToString().Replace("Reserva", "Reserva ").Replace("Empenho", "Empenho ") / @ViewBag.Title
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="active padL0">
+                            Home
+                        </li>
+                    }
+                </ol>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container conteudo">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+    <!-- /.container -->
+    <div class="container-fluid container-footer margT0 margL0 margR0">
+        <!-- Footer -->
+        <footer>
+            <div class="row margL0 margR0">
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="col-lg-6">
+                        <p>Seja Bem vindo @usuario.Nome!</p>
+                    </div>                    }
+
+                <div class="col-lg-1">
+                    <p>Impressora</p>
+                </div>
+                <div class="col-lg-3">
+                    <p class="margB0"><span id="132">@(usuario.Impressora132 ?? string.Empty)</span> (132)</p>
+                    <p class="margB0"><span id="80">@(usuario.Impressora80 ?? string.Empty)</span> (80)</p>
+                </div>
+
+                <div class="col-lg-6 text-right">
+                    @*<p>Sua sessão expira em <b>10</b> minutos.</p>*@
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- /.container -->
+    <!-- Modal -->
+    @Html.Partial("_modalSalvementoEfetuado")
+    @Html.Partial("_modalConfirmar")
+    @*@Html.Partial("_modalConfirmaExclusao")*@
+    @Html.Partial("_modalExclusaoEfetuada")
+    @Html.Partial("_modalMessage")
+
+    @Html.Partial("_modalConsultaContrato")
+    @Html.Partial("_modalConsultaPorEstrutura")
+    @Html.Partial("_modalConsultaEmpenhos")
+    @Html.Partial("_modalConsultaEmpenhoSaldo")
+    @Html.Partial("_modalConsultaEmpenhoCredor")
+    @Html.Partial("_modalDadosEmpenhoSIAFEM")
+    @Html.Partial("_modalDadosReserva")
+    @Html.Partial("_modalDadosEmpenho")
+    @Html.Partial("_modalGeral")
+    @Html.Partial("_modalDadosSubempenho")
+    @Html.Partial("_modalImpressora")
+    @Html.Partial("_modalConsultaEmpenhoRAP")
+    @*@Html.Partial("_modalConsultaDesdobramento")*@
+
+    @*@Html.Partial("_Mensagem")*@
+    <!-- /.Modal -->
+    <!-- jQuery -->
+    @*@Scripts.Render("~/bundles/jquery")*@
+    <!-- Bootstrap Core JavaScript -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/scripts1")
+    @Scripts.Render("~/bundles/scriptsDataTable")
+
+    @RenderSection("script", required: false)
+</body>
+
+</html>

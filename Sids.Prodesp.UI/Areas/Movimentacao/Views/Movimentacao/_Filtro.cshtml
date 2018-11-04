@@ -1,0 +1,138 @@
+﻿
+@model Sids.Prodesp.UI.Areas.Movimentacao.Models.MovimentacaoFiltroViewModel
+
+
+<div class="row">
+
+    <div class="col-sm-4 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.UnidadeGestora, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.UnidadeGestora, new { @class = "form-control ", @maxlength = "6" })
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.idGestao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.idGestao, new { @class = "form-control ", @maxlength = "5" })
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.numAgrupamento, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.numAgrupamento, new { @class = "form-control " })
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.numDocumento, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.numDocumento, new { @class = "form-control ", @maxlength = "11" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.DocumentoId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.DocumentoId, Model.DocumentoListItems, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.MovimentacaoId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.MovimentacaoId, Model.MovimentacaoListItems, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-sm-4 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.ugFavorecido, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.ugFavorecido, new { @class = "form-control ", @maxlength = "6" })
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.idGestaoFavorecida, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.idGestaoFavorecida, new { @class = "form-control ", @maxlength = "5" })
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-2 col-md-2  form-group-sm form-group has-feedback" style="width:20%">
+        @Html.LabelFor(model => model.idCFP, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.idCFP, new { @class = "form-control ", @maxlength = "13" })
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.idCED, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.idCED, new { @class = "form-control ", @maxlength = "6" })
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="row">
+
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.StatusProdesp, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.StatusProdesp, Model.lstStatusProdesp, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.StatusSiafem, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.StatusSiafem, Model.lstStatusSiafem, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class='col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback'>
+        @Html.LabelFor(model => model.DataCadastroDe, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.DataCadastroDe, new { @class = "form-control data datepicker data", @id = "DataInicial", autocomplete = "off" })
+        </div>
+    </div>
+
+    <div class='col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback'>
+        @Html.LabelFor(model => model.DataCadastroAte, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.DataCadastroAte, new { @class = "form-control data datepicker data", @id = "DataFinal", autocomplete = "off" })
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+        <button type='button' id='btnPesquisar' class='btn-sm btn btn-primary' onclick='ValidaFormulario()'><i class='glyphicon glyphicon-search'></i> Pesquisar</button>
+        <button type='button' id='Create' class='btn btn-sm btn-warning' onclick="javascript: window.location.href = '@Url.Action("Create")';"><i class='glyphicon glyphicon-plus'></i> Cadastrar</button>
+        <button type='button' id='btnLimpar' class='btn-sm btn btn-success' onclick='javascript: limparFormulario($("#form_filtro"));'><i class='glyphicon glyphicon-refresh'></i> Limpar</button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+    </div>
+</div>

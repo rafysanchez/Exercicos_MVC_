@@ -1,0 +1,59 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model IEnumerable<FiltroGridViewModel>
+
+@{
+    ViewBag.Title = "Listar Apropriação e Subempenho";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var action = ViewContext.RouteData.GetRequiredString("action");
+}
+
+<script>
+    window.area = @Html.Raw(Json.Encode(area));
+    window.controller = @Html.Raw(Json.Encode(controller));
+    window.action = @Html.Raw(Json.Encode(action));
+
+    var obj = "Subempenho";
+    var objExc = "Subempenho";
+    var urld = '@Url.Action("Delete", "Subempenho")';
+
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+    var ModelItem = @Html.Raw(Json.Encode(Model));
+    var cenario = @Html.Raw(Json.Encode(ViewBag.Cenario));
+
+</script>
+
+<link rel="stylesheet" href="~/Content/DataTable/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="~/Content/DataTable/css/jquery.dataTables.min.css" />
+
+<div class="col-md-12">
+    <h2>Pesquisa de Apropriação - Subempenho</h2>
+
+    @Html.Partial("_Mensagem")
+
+    <div class="panel panel-default" id="">
+        <div class="panel-body">
+
+            @using (Html.BeginForm("Index", "Subempenho", FormMethod.Post, new { name = "form_filtro", id = "form_filtro" }))
+            {
+                Html.RenderPartial("_Filtro", ViewBag.Filtro as FiltroViewModel);
+            }
+
+            @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_FiltroGrid.cshtml", Model)
+
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+    <script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+
+    <script src="~/Content/js/LiquidacaoDespesa/_LiquidacaoDespesaFiltro.js"></script>
+    <script src="~/Content/js/scriptImpressao.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoPagtoContaDER/Pool_IntegracaoPagtoContaDER.xsd" filename="Pool_IntegracaoPagtoContaDER.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoPagtoContaDER/vhi-fault.wsdl" filename="vhi-fault.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoPagtoContaDER?wsdl" filename="Integracao_DER_SIAFEM_PagtoContaDER.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoPagtoContaDER/vhi-fault.xsd" filename="vhi-fault.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

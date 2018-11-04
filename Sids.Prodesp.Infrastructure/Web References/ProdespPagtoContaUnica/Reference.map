@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/bf-2.xsd" filename="bf-2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/rw-2.wsdl" filename="WS-Resource.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/ws-addr-wsdl.xsd" filename="ws-addr-wsdl.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica?wsdl" filename="Integracao_DER_SIAFEM_PagtoContaUnica.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/xml.xsd" filename="xml.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/vhi-base-fault.xsd" filename="vhi-base-fault.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/r-2.xsd" filename="r-2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/ws-addr.xsd" filename="ws-addr.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/vhi-base-fault.wsdl" filename="vhi-fault.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/Pool_IntegracaoPagtoContaUnica.xsd" filename="Pool_IntegracaoPagtoContaUnica.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

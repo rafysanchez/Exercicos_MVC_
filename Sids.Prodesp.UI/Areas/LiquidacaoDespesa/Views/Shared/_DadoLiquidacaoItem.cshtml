@@ -1,0 +1,75 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model DadoLiquidacaoItemViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div id="DadoLiquidacaoItem" class="siafisico">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Dados do Item</h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoItemServico, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoItemServico, new { @class = "form-control lockSiafisico item clearFields", @maxlength = 10 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoUnidadeFornecimentoItem, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoUnidadeFornecimentoItem, new { @class = "form-control lockSiafisico clearFields", @maxlength = 5 })
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.QuantidadeLiquidar, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+
+                @Html.TextBoxFor(model => model.QuantidadeLiquidar, new { @class = "form-control lockSiafisico numeric clearFields", @maxlength = 9 })
+                @Html.HiddenFor(model=>model.Transmitir)
+                @Html.HiddenFor(model => model.QuantidadeMaterialServico)
+                @Html.HiddenFor(model => model.QuantidadeMaterialServicoDecimal)
+                @Html.HiddenFor(model => model.Valor)
+            </div>
+        </div>
+        
+        <div class="col-sm-1">
+            <div style="float: left; width: 10px;height: 55px; line-height: 90px;">
+                <b>,</b>
+            </div>
+        </div>
+
+        <div class="col-sm-5 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+            <label>&nbsp;</label>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.QuantidadeLiquidarDecimal, new { @class = "form-control lockSiafisico threeDecimal clearFields", @maxlength = 3 })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="input-group-btn">
+            <div id="divNewItem" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                <button id="newItem" type="button" class="btn btn-primary btn-sm lockSiafisico"><i class="fa fa-plus"></i>  Adicionar</button>
+            </div>
+
+            <div id="divSaveItem" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                <button id="saveItem" type="button" class="btn btn-primary btn-sm lockSiafisico"><i class="fa fa-save"></i>  Salvar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,74 @@
+﻿@using System.Linq
+
+@model IList<Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models.DadoLiquidacaoItemViewModel>
+
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var chkTransmitirDisabled = ((int)ViewBag.CenarioAtual) == 1 || ((int)ViewBag.CenarioAtual == 9) ? true : false;
+}
+
+<div id="DadoLiquidacaoItemGrid" class="siafisico">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="tituloItensPagina"></h4>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="margT0 siafisico">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-lg-12 col-md-12">
+                <table id="tblPesquisaItem" class="_tbDataTables table table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Transmitir) </th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().CodigoItemServico)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().CodigoUnidadeFornecimentoItem)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().QuantidadeMaterialServico)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Valor)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().QuantidadeLiquidar)</th>
+                            <th><label>Ações</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            object chkObjHtmlAttributes = new { onchange = "liquidacaoItem.changeTransmitir('" + item.CodigoItemServico + "',this)" };
+                            if (chkTransmitirDisabled)
+                            {
+                                chkObjHtmlAttributes = new { onchange = "liquidacaoItem.changeTransmitir('" + item.CodigoItemServico + "',this)", disabled = chkTransmitirDisabled };
+
+                            }
+
+                            <tr class="text-center">
+                                <td>@Html.CheckBoxFor(modelItem => item.Transmitir, chkObjHtmlAttributes)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CodigoItemServico)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CodigoUnidadeFornecimentoItem)</td>
+                                <td>@Html.DisplayFor(modelItem => item.QuantidadeMaterialServico)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Valor)</td>
+                                <td>@Html.DisplayFor(modelItem => item.QuantidadeLiquidar)</td>
+                                <td>
+                                    <button type="button" title="Alterar" class="btn btn-xs btn-info margL7 lockSiafisico btn-edit" onclick="liquidacaoItem.edit(this)"><i class="fa fa-edit"></i></button>
+                                    @*<button type="button" title="Excluir" class="btn btn-xs btn-danger margL7 lockSiafisico btn-trash" onclick="liquidacaoItem.remove(this)"><i class="fa fa-trash"></i></button>*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div id="divMensagemDiaAnterior" class="alert alert-warning hidden" role="alert">
+                    <span>* DADOS REFLETEM A POSIÇÃO DOS EMPENHOS NO DIA ANTERIOR</span>
+                </div>
+                <div id="divMensagemTotalLiquidada" class="alert alert-warning hidden" role="alert">
+                    <span>* Quantidade Total Liquidada</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

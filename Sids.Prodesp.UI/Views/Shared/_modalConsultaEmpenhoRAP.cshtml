@@ -1,0 +1,139 @@
+﻿<div class="modal fade scroll" id="modalConsultaEmpenhoRAP" tabindex="-1" data-focus-on="input:first" role="dialog" aria-labelledby="modalConsultaEmpenhoRAP-label">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content scroll">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalConsultaEmpenhoCredor-label">Consulta RAP por Empenho</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row margT10">
+                    <div class="col-md-4">
+                        <label class="control-label">N° do Empenho</label>
+                        <input id="NumEmpenho" type="text" class="form-control " readonly="True" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="control-label">Credor</label>
+                        <input id="NomeCredor" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label">N° do Contrato</label>
+                        <input id="NumeroContrato" type="text" class="form-control" readonly="True" />
+                    </div>
+                </div>
+                <div class="row margT0">
+                    <div class="col-md-12">
+                        @*<h3 class="margT10 tituloItensPagina">Resultado da Busca</h3>*@
+                        <hr class="margT0">
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <table id="tblListaSubEmpenhoRap" class="table dataTable table-condensed table-striped table-responsive small">
+                            <thead>
+                                <tr>
+                                    <th>Nº do SubEmpenho</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="row margT10">
+                    <div class="col-md-12">
+                        <h3 class="margT10 tituloItensPagina">Empenho</h3>
+                        <hr class="margT0">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Inicial + Reforços</label>
+                        <input id="valInicialEmp" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="control-label">Anulações</label>
+                        <input id="valAnulacaoEmp" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label">Liquido Empenhado</label>
+                        <input id="valLiqEmpenhadoEmp" type="text" class="form-control" readonly="True" />
+                    </div>
+                </div>
+
+
+                <div class="row margT10">
+                    <div class="col-md-12">
+                        <h3 class="margT10 tituloItensPagina">SubEmpenho</h3>
+                        <hr class="margT0">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Pago no Exercício</label>
+                        <input id="valPagoExercicioSub" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="control-label">Inscrito em RAP</label>
+                        <input id="valInscritoSub" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label">Pago em RAP</label>
+                        <input id="valPagoRapSub" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label">Anulado em RAP</label>
+                        <input id="valAnuladoRapSub" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="control-label">Saldo a Requisitar</label>
+                        <input id="valRequisitarSub" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label">Total já utilizado</label>
+                        <input id="valTotalSub" type="text" class="form-control" readonly="True" />
+                    </div>
+                </div>
+
+
+
+
+                <div class="row margT10">
+                    <div class="col-md-12">
+                        <h3 class="margT10 tituloItensPagina">Pagamentos</h3>
+                        <hr class="margT0">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">SubEmpenhos</label>
+                        <input id="valSubEmpenhoPag" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="control-label">Requisições</label>
+                        <input id="valRequisicaoPag" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label">A Pagar</label>
+                        <input id="valPagarPag" type="text" class="form-control" readonly="True" />
+                    </div>
+                </div>
+                <div class="row margT0">
+
+                </div>
+                <div class="row margT10">
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-primary" onclick="FecharModal('#modalConsultaEmpenhoRAP')"><i class="fa fa-arrow-left"></i> Voltar</button>
+                    </div>
+                </div>
+
+
+                </div>
+                </div>
+            </div>
+</div>

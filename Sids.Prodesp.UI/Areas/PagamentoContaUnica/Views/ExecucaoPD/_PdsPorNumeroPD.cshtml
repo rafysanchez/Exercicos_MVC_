@@ -1,0 +1,21 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+@model DadoProgramacaoDesembolsoExecucaoViewModel
+
+
+<div class="panel panel-default AdicionarPD">
+    @*<div class="panel-heading">PDS Por Número</div>*@
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="form-group-sm col-md-2">
+                @Html.LabelFor(x => x.filtroAdicionarPd.NumeroPD)
+                @Html.TextBoxFor(x => x.filtroAdicionarPd.NumeroPD, new { @class = "form-control pd" })
+                @Html.ValidationMessageFor(x => x.filtroAdicionarPd.NumeroPD)
+            </div>
+            <div class="form-group-sm col-md-2">
+                <label>&nbsp;</label>
+                <button type="button" class="btn btn-primary btn-sm btn-block" id="btnAdicionarPD">ADICIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>

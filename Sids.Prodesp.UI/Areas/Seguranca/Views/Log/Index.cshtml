@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Sids.Prodesp.UI.Models.Log.FiltroLogViewModel>
+
+@{
+    ViewBag.Title = "Log de Transações";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    var obj = "Log";
+</script>
+
+<link href="~/Content/DataTable/css/jquery.dataTables.min.css" rel="stylesheet" />
+<div class="col-md-12">
+    <h2>Pesquisa de Log de Transações</h2>
+    @Html.Partial("_Mensagem")
+    <div class="panel panel-default">
+        <div class="panel-body">
+                @{
+                    Html.RenderPartial("Filtro");
+                }
+            <div class="row">
+                <div class="col-md-10">
+                    <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+                </div>
+            </div>
+            <hr class="margT0" />
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                    <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped table-responsive small">
+                        <thead>
+                            <tr>
+                                <th class="col-md-2">Funcionalidade</th>
+                                <th class="col-md-2">Ação</th>
+                                <th class="col-md-2">Resultado da Ação</th>
+                                <th class="col-md-2">Usuário</th>
+                                <th class="col-md-2">Data</th>
+                                <th class="col-md-1">Versão</th>
+                                <th class="col-md-2">Argumento</th>
+                                <th class="col-md-1"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Funcionalidade)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Acao)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Resultado)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Usuario)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Versao)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Argumento)</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-xs btn-primary" data-button="Visualizar" title="Visualizar" onclick="AbrirDetalhe('@Url.Action("Detalhe", "Log", new { Area="Seguranca", idlog = item.Id,tipo = "c" })')"><i class="fa fa-search"></i></button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

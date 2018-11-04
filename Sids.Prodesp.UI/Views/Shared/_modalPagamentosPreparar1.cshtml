@@ -1,0 +1,386 @@
+﻿<div class="modal fade" id="modalPagamentosPreparar1" tabindex="-1" data-focus-on="input:first" role="dialog" aria-labelledby="modalPagamentosPreparar1-label">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalPagamentosPreparar1-label">Pagamentos a Preparar</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-inline">
+                            <div class="form-group pull-right">
+                                <label class="control-label">Pesquisar</label>
+                                <input type="text" class="form-control" id="_idContrato" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row margT10">
+                    <div class="col-md-12" id="tblListaContrato_wrapper">
+                        <table id="tblPagamentosPreparar1" class="table table-condensed table-striped table-responsive small">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-1">Data da Emissão</th>
+                                    <th class="col-md-1">Data de Vencimento</th>
+                                    <th class="col-md-1">Lista / Anexo</th>
+                                    <th class="col-md-1">Valor</th>
+                                    <th class="col-md-1">Subtotal a Lançar</th>
+                                    <th class="col-md-1">Nº da Programação de Desembolso</th>
+                                    <th class="col-md-2">Msg de Erro</th>
+                                    <th class="left col-md-1">Todos <input type="checkbox" name="select-all_2" id="select-all_2" /></th>
+                                    <th class="col-md-2"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="row_1">
+                                    <td id="dataEmissao_1"></td>
+                                    <td id="dataVencimento_1"></td>
+                                    <td id="listaAnexo_1"></td>
+                                    <td id="valor_1"></td>
+                                    <td id="subtotalLancar_1"></td>
+                                    <td id="nProgramacaoDesembolso_1"></td>
+                                    <td id="mensagemErro_1"></td>
+                                    <td style="padding-left: 42px;">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="optcheck"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-xs btn-info" title="Alterar" onclick="editarLinha_1('#row_1')"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-xs btn-success" title="Salvar" id="botaoSalvar1" onclick="salvarLinha_1('#row_1')" style="display:none;"><i class="fa fa-floppy-o"></i></button>
+                                    </td>
+                                </tr>
+                                <tr id="row_2">
+                                    <td id="dataEmissao_2"></td>
+                                    <td id="dataVencimento_2"></td>
+                                    <td id="listaAnexo_2"></td>
+                                    <td id="valor_2"></td>
+                                    <td id="subtotalLancar_2"></td>
+                                    <td id="nProgramacaoDesembolso_2"></td>
+                                    <td id="mensagemErro_2"></td>
+                                    <td style="padding-left: 42px;">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="optcheck"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-xs btn-info" title="Alterar" onclick="editarLinha_2('#row_2')"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-xs btn-success" title="Salvar" id="botaoSalvar2" onclick="salvarLinha_2('#row_2')" style="display:none;"><i class="fa fa-floppy-o"></i></button>
+                                    </td>
+                                </tr>
+                                <tr id="row_3">
+                                    <td id="dataEmissao_3"></td>
+                                    <td id="dataVencimento_3"></td>
+                                    <td id="listaAnexo_3"></td>
+                                    <td id="valor_3"></td>
+                                    <td id="subtotalLancar_3"></td>
+                                    <td id="nProgramacaoDesembolso_3"></td>
+                                    <td id="mensagemErro_3"></td>
+                                    <td style="padding-left: 42px;">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="optcheck"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-xs btn-info" title="Alterar" onclick="editarLinha_3('#row_3')"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-xs btn-success" title="Salvar" id="botaoSalvar3" onclick="salvarLinha_3('#row_3')" style="display:none;"><i class="fa fa-floppy-o"></i></button>
+                                    </td>
+                                </tr>
+                                <tr id="row_4">
+                                    <td id="dataEmissao_4"></td>
+                                    <td id="dataVencimento_4"></td>
+                                    <td id="listaAnexo_4"></td>
+                                    <td id="valor_4"></td>
+                                    <td id="subtotalLancar_4"></td>
+                                    <td id="nProgramacaoDesembolso_4"></td>
+                                    <td id="mensagemErro_4"></td>
+                                    <td style="padding-left: 42px;">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="optcheck"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-xs btn-info" title="Alterar" onclick="editarLinha_4('#row_4')"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-xs btn-success" title="Salvar" id="botaoSalvar4" onclick="salvarLinha_4('#row_4')" style="display:none;"><i class="fa fa-floppy-o"></i></button>
+                                    </td>
+                                </tr>
+                                <tr id="row_5">
+                                    <td id="dataEmissao_5"></td>
+                                    <td id="dataVencimento_5"></td>
+                                    <td id="listaAnexo_5"></td>
+                                    <td id="valor_5"></td>
+                                    <td id="subtotalLancar_5"></td>
+                                    <td id="nProgramacaoDesembolso_5"></td>
+                                    <td id="mensagemErro_5"></td>
+                                    <td style="padding-left: 42px;">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="optcheck"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-xs btn-info" title="Alterar" onclick="editarLinha_5('#row_5')"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-xs btn-success" title="Salvar" id="botaoSalvar5" onclick="salvarLinha_5('#row_5')" style="display:none;"><i class="fa fa-floppy-o"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row pull-right" style=" margin-top: -40px; position: relative; padding-right: 15px;">
+                    <button class="btn btn-sm btn-warning" onclick="carregaDadosContrato()" data-dismiss="modal">
+                        Confirmar
+                    </button>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function editarLinha_1(id) {
+        document.getElementById("botaoSalvar1").style.display = 'inline-block';
+        var dataEmissao = document.getElementById("dataEmissao_1");
+        var dataVencimento = document.getElementById("dataVencimento_1");
+        var listaAnexo = document.getElementById("listaAnexo_1");
+        var valor = document.getElementById("valor_1");
+        var subtotalLancar = document.getElementById("subtotalLancar_1");
+        var nProgramacaoDesembolso = document.getElementById("nProgramacaoDesembolso_1");
+        var mensagemErro = document.getElementById("mensagemErro_1");
+
+        var dataEmissao_data = dataEmissao.innerHTML;
+        var dataVencimento_data = dataVencimento.innerHTML;
+        var listaAnexo_data = listaAnexo.innerHTML;
+        var valor_data = valor.innerHTML;
+        var subtotalLancar_data = subtotalLancar.innerHTML;
+        var nProgramacaoDesembolso_data = nProgramacaoDesembolso.innerHTML;
+        var mensagemErro_data = mensagemErro.innerHTML;
+
+
+        dataEmissao.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:65px;' id='dataEmissao__1'  value='" + dataEmissao_data + "'>";
+        dataVencimento.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:65px;' id='dataVencimento__1' value='" + dataVencimento_data + "'>";
+        listaAnexo.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:52px;' id='listaAnexo__1' value='" + listaAnexo_data + "'>";
+        valor.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:45px;' id='valor__1' value='" + valor_data + "'>";
+        subtotalLancar.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:62px;' id='subtotalLancar__1' value='" + subtotalLancar_data + "'>";
+        nProgramacaoDesembolso.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:90px;' id='nProgramacaoDesembolso__1' value='" + nProgramacaoDesembolso_data + "'>";
+        mensagemErro.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:78px;' id='mensagemErro__1' value='" + mensagemErro_data + "'>";
+
+    }
+
+    function editarLinha_2(id) {
+        document.getElementById("botaoSalvar2").style.display = 'inline-block';
+        var dataEmissao = document.getElementById("dataEmissao_2");
+        var dataVencimento = document.getElementById("dataVencimento_2");
+        var listaAnexo = document.getElementById("listaAnexo_2");
+        var valor = document.getElementById("valor_2");
+        var subtotalLancar = document.getElementById("subtotalLancar_2");
+        var nProgramacaoDesembolso = document.getElementById("nProgramacaoDesembolso_2");
+        var mensagemErro = document.getElementById("mensagemErro_2");
+
+        var dataEmissao_data = dataEmissao.innerHTML;
+        var dataVencimento_data = dataVencimento.innerHTML;
+        var listaAnexo_data = listaAnexo.innerHTML;
+        var valor_data = valor.innerHTML;
+        var subtotalLancar_data = subtotalLancar.innerHTML;
+        var nProgramacaoDesembolso_data = nProgramacaoDesembolso.innerHTML;
+        var mensagemErro_data = mensagemErro.innerHTML;
+
+
+        dataEmissao.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:65px;' id='dataEmissao__2'  value='" + dataEmissao_data + "'>";
+        dataVencimento.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:65px;' id='dataVencimento__2' value='" + dataVencimento_data + "'>";
+        listaAnexo.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:52px;' id='listaAnexo__2' value='" + listaAnexo_data + "'>";
+        valor.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:45px;' id='valor__2' value='" + valor_data + "'>";
+        subtotalLancar.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:62px;' id='subtotalLancar__2' value='" + subtotalLancar_data + "'>";
+        nProgramacaoDesembolso.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:90px;' id='nProgramacaoDesembolso__2' value='" + nProgramacaoDesembolso_data + "'>";
+        mensagemErro.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:78px;' id='mensagemErro__2' value='" + mensagemErro_data + "'>";
+
+    }
+
+    function editarLinha_3(id) {
+        document.getElementById("botaoSalvar3").style.display = 'inline-block';
+        var dataEmissao = document.getElementById("dataEmissao_3");
+        var dataVencimento = document.getElementById("dataVencimento_3");
+        var listaAnexo = document.getElementById("listaAnexo_3");
+        var valor = document.getElementById("valor_3");
+        var subtotalLancar = document.getElementById("subtotalLancar_3");
+        var nProgramacaoDesembolso = document.getElementById("nProgramacaoDesembolso_3");
+        var mensagemErro = document.getElementById("mensagemErro_3");
+
+        var dataEmissao_data = dataEmissao.innerHTML;
+        var dataVencimento_data = dataVencimento.innerHTML;
+        var listaAnexo_data = listaAnexo.innerHTML;
+        var valor_data = valor.innerHTML;
+        var subtotalLancar_data = subtotalLancar.innerHTML;
+        var nProgramacaoDesembolso_data = nProgramacaoDesembolso.innerHTML;
+        var mensagemErro_data = mensagemErro.innerHTML;
+
+
+        dataEmissao.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:65px;' id='dataEmissao__3'  value='" + dataEmissao_data + "'>";
+        dataVencimento.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:65px;' id='dataVencimento__3' value='" + dataVencimento_data + "'>";
+        listaAnexo.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:52px;' id='listaAnexo__3' value='" + listaAnexo_data + "'>";
+        valor.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:45px;' id='valor__3' value='" + valor_data + "'>";
+        subtotalLancar.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:62px;' id='subtotalLancar__3' value='" + subtotalLancar_data + "'>";
+        nProgramacaoDesembolso.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:90px;' id='nProgramacaoDesembolso__3' value='" + nProgramacaoDesembolso_data + "'>";
+        mensagemErro.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:78px;' id='mensagemErro__3' value='" + mensagemErro_data + "'>";
+
+    }
+
+    function editarLinha_4(id) {
+        document.getElementById("botaoSalvar4").style.display = 'inline-block';
+        var dataEmissao = document.getElementById("dataEmissao_4");
+        var dataVencimento = document.getElementById("dataVencimento_4");
+        var listaAnexo = document.getElementById("listaAnexo_4");
+        var valor = document.getElementById("valor_4");
+        var subtotalLancar = document.getElementById("subtotalLancar_4");
+        var nProgramacaoDesembolso = document.getElementById("nProgramacaoDesembolso_4");
+        var mensagemErro = document.getElementById("mensagemErro_4");
+
+        var dataEmissao_data = dataEmissao.innerHTML;
+        var dataVencimento_data = dataVencimento.innerHTML;
+        var listaAnexo_data = listaAnexo.innerHTML;
+        var valor_data = valor.innerHTML;
+        var subtotalLancar_data = subtotalLancar.innerHTML;
+        var nProgramacaoDesembolso_data = nProgramacaoDesembolso.innerHTML;
+        var mensagemErro_data = mensagemErro.innerHTML;
+
+
+        dataEmissao.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:65px;' id='dataEmissao__4'  value='" + dataEmissao_data + "'>";
+        dataVencimento.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:65px;' id='dataVencimento__4' value='" + dataVencimento_data + "'>";
+        listaAnexo.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:52px;' id='listaAnexo__4' value='" + listaAnexo_data + "'>";
+        valor.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:45px;' id='valor__4' value='" + valor_data + "'>";
+        subtotalLancar.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:62px;' id='subtotalLancar__4' value='" + subtotalLancar_data + "'>";
+        nProgramacaoDesembolso.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:90px;' id='nProgramacaoDesembolso__4' value='" + nProgramacaoDesembolso_data + "'>";
+        mensagemErro.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:78px;' id='mensagemErro__4' value='" + mensagemErro_data + "'>";
+
+    }
+
+    function editarLinha_5(id) {
+        document.getElementById("botaoSalvar5").style.display = 'inline-block';
+        var dataEmissao = document.getElementById("dataEmissao_5");
+        var dataVencimento = document.getElementById("dataVencimento_5");
+        var listaAnexo = document.getElementById("listaAnexo_5");
+        var valor = document.getElementById("valor_5");
+        var subtotalLancar = document.getElementById("subtotalLancar_5");
+        var nProgramacaoDesembolso = document.getElementById("nProgramacaoDesembolso_5");
+        var mensagemErro = document.getElementById("mensagemErro_5");
+
+        var dataEmissao_data = dataEmissao.innerHTML;
+        var dataVencimento_data = dataVencimento.innerHTML;
+        var listaAnexo_data = listaAnexo.innerHTML;
+        var valor_data = valor.innerHTML;
+        var subtotalLancar_data = subtotalLancar.innerHTML;
+        var nProgramacaoDesembolso_data = nProgramacaoDesembolso.innerHTML;
+        var mensagemErro_data = mensagemErro.innerHTML;
+
+
+        dataEmissao.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:65px;' id='dataEmissao__5'  value='" + dataEmissao_data + "'>";
+        dataVencimento.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:65px;' id='dataVencimento__5' value='" + dataVencimento_data + "'>";
+        listaAnexo.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:52px;' id='listaAnexo__5' value='" + listaAnexo_data + "'>";
+        valor.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:45px;' id='valor__5' value='" + valor_data + "'>";
+        subtotalLancar.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:62px;' id='subtotalLancar__5' value='" + subtotalLancar_data + "'>";
+        nProgramacaoDesembolso.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:90px;' id='nProgramacaoDesembolso__5' value='" + nProgramacaoDesembolso_data + "'>";
+        mensagemErro.innerHTML = "<input class='form-control' type='text' style='text-align:center; width:78px;' id='mensagemErro__5' value='" + mensagemErro_data + "'>";
+
+    }
+
+    function salvarLinha_1(id) {
+        var dataEmissao = document.getElementById("dataEmissao__1").value;
+        var dataVencimento = document.getElementById("dataVencimento__1").value;
+        var listaAnexo = document.getElementById("listaAnexo__1").value;
+        var valor = document.getElementById("valor__1").value;
+        var subtotalLancar = document.getElementById("subtotalLancar__1").value;
+        var nProgramacaoDesembolso = document.getElementById("nProgramacaoDesembolso__1").value;
+        var mensagemErro = document.getElementById("mensagemErro__1").value;
+        
+        document.getElementById("dataEmissao_1").innerHTML = dataEmissao;
+        document.getElementById("dataVencimento_1").innerHTML = dataVencimento;
+        document.getElementById("listaAnexo_1").innerHTML = listaAnexo;
+        document.getElementById("valor_1").innerHTML = valor;
+        document.getElementById("subtotalLancar_1").innerHTML = subtotalLancar;
+        document.getElementById("nProgramacaoDesembolso_1").innerHTML = nProgramacaoDesembolso;
+        document.getElementById("mensagemErro_1").innerHTML = mensagemErro;
+
+        document.getElementById("botaoSalvar1").style.display = 'none';
+    }
+
+    function salvarLinha_2(id) {
+        var dataEmissao = document.getElementById("dataEmissao__2").value;
+        var dataVencimento = document.getElementById("dataVencimento__2").value;
+        var listaAnexo = document.getElementById("listaAnexo__2").value;
+        var valor = document.getElementById("valor__2").value;
+        var subtotalLancar = document.getElementById("subtotalLancar__2").value;
+        var nProgramacaoDesembolso = document.getElementById("nProgramacaoDesembolso__2").value;
+        var mensagemErro = document.getElementById("mensagemErro__2").value;
+
+        document.getElementById("dataEmissao_2").innerHTML = dataEmissao;
+        document.getElementById("dataVencimento_2").innerHTML = dataVencimento;
+        document.getElementById("listaAnexo_2").innerHTML = listaAnexo;
+        document.getElementById("valor_2").innerHTML = valor;
+        document.getElementById("subtotalLancar_2").innerHTML = subtotalLancar;
+        document.getElementById("nProgramacaoDesembolso_2").innerHTML = nProgramacaoDesembolso;
+        document.getElementById("mensagemErro_2").innerHTML = mensagemErro;
+
+        document.getElementById("botaoSalvar2").style.display = 'none';
+    }
+
+    function salvarLinha_3(id) {
+        var dataEmissao = document.getElementById("dataEmissao__3").value;
+        var dataVencimento = document.getElementById("dataVencimento__3").value;
+        var listaAnexo = document.getElementById("listaAnexo__3").value;
+        var valor = document.getElementById("valor__3").value;
+        var subtotalLancar = document.getElementById("subtotalLancar__3").value;
+        var nProgramacaoDesembolso = document.getElementById("nProgramacaoDesembolso__3").value;
+        var mensagemErro = document.getElementById("mensagemErro__3").value;
+
+        document.getElementById("dataEmissao_3").innerHTML = dataEmissao;
+        document.getElementById("dataVencimento_3").innerHTML = dataVencimento;
+        document.getElementById("listaAnexo_3").innerHTML = listaAnexo;
+        document.getElementById("valor_3").innerHTML = valor;
+        document.getElementById("subtotalLancar_3").innerHTML = subtotalLancar;
+        document.getElementById("nProgramacaoDesembolso_3").innerHTML = nProgramacaoDesembolso;
+        document.getElementById("mensagemErro_3").innerHTML = mensagemErro;
+
+        document.getElementById("botaoSalvar3").style.display = 'none';
+    }
+
+    function salvarLinha_4(id) {
+        var dataEmissao = document.getElementById("dataEmissao__4").value;
+        var dataVencimento = document.getElementById("dataVencimento__4").value;
+        var listaAnexo = document.getElementById("listaAnexo__4").value;
+        var valor = document.getElementById("valor__4").value;
+        var subtotalLancar = document.getElementById("subtotalLancar__4").value;
+        var nProgramacaoDesembolso = document.getElementById("nProgramacaoDesembolso__4").value;
+        var mensagemErro = document.getElementById("mensagemErro__4").value;
+
+        document.getElementById("dataEmissao_4").innerHTML = dataEmissao;
+        document.getElementById("dataVencimento_4").innerHTML = dataVencimento;
+        document.getElementById("listaAnexo_4").innerHTML = listaAnexo;
+        document.getElementById("valor_4").innerHTML = valor;
+        document.getElementById("subtotalLancar_4").innerHTML = subtotalLancar;
+        document.getElementById("nProgramacaoDesembolso_4").innerHTML = nProgramacaoDesembolso;
+        document.getElementById("mensagemErro_4").innerHTML = mensagemErro;
+
+        document.getElementById("botaoSalvar4").style.display = 'none';
+    }
+
+    function salvarLinha_5(id) {
+        var dataEmissao = document.getElementById("dataEmissao__5").value;
+        var dataVencimento = document.getElementById("dataVencimento__5").value;
+        var listaAnexo = document.getElementById("listaAnexo__5").value;
+        var valor = document.getElementById("valor__5").value;
+        var subtotalLancar = document.getElementById("subtotalLancar__5").value;
+        var nProgramacaoDesembolso = document.getElementById("nProgramacaoDesembolso__5").value;
+        var mensagemErro = document.getElementById("mensagemErro__5").value;
+
+        document.getElementById("dataEmissao_5").innerHTML = dataEmissao;
+        document.getElementById("dataVencimento_5").innerHTML = dataVencimento;
+        document.getElementById("listaAnexo_5").innerHTML = listaAnexo;
+        document.getElementById("valor_5").innerHTML = valor;
+        document.getElementById("subtotalLancar_5").innerHTML = subtotalLancar;
+        document.getElementById("nProgramacaoDesembolso_5").innerHTML = nProgramacaoDesembolso;
+        document.getElementById("mensagemErro_5").innerHTML = mensagemErro;
+
+        document.getElementById("botaoSalvar5").style.display = 'none';
+    }
+</script>

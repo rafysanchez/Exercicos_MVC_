@@ -1,0 +1,58 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model PesquisaEmpenhoCredorViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina">Pesquisar Empenho por Credor</h3>
+        <hr class="margT10" />
+    </div>
+</div>
+
+
+<div class="siafem siafisico">
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NomeCredor, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NomeCredor, new { @class = "form-control lockProdesp", @maxlength = 14 })
+            </div>
+        </div>
+
+        <div  class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(model => model.CodigoCredorOrganizacao, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoCredorOrganizacao, new { @class = "form-control lockProdesp credorOrgPro", @id = "CodigoCredorOrganizacaoId", @maxlength = 1 })
+            </div>
+        </div>
+
+        <div  class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(model => model.NumeroCNPJCPFFornecedor, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroCNPJCPFFornecedor, new { @class = "form-control lockProdesp cnpjcpfProdesp", @id = "NumeroCNPJCPFFornecedorId", maxlength = 15 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroAnoExercicio, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                 @Html.TextBoxFor(model => model.NumeroAnoExercicio, new { @class = "form-control lockProdesp  yearExPicker anoExercicio", @id = "AnoExercicio", maxlength = 4 })
+            </div>
+        </div>
+
+       
+        <div id="divbtnConsultarCredor" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            <label class="invisible">Consultar</label>
+            <div class="input-group-btn">
+                <button id="btnConsultar" type="button" class="btn btn-primary btn-sm lockProdesp lockSiafem lockSiafisico" onclick="consultarEmpenhoPorCredor()"><i class="fa fa-search"></i>  Consultar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

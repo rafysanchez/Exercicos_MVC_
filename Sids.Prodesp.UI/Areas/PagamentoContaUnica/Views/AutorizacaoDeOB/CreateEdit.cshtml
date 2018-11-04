@@ -1,0 +1,105 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model DadoAutorizacaoDeOBViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var tipo = Request.QueryString["tipo"] ?? "a";
+    ViewBag.Title = (Model.Codigo > 1 ? (tipo == "a" || tipo == "i" ? "Alterar Autorização de OB" : "Visualizar Autorização de OB") : "Cadastrar Autorização de OB");
+
+    Layout = "~/Areas/PagamentoContaUnica/Views/ExecucaoPD/LayoutExecutarPD.cshtml";
+    ViewBag.Filtro = ViewBag.Filtro ?? new FiltroViewModel();
+
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var action = ViewContext.RouteData.GetRequiredString("action");
+}
+
+<script>
+    var controller  = @Html.Raw(Json.Encode(controller));
+    var usuario     = @Html.Raw(Json.Encode(ViewBag.Usuario));
+    var ModelItem   = @Html.Raw(Json.Encode(Model));
+    var regional    = @Html.Raw(Json.Encode(ViewBag.Regional));
+    var urlVoltar   = '@Url.Action("AtualizarIndex", new { Area = "PagamentoContaUnica" })';
+
+    obj = "AutorizacaoDeOB";
+
+</script>
+
+<link rel="stylesheet" href="~/Content/DataTable/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="~/Content/DataTable/css/jquery.dataTables.min.css" />
+
+@using (Html.BeginForm("Save", "AutorizacaoDeOB", FormMethod.Post, new { name = "form_autorizacao_ob", id = "form_autorizacao_ob" }))
+{
+    @Html.HiddenFor(x=>x.Codigo)
+    <div class="col-md-12">
+
+        @Html.Partial("_Mensagem")
+
+        <!-- Dados para Transmissao -->
+        <div class="panel panel-default ListaPd" style="display:none;">
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="form-group-sm col-md-6">
+                        <span>Informe o sistema:</span>
+
+                        @Html.LabelFor(x => x.TransmitirProdesp, "Prodesp", new { @class = "label-inline margL10" })
+                        <input id="TransmitirProdesp" type="checkbox" value="true" name="TransmitirProdesp" @( Model.TransmitirProdesp == true ? "checked" : "" ) />
+                        <input type="hidden" value="false" name="TransmitirProdesp" />
+                        @*<input type="checkbox" name="TransmitirProdesp" value="true" @( Model.TransmitirProdesp == true ? "checked" : "" ) />*@
+
+                        @Html.LabelFor(x => x.TransmissaoTransmitidoSiafem, "SIAFEM", new { @class = "label-inline margL10" })
+                        <input id="TransmitirSiafem" type="checkbox" value="true" name="TransmitirSiafem" @( Model.TransmissaoTransmitidoSiafem == true ? "checked" : "" ) />
+                        <input type="hidden" value="false" name="TransmitirSiafem" />
+                        @*<input type="checkbox" name="TransmitirSiafem" value="true" @( Model.TransmitirSiafem == true ? "checked" : "" ) />*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Dados para Transmissao -->
+        <!-- OBS Por Lista -->
+             @Html.Partial("~/Areas/PagamentoContaUnica/Views/AutorizacaoDeOB/_ObsPorLista.cshtml", Model)
+        <!-- OBS Por Lista -->
+
+        <!-- Grid -->
+        <div class="row">
+            <div class="col-md-12" style="overflow: auto" id="grid">
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/AutorizacaoDeOB/_ItemsAutorizacaoOB.cshtml", Model)
+            </div>
+        </div>
+        <!-- Grid -->
+
+        <!-- Confirmação de Pgto -->
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/AutorizacaoDeOB/_ConfirmacaoExecucao.cshtml", Model)
+            </div>
+        </div>
+        <!-- Confirmação de Pgto -->
+
+        <!-- Botões de Ação -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12" style="position: relative;">
+                        <button id="btnVoltar" style="display:none;" onclick="history.back(-1);" type="button" class="btn btn-sm btn-default"><i class="fa fa-arrow-left"></i> Voltar</button>
+                        <button id="btnCancelar" type="button" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Cancelar</button>
+                        @*<button id="btnSalvar" type="button" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Salvar</button>*@
+                        <button type="button" data-button="SalvarOB" id="btnSalvarOB" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Salvar</button>
+                        <button type="button" data-button="TransmitirOB" id="btnTransmitirOB" class="btn btn-sm btn-primary"><i class="fa fa-share"></i> Transmitir</button>
+                        @*<button id="btnTransmitir" type="button" class="btn btn-sm btn-primary"><i class="fa fa-share"></i> Transmitir</button>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Botões de Ação -->
+    </div>
+}
+
+@section script {
+<script src="~/Content/js/PagamentoContaUnica/AutorizacaoDeOB/autorizacao.de.ob.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+}

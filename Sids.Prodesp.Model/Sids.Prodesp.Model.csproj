@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AC18DA5A-0B50-4117-9363-C8FE8D0F7901}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sids.Prodesp.Model</RootNamespace>
+    <AssemblyName>Sids.Prodesp.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG; </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Homologacao|AnyCPU'">
+    <OutputPath>bin\Homologacao\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Producao|AnyCPU'">
+    <OutputPath>bin\Producao\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseModel.cs" />
+    <Compile Include="Base\Empenho\BaseEmpenho.cs" />
+    <Compile Include="Base\Empenho\BaseEmpenhoItem.cs" />
+    <Compile Include="Base\Empenho\BaseEmpenhoMes.cs" />
+    <Compile Include="Base\LiquidacaoDespesa\Rap.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\RapInscricaoNota.cs" />
+    <Compile Include="Entity\Movimentacao\MovimentacaoCancelamento.cs" />
+    <Compile Include="Entity\Movimentacao\MovimentacaoItemBase.cs" />
+    <Compile Include="Entity\Movimentacao\MovimentacaoNotaDeCredito.cs" />
+    <Compile Include="Entity\Movimentacao\MovimentacaoDistribuicao.cs" />
+    <Compile Include="Entity\Movimentacao\MovimentacaoDocumentoTipo.cs" />
+    <Compile Include="Entity\Movimentacao\MovimentacaoEvento.cs" />
+    <Compile Include="Entity\Movimentacao\MovimentacaoMes.cs" />
+    <Compile Include="Entity\Movimentacao\MovimentacaoOrcamentaria.cs" />
+    <Compile Include="Entity\Movimentacao\MovimentacaoReducaoSuplementacao.cs" />
+    <Compile Include="Entity\Movimentacao\MovimentacaoTipo.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\AutorizacaoDeOB\OBAutorizacao.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\Base\PagamentoContaUnica.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\Desdobramento\Credor.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\Desdobramento\Desdobramento.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\Desdobramento\DesdobramentoTipo.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\Desdobramento\DocumentoTipo.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\Desdobramento\IdentificacaoDesdobramento.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\FormaGerarNl\FormaGerarNl.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ImpressaoRelacaoRERT\ImpressaoRelacaoRERT.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ImpressaoRelacaoRERT\ListaRE.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ImpressaoRelacaoRERT\ListaRT.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ListaBoletos\CodigoBarraTaxa.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ListaBoletos\CodigoBarraBoleto.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ListaBoletos\ListaBoletos.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ListaBoletos\ListaCodigoBarras.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ListaBoletos\TipoBoleto.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PagamentoDer\ArquivoRemessaOP.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PagamentoDer\ArquivoRemessa.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PagamentoDer\ConfirmacaoPagamento.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PagamentoDer\ConfirmacaoPagamentoItem.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PagamentoDer\NlParametrizacao.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PagamentoDer\NlParametrizacaoDespesa.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PagamentoDer\NlParametrizacaoDespesaTipo.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PagamentoDer\NlParametrizacaoEvento.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PagamentoDer\NlTipo.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PreparacaoPagamento\PreparacaoPagamento.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\PreparacaoPagamento\PreparacaoPagamentoTipo.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\AutorizacaoDeOB\OBAutorizacaoItem.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ProgramacaoDesembolsoExecucao\PDExecucao.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ProgramacaoDesembolsoExecucao\PDExecucaoItem.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ProgramacaoDesembolsoExecucao\PDExecucaoTipoExecucao.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ProgramacaoDesembolsoExecucao\PDExecucaoTipoPagamento.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolsoBase.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolsoAgrupamento.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolsoDadosApoio.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolsoTipo.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolso.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolsoEvento.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ReclassificacaoRetencao\ParaRestoAPagar.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ReclassificacaoRetencao\ReclassificacaoRetencaoEvento.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ReclassificacaoRetencao\ReclassificacaoRetencaoNota.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ReclassificacaoRetencao\ReclassificacaoRetencao.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\Desdobramento\Reter.cs" />
+    <Compile Include="Entity\PagamentoContaUnica\ReclassificacaoRetencao\ReclassificacaoRetencaoTipo.cs" />
+    <Compile Include="Enum\EnumCenarioSiafemSiafisico.cs" />
+    <Compile Include="Enum\EnumDirecaoEvento.cs" />
+    <Compile Include="Enum\EnumFormaGerarNl.cs" />
+    <Compile Include="Enum\EnumNormalEstorno.cs" />
+    <Compile Include="Enum\EnumOrigemReclassificacaoRetencao.cs" />
+    <Compile Include="Enum\EnumTipoBoleto.cs" />
+    <Compile Include="Enum\EnumTipoDespesa.cs" />
+    <Compile Include="Enum\EnumTipoDocumentoMovimentacao.cs" />
+    <Compile Include="Enum\EnumTipoDocumento.cs" />
+    <Compile Include="Enum\EnumTipoMovimentacao.cs" />
+    <Compile Include="Enum\EnumTipoPagamento.cs" />
+    <Compile Include="Enum\EnumTipoPdOb.cs" />
+    <Compile Include="Enum\EnumTipoReclassificacaoRetencao.cs" />
+    <Compile Include="Exceptions\ProdespException.cs" />
+    <Compile Include="Exceptions\SidsException.cs" />
+    <Compile Include="Extension\DateTimeExtension.cs" />
+    <Compile Include="Extension\EnumExtension.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudRapInscricaoNota.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\IRap.cs" />
+    <Compile Include="Base\LiquidacaoDespesa\LiquidacaoDespesa.cs" />
+    <Compile Include="Base\LiquidacaoDespesa\LiquidacaoDespesaEvento.cs" />
+    <Compile Include="Base\LiquidacaoDespesa\LiquidacaoDespesaItem.cs" />
+    <Compile Include="Base\LiquidacaoDespesa\LiquidacaoDespesaNota.cs" />
+    <Compile Include="Entity\Configuracao\Destino.cs" />
+    <Compile Include="Entity\Configuracao\Mes.cs" />
+    <Compile Include="Entity\Configuracao\Municipio.cs" />
+    <Compile Include="Entity\Empenho\Empenho.cs" />
+    <Compile Include="Entity\Empenho\EmpenhoCancelamento.cs" />
+    <Compile Include="Entity\Empenho\EmpenhoCancelamentoItem.cs" />
+    <Compile Include="Entity\Empenho\EmpenhoCancelamentoMes.cs" />
+    <Compile Include="Entity\Empenho\EmpenhoItem.cs" />
+    <Compile Include="Entity\Empenho\EmpenhoMes.cs" />
+    <Compile Include="Entity\Empenho\EmpenhoReforco.cs" />
+    <Compile Include="Entity\Empenho\AquisicaoTipo.cs" />
+    <Compile Include="Entity\Empenho\EmpenhoReforcoItem.cs" />
+    <Compile Include="Entity\Empenho\EmpenhoReforcoMes.cs" />
+    <Compile Include="Entity\Empenho\Modalidade.cs" />
+    <Compile Include="Entity\Empenho\Licitacao.cs" />
+    <Compile Include="Entity\Empenho\OrigemMaterial.cs" />
+    <Compile Include="Entity\Empenho\EmpenhoCancelamentoTipo.cs" />
+    <Compile Include="Entity\Empenho\EmpenhoTipo.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\CodigoEvento.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\ObraTipo.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\RapAnulacao.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\RapAnulacaoNota.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\RapInscricao.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\ServicoTipo.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\RapRequisicao.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\RapRequisicaoNota.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\SubempenhoCancelamento.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\SubempenhoCancelamentoEvento.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\SubempenhoCancelamentoItem.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\SubempenhoCancelamentoNota.cs" />
+    <Compile Include="Entity\Reserva\Mes.cs" />
+    <Compile Include="Enum\EnumAcaoEfetuada.cs" />
+    <Compile Include="Enum\EnumAcaoSiaf.cs" />
+    <Compile Include="Enum\EnumTipoOperacaoEmpenho.cs" />
+    <Compile Include="Enum\EnumTipoServicoFazenda.cs" />
+    <Compile Include="Exceptions\FazendaException.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\CenarioTipo.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\EventoTipo.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\NaturezaTipo.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\Subempenho.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\SubempenhoEvento.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\SubempenhoItem.cs" />
+    <Compile Include="Entity\LiquidacaoDespesa\SubempenhoNota.cs" />
+    <Compile Include="Extension\ConversaoExtension.cs" />
+    <Compile Include="Extension\NumericoExtension.cs" />
+    <Compile Include="Interface\IEmpenhoItemService.cs" />
+    <Compile Include="Interface\IMes.cs" />
+    <Compile Include="Entity\Reserva\ReservaCancelamento.cs" />
+    <Compile Include="Entity\Configuracao\Estrutura.cs" />
+    <Compile Include="Entity\Configuracao\Fonte.cs" />
+    <Compile Include="Entity\Configuracao\Programa.cs" />
+    <Compile Include="Entity\Reserva\ReservaCancelamentoMes.cs" />
+    <Compile Include="Entity\Reserva\ReservaReforcoMes.cs" />
+    <Compile Include="Entity\Reserva\ReservaReforco.cs" />
+    <Compile Include="Entity\Reserva\Reserva.cs" />
+    <Compile Include="Entity\Reserva\ReservaMes.cs" />
+    <Compile Include="Entity\Reserva\TipoReserva.cs" />
+    <Compile Include="Entity\Seguranca\Acao.cs" />
+    <Compile Include="Entity\Log\LogAplicacao.cs" />
+    <Compile Include="Entity\Log\LogFilter.cs" />
+    <Compile Include="Entity\Log\LogNavegador.cs" />
+    <Compile Include="Entity\Log\LogResultado.cs" />
+    <Compile Include="Entity\Seguranca\Area.cs" />
+    <Compile Include="Entity\Seguranca\Captcha.cs" />
+    <Compile Include="Entity\Reserva\ChaveCicsmo.cs" />
+    <Compile Include="Entity\Seguranca\Menu.cs" />
+    <Compile Include="Entity\Seguranca\MenuItem.cs" />
+    <Compile Include="Entity\Seguranca\Perfil.cs" />
+    <Compile Include="Entity\Seguranca\FuncionalidadeAcao.cs" />
+    <Compile Include="Entity\Seguranca\PerfilAcao.cs" />
+    <Compile Include="Entity\Seguranca\PerfilFuncionalidade.cs" />
+    <Compile Include="Entity\Seguranca\PerfilUsuario.cs" />
+    <Compile Include="Entity\Seguranca\Funcionalidade.cs" />
+    <Compile Include="Entity\Seguranca\Regional.cs" />
+    <Compile Include="Interface\Base\ICrudBase.cs" />
+    <Compile Include="Interface\Configuracao\ICrudDestino.cs" />
+    <Compile Include="Interface\Configuracao\ICrudEstrutura.cs" />
+    <Compile Include="Interface\Configuracao\ICrudFonte.cs" />
+    <Compile Include="Interface\Configuracao\ICrudMes.cs" />
+    <Compile Include="Interface\Configuracao\ICrudMunicipio.cs" />
+    <Compile Include="Interface\Configuracao\ICrudPrograma.cs" />
+    <Compile Include="Interface\Empenho\ICrudAquisicaoTipo.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenho.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoCancelamento.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoCancelamentoItem.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoCancelamentoMes.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoCancelamentoTipo.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoItem.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoMes.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoReforco.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoReforcoItem.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoReforcoMes.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoTipo.cs" />
+    <Compile Include="Interface\Empenho\ICrudLicitacao.cs" />
+    <Compile Include="Interface\Empenho\ICrudModalidade.cs" />
+    <Compile Include="Interface\Empenho\ICrudOrigemMaterial.cs" />
+    <Compile Include="Interface\Empenho\IEmpenho.cs" />
+    <Compile Include="Interface\Empenho\IEmpenhoItem.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudCenarioTipo.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudCodigoEvento.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudEventoTipo.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudNaturezaTipo.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudServicoTipo.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudObraTipo.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudRapAnulacao.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudRapRequisicao.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudRapInscricao.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudSubempenho.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudSubempenhoCancelamento.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudSubempenhoCancelamentoEvento.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudSubempenhoCancelamentoItem.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudSubempenhoCancelamentoNota.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudSubempenhoEvento.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudSubempenhoItem.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudRapRequisicaoNota.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudRapAnulacaoNota.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ICrudSubempenhoNota.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\IEvento.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ILiquidacaoDespesa.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ILiquidacaoDespesaEvento.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ILiquidacaoDespesaItem.cs" />
+    <Compile Include="Interface\LiquidacaoDespesa\ILiquidacaoDespesaNota.cs" />
+    <Compile Include="Interface\Log\ILog.cs" />
+    <Compile Include="Interface\Movimentacao\Base\ICrudMovimentacao.cs" />
+    <Compile Include="Interface\Movimentacao\ICrudMovimentacaoMes.cs" />
+    <Compile Include="Interface\Movimentacao\ICrudMovimentacaoDocumentoTipo.cs" />
+    <Compile Include="Interface\Movimentacao\ICrudMovimentacaoTipo.cs" />
+    <Compile Include="Interface\Movimentacao\ICrudMovimentacao.cs" />
+    <Compile Include="Interface\PagamentoContaDer\Base\ICrudPagamentoContaDer.cs" />
+    <Compile Include="Interface\PagamentoContaDer\ICrudArquivoRemessa.cs" />
+    <Compile Include="Interface\PagamentoContaDer\ICrudConfirmacaoPagamento.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\ICrudCombos.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\ICrudLists.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\ICrudPagamentoContaUnica.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\ICrudPagamentoContaUnicaEvento.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\ICrudPagamentoContaUnicaNota.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\IProgramacaoDesembolso.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudAutorizacaoDeOB.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudAutorizacaoDeOBItem.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudListaRt.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudListaRe.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudImpressaoRelacaoRERTVo.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudImpressaoRelacaoRERT.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudProgramacaoDesembolsoAgrupamento.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudProgramacaoDesembolsoExecucaoItem.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudProgramacaoDesembolsoTipo.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudProgramacaoDesembolso.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\IPagamentoContaUnicaProdesp.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\IPagamentoContaUnica.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\IPagamentoContaUnicaEvento.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\IPagamentoContaUnicaNota.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\IPagamentoContaUnicaSiafem.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\Base\ITipoPagamentoContaUnica.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudCodigoBarraTaxa.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudCodigoBarraBoleto.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudCredor.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudDesdobramento.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudDesdobramentoTipo.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudListaBoletos.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudListaCodigoBarras.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudPreparacaoPagamento.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudPreparacaoPagamentoTipo.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudTipoBoleto.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudRestoPagar.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudReclassificacaoRetencaoTipo.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudDocumentoTipo.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudIdentificacaoDesdobramento.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudReclassificacaoRetencao.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudReter.cs" />
+    <Compile Include="Interface\PagamentoContaUnica\ICrudProgramacaoDesembolsoExecucao.cs" />
+    <Compile Include="Interface\Reserva\IChaveCicsmo.cs" />
+    <Compile Include="Interface\Reserva\ICrudReserva.cs" />
+    <Compile Include="Interface\Reserva\ICrudReservaCancelamento.cs" />
+    <Compile Include="Interface\Reserva\ICrudReservaCancelamentoMes.cs" />
+    <Compile Include="Interface\Reserva\ICrudReservaMes.cs" />
+    <Compile Include="Interface\Reserva\ICrudReservaReforco.cs" />
+    <Compile Include="Interface\Reserva\ICrudReservaReforcoMes.cs" />
+    <Compile Include="Interface\Reserva\IReserva.cs" />
+    <Compile Include="Interface\Reserva\ITipoReserva.cs" />
+    <Compile Include="Interface\Security\IAutenticacao.cs" />
+    <Compile Include="Interface\Seguranca\IAcao.cs" />
+    <Compile Include="Interface\Seguranca\IArea.cs" />
+    <Compile Include="Interface\Seguranca\ICrudFuncionalidade.cs" />
+    <Compile Include="Interface\Seguranca\ICrudFuncionalidadeAcao.cs" />
+    <Compile Include="Interface\Seguranca\ICrudMenu.cs" />
+    <Compile Include="Interface\Seguranca\ICrudMenuItem.cs" />
+    <Compile Include="Interface\Seguranca\ICrudPerfil.cs" />
+    <Compile Include="Interface\Seguranca\ICrudPerfilAcao.cs" />
+    <Compile Include="Interface\Seguranca\ICrudPerfilFuncionalidade.cs" />
+    <Compile Include="Interface\Seguranca\ICrudPerfilUsuario.cs" />
+    <Compile Include="Interface\Seguranca\ICrudUsuario.cs" />
+    <Compile Include="Interface\Seguranca\IRegional.cs" />
+    <Compile Include="Interface\Seguranca\ISistema.cs" />
+    <Compile Include="Interface\Service\Empenho\IProdespEmpenho.cs" />
+    <Compile Include="Interface\Service\Empenho\ISiafemEmpenho.cs" />
+    <Compile Include="Interface\Service\ICommon.cs" />
+    <Compile Include="Interface\Service\Movimentacao\IProdespMovimentacao.cs" />
+    <Compile Include="Interface\Service\Movimentacao\ISiafemMovimentacao.cs" />
+    <Compile Include="Interface\Service\PagamentoContaDer\IProdespPagamentoContaDer.cs" />
+    <Compile Include="Interface\Service\LiquidacaoDespesa\IProdespLiquidacaoDespesa.cs" />
+    <Compile Include="Interface\Service\LiquidacaoDespesa\ISiafemLiquidacaoDespesa.cs" />
+    <Compile Include="Interface\Service\PagamentoContaUnica\IProdespPagamentoContaUnica.cs" />
+    <Compile Include="Interface\Service\PagamentoContaUnica\ISiafemPagamentoContaUnica.cs" />
+    <Compile Include="Interface\Service\Reserva\IProdespReserva.cs" />
+    <Compile Include="Interface\Service\Reserva\ISiafemReserva.cs" />
+    <Compile Include="Interface\Service\Seguranca\ISiafemReserva.cs" />
+    <Compile Include="ValueObject\Assinatura.cs" />
+    <Compile Include="ValueObject\AssinaturasVo.cs" />
+    <Compile Include="ValueObject\ConsultaDespesaNlVo.cs" />
+    <Compile Include="ValueObject\LiquidacaoDespesa\Caucao.cs" />
+    <Compile Include="ValueObject\LiquidacaoDespesa\Assinaturas.cs" />
+    <Compile Include="ValueObject\LiquidacaoDespesa\Despesa.cs" />
+    <Compile Include="ValueObject\LiquidacaoDespesa\Observacao.cs" />
+    <Compile Include="ValueObject\LiquidacaoDespesa\Situacao.cs" />
+    <Compile Include="ValueObject\LiquidacaoDespesa\Transmissao.cs" />
+    <Compile Include="ValueObject\CfpValueObject.cs" />
+    <Compile Include="ValueObject\DtoError.cs" />
+    <Compile Include="ValueObject\EspecificacaoDespesa.cs" />
+    <Compile Include="ValueObject\NaturezaValueObject.cs" />
+    <Compile Include="ValueObject\PagamentoContaUnica\ImpressaoRelacaoReRtConsultaPaiVo.cs" />
+    <Compile Include="ValueObject\PagamentoContaUnica\ImpressaoRelacaoReRtConsultaVo.cs" />
+    <Compile Include="ValueObject\ResultadoOperacaoVo.cs" />
+    <Compile Include="ValueObject\Service\Moq\SiafemUsuario.cs" />
+    <Compile Include="ValueObject\Service\Login\SIAFDOC.cs" />
+    <Compile Include="Entity\Seguranca\Sistema.cs" />
+    <Compile Include="Entity\Seguranca\Url.cs" />
+    <Compile Include="Entity\Seguranca\Usuario.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ConsultaDesdobramento.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ConsultaEmpenhoRap.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ConsultaEmpenhoCredor.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ConsultaSubempenho.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ConsultaEmpenhoEstrutura.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ConsultaReservaEstrutura.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\InfoConsultaReservaEstrutura.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ListConsultaEmpenhoRap.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ListConsultaEmpenhoCredor.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ListConsultaEmpenhoEstrutura.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\LiquidacaoDespesa\SubempenhoApoio.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\ProgramacaoDesembolso\DocumentoGerador.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Base\documento.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Empenho\ConsultaCt.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Empenho\ConsultaEmpenhos.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Empenho\ConsultaPdfEmpenho.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Empenho\ConsultaNe.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Empenho\ConsultaPrecoNE.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Empenho\SFCODOC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Empenho\SIAFDOC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\ConsultaNL.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\desc.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\documento.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\Evento.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\linha.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\NF.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\NotaFiscal.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\obs.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\Observacao.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\Repete.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\Repeticao.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\repeticaoItem.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\repeticaoNf.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SFCOCanNLBec.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SFCOCanNLPregao.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SFCODOC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SiafisicoDocLiquidaNl.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SFCONLEstorno.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SIAFDOC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SIAFDocIncTraRPNP.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SIAFDocInscRNP.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SiafemDocConsultaNL.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SiafemDocNL.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SiafemDocNLCTObras.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SiafemDocNLObras.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SiafisicoDocConItemDetalha.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SFCOLiqNLBec.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SiafisicoDocNLContrato.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SiafisicoDocNLEmLiq.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SiafisicoDocNLPregaoExecuta.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\SiafisicoDocPDBEC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\LiquidacaoDespesa\TabelaItem.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\documentoNC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\documento.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\ListaEventosNC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\ListaEventosNL.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\Observacao.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\RespostaConsultaNC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\RespostaConsultaNL.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\SIAFDOC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\SiafemDocConsultaNC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\SiafemDocConsultaNL.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\SiafemDocNC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Movimentacao\SiafemDocMov.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\ConsultaOB.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\ConsultaPd.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\ImpressaoRelacaoRERT\ListaOB.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\ImpressaoRelacaoRERT\RespostaImpressaoRelacaoReRt.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\ImpressaoRelacaoRERT\RepeticoesReRt.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\ImpressaoRelacaoRERT\CancelarImpressaoRelacaoReRt.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\ImpressaoRelacaoRERT\DocumentoImpressaoRelacaoReRt.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\ImpressaoRelacaoRERT\SiafemDocCanRel.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\ImpressaoRelacaoRERT\SiafemDocRT.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SIAFCanOBCTU.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SIAFDOC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SiafemDocAltListaBoletos.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SiafemDocAutobSef.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SiafemDocAutorizaOBVI.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SiafemDocCanPD.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SiafemDocConsultaOB.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SiafemDocConsultaPD.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SiafemDocExecutarPD.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SiafemDocListaPd.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SiafemDocNLPGObras.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SiafemDocPD.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\ImpressaoRelacaoRERT\SiafemDocRE.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SIAFNLIssReten.cs" />
+    <Compile Include="ValueObject\Service\Siafem\PagamentoContaUnica\SIAFNLRetInss.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Reserva\ConsultaOC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Reserva\ConsultaNr.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Reserva\SFCODOC.cs" />
+    <Compile Include="ValueObject\Service\Siafem\Reserva\SIAFDOC.cs" />
+    <Compile Include="Enum\DiaDaSemana.cs" />
+    <Compile Include="Enum\EnumAcao.cs" />
+    <Compile Include="Enum\EnumOrigemDocumento.cs" />
+    <Compile Include="Enum\EnumSituacaoDocumento.cs" />
+    <Compile Include="Enum\EnumTipoEmpresa.cs" />
+    <Compile Include="Enum\EnumTipoPessoa.cs" />
+    <Compile Include="Enum\EnumTipoLog.cs" />
+    <Compile Include="Enum\EnumSimNao.cs" />
+    <Compile Include="Enum\EnumStatus.cs" />
+    <Compile Include="Enum\EnumTipoAutenticacao.cs" />
+    <Compile Include="Enum\EnumTipoMenu.cs" />
+    <Compile Include="Enum\EnumTipoUsuario.cs" />
+    <Compile Include="Enum\EnumUF.cs" />
+    <Compile Include="Enum\EnumURL.cs" />
+    <Compile Include="Enum\EnumURLTarget.cs" />
+    <Compile Include="Extension\StringExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ConsultaAssinatura.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ConsultaContrato.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ConsultaEmpenho.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\ConsultaEspecificacaoDespesa.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Reserva\ConsultaReserva.cs" />
+    <Compile Include="ValueObject\Service\Prodesp\Common\InfoConsultaContrato.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Base\Movimentacao\" />
+    <Folder Include="ValueObject\Service\Prodesp\Empenho\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+    <None Include="Sids.Prodesp.Model.ruleset" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

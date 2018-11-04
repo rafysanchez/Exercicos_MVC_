@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:params="urn:xmlns:attachmate:vhi-ws:fault-params" name="vhi-fault" targetNamespace="urn:xmlns:attachmate:vhi-ws:fault" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoLiqDespesas/vhi-fault.xsd" namespace="urn:xmlns:attachmate:vhi-ws:fault-params" />
+    </xsd:schema>
+  </types>
+  <message name="ModelFault">
+    <part name="parameters" element="params:ModelFault" />
+  </message>
+  <message name="OperationUndefinedFault">
+    <part name="parameters" element="params:OperationUndefinedFault" />
+  </message>
+  <message name="ServiceFault">
+    <part name="parameters" element="params:ServiceFault" />
+  </message>
+  <message name="UserFault">
+    <part name="parameters" element="params:UserFault" />
+  </message>
+  <message name="XMLStreamFault">
+    <part name="parameters" element="params:XMLStreamFault" />
+  </message>
+  <message name="ResourceUnavailableFault">
+    <part name="parameters" element="params:ResourceUnavailableFault" />
+  </message>
+  <message name="ResourceUnknownFault">
+    <part name="parameters" element="params:ResourceUnknownFault" />
+  </message>
+</definitions>

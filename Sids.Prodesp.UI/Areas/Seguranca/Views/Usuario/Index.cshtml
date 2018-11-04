@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Sids.Prodesp.UI.Areas.Seguranca.Models.Usuario.GridUsuarioViewModel>
+
+    @{
+        ViewBag.Title = "Usuários";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <script>
+        var obj = "Usuario";
+        var urld = '@Url.Action("Delete", "Usuario")';
+        var urla = '@Url.Action("AlterarStatus", "Usuario")';
+        var ModelItem = @Html.Raw(Json.Encode(Model));
+    </script>
+                      <link href="~/Content/DataTable/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <div class="col-md-12">
+        <h2>Pesquisa de Usuários</h2>
+        @Html.Partial("_Mensagem")
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 class="margT0 tituloItensPagina">Filtros</h3>
+                <hr class="margT0" />
+                @Html.Partial("Filtro")
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+                    </div>
+                </div>
+                <hr class="margT0" />
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                        <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped table-responsive small">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-2">Nome</th>
+                                    <th class="col-md-1">CPF</th>
+                                    <th class="col-md-2">E-mail</th>
+                                    <th class="col-md-2">Regional</th>
+                                    <th class="col-md-1">Perfil</th>
+                                    <th class="col-md-1">Área</th>
+                                    <th class="col-md-1">Sistema</th>
+                                    <th class="col-md-2"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+            {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nome)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CPF)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Regional)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Perfil)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Area)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Sistema)
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-xs btn-info margL5" data-button="Editar" title="Alterar" onclick="AbrirDetalhe('@Url.Action("Edit", "Usuario", new { Area="Seguranca", id = item.Codigo, tipo = "a" })')"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-xs btn-primary margL5" data-button="Visualizar" title="Visualizar" onclick="AbrirDetalhe('@Url.Action("Edit", "Usuario", new { Area="Seguranca",id = item.Codigo, tipo = "c" })')"><i class="fa fa-search"></i></button>
+                                            <button class="btn btn-xs @(item.Status == true ? "btn-warning": "btn-success") margL5" data-button="AtivarDesativar" data-status="@item.Status" id="@item.Codigo" name="@item.Nome" title="@(item.Status == true ? "Desativar": "Ativar")" onclick="ModalSistema(true, '#modalConfirmaExclusao', '@(item.Status == true ? "Desativar": "Ativar")', obj, '@item.Nome',this)"><i class="@(item.Status == true ? "fa fa-ban" : "fa fa-check-square-o")"></i></button>
+                                            <button class="btn btn-xs btn-danger margL5" data-button="Excluir" id="@item.Codigo" name="@item.Nome" title="Excluir" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'Excluir', obj, '@item.Nome',this)"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @section script{
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var opcao = getParameterByName('tipo');
+                switch (opcao) {
+                    case 'r':
+                        MostraTabelaPesquisa('#tblPesquisaUsuario');
+                        break;
+                }
+            });
+        </script>
+    }

@@ -1,0 +1,41 @@
+﻿@using Sids.Prodesp.Model.Extension
+@using Sids.Prodesp.UI.Areas.Configuracao.Models.Estrutura
+
+@{
+    FiltroViewModel filtro = ViewBag.Filtro ?? new FiltroViewModel();
+
+    var filtroPrograma = filtro.Programas.Select(x => new SelectListItem { Selected = (filtro.Programa == x.Codigo), Value = x.Codigo.ToString(), Text = x.Cfp.Formatar("00.000.0000.0000") + " " + x.Descricao });//.Substring(0,2)+"."+ x.Cfp.Substring(2, 3) + "." + x.Cfp.Substring(5, 4) + "."+ x.Cfp.Substring(9, 4) + " " + x.Descricao});
+}
+
+
+@using (Html.BeginForm("Index", "Estrutura", FormMethod.Post, new { name = "form_filtro", id = "form_filtro" }))
+{
+    <h3 class="margT0 tituloItensPagina">Filtros</h3>
+    <hr class="margT0" />
+    <div class="row">
+        <div class="col-sm-12 col-md-2 form-group-sm form-group">
+            <label class="control-label label-form-DER">Ano Referência</label>
+            @Html.DropDownList("AnoExercicio", new SelectList(filtro.Anos, "Value", "Text", filtro.Ano), "Selecione", new { @class = "form-control", @id = "AnoExercicio" })
+        </div>
+        <div class="col-sm-12 col-md-5 form-group-sm form-group">
+            <label class="control-label label-form-DER">Programa</label>
+            @Html.DropDownList("Programa", filtroPrograma, "Selecione", new { @class = "form-control", @id = "Programa" })
+        </div>
+        <div class='row'>
+            <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+            <button type="button" id="btnPesquisar" class="btn btn-sm btn-primary" onclick="ValidaFormulario()"><i class="glyphicon glyphicon-Buscar"></i> Pesquisar</button>
+            <button type="button" id="Create" class="btn btn-sm btn-warning" onclick="javascript: window.location.href = '@Url.Action("Create","Estrutura",new {Area = "Configuracao"})';"><i class="glyphicon glyphicon-plus"></i> Cadastrar</button>
+            <button type="button" id="btnLimpar" class="btn btn-sm btn-success" onclick="javascript: limparFormulario($('#form_filtro'));"><i class="glyphicon glyphicon-refresh"></i> Limpar</button>
+        </div>
+
+        <div class='row'>
+            <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+            </div>
+        </div>
+    </div>
+
+}

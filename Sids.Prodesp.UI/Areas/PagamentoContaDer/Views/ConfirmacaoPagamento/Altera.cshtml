@@ -1,0 +1,26 @@
+﻿@model List<Sids.Prodesp.UI.Areas.PagamentoContaDer.Models.ConfirmacaoPagamentoFiltroViewModel>
+@{
+    ViewBag.Title = "Alterar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="divContent" class="col-md-12">
+    <h1>Alterar Confirmação de Pagamento</h1>
+    @Html.AntiForgeryToken()
+    <div id="divPainelCadastrarConfirmacaoPagamento" class="panel panel-default">
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Altera", "ConfirmacaoPagamento", new AjaxOptions { HttpMethod = "Post" }, new { id = "frm-filtro-ConfirmacaoPagamento" }))
+            {
+                @Html.AntiForgeryToken()
+                Html.RenderPartial("_FiltroAtualizar");
+                Html.RenderPartial("_FiltroGrid");
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_modalVisualizarDetalhes")
+@Html.Partial("_modalConsulta")
+@Styles.Render("~/bundles/ConfirmacaoPagamentoCss")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/ConfirmacaoPagamentoJs")
+

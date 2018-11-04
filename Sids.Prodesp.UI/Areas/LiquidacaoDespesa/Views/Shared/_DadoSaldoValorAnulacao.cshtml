@@ -1,0 +1,41 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model DadoSaldoValorAnulacao
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div id="DadoSaldoValorAnulacao" class="prodesp">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row input-group-sm form-group has-feedback">
+        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.ValorSaldoAnteriorSubempenho,  new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorSaldoAnteriorSubempenho, new { @class = "form-control lockProdesp real", @maxlength = 20 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.ValorAnulado,  new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorAnulado, new { @class = "form-control lockProdesp  real", @maxlength = 20 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.ValorSaldoAposAnulacao, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorSaldoAposAnulacao, new { @class = "form-control lockProdesp", disabled="disabled",  @maxlength = 20 })
+            </div>
+        </div>
+    </div>
+</div>
+

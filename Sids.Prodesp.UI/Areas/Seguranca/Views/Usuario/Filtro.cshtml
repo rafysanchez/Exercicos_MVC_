@@ -1,0 +1,61 @@
+﻿@{
+    Sids.Prodesp.UI.Areas.Seguranca.Models.Usuario.UsuarioViewModel filtro = ViewBag.Filtro;
+    if (filtro == null)
+    {
+        filtro = new Sids.Prodesp.UI.Areas.Seguranca.Models.Usuario.UsuarioViewModel();
+    }
+}
+@using (Html.BeginForm("Index", "Usuario", FormMethod.Post, new { name = "form_filtro", id = "form_filtro" }))
+{
+    <div class='row'>
+        <div class="col-sm-12 col-lg-7 col-md-8 form-group-sm form-group">
+            <label class="control-label label-form-DER">Nome Completo:</label>
+            @Html.TextBox("txtNome", filtro.Nome, new { @class = "form-control", @maxlength = "100" })
+        </div>
+        <div class="col-sm-12 col-lg-3 col-md-4 form-group-sm form-group">
+            <label class="control-label label-form-DER">Login:</label>
+            @Html.TextBox("txtChaveAcesso", filtro.ChaveDeAcesso, new { @class = "form-control", @maxlength = "100" })
+        </div>
+        <div class="col-sm-12 col-lg-2 col-md-4 form-group-sm form-group">
+            <label class="control-label label-form-DER">CPF:</label>
+            @Html.TextBox("txtCPF", filtro.CPF, new { @class = "form-control cpf", type = "cpf" })
+        </div>
+    </div>
+
+        <div class='row'>
+            <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group">
+                <label class="control-label label-form-DER">E-mail:</label>
+                @Html.TextBox("txtEmail", filtro.Email, new { @class = "form-control email", type = "email", @maxlength = "100" })
+            </div>
+            <div class="col-sm-12 col-lg-3 col-md-4 form-group-sm form-group">
+                <label class="control-label label-form-DER">Regional:</label>
+                @Html.DropDownList("ddlRegional", new SelectList(filtro.Regional, "Id", "Descricao", filtro.RegionalId), "Selecione", new { @class = "form-control" })
+            </div>
+            <div class="col-sm-12 col-lg-3 col-md-4 form-group-sm form-group">
+                <label class="control-label label-form-DER">Área:</label>
+                @Html.DropDownList("ddlArea", new SelectList(filtro.Area, "Id", "Descricao", filtro.AreaId), "Selecione", new { @class = "form-control" })
+            </div>
+            <div class="col-sm-12 col-lg-2 col-md-4 form-group-sm form-group">
+                <label class="control-label label-form-DER">Sistema:</label>
+                @Html.DropDownList("ddlSistema", new SelectList(filtro.Sistema, "Id", "Descricao", filtro.SistemaId), "Selecione", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm ">
+                <button type="button" id="btnPesquisar" class="btn btn-sm btn-primary" onclick="ValidaFormulario()"><i class="glyphicon glyphicon-search"></i> Pesquisar</button>
+                <button type="button" id="Create" class="btn btn-sm btn-warning" onclick="javascript: window.location.href = '@Url.Action("Create","Usuario",new {Area = "Seguranca"})';"><i class="glyphicon glyphicon-plus"></i> Cadastrar</button>
+                <button type="button" id="btnLimpar" class="btn btn-sm btn-success" onclick="javascript: limparFormulario($('#form_filtro'));"><i class="glyphicon glyphicon-refresh"></i> Limpar</button>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+            </div>
+        </div>
+}

@@ -1,0 +1,167 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+@using Sids.Prodesp.UI.Helpers
+@model  DadoAutorizacaoDeOBViewModel
+
+@{
+    Layout = null;
+    var qtd = 0;
+}
+
+<input type="hidden" id="AnyItems" name="AnyItems" value="@Model.Items.Count()" />
+<input type="hidden" name="AnoOB" value="@Model.AnoOB" />
+<input type="hidden" name="IdAutorizacaoOB" value="@Model.IdAutorizacaoOB" />
+<input type="hidden" name="AgrupamentoOB" value="@Model.AgrupamentoOB" />
+<input type="hidden" name="TransmisaoStatusSiafem" value="@Model.TransmisaoStatusSiafem" />
+<input type="hidden" name="TransmissaoTransmitidoSiafem" value="@(Model.TransmissaoTransmitidoSiafem ? "True" : "False")" />
+<input type="hidden" name="TransmissaoDataSiafem" value="@Model.TransmissaoDataSiafem" />
+<input type="hidden" name="TransmissaoMensagemSiafem" value="@Model.TransmissaoMensagemSiafem" />
+<input type="hidden" name="NumeroContrato" value="@Model.NumeroContrato" />
+<span class="field-validation-error" data-valmsg-for="AnyItems" data-valmsg-replace="true">
+    <span for="AnyItems" class=""></span>
+</span>
+
+<table class="table table-bordered table-condensed table-striped vAlignMiddle _tbDataTables" id="tblGrid">
+    <thead>
+        <tr>
+            <th id="filtroAgrupOB" width="100" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Pressione ENTER ou saia do campo para pesquisar por Agrupamento de OB" >Nº Agrup.OB</th>
+            <th width="70">Nº da OB</th>
+            <th width="70">Nº da OP</th>
+            <th width="100">Nº Docto Gerador</th>
+            <th width="300">Favorecido</th>
+            <th width="70">Despesa</th>
+            <th width="70">Banco</th>
+            <th width="70">Valor</th>
+            <th width="70">Data Confirmação</th>
+            <th width="70" class="textCenter">Autorizar Todos<br /><input type="checkbox" name="Todos" id="Todos" value="true" /></th>
+            <th width="30">&nbsp;</th>
+            <th width="30">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Items.Any())
+        {
+            foreach (var Items in Model.Items)
+            {
+                <tr>
+                    <td class="textCenter">
+                        <input type="hidden" name="Items[@qtd].AgrupamentoItemOB" value="@Items.AgrupamentoItemOB" />
+                        @Html.Label(Items.AgrupamentoItemOB == 0 ? "-" : Items.AgrupamentoItemOB.ToString())
+                    </td>
+
+                    <td class="textCenter">
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].Codigo" value="@Items.Codigo" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].NumPD" value="@Items.NumPD" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].NoOB" value="@Items.NoOB" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].NoOB" value="@Items.NoOB" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].NumOB" value="@Items.NumOB" />
+
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].IdAutorizacaoOB" value="@Items.IdAutorizacaoOB" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].IdAutorizacaoOBItem" value="@Items.IdAutorizacaoOBItem" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].IdExecucaoPD" value="@Items.IdExecucaoPD" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].IdExecucaoPDItem" value="@Items.IdExecucaoPDItem" />
+
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].SiafemDescricao" value="@Items.SiafemDescricao" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].SiafemStatus" value="@Items.SiafemStatus" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].SiafemItemTransmitido" value="@(Items.SiafemItemTransmitido ? "True" : "False")" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].SiafemTransmitidoEm" value="@Items.SiafemTransmitidoEm" />
+
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].IdTipoDocumento" value="@Items.IdTipoDocumento" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].NumeroDocumento" value="@Items.NumeroDocumento" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].NumeroContrato" value="@Items.NumeroContrato" />
+
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].IdConfirmacaoPagamento" value="@Items.IdConfirmacaoPagamento" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].IdConfirmacaoPagamentoItem" value="@Items.IdConfirmacaoPagamentoItem" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].ProdespStatus" value="@Items.ProdespStatus" />
+
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].NumOB" value="@Items.NumOB" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].CodigoAplicacaoObra" value="@Items.CodigoAplicacaoObra" />
+
+                        @Html.DisplayFor(x => Items.NumOB)
+                    </td>
+
+                    <td class="textCenter">
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].NumOP" value="@Items.NumOP" />
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].MensagemRetornoConsultaOP" value="@Items.MensagemRetornoConsultaOP" />
+                        @if (Items.NumOP != string.Empty && Items.NumOP != null)
+                        {
+                        @Html.DisplayFor(x => Items.NumOP)
+                        }
+                        else
+                        {
+                        @SidsHelper.StatusIcone("E", Items.MensagemRetornoConsultaOP, "PRODESP")
+                        }
+                    </td>
+
+                    <td class="textCenter">
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].NumDoctoGerador" value="@Items.NumDoctoGerador" />
+                        @Html.DisplayFor(x => Items.NumDoctoGerador)
+                    </td>
+
+                    <td class="textLeft">
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].FavorecidoDesc" value="@Items.FavorecidoDesc" />
+                        @Html.DisplayFor(x => Items.FavorecidoDesc)
+                    </td>
+
+                    <td class="textCenter">
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].Despesa" value="@Items.Despesa" />
+                        @Html.DisplayFor(x => Items.Despesa)
+                    </td>
+
+                    <td class="textCenter">
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].Banco" value="@Items.Banco" />
+                        @Html.DisplayFor(x => Items.Banco)
+                    </td>
+
+                    <td class="textRight">
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].Valor" value="@Items.ValorItem" />
+                        @string.Format(System.Globalization.CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", Convert.ToDecimal(Items.ValorItem))
+                    </td>
+
+                    <td class="textCenter">
+                        <input type="hidden" class="hiddenrow" name="Items[@qtd].DataConfirmacao" value="@Items.DataConfirmacaoItem" />
+                        @Html.DisplayFor(x => Items.DataConfirmacaoItem)
+                    </td>
+
+                    <td class="textCenter">
+                        <input type="checkbox" class="hiddenrow" name="Items[@qtd].TransmitirCheckBox" @(Items.TransmitirCheckBox ? "checked" : "") @((Items.SiafemStatus == "S" && Items.ProdespStatus == "S") ? "disabled='disabled' " : "" ) value="true" />
+                    </td>
+
+                    <td width="30" class="textCenter">
+                        @SidsHelper.StatusIcone(Items.SiafemStatus, Items.SiafemDescricao, "SIAFEM")
+                    </td>
+
+                    <td width="30" class="textCenter">
+                        @SidsHelper.StatusIcone(Items.ProdespStatus, Items.ProdespDescricao, "PRODESP")
+                    </td>
+                </tr>
+                qtd++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="13">Nenhum item encontrado.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<table>
+    <tr>
+        <td colspan="12">
+            <div class="row margT20">
+                <div class="form-group-sm col-md-6">
+                    @Html.Label("Agrupamento")
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp; @Html.Label(Model.AgrupamentoOB != 0 ? Model.AgrupamentoOB.ToString() : string.Empty)
+                </div>
+                <div class="form-group-sm col-md-6">
+                    @Html.Label("Valor(Total)")
+                    @Html.TextBox("Valor", string.Format(System.Globalization.CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", Convert.ToDecimal(Model.Valor)), new { @class = "form-control", disabled = "disabled" })
+                </div>
+            </div>
+
+        </td>
+    </tr>
+</table>
+<br />

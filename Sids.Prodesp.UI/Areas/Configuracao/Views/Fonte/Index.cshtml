@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Sids.Prodesp.Model.Entity.Configuracao.Fonte>
+
+@{
+
+    ViewBag.Title = "Listar Fontes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    var obj = "Fonte";
+    var urld = '@Url.Action("Delete", "Fonte")';
+
+    function Edit(fonteId) {
+        var online = navigator.onLine;
+
+        if (online == true) {
+        } else {
+            AbrirModal("Erro de conexão");
+            return false;
+        }
+
+        var dados = ReservaFonte(fonteId);
+        if (dados > 0) {
+            $.confirm({
+                text: "Existem reservas associadas à fonte, não é permitida a alteração.",
+                title: "Erro",
+                cancel: function (button) {
+                },
+                cancelButton: "Fechar",
+                confirmButton: ""
+            });
+        }
+        else if (dados == 0) {
+            var tipo = "a";
+            AbrirDetalhe('@Url.Action("Edit", "Fonte")' + '?id=' + fonteId + '&tipo=' + tipo);
+        } else {
+            AbrirModal(dados);
+        }
+        return false;
+    }
+</script>
+
+
+<link href="~/Content/DataTable/css/jquery.dataTables.min.css" rel="stylesheet" />
+<div class="col-md-12">
+    <h2>Pesquisa de Fontes</h2>
+    @Html.Partial("_Mensagem")
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="margT0">
+                <div class="row">
+
+                    <div class='row'>
+                        <div class="col-sm-10 col-lg-10 col-md-10">
+                            <h3 class="margT0 tituloItensPagina">Lista de Fontes</h3>
+                        </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                        </div>
+                    </div>
+
+                        <div class="col-sm-2 col-lg-2 col-md-2 form-group-sm form-group">
+                            <button type="button" id="Create" class="btn btn-sm btn-warning" onclick="javascript: window.location.href = '@Url.Action("Create", "Fonte", new {Area = "Configuracao"})';"><i class="glyphicon glyphicon-plus"></i> Cadastrar</button>
+                        </div>
+                    
+                    <div class='row row-filter'>
+                        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="margT0" />
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                    <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped table-responsive small">
+                        <thead>
+                            <tr>
+                                <th class="col-md-2">Número</th>
+                                <th class="col-md-8">Descrição</th>
+                                <th class="col-md-2" style="width:11%">Editar / Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Codigo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descricao)
+                                    </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-xs btn-info" data-button="Editar" title="Alterar" onclick="Edit(@item.Id)"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-xs btn-danger" data-button="Excluir" id="@item.Id" name="@item.Descricao" title="Excluir" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'Excluir', obj, '@item.Descricao',this)"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script src="~/Content/js/scriptFonte.js"></script>
+}
+
+
+
+
+
+

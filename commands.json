@@ -1,0 +1,9 @@
+{
+  "commands": {
+    "sonar-executar": {
+      "fileName": "cmd.exe",
+      "workingDirectory": ".",
+      "arguments": "/c sonar-executar.bat"
+    }
+  }
+}

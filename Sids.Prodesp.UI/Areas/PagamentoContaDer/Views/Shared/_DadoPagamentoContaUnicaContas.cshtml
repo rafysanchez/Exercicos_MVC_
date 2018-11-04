@@ -1,0 +1,85 @@
+﻿
+
+@using Sids.Prodesp.UI.Areas.PagamentoContaDer.Models
+
+@model DadoPagamentoContaUnicaContasViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var isPreparacaoDePagamento = controller == "ArquivoRemessa";
+}
+
+<div class="documentoGerador orgaoDespData ">
+
+    <div class="row documentoGerador">
+        <div class="col-md-12">
+            @*<h3 class="tituloItensPagina">Conta de Pagamento (Prodesp)</h3>*@
+            <h3 class="tituloItensPagina">Conta de Pagamento</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroBancoPagto, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroBancoPagto, new { @class = "form-control lockProdesp lockSiafem banco", @ReadOnly = true, @maxlength = 3 })
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroAgenciaPagto, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroAgenciaPagto, new { @class = "form-control lockProdesp lockSiafem agencia", @ReadOnly = true, @maxlength = 5 })
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroContaPagto, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroContaPagto, new { @class = "form-control lockProdesp lockSiafem ", @ReadOnly = true, @maxlength = 10 })
+            </div>
+        </div>
+    </div>
+
+@if (Model.StatusProdesp == "S")
+{
+
+    <div class="row">
+        @*Op quantidade e Valor Total*@
+        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback lockProdesp" style="width:20%;">
+            @Html.LabelFor(model => model.QuantidadeOpArquivo, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.QuantidadeOpArquivo, new { @class = "form-control lockProdesp lockSiafem ", @ReadOnly = true, @maxlength = "" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback lockProdesp">
+            @Html.LabelFor(model => model.QuantidadeDeposito, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.QuantidadeDeposito, new { @class = "form-control lockProdesp lockSiafem ", @ReadOnly = true, @maxlength = "" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback lockProdesp">
+            @Html.LabelFor(model => model.QuantidadeDocTed, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.QuantidadeDocTed, new { @class = "form-control lockProdesp lockSiafem ", @ReadOnly = true, @maxlength = "" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback lockProdesp">
+            @Html.LabelFor(model => model.ValorTotal, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorTotal, new { @class = "form-control lockProdesp lockSiafem real", @ReadOnly = true, @maxlength = "" })
+            </div>
+        </div>
+    </div>
+}
+
+</div>

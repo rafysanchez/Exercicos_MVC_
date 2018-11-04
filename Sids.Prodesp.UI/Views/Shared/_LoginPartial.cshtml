@@ -1,0 +1,15 @@
+﻿@if (Sids.Prodesp.Application.App.AutenticacaoService.EstaAutenticado())
+{
+    using (Html.BeginForm("LogOff", "Login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Olá " + Sids.Prodesp.Application.App.AutenticacaoService.GetNomeUsuarioLogado() + "!",
+            "Manage", "Login", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="/Login/EncerrarSessao">Sair</a></li>
+        </ul>
+    }
+}

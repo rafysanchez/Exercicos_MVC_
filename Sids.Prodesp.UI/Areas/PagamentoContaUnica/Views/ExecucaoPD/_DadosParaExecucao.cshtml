@@ -1,0 +1,63 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+@model DadoProgramacaoDesembolsoExecucaoViewModel
+
+@*<UGPagadora>200001</UGPagadora>
+    <GestaoPagadora>00001</GestaoPagadora>
+    <UGLiquidante>200102</UGLiquidante>
+    <GestaoLiquidante>00001</GestaoLiquidante>
+    <AnoAserpaga>2013</AnoAserpaga>
+    <NouP>N</NouP>
+    <NumPD>00445</NumPD*@
+
+@*<div class="row margT10">
+    <div class="form-group-sm col-md-2">
+        @Html.LabelFor(x => x.filtroMudapah.UnidadeGestora)
+        @Html.TextBoxFor(x => x.filtroMudapah.UnidadeGestora, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.filtroMudapah.UnidadeGestora)
+    </div>
+</div>*@
+
+<div class="row margT10">
+    <div class="form-group-sm col-md-2">
+        @Html.LabelFor(x => x.UGPagadora)
+        @Html.TextBoxFor(x => x.UGPagadora, new { @class = "form-control Ug" })
+        @Html.ValidationMessageFor(x => x.UGPagadora)
+    </div>
+    <div class="form-group-sm col-md-2">
+        @Html.LabelFor(x => x.GestaoPagadora)
+        @Html.TextBoxFor(x => x.GestaoPagadora, new { @class = "form-control gestao" })
+        @Html.ValidationMessageFor(x => x.GestaoPagadora)
+    </div>
+    <div class="form-group-sm col-md-2">
+        @Html.LabelFor(x => x.UGLiquidante)
+        @Html.TextBoxFor(x => x.UGLiquidante, new { @class = "form-control Ug" })
+        @Html.ValidationMessageFor(x => x.UGLiquidante)
+    </div>
+    <div class="form-group-sm col-md-2">
+        @Html.LabelFor(x => x.GestaoLiquidante)
+        @Html.TextBoxFor(x => x.GestaoLiquidante, new { @class = "form-control gestao" })
+        @Html.ValidationMessageFor(x => x.GestaoLiquidante)
+    </div>
+    <div class="form-group-sm col-md-3">
+        @Html.LabelFor(x => x.TipoExecucao)
+        @Html.DropDownListFor(x=>x.TipoExecucao, new SelectList(ViewBag.TiposExecucao, "Codigo", "Descricao"), "SELECIONE", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.TipoExecucao)
+    </div>
+    @*<div class="form-group-sm col-md-4">
+        @Html.Label("Forma de Pagamento")
+        @Html.DropDownListFor(x => x.TipoPagamento, new SelectList(ViewBag.TiposPagamento, "Codigo", "Descricao"), "SELECIONE", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.TipoPagamento)
+    </div>*@
+</div>
+@*<div class="row margT20">
+    <div class="form-group-sm col-md-2">
+        @Html.LabelFor(x => x.UnidadeGestora)
+        @Html.TextBoxFor(x => x.UnidadeGestora, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.UnidadeGestora, String.Empty, new { @class= "has-error" })
+    </div>
+    <div class="form-group-sm col-md-2">
+        @Html.LabelFor(x => x.Gestao)
+        @Html.TextBoxFor(x => x.Gestao, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Gestao, String.Empty, new { @class = "has-error" })
+    </div>
+</div>*@

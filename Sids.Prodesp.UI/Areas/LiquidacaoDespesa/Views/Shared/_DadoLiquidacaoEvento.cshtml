@@ -1,0 +1,100 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model DadoLiquidacaoEventoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+<div id="DadoLiquidacaoEvento" class="siafisico">
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+        @if(controller == "Subempenho") { 
+        <div id="divNumeroEvento">
+            <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback" style="width:11%">
+                @Html.LabelFor(model => model.NumeroEvento, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.NumeroEvento, new { @class = "form-control lockSiafisico lockSiafem eventoSubempenho", @maxlength = 6 })
+                </div>
+            </div>
+        </div>
+        }
+        else
+        if (controller == "SubempenhoCancelamento")
+        {
+            <div id="divNumeroEvento">
+                <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+                    @Html.LabelFor(model => model.NumeroEvento, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                    <div class="input-group-sm">
+                        @Html.TextBoxFor(model => model.NumeroEvento, new { @class = "form-control lockSiafisico lockSiafem eventoAnulacao", @maxlength = 6 })
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div id="divNumeroEvento">
+                <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+                    @Html.LabelFor(model => model.NumeroEvento, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                    <div class="input-group-sm">
+                        @Html.TextBoxFor(model => model.NumeroEvento, new { @class = "form-control lockSiafisico lockSiafem evento", @maxlength = 6 })
+                    </div>
+                </div>
+            </div>
+        }
+        <div id="divInscricaoEvento">
+            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                @Html.LabelFor(model => model.InscricaoEvento, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.InscricaoEvento, new { @class = "form-control lockSiafisico lockSiafem", @maxlength = 11 })
+                </div>
+            </div>
+        </div>
+       
+        <div id="divClassificacao">
+            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback" style="width:12%">
+                @Html.LabelFor(model => model.Classificacao, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.Classificacao, new { @class = "form-control lockSiafisico lockSiafem eventClass", @maxlength = 9 })
+                </div>
+            </div>
+        </div>
+
+        <div id="DivFonteId">
+            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback" style="width:12%">
+                @Html.LabelFor(model => model.Fonte, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.Fonte, new { @class = "form-control lockSiafisico lockSiafem eventFonte", @maxlength = 9 })
+                </div>
+            </div>
+        </div>
+
+        <div id="divValorUnitario">
+            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                @Html.LabelFor(model => model.ValorUnitario, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.ValorUnitario, new { @class = "form-control lockSiafisico lockSiafem real", @id = "ValorUnitario", @maxlength = 17 })
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="input-group-btn">
+            <div id="divNewEvento" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                <button id="newEvento" type="button" class="btn btn-primary btn-sm lockSiafisico lockSiafem"><i class="fa fa-plus"></i>  Adicionar</button>
+            </div>
+
+            <div id="divSaveEvento" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                <button id="saveEvento" type="button" class="btn btn-primary btn-sm lockSiafisico lockSiafem"><i class="fa fa-save"></i>  Salvar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

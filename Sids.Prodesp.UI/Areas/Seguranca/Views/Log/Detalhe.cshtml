@@ -1,0 +1,89 @@
+﻿@model Sids.Prodesp.UI.Models.Log.LogViewModel
+
+
+@{
+    ViewBag.Title = "Consultar Log de Transações";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="divContent" class="col-md-12">
+    <h2>Visualizar Log de Transações</h2>
+
+    <div id="divPainelCadastrar" class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Funcionalidade:</label>
+                    @Html.TextBox("txtFuncionalidade", Model.Funcionalidade, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Ação:</label>
+                    @Html.TextBox("txtAcao", Model.Acao, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Resultado da Ação:</label>
+                    @Html.TextBox("txtResultado", Model.Resultado, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Usuário:</label>
+                    @Html.TextBox("txtUsuario", Model.Usuario, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Data:</label>
+                    @Html.TextBox("txtData", Model.Data, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">IP:</label>
+                    @Html.TextBox("txtIP", Model.IP, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Url:</label>
+                    @Html.TextBox("txtUrl", Model.Url, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Navegador:</label>
+                    @Html.TextBox("txtNavegador", Model.Navegador, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Argumento:</label>
+                    @Html.TextBox("txtArgumento", Model.Argumento, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Versão do Sistema:</label>
+                    @Html.TextBox("txtVersao", Model.Versao, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Terminal:</label>
+                    @Html.TextBox("txtTerminal", Model.Terminal, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-lg-7 col-md-7 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Descrição:</label>
+                    @Html.TextArea("txtDescricao", Model.Descricao, new { @class = "form-control", @rows = "4", @cols = "77" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-lg-7 col-md-7 form-group-sm form-group">
+                    <label class="control-label label-form-DER">Xml:</label>
+                    @Html.TextArea("txtXml", Model.Xml, new { @class = "form-control", @rows = "4", @cols = "77" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                    <button class="btn btn-sm btn-primary" onclick="javascript: window.history.back();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script>
+        var obj = "Log";
+        $(document).ready(function () {
+            IniciarCreateEdit(obj);
+        });
+    </script>
+}

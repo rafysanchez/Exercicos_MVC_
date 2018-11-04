@@ -1,0 +1,103 @@
+﻿@{
+    string versao = ViewBag.Versao;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11, IE=10, IE=9, IE=8, chrome=1" />
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/android-icon-36x36.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11, IE=10, IE=9, IE=8, chrome=1" />
+    @Styles.Render("~/bundles/styles1")
+</head>
+<body>
+
+    <div id="login-overlay" class="modal-dialog">
+        <div class="modal-content centering-login">
+            <div class="modal-body background-login">
+                <!-- Modal -->
+                @Html.Partial("_modalSalvementoEfetuado")
+                @Html.Partial("_modalMessage")
+                <div class="row">
+                    <div class="hidden-lg hidden-md hidden-sm col-xs-12">
+                        <div class="text-center boxLogomarca-login-sm">
+                            <img src="~/Content/images/logo_der.png" width="100" /><br />
+                            <span class="small"><b>Departamento de Estradas de Rodagem</b></span>
+                        </div>
+                        <div class="text-center">
+                            <label class="small">Diretoria de Planejamento</label> /
+                            <label class="small">DP/CIP</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div style="width: 100%; text-align: center;">
+                            <p class="margB0"><b>SISTEMA DE INTEGRAÇÃO </b><br><b>DER-SIAFEM</b><br /></p><span><b>SIDS</b></span>
+
+                        </div>
+                        <div id="divLogin" class="well margB0 backgroud-form-login">
+                            @using (Html.BeginForm("Acessar", "Login", FormMethod.Post, new { @id = "loginForm" }))
+                            {
+                                <div class="form-group-sm margB0 form-group has-feedback">
+                                    <div class="input-group-sm">
+                                        <label for="username" class="control-label label-form-DER">Login</label>
+                                        <input type="text" class="form-control" id="txtLogin" name="txtLogin" value="" title="Por favor, digite seu Login" maxlength="100">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group-sm form-group has-feedback">
+                                    <div class="input-group-sm">
+                                        <label for="password" class="control-label label-form-DER">Senha</label>
+                                        <input type="password" class="form-control" id="txtSenha" name="txtSenha" value="" title="Por favor, digite sua senha" maxlength="12" autocomplete="off">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="margT10">
+                                    <button id="Acessar" type="submit" class="btn btn-success btn-block">Acessar</button>
+                                </div>
+                            }
+                            <label class="label-versao-login">Versão: @ViewContext.Controller.GetType().Assembly.GetName().Version</label>
+                        </div>
+                        <div id="divCaptcha" style="display:none" class="well margB0 backgroud-form-login">
+                            <div style="margin: 0 auto; width: 50%;">
+                                <div class="g-recaptcha" data-sitekey="6Lek_gcUAAAAAMZtboXTjXiSEkg209OhXI3RDxQE" data-callback='ValidadarCaptcha' data-size="compact" style="transform:scale(1.2);transform-origin:180% 0%;"></div>
+                            </div>
+                            <label class="label-versao-login"></label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs">
+                        <div class="text-center boxLogomarca-login">
+                            <img src="~/Content/images/logo_der.png" width="150" /><br />
+                            <span class="small"><b>Departamento de Estradas de Rodagem</b></span>
+                            <img src="~/Content/images/logo_prodesp.png" class="margT10" width="90" />
+                        </div>
+                        <div class="text-right">
+                            <label>Diretoria de Planejamento</label><br />
+                            <label>DP/CIP</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divLogoProdesp">
+
+        </div>
+    </div>
+    <!-- jQuery -->
+    @*@Scripts.Render("~/bundles/jquery")*@
+    <!-- Bootstrap Core JavaScript -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/scripts1")
+
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/js/scriptLogin.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?hl=pt-BR'></script>
+    <script>
+        var urlVoltar = '@Url.Action("Index", "Home", new { Area = ""}, null)';
+    </script>
+</body>
+</html>

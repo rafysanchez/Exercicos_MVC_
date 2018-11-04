@@ -1,0 +1,397 @@
+﻿@using Sids.Prodesp.Model.Extension
+@using Sids.Prodesp.UI.Areas.Reserva.Models
+@model Sids.Prodesp.Model.Entity.Reserva.Reserva
+
+@{
+    IReservaViewModel filtro = ViewBag.Filtro ?? new ReservaViewModel();
+    var filtroPrograma = filtro.Programas.Where(x => x.Ano == Model.AnoExercicio).OrderBy(x => x.Cfp).Select(x => new SelectListItem { Selected = (Model.Programa == x.Codigo), Value = x.Codigo.ToString(), Text = x.Cfp.Formatar("00.000.0000.0000") + " " + x.Descricao });
+    var filtroPtres = filtro.Programas.Where(x => x.Ano == Model.AnoExercicio).OrderBy(x => x.Ptres).Select(x => new SelectListItem { Selected = (filtro.Ptres == x.Ptres), Value = x.Ptres, Text = x.Ptres });
+    var prgs = filtro.Programas.Where(x => x.Ano == Model.AnoExercicio).Select(x => x.Codigo).ToList();
+    var filtroNatureza = filtro.Estrutura.Where(x => prgs.Contains((int)x.Programa) && (x.Programa == Model.Programa || !Model.Programa.HasValue)).OrderBy(x => x.Natureza).Select(x => new SelectListItem { Selected = x.Codigo == Model.Estrutura, Value = x.Codigo.ToString(), Text = string.Concat(x.Natureza.Formatar("0.0.00.00"), " - ", x.Fonte) });
+    string msgRetorno = ViewBag.MsgRetorno;
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title = (Model.Codigo > 0 ? (tipo == "a" ? "Alterar" : "Visualizar") : "Cadastrar") + " Reservas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    var controller = @Html.Raw(Json.Encode(controller));
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+    var urlVoltar = '@Url.Action("AtualizarIndex", "Reserva", new { Area = "Reserva" }, null)';
+    var ModelItem = @Html.Raw(Json.Encode(Model));
+    var estruturaInfo = @Html.Raw(Json.Encode(ViewBag.Filtro.Estrutura));
+    var programasInfo = @Html.Raw(Json.Encode(ViewBag.Filtro.Programas));
+    var selecionado = @Html.Raw(Json.Encode(Model.Programa));
+    var regionais = @Html.Raw(Json.Encode(filtro.Regional));
+</script>
+
+<div id="divContent" class="col-md-12">
+    <h2>Cadastrar Reservas</h2>
+    @Html.AntiForgeryToken()
+    <div id="divPainelCadastrar" class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("DownloadFile", "Reserva", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.HiddenFor(model => model.Codigo, new { @id = "Codigo" })
+                <div class="row">
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>N° Reserva Prodesp</label>
+                        @Html.TextBoxFor(model => model.NumProdesp, new { @class = "form-control prodesp", @ReadOnly = "True" })
+                    </div>
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm" style="width: 20%">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>N° Reserva SIAFEM/SIAFISICO</label>
+                        @Html.TextBoxFor(model => model.NumSiafemSiafisico, new { @class = "form-control siafem siafisico", @ReadOnly = "True" })
+                    </div>
+                </div>
+                if (Model.Codigo > 0)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm" id="DataCadasto">
+                            <label class="control-label label-form-DER"><span class="text-danger"></span>Data de Cadastramento</label>
+                            @Html.TextBoxFor(model => model.DataCadastro, new { @class = "form-control data prodesp", @maxlength = "10", @ReadOnly = "True" })
+                        </div>
+                        @if ((bool)Model.TransmitidoSiafem || (bool)Model.TransmitidoSiafisico)
+                        {
+                            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm" style="width: 19%" id="DataSiafem">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Data de Transmissão SIAFEM</label>
+                                @Html.TextBoxFor(model => model.DataTransmissaoSiafemSiafisico, new { @class = "form-control data siafem siafisico", @maxlength = "10", @ReadOnly = "True" })
+                            </div>
+                        }
+                        @if (Model.TransmitidoProdesp == true)
+                        {
+                            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm" style="width: 19%" id="DataProdesp">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Data de Transmissão Prodesp</label>
+                                @Html.TextBoxFor(model => model.DataTransmissaoProdesp, new { @class = "form-control data prodesp", @maxlength = "10", @ReadOnly = "True" })
+                            </div>
+                        }
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Ident. do Contrato</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(model => model.Contrato, new { @class = "form-control prodesp contrato", @maxlength = "13" })
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary btn-sm siafisico prodesp siafem" onclick="ConsultarContrato()" type="button">Consultar</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Tipo de Reserva</label>
+                        <div class="input-group-sm">
+                            @Html.DropDownList("TipoReserva", new SelectList(filtro.TipoReservas, "Codigo", "Descricao", @Model.Tipo), "Selecione", new { @class = "form-control siafisico prodesp siafem" })
+                        </div>
+                    </div>
+                    <div id="divOc" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>OC</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Oc, new { @class = "form-control siafisico oc", @maxlength = "11" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-4 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Nº Processo</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Processo, new { @class = "form-control prodesp siafem siafisico NoEspecial", @maxlength = "15" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Orgão(Regional)</label>
+                        <div class="input-group-sm">
+                            @Html.DropDownList("Regional", new SelectList(filtro.Regional, "Id", "Descricao", @Model.Regional), "Selecione", new { @class = "form-control prodesp siafisico siafem" })
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback" style="width: 12%">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Ano (Exercício)</label>
+                        <div class="input-group-sm">
+                            @Html.DropDownList("AnoExercicio", new SelectList(filtro.Anos, "Value", "Text", @Model.AnoExercicio), "Selecione", new { @class = "form-control siafem prodesp siafisico", @id = "AnoExercicio" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback" style="width: 12%">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>PTRES</label>
+                        <div class="input-group-sm">
+                            @Html.DropDownList("Ptres", filtroPtres, "Selecione", new { @class = "form-control prodesp siafem siafisico", @id = "Ptres" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback" style="width: 30%">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>C.F.P(Programa de Trabalho)</label>
+                        <div class="input-group-sm">
+                            @Html.DropDownList("Programa", filtroPrograma, "Selecione", new { @class = "form-control prodesp siafem siafisico", @id = "Programa" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>C.E.D(Natureza - Fonte)</label>
+                        <div class="input-group-sm">
+                            @Html.DropDownList("Natureza", filtroNatureza, "Selecione", new { @class = "form-control prodesp siafem siafisico", @id = "Natureza" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Cod. Aplicação/Obra</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Obra, new { @class = "form-control prodesp obra", @id = "Obra", @maxlength = "8" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>UGO (Unidade Gestora Orçamentaria)</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Ugo, new { @class = "form-control siafem siafisico", @id = "Ugo", @maxlength = "6", @ReadOnly = "True" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>UO (Gestão)</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Uo, new { @class = "form-control siafem", @id = "Uo", @maxlength = "5", @ReadOnly = "True" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Evento</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Evento, new { @class = "form-control siafem siafisico", @id = "Evento", @maxlength = "6", @ReadOnly = "True" })
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Data de Emissão</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.DataEmissao, new { @class = "form-control data datepicker siafem prodesp siafisico", @maxlength = "10" })
+                        </div>
+                    </div>
+                </div>
+
+                if (msgRetorno != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm form-group has-feedback">
+                            <div id="retornoTransmissao">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Msg Retornada da Transmissão</label>
+                                <div class="input-group-sm">
+                                    @Html.TextArea("MsgRetorno", msgRetorno, new { @class = "form-control siafem prodesp siafisico", @ReadOnly = "True" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+
+                <div class="panel panel-default" style="width: 50%">
+                    <div style="margin-left: 3%" class="form-group-sm form-group has-feedback ">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group"></div>
+                            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Valor</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group-sm" id="Valores" name="Valores">
+                            <div class="row value">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Janeiro</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes01", filtro.Mes1, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "01", })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Fevereiro</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes02", filtro.Mes2, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "02" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Março</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes03", filtro.Mes3, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "03" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Abril</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes04", filtro.Mes4, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "04" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Maio</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes05", filtro.Mes5, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "05" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Junho</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes06", filtro.Mes6, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "06" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Julho</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes07", filtro.Mes7, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "07" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Agosto</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5 form-group-sm ">
+                                    @Html.TextBox("Mes08", filtro.Mes8, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "08" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Setembro</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes09", filtro.Mes9, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "09" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Outubro</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes10", filtro.Mes10, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "10" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Novembro</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes11", filtro.Mes11, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "11" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Dezembro</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Mes12", filtro.Mes12, new { @class = "form-control siafem prodesp siafisico real", @id = "Valor", @maxlength = "20", name = "12" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm ">
+                                    <label class="control-label label-form-DER"><span class="text-danger"></span>Total</label>
+                                </div>
+                                <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm ">
+                                    @Html.TextBox("Total", filtro.Mes.Sum(x => x.ValorMes).ToString(), new { @class = "form-control siafem prodesp siafisico", @id = "Total", @maxlength = "20", name = "Total", @ReadOnly = "True"})
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-4 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Autorizado no Processo Supra as Folhas</label>
+                        @Html.TextBoxFor(model => model.AutorizadoSupraFolha, new { @class = "form-control prodesp NoEspecial", @maxlength = "4" })
+                    </div>
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Origem do Recurso(Fonte)</label>
+                        @Html.DropDownList("Fonte", new SelectList(filtro.Fonte, "Id", "Codigo", @Model.OrigemRecurso), "", new { @class = "form-control prodesp siafem", @id = "Fonte" })
+                    </div>
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Destino do Recurso</label>
+                        @Html.DropDownList("Fontes", new SelectList(filtro.Fontes, "Value", "Text", Model.DestinoRecurso), "", new { @class = "form-control prodesp", @id = "Fontes" })
+                    </div>
+                    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Cod. Especific. Despesa (Prodesp)</label>
+                        @Html.TextBoxFor(model => model.EspecificacaoDespesa, new { @class = "form-control prodesp expec", @maxlength = "3", @id = "EspecDespesa" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group form-group-sm has-feedback col-sm-12 col-lg-2 col-md-2" style="width: 760px; ">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Especificação da Despesa (Prodesp)</label>
+                        <div id="DescEspecificacaoDespesa" name="DescEspecificacaoDespesa" class="input-group-sm txtarea" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;">
+                            <input type="text" class="Proximo prodesp area" maxlength="79"/>
+                            <input type="text" class="Proximo prodesp area" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group form-group-sm has-feedback col-sm-12 col-lg-2 col-md-2" style="width: 760px; ">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Observações (SIAFEM/SIAFISICO)</label>
+                        <div id="Observacao" name="Observacao" class="form-group" style="font-family:monospace; border: 1px solid #ccc; border-radius: 4px;">
+                            <input type="text" class="Proximo .label-form-field siafem siafisico area NoEspecial" maxlength="77" />
+                            <input type="text" class="Proximo .label-form-field siafem siafisico area NoEspecial" maxlength="77" />
+                            <input type="text" class="Proximo .label-form-field siafem siafisico area NoEspecial" maxlength="77" />
+                            @*<input type="text" class="Proximo .label-form-field siafem area" maxlength="79" />*@
+                        </div>
+                    </div>
+                </div>
+
+
+                @Html.Partial("~/Views/Shared/_ConsultaAssinatura.cshtml")
+
+                <div class="row margT10" style="position: relative; float: left">
+                    <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <label class="label-inline margL10"><input type="checkbox" class="prodesp" id="transmitirProdesp" name="transmitirSIAFEM" @(Model.TransmitirProdesp == true || Model.Codigo == 0 ? "checked='checked'" : "" ) /> Prodesp</label>
+                            <label class="label-inline margL10"><input type="checkbox" class="siafem siafisico" id="transmitirSIAFEM" value="1" name="transmitirSIAFEM" @(Model.TransmitirSiafem == true ? "checked='checked'" : "" ) /> SIAFEM</label>
+                            <label class="label-inline margL10"><input type="checkbox" class="siafem siafisico" id="transmitirSIAFISICO" value="2" name="transmitirSIAFEM" @(Model.TransmitirSiafisico == true ? "checked='checked'" : "" ) /> SIAFISICO</label>
+                        </div>
+                        <span>(Selecione a opção na qual você deseja Integrar.)</span>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-12 col-md-12" style="position: relative;">
+                    @if (Model.TransmitidoProdesp == false || (Model.TransmitidoSiafem == false && Model.TransmitidoSiafisico == false))
+                    {
+                        <button id="btnCancelar" type="button" class="btn btn-sm"><i class="fa fa-share"></i> Cancelar</button>
+                        <button id="btnSalvar" type="button" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Salvar</button>
+                        <button id="btnTransmitir" type="button" data-button='Transmitir' class="btn btn-sm btn-primary"><i class="fa fa-share"></i> Transmitir</button>
+
+                    }
+                    else
+                    {
+                        <button type="button" id="btnAtualizarIndex" class="btn btn-sm btn-primary" onclick="javascript: AtualizarIndex();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                    }
+                    <button type="button" id="btnVoltar" onclick="javascript: AtualizarIndex();"></button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section script{
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/js/Consultas.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+    <script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+    <script src="~/Content/js/scriptImpressao.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+    <script src="~/Content/js/Reservas/Reserva.js"></script>
+}

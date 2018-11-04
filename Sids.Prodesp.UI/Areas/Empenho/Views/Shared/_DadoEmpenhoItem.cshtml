@@ -1,0 +1,100 @@
+﻿@using Sids.Prodesp.UI.Areas.Empenho.Models
+
+@model DadoEmpenhoItemViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div class="row siafem siafisico">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina">Dados do Item</h3>
+        <hr class="margT10" />
+    </div>
+
+
+</div>
+
+<div class="row siafem siafisico">
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback siafem">
+        @Html.LabelFor(model => model.DescricaoUnidadeMedida, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.DescricaoUnidadeMedida, new { @class = "form-control lockSiafem", @maxlength = 4 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback siafisico">
+        @Html.LabelFor(model => model.CodigoItemServico, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.CodigoItemServico, new { @class = "form-control lockSiafisico", @maxlength = 9 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback siafisico" style="width:20%">
+        @Html.LabelFor(model => model.CodigoUnidadeFornecimentoItem, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.CodigoUnidadeFornecimentoItem, new { @class = "form-control lockSiafisico", @maxlength = 5 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback siafisico">
+        @Html.LabelFor(model => model.QuantidadeMaterialServico, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.QuantidadeMaterialServico, new { @class = "form-control lockSiafisico qtdeMaterialServico", @maxlength = 10 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback siafisico">
+        @Html.LabelFor(model => model.ValorUnitario, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.ValorUnitario, new { @class = "form-control lockSiafisico", @maxlength = 18 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.ValorTotal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.ValorTotal, new { @class = "form-control lockSiafem lockSiafisico", @maxlength = 23 })
+        </div>
+    </div>
+</div>
+
+<div class="row siafem siafisico">
+    <div class="col-sm-12 col-lg-7 col-md-7 form-group-sm form-group has-feedback siafem">
+        @Html.LabelFor(model => model.DescricaoItemSiafem, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            <div id="DescricaoItemSiafem" name="DescricaoItemSiafem" class="input-group-sm txtarea siafem" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;">
+                <input type="text" class="Proximo lockSiafem area" maxlength="25" />
+                <input type="text" class="Proximo lockSiafem area" maxlength="25" />
+                <input type="text" class="Proximo lockSiafem area" maxlength="25" />
+                <input type="text" class="Proximo lockSiafem area" maxlength="25" />
+                <input type="text" class="Proximo lockSiafem area" maxlength="25" />
+                <input type="text" class="Proximo lockSiafem area" maxlength="25" />
+                <input type="text" class="Proximo lockSiafem area" maxlength="25" />
+                <input type="text" class="Proximo lockSiafem area" maxlength="25" />
+                <input type="text" class="Proximo lockSiafem area" maxlength="25" />
+                <input type="text" class="Proximo lockSiafem area" maxlength="25" />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-7 col-md-7 form-group-sm form-group has-feedback siafisico">
+        @Html.LabelFor(model => model.DescricaoJustificativaPreco, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            <div id="DescricaoJustificativaPreco" name="DescricaoJustificativaPreco" class="input-group-sm txtarea siafisico" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;">
+                <input type="text" class="Proximo lockSiafisico area" maxlength="50" />
+                <input type="text" class="Proximo lockSiafisico area" maxlength="50" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row siafisico">
+    <div id="divNew" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+        <button id="new" type="button" class="btn btn-primary btn-sm lockSiafisico"><i class="fa fa-plus"></i>  Adicionar</button>
+    </div>
+
+    <div id="divSave" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+        <button id="save" type="button" class="btn btn-primary btn-sm lockSiafisico"><i class="fa fa-save"></i>  Salvar</button>
+    </div>
+</div>

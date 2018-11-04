@@ -1,0 +1,49 @@
+﻿@model Sids.Prodesp.Model.Entity.Configuracao.Fonte
+
+    @{
+        var tipo = Request.QueryString["tipo"];
+
+        ViewBag.Title = (Model.Id > 0 ? (tipo == "a" ? "Alterar" : "Visualizar") : "Cadastrar") + " Fonte";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    
+@section script{
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/js/scriptFonte.js"></script>
+    <script>
+        var urlVoltar = '@Url.Action("AtualizarIndex", "Fonte", new { Area = "Configuracao" }, null)';
+    </script>
+}
+<div id="divContent" class="col-md-12">
+    <h2>Cadastrar Fonte</h2>
+    @Html.AntiForgeryToken()
+    <div id="divPainelcadastrar" class="panel panel-default">
+        <div class="panel-body">
+          @using (Html.BeginForm("Save", "Fonte", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.HiddenFor(model => model.Id, new { @id = "Id" })
+                <div class="row">
+                    <div class="col-sm-12 col-md-2  form-group-sm form-group has-feedback">
+                       <label class="control-label label-form-DER"><span class="text-danger">* </span>Número</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Codigo, new { @class = "form-control", @id = "Codigo", @maxlength = "9"})
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger">* </span>Descrição</label>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control",@id= "Descricao",  @maxlength = "45" })
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                        <button type="button" id="btnCancelar" class="btn btn-sm btn-danger"><i class="fa fa-close">&nbsp;</i>Cancelar</button>
+                        <button type="submit" id="btnSalvar" class="btn btn-sm btn-success"><i class="fa fa-save">&nbsp;</i>Salvar</button>
+                    </div>
+                </div>
+          }
+         </div>
+    </div>
+ </div>

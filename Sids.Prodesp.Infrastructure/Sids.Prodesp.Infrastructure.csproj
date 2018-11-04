@@ -1,0 +1,666 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A2558235-C057-49FB-82FF-D26675319826}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sids.Prodesp.Infrastructure</RootNamespace>
+    <AssemblyName>Sids.Prodesp.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG; </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Infrastructure.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Infrastructure.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Homologacao|AnyCPU'">
+    <OutputPath>bin\Homologacao\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Infrastructure.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Producao|AnyCPU'">
+    <OutputPath>bin\Producao\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Infrastructure.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppConfig.cs" />
+    <Compile Include="Base\BaseDal.cs" />
+    <Compile Include="DataBase\Configuracao\DestinoDal.cs" />
+    <Compile Include="DataBase\Configuracao\MesDal.cs" />
+    <Compile Include="DataBase\Configuracao\MunicipioDal.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoDal.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoItemDal.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoMesDal.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoCancelamentoDal.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoReforcoDal.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoCancelamentoItemDal.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoReforcoItemDal.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoCancelamentoMesDal.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoReforcoMesDal.cs" />
+    <Compile Include="DataBase\Empenho\AquisicaoTipo.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoCancelamentoTipoDal.cs" />
+    <Compile Include="DataBase\Empenho\OrigemMaterialDal.cs" />
+    <Compile Include="DataBase\Empenho\LicitacaoDal.cs" />
+    <Compile Include="DataBase\Empenho\ModalidadeDal.cs" />
+    <Compile Include="DataBase\Empenho\EmpenhoTipoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\CodigoEventoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\ObraTipoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\RapInscricaoNotaDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\ServicoTipoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\SubempenhoCancelamentoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\SubempenhoCancelamentoEventoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\SubempenhoCancelamentoItemDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\SubempenhoCancelamentoNotaDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\RapRequisicaoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\RapAnulacaoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\RapInscricaoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\RapRequisicaoNotaDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\RapAnulacaoNotaDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\SubempenhoNotaDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\NaturezaTipoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\EventoTipoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\CenarioTipoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\SubempenhoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\SubempenhoEventoDal.cs" />
+    <Compile Include="DataBase\LiquidacaoDespesa\SubempenhoItemDal.cs" />
+    <Compile Include="DataBase\Movimentacao\MovimentacaoMesDal.cs" />
+    <Compile Include="DataBase\Movimentacao\MovimentacaoDocumentoTipoDal.cs" />
+    <Compile Include="DataBase\Movimentacao\MovimentacaoTipoDal.cs" />
+    <Compile Include="DataBase\Movimentacao\MovimentacaoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\AutorizacaoDeOBItemDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\AutorizacaoDeOBDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\CodigoBarraBoletoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\CodigoBarraTaxaDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\CredorDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\DesdobramentoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ListaRtDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ListaReDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ListaBoletosDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ListaCodigoBarrasDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ImpressaoRelacaoRERTDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\PreparacaoPagamentoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\PreparacaoPagamentoTipoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ProgramacaoDesembolsoAgrupamentoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ProgramacaoDesembolsoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ProgramacaoDesembolsoEventoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ProgramacaoDesembolsoExecucaoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ProgramacaoDesembolsoExecucaoItemDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ProgramacaoDesembolsoTipoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ReclassificacaoRetencaoTipoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ParaRestoPagarDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\DesdobramentoTipoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\DocumentoTipoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\IdentificacaoDesdobramentoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ReclassificacaoRetencaoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ReterDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ReclassificacaoRetencaoEventoDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\ReclassificacaoRetencaoNotaDal.cs" />
+    <Compile Include="DataBase\PagamentoContaUnica\TipoBoletoDal.cs" />
+    <Compile Include="DataBase\PagamentoDer\ArquivoRemessaDal.cs" />
+    <Compile Include="DataBase\PagamentoDer\ConfirmacaoPagamentoDal.cs" />
+    <Compile Include="DataBase\PagamentoDer\ConfirmacaoPagamentoItemDal.cs" />
+    <Compile Include="DataBase\PagamentoDer\NlParametrizacaoDal.cs" />
+    <Compile Include="DataBase\PagamentoDer\NlParametrizacaoDespesaDal.cs" />
+    <Compile Include="DataBase\PagamentoDer\NlParametrizacaoFormaGerarNlDal.cs" />
+    <Compile Include="DataBase\PagamentoDer\NlParametrizacaoNlTipoDal.cs" />
+    <Compile Include="DataBase\PagamentoDer\NlParametrizacaoDespesaTipoDal.cs" />
+    <Compile Include="DataBase\PagamentoDer\NlParametrizacaoEventoDal.cs" />
+    <Compile Include="DataBase\Reserva\ReservaCancelamentoMesDal.cs" />
+    <Compile Include="DataBase\Reserva\ReservaReforcoMesDal.cs" />
+    <Compile Include="DataBase\Reserva\ReservaCancelamentoDal.cs" />
+    <Compile Include="DataBase\Reserva\ReservaReforcoDal.cs" />
+    <Compile Include="DataBase\Configuracao\EstruturaDal.cs" />
+    <Compile Include="DataBase\Configuracao\FonteDal.cs" />
+    <Compile Include="DataBase\Configuracao\ProgramaDal.cs" />
+    <Compile Include="DataBase\Reserva\ReservaDal.cs" />
+    <Compile Include="DataBase\Reserva\ReservaMesDal.cs" />
+    <Compile Include="DataBase\Reserva\TipoReservaDal.cs" />
+    <Compile Include="DataBase\Seguranca\AcaoDal.cs" />
+    <Compile Include="DataBase\Seguranca\AreaDal.cs" />
+    <Compile Include="DataBase\Reserva\ChaveCicsmoDal.cs" />
+    <Compile Include="DataBase\Seguranca\FuncionalidadeAcaoDal.cs" />
+    <Compile Include="DataBase\Seguranca\Moq\SiafemUsuarioDal.cs" />
+    <Compile Include="DataBase\Seguranca\PerfilAcaoDal.cs" />
+    <Compile Include="DataBase\Seguranca\RegionalDal.cs" />
+    <Compile Include="DataBase\Seguranca\SistemaDal.cs" />
+    <Compile Include="Extensions\AssemblyExtensions.cs" />
+    <Compile Include="Helpers\DataHelperProdespEmpenho.cs" />
+    <Compile Include="Helpers\DataHelperProdespLiquidacaoDespesa.cs" />
+    <Compile Include="Helpers\DataHelperProdespPagamentoContaUnica.cs" />
+    <Compile Include="Helpers\DataHelperProdespMovimentacao.cs" />
+    <Compile Include="Helpers\DataHelperProdespPagementoContaDer.cs" />
+    <Compile Include="Helpers\DataHelperProdespReserva.cs" />
+    <Compile Include="Helpers\DataHelperSiafem.cs" />
+    <Compile Include="Helpers\PularCertificadoSefaz.cs" />
+    <Compile Include="Helpers\XmlDocumentExtensions.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Empenho\ProdespEmpenhoWs.cs" />
+    <Compile Include="Services\Empenho\SiafemEmpenhoWs.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\ProdespLiquidacaoDespesaWs.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\SiafemLiquidacaoDespesaWs.cs" />
+    <Compile Include="Services\Moq\RecebeMSG.cs" />
+    <Compile Include="Services\CommonWs.cs" />
+    <Compile Include="DataBase\Seguranca\MenuDal.cs" />
+    <Compile Include="DataBase\Seguranca\MenuItemDal.cs" />
+    <Compile Include="DataBase\Seguranca\PerfilDal.cs" />
+    <Compile Include="DataBase\Seguranca\PerfilUsuarioDal.cs" />
+    <Compile Include="DataBase\Seguranca\PerfilFuncionalidadeDal.cs" />
+    <Compile Include="DataBase\Seguranca\FuncionalidadeDal.cs" />
+    <Compile Include="DataBase\Seguranca\UsuarioDal.cs" />
+    <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Helpers\DateTimeExtension.cs" />
+    <Compile Include="Log\LogError.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Ad.cs" />
+    <Compile Include="Security\Facebook.cs" />
+    <Compile Include="Security\SSO.cs" />
+    <Compile Include="Security\Twitter.cs" />
+    <Compile Include="Services\Movimentacao\ProdespMovimentacaoWs.cs" />
+    <Compile Include="Services\Movimentacao\SiafemMovimentacaoWs.cs" />
+    <Compile Include="Services\PagamentoContaDer\ProdespPagamentoContaDerWs.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ProdespPagamentoContaUnicaWs.cs" />
+    <Compile Include="Services\PagamentoContaUnica\SiafemPagamentoContaUnicaWs.cs" />
+    <Compile Include="Services\Reserva\ProdespReservaWs.cs" />
+    <Compile Include="Services\Reserva\SiafemReservaWs.cs" />
+    <Compile Include="Services\Seguranca\SiafemSegurancaWs.cs" />
+    <Compile Include="Web References\ProdespEmpenho\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProdespLiquidacaoDespesa\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProdespMovimentacao\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProdespPagamentoContaDer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProdespPagtoContaUnica\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProdespReserva\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\siafemProd\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Siafem\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sids.Prodesp.Model\Sids.Prodesp.Model.csproj">
+      <Project>{ac18da5a-0b50-4117-9363-c8fe8d0f7901}</Project>
+      <Name>Sids.Prodesp.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Sids.Prodesp.Infrastructure.ruleset" />
+    <None Include="Web References\ProdespEmpenho\Integracao_DER_SIAFEM_Empenho.wsdl" />
+    <None Include="Web References\ProdespEmpenho\Pool_IntegracaoEmpenho.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespEmpenho\Procedure_AnulacaoEmpenhoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespEmpenho\Procedure_ConsultaEmpenhoEstruturaRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespEmpenho\Procedure_InclusaoEmpenhoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespEmpenho\Procedure_ReforcoEmpenhoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespEmpenho\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ProdespEmpenho\vhi-fault.wsdl" />
+    <None Include="Web References\ProdespEmpenho\vhi-fault.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Integracao_DER_SIAFEM_LiqDespesas.wsdl" />
+    <None Include="Web References\ProdespLiquidacaoDespesa\Pool_IntegracaoLiqDespesas.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_anulacaoRequisicaoRAPApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_AnulacaoRequisicaoRAPRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_AnulacaoSubEmpenhoApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_AnulacaoSubEmpenhoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_ConsultaContratoTodosRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_ConsultaEmpenhoCredorRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_ConsultaEmpenhoInscritoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_ConsultaEmpenhoSaldoRAPRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_ConsultaSubEmpenhoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_InclusaoSubEmpenhoApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_InclusaoSubEmpenhoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_InscricaoRAPRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_RequisicaoRAPApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Procedure_RequisicaoRAPRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ProdespLiquidacaoDespesa\vhi-fault.wsdl" />
+    <None Include="Web References\ProdespLiquidacaoDespesa\vhi-fault.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespMovimentacao\Integracao_DER_SIAFEM_MovOrcamentaria.wsdl" />
+    <None Include="Web References\ProdespMovimentacao\Pool_IntegracaoMovOrcamentaria.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespMovimentacao\Procedure_MovOrcamentariaInternaRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespMovimentacao\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ProdespMovimentacao\vhi-fault.wsdl" />
+    <None Include="Web References\ProdespMovimentacao\vhi-fault.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\Integracao_DER_SIAFEM_PagtoContaDER.wsdl" />
+    <None Include="Web References\ProdespPagamentoContaDer\Pool_IntegracaoPagtoContaDER.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\Procedure_CancelamentoArquiRemessaRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\Procedure_ConsultaArquivoPreparadoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\Procedure_ConsultaOPDocGeradorRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\Procedure_ConsultaPagtosConfirmarSIDSRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\Procedure_ImpressaoRelacaoODRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\Procedure_PreparacaoArquiRemessaApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\Procedure_PreparacaoArquiRemessaRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\Procedure_ReemissaoRelacaoODRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ProdespPagamentoContaDer\vhi-fault.wsdl" />
+    <None Include="Web References\ProdespPagamentoContaDer\vhi-fault.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\bf-2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\EndpointReferenceType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Integracao_DER_SIAFEM_PagtoContaUnica.wsdl" />
+    <None Include="Web References\ProdespPagtoContaUnica\Pool_IntegracaoPagtoContaUnica.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_AnulacaoDesdobramentoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_BloqueioPagtoDocApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_BloqueioPagtoDocRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_CancelamentoOPApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_CancelamentoOPRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_ConfirmacaoPagtoOPApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_ConfirmacaoPagtoOPRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_ConfirmacaoPagtoOrgaoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_ConsultaCredorReduzidoRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_ConsultaDesdobramentoRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_ConsultaPagtosPrepararOrgaoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_ConsultaPagtosPrepararSDFFRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_DesbloqueioPagtoDocRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_DesdobramentoISSQNApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_DesdobramentoISSQNRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_DesdobramentoOutrosApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_DesdobramentoOutrosRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_PreparacaoPagtoDocGeradorApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_PreparacaoPagtoDocGeradorRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_PreparacaoPagtoOrgaoApoioRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Procedure_PreparacaoPagtoOrgaoRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\r-2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\vhi-base-fault.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\vhi-fault.wsdl" />
+    <None Include="Web References\ProdespPagtoContaUnica\ws-addr-wsdl.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\ws-addr.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespPagtoContaUnica\WS-Resource.wsdl" />
+    <None Include="Web References\ProdespPagtoContaUnica\xml.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespReserva\Integracao_DER_SIAFEM_Reserva.wsdl" />
+    <None Include="Web References\ProdespReserva\Pool_IntegracaoReserva.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdespReserva\Procedure_AnulacaoReservaRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespReserva\Procedure_ConsultaAssinaturasRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespReserva\Procedure_ConsultaContratoRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespReserva\Procedure_ConsultaEmpenhoRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespReserva\Procedure_ConsultaEspecificacoesRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespReserva\Procedure_ConsultaReservaEstruturaRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespReserva\Procedure_ConsultaReservaRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespReserva\Procedure_InclusaoDocSIAFEMRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespReserva\Procedure_InclusaoReservaRecordType1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespReserva\Procedure_ReforcoReservaRecordType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdespReserva\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ProdespReserva\vhi-fault.wsdl" />
+    <None Include="Web References\ProdespReserva\vhi-fault.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\siafemProd\RecebeMSG.wsdl" />
+    <None Include="Web References\siafemProd\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Siafem\RecebeMSG.wsdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Web References\Siafem\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataBase\Reserva\Moq\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoEmpenho%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProdespEmpenho\</RelPath>
+      <UpdateFromURL>http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoEmpenho%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Sids_Prodesp_Prodesp_Empenho_Desevolvomento</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoLiqDespesas%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProdespLiquidacaoDespesa\</RelPath>
+      <UpdateFromURL>http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoLiqDespesas%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Sids_Prodesp_Infrastructure_ProdespLiquidacaoDespesa_Integracao_DER_SIAFEM_LiqDespesasService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoMovOrcamentaria%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProdespMovimentacao\</RelPath>
+      <UpdateFromURL>http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoMovOrcamentaria%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Sids_Prodesp_Infrastructure_ProdespMovimentacao_Integracao_DER_SIAFEM_MovOrcamentariaService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoPagtoContaDER%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProdespPagamentoContaDer\</RelPath>
+      <UpdateFromURL>http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoPagtoContaDER%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Sids_Prodesp_Infrastructure_ProdespPagamentoContaDer_Integracao_DER_SIAFEM_PagtoContaDERService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProdespPagtoContaUnica\</RelPath>
+      <UpdateFromURL>http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Sids_Prodesp_Infrastructure_ProdespPagtoContaUnica_Integracao_DER_SIAFEM_PagtoContaUnicaService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoReserva%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProdespReserva\</RelPath>
+      <UpdateFromURL>http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoReserva%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Sids_Prodesp_Prodesp_Reserva_Desevolvomento</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://siafemhom.intra.fazenda.sp.gov.br/siafisico/RecebeMSG.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Siafem\</RelPath>
+      <UpdateFromURL>https://siafemhom.intra.fazenda.sp.gov.br/siafisico/RecebeMSG.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Sids_Prodesp_Infrastructure_Siafem_RecebeMSG</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://www6.fazenda.sp.gov.br/siafisico/RecebeMSG.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\siafemProd\</RelPath>
+      <UpdateFromURL>https://www6.fazenda.sp.gov.br/siafisico/RecebeMSG.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Sids_Prodesp_Infrastructure_siafemProd_RecebeMSG</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\siafemProd\RecebeMSG.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

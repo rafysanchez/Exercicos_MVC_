@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaDER" xmlns:vhi-fault="urn:xmlns:attachmate:vhi-ws:fault" name="Integracao_DER_SIAFEM_PagtoContaDER" targetNamespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaDER" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="urn:xmlns:attachmate:vhi-ws:fault" location="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoPagtoContaDER/vhi-fault.wsdl" />
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoPagtoContaDER/Pool_IntegracaoPagtoContaDER.xsd" namespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaDER" />
+    </xsd:schema>
+  </types>
+  <message name="Procedure_CancelamentoArquiRemessa">
+    <part name="parameters" element="tns:Procedure_CancelamentoArquiRemessa" />
+  </message>
+  <message name="Procedure_CancelamentoArquiRemessaResponse">
+    <part name="parameters" element="tns:Procedure_CancelamentoArquiRemessaResponse" />
+  </message>
+  <message name="Procedure_ConsultaArquivoPreparado">
+    <part name="parameters" element="tns:Procedure_ConsultaArquivoPreparado" />
+  </message>
+  <message name="Procedure_ConsultaArquivoPreparadoResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaArquivoPreparadoResponse" />
+  </message>
+  <message name="Procedure_ConsultaOPDocGerador">
+    <part name="parameters" element="tns:Procedure_ConsultaOPDocGerador" />
+  </message>
+  <message name="Procedure_ConsultaOPDocGeradorResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaOPDocGeradorResponse" />
+  </message>
+  <message name="Procedure_ConsultaPagtosConfirmarSIDS">
+    <part name="parameters" element="tns:Procedure_ConsultaPagtosConfirmarSIDS" />
+  </message>
+  <message name="Procedure_ConsultaPagtosConfirmarSIDSResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaPagtosConfirmarSIDSResponse" />
+  </message>
+  <message name="Procedure_ImpressaoRelacaoOD">
+    <part name="parameters" element="tns:Procedure_ImpressaoRelacaoOD" />
+  </message>
+  <message name="Procedure_ImpressaoRelacaoODResponse">
+    <part name="parameters" element="tns:Procedure_ImpressaoRelacaoODResponse" />
+  </message>
+  <message name="Procedure_PreparacaoArquiRemessa">
+    <part name="parameters" element="tns:Procedure_PreparacaoArquiRemessa" />
+  </message>
+  <message name="Procedure_PreparacaoArquiRemessaResponse">
+    <part name="parameters" element="tns:Procedure_PreparacaoArquiRemessaResponse" />
+  </message>
+  <message name="Procedure_PreparacaoArquiRemessaApoio">
+    <part name="parameters" element="tns:Procedure_PreparacaoArquiRemessaApoio" />
+  </message>
+  <message name="Procedure_PreparacaoArquiRemessaApoioResponse">
+    <part name="parameters" element="tns:Procedure_PreparacaoArquiRemessaApoioResponse" />
+  </message>
+  <message name="Procedure_ReemissaoRelacaoOD">
+    <part name="parameters" element="tns:Procedure_ReemissaoRelacaoOD" />
+  </message>
+  <message name="Procedure_ReemissaoRelacaoODResponse">
+    <part name="parameters" element="tns:Procedure_ReemissaoRelacaoODResponse" />
+  </message>
+  <message name="wsResourceCreate">
+    <part name="parameters" element="tns:wsResourceCreate" />
+  </message>
+  <message name="wsResourceCreateResponse">
+    <part name="parameters" element="tns:wsResourceCreateResponse" />
+  </message>
+  <message name="wsResourceDestroy">
+    <part name="parameters" element="tns:wsResourceDestroy" />
+  </message>
+  <message name="wsResourceDestroyResponse">
+    <part name="parameters" element="tns:wsResourceDestroyResponse" />
+  </message>
+  <portType name="Integracao_DER_SIAFEM_PagtoContaDERPortType">
+    <operation name="Procedure_CancelamentoArquiRemessa">
+      <input message="tns:Procedure_CancelamentoArquiRemessa" />
+      <output message="tns:Procedure_CancelamentoArquiRemessaResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaArquivoPreparado">
+      <input message="tns:Procedure_ConsultaArquivoPreparado" />
+      <output message="tns:Procedure_ConsultaArquivoPreparadoResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaOPDocGerador">
+      <input message="tns:Procedure_ConsultaOPDocGerador" />
+      <output message="tns:Procedure_ConsultaOPDocGeradorResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaPagtosConfirmarSIDS">
+      <input message="tns:Procedure_ConsultaPagtosConfirmarSIDS" />
+      <output message="tns:Procedure_ConsultaPagtosConfirmarSIDSResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ImpressaoRelacaoOD">
+      <input message="tns:Procedure_ImpressaoRelacaoOD" />
+      <output message="tns:Procedure_ImpressaoRelacaoODResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_PreparacaoArquiRemessa">
+      <input message="tns:Procedure_PreparacaoArquiRemessa" />
+      <output message="tns:Procedure_PreparacaoArquiRemessaResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_PreparacaoArquiRemessaApoio">
+      <input message="tns:Procedure_PreparacaoArquiRemessaApoio" />
+      <output message="tns:Procedure_PreparacaoArquiRemessaApoioResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ReemissaoRelacaoOD">
+      <input message="tns:Procedure_ReemissaoRelacaoOD" />
+      <output message="tns:Procedure_ReemissaoRelacaoODResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="wsResourceCreate">
+      <input message="tns:wsResourceCreate" />
+      <output message="tns:wsResourceCreateResponse" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+    </operation>
+    <operation name="wsResourceDestroy">
+      <input message="tns:wsResourceDestroy" />
+      <output message="tns:wsResourceDestroyResponse" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+  </portType>
+  <binding name="Integracao_DER_SIAFEM_PagtoContaDERPortBinding" type="tns:Integracao_DER_SIAFEM_PagtoContaDERPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Procedure_CancelamentoArquiRemessa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaArquivoPreparado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaOPDocGerador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaPagtosConfirmarSIDS">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ImpressaoRelacaoOD">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_PreparacaoArquiRemessa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_PreparacaoArquiRemessaApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ReemissaoRelacaoOD">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="wsResourceCreate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="wsResourceDestroy">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="Integracao_DER_SIAFEM_PagtoContaDERService">
+    <port name="Integracao_DER_SIAFEM_PagtoContaDERPort" binding="tns:Integracao_DER_SIAFEM_PagtoContaDERPortBinding">
+      <soap:address location="http://10.200.142.198:9680/vhi-xe/session/Pool_IntegracaoPagtoContaDER" />
+    </port>
+  </service>
+</definitions>

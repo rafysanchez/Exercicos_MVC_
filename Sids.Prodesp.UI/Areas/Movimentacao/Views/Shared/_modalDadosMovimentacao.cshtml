@@ -1,0 +1,130 @@
+﻿@using Sids.Prodesp.UI.Areas.Movimentacao.Models
+
+<div class="modal fade scroll" id="modalDadosMovimentacao" tabindex="-1" role="dialog" data-focus-on="input:first" aria-labelledby="modalConsultaContrato-label">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalConsultaContrato-label">Detalhes da Movimentação Orçamentária</h4>
+            </div>
+            <div class="modal-body">
+
+                @Html.Partial("~/Areas/Movimentacao/Views/Shared/_ValorMovimentacaoModal.cshtml", new ValorMovimentacaoModalViewModel())
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label">Evento Canc./Distr.</label>
+                        <input id="txtCancDist" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">UG Emitente</label>
+                        <input id="txtUnidadeGestoraEmitente" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Gestão Emitente</label>
+                        <input id="txtIdGestaoEmitente" type="text" class="form-control" disabled />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label">Evento NC</label>
+                        <input id="txtEventoNC" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">CFP(Programa de Trabalho)</label>
+                        <input id="txtProgramaId" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">CED(Natureza - Fonte)</label>
+                        <input id="txtNaturezaId" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">UO</label>
+                        <input id="txtUo" type="text" class="form-control" disabled />
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label">Cod.Aplicação/Obra</label>
+                        <input id="txtNrObra" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Fonte Recurso</label>
+                        <input id="txtFonteRecurso" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Natureza Despesa</label>
+                        <input id="txtNatDespesa" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">UGO</label>
+                        <input id="txtUGO" type="text" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Plano Interno</label>
+                        <input id="txtplano_interno" type="text" class="form-control" disabled />
+                    </div>
+                </div>
+
+                <div class="row">
+                    
+                    <div id="divObservacaoCancelamentoModal" class="form-group col-sm-12 col-lg-2 col-md-2" style="width: 340px; ">
+                        <label class="control-label">Observação Cancelamento/Distribuição</label>
+                        <div id="DescObservacaoModal" name="DescObservacaoModal" class="input-group-sm" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;height:50px;">
+                            <input id="txtObservacaoCancelamentoModal" type="text" class="Proximo prodesp area" disabled />
+                            <input id="txtObservacaoCancelamento2Modal" type="text" class="Proximo prodesp area" disabled />
+                            <input id="txtObservacaoCancelamento3Modal" type="text" class="Proximo prodesp area" disabled />
+                        </div>
+                    </div>
+
+                    <div id="divObservacaoNCModal" class="form-group col-sm-12 col-lg-2 col-md-2" style="width: 340px; " disabled>
+                        <label class="control-label">Observação Nota de Crédito</label>
+                        <div id="DescObservacaoModal" name="DescObservacaoModalModal" class="txtarea" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;height:50px;">
+                            <input id="txtObservacaoNCModal" type="text" class="Proximo prodesp area" disabled />
+                            <input id="txtObservacaoNC2Modal" type="text" class="Proximo prodesp area" disabled />
+                            <input id="txtObservacaoNC3Modal" type="text" class="Proximo prodesp area" disabled />
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="row">
+                    <div id="divEspecDespesaModal" class="col-md-6 form-group ">
+                        <label class="control-label"><span class="text-danger"></span>Código de Especificação de Despesa</label>
+                        <div class="col-md-10 input-group">
+                            <input id="txtEspecDespesaModal" type="text" class="form-control" disabled />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="divDescEspecificacaoDespesaModal" class="form-group form-group-sm has-feedback col-sm-12 col-lg-7 col-md-7" style="width: 680px; ">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Especificação da Despesa (Prodesp)</label>
+                        <div id="DescEspecificacaoDespesaModal" name="DescEspecificacaoDespesaModal" class="input-group-sm txtarea" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;">
+                            <input type="text" class="Proximo prodesp area" maxlength="79" disabled />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" disabled />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" disabled />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" disabled />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" disabled />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" disabled />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" disabled />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" disabled />
+                            <input type="text" class="Proximo prodesp area" maxlength="79" disabled />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margT10">
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-primary" data-dismiss="modal" onclick=""><i class="fa fa-arrow-left"></i> Voltar</button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

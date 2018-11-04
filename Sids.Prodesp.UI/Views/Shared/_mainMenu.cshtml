@@ -1,0 +1,41 @@
+﻿
+@using Sids.Prodesp.Model.Entity.Seguranca
+
+<ul class="nav navbar-nav nav-DER">
+    <li>@Html.ActionLink("Home", "Index", "Home", new { Area = "" }, null)</li>
+
+    @{
+        List<MenuItem> _menus = Sids.Prodesp.Application.App.MenuItemService.GetMenuItemByUsuario(Sids.Prodesp.Application.App.AutenticacaoService.GetUsuarioLogado());
+        List<MenuItem> _menusPai = _menus != null ? _menus.Where(p => !p.MenuItemPai.HasValue).ToList() : null;
+    }
+    @helper MontarMenu(List<MenuItem> _menus, List<MenuItem> _AllMenus, string cssClass)
+    {
+        var menus = _menus.GroupBy(p => p.Menu).Select(p => new { Menu = p.Key, Lista = p.OrderBy(x => x.Ordem).ToList() }).ToList();
+        foreach (var item in menus)
+        {
+                <li class="dropdown @(item.Lista.Where(p=> !String.IsNullOrEmpty(p.UrlRecurso)).Count() > 0 ? cssClass : string.Empty)">
+                    @if (String.IsNullOrEmpty(item.Lista.First().UrlRecursoMenu) || item.Lista.First().UrlRecursoMenu == "#")
+                    {
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.Lista.First().DescMenu</a>
+                    }
+                    else
+                    {
+                        @Html.ActionLink(item.Lista.First().DescMenu, null, item.Lista.First().UrlRecursoMenu.ToString())
+                    }
+                    <ul class="dropdown-menu">
+                        @foreach (var i in item.Lista)
+                {
+                    if (!String.IsNullOrEmpty(i.UrlRecurso) && !String.IsNullOrEmpty(i.Rotulo))
+                    {
+                                <li>
+                                    @Html.ActionLink(i.Rotulo, i.Action, i.Controller, new { Area = i.Area, Id = i.Recurso }, null)
+                                </li>
+                            }
+                        }
+                        @MontarMenu(_AllMenus.Where(p => p.MenuItemPai == item.Menu).ToList(), _AllMenus, "has-sub")
+                    </ul>
+                </li>
+        }
+    }
+    @MontarMenu(_menusPai, _menus, "has-sub")
+</ul>

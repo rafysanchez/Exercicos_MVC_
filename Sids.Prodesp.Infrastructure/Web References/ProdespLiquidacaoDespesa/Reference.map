@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoLiqDespesas/vhi-fault.wsdl" filename="vhi-fault.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoLiqDespesas?wsdl" filename="Integracao_DER_SIAFEM_LiqDespesas.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoLiqDespesas/vhi-fault.xsd" filename="vhi-fault.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoLiqDespesas/Pool_IntegracaoLiqDespesas.xsd" filename="Pool_IntegracaoLiqDespesas.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

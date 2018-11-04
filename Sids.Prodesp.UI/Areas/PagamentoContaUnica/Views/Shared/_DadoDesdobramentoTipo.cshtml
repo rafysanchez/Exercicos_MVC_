@@ -1,0 +1,24 @@
+﻿@model Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.Desdobramento.DadoDesdobramentoTipoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Desdobramento</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-3 col-md-1  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.DesdobramentoTipoId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.DesdobramentoTipoId, Model.DesdobramentoTipoListItems, "Selecione", new { @class = "form-control lockProdesp" })
+            </div>
+        </div>
+    </div>
+
+</div>

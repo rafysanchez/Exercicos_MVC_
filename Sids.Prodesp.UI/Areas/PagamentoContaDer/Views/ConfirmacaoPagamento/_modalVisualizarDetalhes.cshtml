@@ -1,0 +1,103 @@
+﻿@model List<Sids.Prodesp.UI.Areas.PagamentoContaDer.Models.ConfirmacaoPagamentoFiltroViewModel>
+<div class="modal fade" id="modalVisualizarDetalhes" tabindex="-1" data-focus-on="input:first" role="dialog" aria-labelledby="modalVisualizarDetalhes-label">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalVisualizarDetalhes-label">Pagamentos a Confirmar</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row margT30" style="overflow-x: scroll;">
+                    <div class="col-sm-11 col-lg-11 col-md-11" id="tblVisualizarDetalhes_wrapper">
+                            <div class="row">
+                                    <table id="tblPesquisaVisualizar" class="_tbDataTables table dataTable table-condensed table-striped small" width="50%" style="max-width:800px;">
+                                        <thead>
+                                            <tr>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().Orgao)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().TipoDespesa)</th>    
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().DataVencimento)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().DataPreparacao)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().TipoDocumento)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroDocumento)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroNLBaixaRepasse)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroContrato)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().CodigoObra)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroOP)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().Banco)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().Agencia)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().Conta)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().FonteSIAFEM)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroEmpenho)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroProcesso)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().NotaFiscal)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().ValorDocumento)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().NaturezaDespesa)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().CredorOrganizacaoCredorOriginal)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().CPFCNPJCredorOriginal)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().CredorOriginal)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().Referencia)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().CredorOrganizacao)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().CPF_CNPJ_Credor)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().NomeReduzidoCredor)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().ValorDesdobradoCredor)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().BancoFavorecido)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().AgenciaFavorecido)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().ContaFavorecido)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().StatusTransmissaoConfirmacao)</th>
+                                                <th>@Html.LabelFor(x => x.FirstOrDefault().MensagemErroRetornadaTransmissaoConfirmacaoPagamento)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr class="text-center">
+                                                    <td>@Html.DisplayFor(modelItem => item.Orgao)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.TipoDespesa)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.DataVencimento)</td>
+                                                    <td>@(item.DataPreparacao.HasValue ? item.DataPreparacao.Value.ToShortDateString() : string.Empty)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.TipoDocumento)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NumeroDocumento)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NumeroNLBaixaRepasse)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NumeroContrato)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.CodigoObra)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NumeroOP)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Banco)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Agencia)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Conta)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.FonteSIAFEM)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NumeroEmpenho)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NumeroProcesso)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NotaFiscal)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.ValorDocumento)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NaturezaDespesa)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.CredorOrganizacaoCredorOriginal)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.CPFCNPJCredorOriginal)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.CredorOriginal)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Referencia)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.CredorOrganizacao)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.CPF_CNPJ_Credor)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NomeReduzidoCredor)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.ValorDesdobradoCredor)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.BancoFavorecido)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.AgenciaFavorecido)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.ContaFavorecido)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.StatusTransmissaoConfirmacao)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.MensagemErroRetornadaTransmissaoConfirmacaoPagamento)</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary btn-sm" onclick="CONFIRMACAOPAGAMENTOCADASTRO.Modal.Fechar('#modalVisualizarDetalhes')"><i class="fa fa-arrow-left"></i> Voltar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+﻿@using System.Globalization
+
+@model Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.DadoImpressaoRelacaoReRtConsultaViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    string msgRetorno = ViewBag.MsgRetorno;
+}
+<div class="manual">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-2 col-lg-2 form-group-sm siafem">
+            @Html.LabelFor(model => model.NumeroRE, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            @Html.TextBoxFor(model => model.NumeroRE, new { @class = "form-control", @ReadOnly = "True", @id = "NumeroRE" })
+        </div>
+
+        <div class="col-sm-12 col-md-2 col-lg-2 form-group-sm siafem">
+            @Html.LabelFor(model => model.NumeroRT, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            @Html.TextBoxFor(model => model.NumeroRT, new { @class = "form-control", @ReadOnly = "True", @id = "NumeroRT" })
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-2 col-lg-2 form-group-sm siafem">
+            @Html.LabelFor(model => model.DataCadastro, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+            @Html.TextBoxFor(model => model.DataCadastro, new { @class = "form-control lockProdesp data", @ReadOnly = "True" })
+        </div>
+        <div class="col-sm-12 col-md-2 col-lg-2 form-group-sm siafem">
+            @Html.LabelFor(model => model.DataTransmissaoSiafem, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+            @Html.TextBoxFor(model => model.DataTransmissaoSiafem, new { @class = "form-control lockProdesp data", @ReadOnly = "True" })
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoUnidadeGestora, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class='input-group-sm'>
+                @Html.TextBoxFor(model => model.CodigoUnidadeGestora, new { @class = "form-control", @maxlength = "6", @ReadOnly = "True", @id = "CodigoUnidadeGestora" })
+            </div>
+        </div>
+
+        <div class="col-lg-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoGestao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class='input-group-sm'>
+                @Html.TextBoxFor(model => model.CodigoGestao, new { @class = "form-control", @maxlength = "5", @ReadOnly = "True", @id = "CodigoGestao" })
+            </div>
+        </div>
+
+        <div class="col-lg-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoBanco, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class='input-group-sm'>
+                @Html.TextBoxFor(model => model.CodigoBanco, new { @class = "form-control", @maxlength = "3", @ReadOnly = "True", @id = "CodigoBanco" })
+            </div>
+        </div>
+    </div>
+
+    @if (msgRetorno != null)
+    {
+    <br />
+    <div class="row">
+        <div class="col-sm-6 col-lg-6 col-md-6  form-group-sm form-group has-feedback">
+            <div id="retornoTransmissao">
+                <label class="control-label label-form-DER"><span class="text-danger"></span>Msg Retornada da Transmissão</label>
+                <div class="input-group-sm">
+                    @Html.TextArea("MsgRetorno", msgRetorno, new { @class = "form-control", @ReadOnly = "True" })
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+            <form method="post" action=@Url.Content("~/PagamentoContaUnica/" + controller+ "/DownloadFile/") id="frmExport">
+                <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.NumeroOB)</th>
+                            @if (ViewBag.VerificadorReRt == "RE")
+                            {
+                                <th>@Html.LabelFor(x => x.FlagPrioridade)</th>
+                                <th>@Html.LabelFor(x => x.TipoOB)</th>
+                                <th>@Html.LabelFor(x => x.NomeFavorecido)</th>
+                            }
+                            else
+                            {
+                                <th>@Html.LabelFor(x => x.ContaBancariaEmitente)</th>
+                                <th>@Html.LabelFor(x => x.UnidadeGestoraFavorecida)</th>
+                                <th>@Html.LabelFor(x => x.GestaoFavorecida)</th>
+                                <th>@Html.LabelFor(x => x.MnemonicoUfFavorecida)</th>
+                            }
+                            <th>@Html.LabelFor(x => x.BancoFavorecido)</th>
+                            <th>@Html.LabelFor(x => x.AgenciaFavorecida)</th>
+                            <th>@Html.LabelFor(x => x.ContaFavorecida)</th>
+                            <th>@Html.LabelFor(x => x.ValorOB)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.Filhos)
+                    {
+                        <tr class="text-center">
+                            <td>@Html.DisplayFor(modelItem => item.NumeroOB)</td>
+                            @if (ViewBag.VerificadorReRt == "RE")
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.FlagPrioridade)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TipoOB)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NomeFavorecido)</td>
+                            }
+                            else
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.ContaBancariaEmitente)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UnidadeGestoraFavorecida)</td>
+                                <td>@Html.DisplayFor(modelItem => item.GestaoFavorecida)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MnemonicoUfFavorecida)</td>
+                            }
+                            <td>@Html.DisplayFor(modelItem => item.BancoFavorecido)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AgenciaFavorecida)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ContaFavorecida)</td>
+                            <td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(item.ValorOB)).ToString("N2"))</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

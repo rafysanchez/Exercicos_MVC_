@@ -1,0 +1,52 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.Desdobramento
+
+@model IEnumerable<FiltroGridViewModel>
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    ViewBag.Title = "Listar Reclassificações e Retençoes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Filtro = ViewBag.Filtro ?? new FiltroViewModel();
+    var area = ViewContext.RouteData.DataTokens["area"];
+    //var action = ViewContext.RouteData.GetRequiredString("action");
+}
+
+<link rel="stylesheet" href="~/Content/DataTable/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="~/Content/DataTable/css/jquery.dataTables.min.css" />
+
+
+<div class="col-md-12">
+    <h2>Pesquisa de Reclassificações / Retenções</h2>
+    @Html.Partial("_Mensagem")
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("Index", "ReclassificacaoRetencao", FormMethod.Post, new { name = "form_filtro", id = "form_filtro" }))
+            {
+                Html.RenderPartial("_Filtro", ViewBag.Filtro as FiltroViewModel);
+            }
+            @Html.Partial("~/Areas/PagamentoContaUnica/Views/ReclassificacaoRetencao/_FiltroGrid.cshtml", Model)
+        </div>
+    </div>
+</div>
+
+
+@section script{
+
+    <script>
+        var controller = @Html.Raw(Json.Encode(controller));
+        var area = @Html.Raw(Json.Encode(area));
+        var objExc = "Reclassificacao Retencao";
+        var urld = '@Url.Action("Delete", "ReclassificacaoRetencao")';
+
+
+
+        @*var action = @Html.Raw(Json.Encode(action));*@
+    </script>
+
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+    <script src="~/Content/js/PagamentoContaUnica/ReclassificacaoRetencaoListar.js"></script>
+    <script src="~/Content/js/scriptImpressao.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+}

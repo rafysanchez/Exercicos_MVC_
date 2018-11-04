@@ -1,0 +1,52 @@
+﻿@using Sids.Prodesp.UI.Areas.Empenho.Models
+@using Sids.Prodesp.Model.Enum
+
+@model PesquisaCTViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var title = controller == "EmpenhoReforco" ? "Pesquisar Empenho por CT" : "Pesquisar CT para Contabilizar Empenho";
+    var exibirCampoCTOriginal = Model.TipoEmpenho == EnumTipoOperacaoEmpenho.Reforco || Model.TipoEmpenho == EnumTipoOperacaoEmpenho.Cancelamento;
+    var incluirSaldo = (Model.TipoEmpenho == EnumTipoOperacaoEmpenho.Subempenho).ToString().ToLower();
+    var seletorNumeroCt = exibirCampoCTOriginal ? "#NumeroOriginalCT" : "#NumeroCT";
+}
+
+@if (!Model.OcultarTituloComponente)
+{
+    <div class="row siafisico">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">@( title )</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+}
+
+<div class="siafisico">
+    <div id="divNumeroCT" class="col-sm-5 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+        @Html.Label(Model.TituloCampo, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group">
+            @if (exibirCampoCTOriginal)
+            {
+                @Html.TextBoxFor(model => model.NumeroOriginalCT, new { @class = "form-control lockSiafisico ct", @maxlength = 12 })
+            }
+            else
+            {
+                @Html.TextBoxFor(model => model.NumeroCT, new { @class = "form-control lockSiafisico ct", @maxlength = 12 })
+            }
+
+            @if (!Model.OcultarBotaoConsultar)
+            {
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary btn-sm lockProdesp lockSiafem lockSiafisico 2" onclick="ConsultaCt('@seletorNumeroCt', @incluirSaldo)"><i class="fa fa-search"></i>  Consultar</button>
+                </span>
+            }
+        </div>
+        @if (exibirCampoCTOriginal)
+        {
+            @Html.LabelFor(x => x.NumeroCT, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.NumeroCT, new { @class = "form-control lockSiafisico ct", @maxlength = 12 })
+            </div>
+        }
+    </div>
+</div>

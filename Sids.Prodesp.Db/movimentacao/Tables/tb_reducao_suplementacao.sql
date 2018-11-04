@@ -1,0 +1,56 @@
+﻿CREATE TABLE [movimentacao].[tb_reducao_suplementacao] (
+    [id_reducao_suplementacao]                                  INT             IDENTITY (1, 1) NOT NULL,
+    [tb_credito_movimentacao_id_nota_credito]                   INT             NULL,
+    [tb_distribuicao_movimentacao_id_distribuicao_movimentacao] INT             NULL,
+    [tb_cancelamento_movimentacao_id_cancelamento_movimentacao] INT             NULL,
+    [tb_programa_id_programa]                                   INT             NULL,
+    [tb_movimentacao_orcamentaria_id_movimentacao_orcamentaria] INT             NULL,
+    [nr_agrupamento]                                            INT             NULL,
+    [nr_seq]                                                    INT             NULL,
+    [nr_suplementacao_reducao]                                  VARCHAR (15)    NULL,
+    [fl_proc]                                                   VARCHAR (10)    NULL,
+    [nr_processo]                                               VARCHAR (60)    NULL,
+    [nr_orgao]                                                  VARCHAR (10)    NULL,
+    [nr_obra]                                                   VARCHAR (15)    NULL,
+    [flag_red_sup]                                              CHAR (1)        NULL,
+    [nr_cnpj_cpf_ug_credor]                                     VARCHAR (15)    NULL,
+    [ds_autorizado_supra_folha]                                 VARCHAR (4)     NULL,
+    [cd_origem_recurso]                                         VARCHAR (10)    NULL,
+    [cd_destino_recurso]                                        VARCHAR (10)    NULL,
+    [cd_especificacao_despesa]                                  VARCHAR (10)    NULL,
+    [ds_especificacao_despesa]                                  VARCHAR (632)   NULL,
+    [cd_autorizado_assinatura]                                  VARCHAR (5)     NULL,
+    [cd_autorizado_grupo]                                       INT             NULL,
+    [cd_autorizado_orgao]                                       CHAR (2)        NULL,
+    [ds_autorizado_cargo]                                       VARCHAR (55)    NULL,
+    [nm_autorizado_assinatura]                                  VARCHAR (55)    NULL,
+    [cd_examinado_assinatura]                                   VARCHAR (5)     NULL,
+    [cd_examinado_grupo]                                        INT             NULL,
+    [cd_examinado_orgao]                                        CHAR (2)        NULL,
+    [ds_examinado_cargo]                                        VARCHAR (55)    NULL,
+    [nm_examinado_assinatura]                                   VARCHAR (55)    NULL,
+    [cd_responsavel_assinatura]                                 VARCHAR (5)     NULL,
+    [cd_responsavel_grupo]                                      INT             NULL,
+    [cd_responsavel_orgao]                                      CHAR (2)        NULL,
+    [ds_responsavel_cargo]                                      VARCHAR (140)   NULL,
+    [nm_responsavel_assinatura]                                 VARCHAR (55)    NULL,
+    [fg_transmitido_prodesp]                                    CHAR (1)        NULL,
+    [ds_msgRetornoProdesp]                                      VARCHAR (140)   NULL,
+    [fg_transmitido_siafem]                                     CHAR (1)        NULL,
+    [ds_msgRetornoSiafem]                                       VARCHAR (140)   NULL,
+    [valor]                                                     DECIMAL (18, 2) NULL,
+    [cd_unidade_gestora]                                        VARCHAR (10)    NULL,
+    [cd_gestao_favorecido]                                      VARCHAR (10)    NULL,
+    [TotalQ1]                                                   DECIMAL (20)    NULL,
+    [TotalQ2]                                                   DECIMAL (20)    NULL,
+    [TotalQ3]                                                   DECIMAL (20)    NULL,
+    [TotalQ4]                                                   DECIMAL (20)    NULL,
+    CONSTRAINT [PK_tb_reducao_suplementacao] PRIMARY KEY CLUSTERED ([id_reducao_suplementacao] ASC)
+);
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+﻿<div class="modal fade" id="modalPagamentosPreparar" tabindex="-1" data-focus-on="input:first" role="dialog" aria-labelledby="modalPagamentosPreparar-label">
+    <div class="modal-dialog modal-lg" style="width:1275px;overflow-y: initial !important" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalPagamentosPreparar-label">Pagamentos a Preparar</h4>
+            </div>
+            <div class="modal-body" style="height:550px;overflow:auto">
+                <hr />
+                @*<div id="tblPagamentosPreparar1Div" class="row margT10">
+                    <table id="tblPagamentosPreparar1" class="table dataTable table-condensed table-striped table-responsive small">
+                        <thead>
+                            <tr>
+                                <th class='col-md-2'>Nº Seqüencial</th>   
+                                <th class='col-md-2'>Órgão (Regional)</th>   
+                                <th class='col-md-2'>Nº do Documento Gerador</th>   
+                                <th class='col-md-2'>Unidade Gestora</th>   
+                                <th class='col-md-2'>Gestão</th>   
+                                <th class='col-md-2'>NL de Referência</th>   
+                                <th class='col-md-2'>UG Pagadora</th>    
+                                <th class='col-md-2'>Gestão Pagadora</th>    
+                                <th class='col-md-2'>Banco (Pagador)</th>    
+                                <th class='col-md-2'>Agência (Pagador)</th>    
+                                <th class='col-md-2'>Conta Corrente Pagador</th>    
+                                <th class='col-md-2'>CGC/CFP Favorecido</th>    
+                                <th class='col-md-2'>Nome Reduzido</th>    
+                                <th class='col-md-2'>Gestão Favorecido</th>    
+                                <th class='col-md-2'>Banco Favorecido</th>    
+                                <th class='col-md-2'>Agência do Favorecido</th>    
+                                <th class='col-md-2'>Conta Corrente Favorecido</th>    
+                                <th class='col-md-2'>Processo</th>    
+                                <th class='col-md-2'>Finalidade</th>    
+                                <th class='col-md-2'>Evento</th>  
+                                <th class='col-md-2'>Inscrição</th>    
+                                <th class='col-md-2'>Rec. Despesa</th>    
+                                <th class='col-md-2'>Classificação</th>    
+                                <th class='col-md-2'>Fonte</th>    
+                                <th class='col-md-2'>Data da Emissão</th>    
+                                <th class='col-md-2'>Data de Vencimento</th>    
+                                <th class='col-md-2'>Lista / Anexo</th>    
+                                <th class='col-md-3'>Valor</th>    
+                                <th class='col-md-2'>Numero Documento</th>
+                                <th class='col-md-2'></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>*@
+
+                <div id="tblPagamentosPreparar2Div">
+                    <div class="row margT10">
+                        <table id="tblPagamentosPreparar" class="table dataTable table-condensed table-striped table-responsive small">
+                            <thead>
+                                <tr>
+                                    <th class='col-md-2'>Nº Seqüencial</th>
+                                    <th class='col-md-2'>Nº do Documento Gerador</th>
+                                    <th class='col-md-2'>Órgão (Regional)</th>
+                                    <th class='col-md-2'>Unidade Gestora</th>
+                                    <th class='col-md-2'>Gestão</th>
+                                    <th class='col-md-2'>NL de Referência</th>
+                                    <th class='col-md-2'>UG Pagadora</th>
+                                    <th class='col-md-2'>Gestão Pagadora</th>
+                                    <th class='col-md-2'>Banco (Pagador)</th>
+                                    <th class='col-md-2'>Agência (Pagador)</th>
+                                    <th class='col-md-2'>Conta Corrente Pagador</th>
+                                    <th class='col-md-2'>CGC/CPF Favorecido</th>
+                                    <th class='col-md-2'>Nome Reduzido</th>
+                                    <th class='col-md-2'>Gestão Favorecido</th>
+                                    <th class='col-md-2'>Banco Favorecido</th>
+                                    <th class='col-md-2'>Agência do Favorecido</th>
+                                    <th class='col-md-2'>Conta Corrente Favorecido</th>
+                                    <th class='col-md-2'>Processo</th>
+                                    <th class='col-md-2'>Finalidade</th>
+                                    <th class='col-md-2'>Evento</th>
+                                    <th class='col-md-2'>Inscrição</th>
+                                    <th class='col-md-2'>Rec. Despesa</th>
+                                    <th class='col-md-2'>Classificação</th>
+                                    <th class='col-md-2'>Fonte</th>
+                                    <th class='col-md-2'>Data da Emissão</th>
+                                    <th class='col-md-2'>Data de Vencimento</th>
+                                    <th class='col-md-2'>Lista / Anexo</th>
+                                    <th class='col-md-3'>Valor</th>
+                                    <th class='col-md-2'>Numero Documento</th>
+                                    <th class='col-md-2 msgErro'>Mensagem de Erro</th>
+                                    <th class='col-md-2'><div class="checkbox MarcarTodos"><label><input type="checkbox" name="MarcarTodos" id="MarcarTodos" onclick="toggleMarcarTodos(event)"></label></div></th>
+                                    <th class='col-md-2 acao'>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                <div class="row">
+                </div>
+                    <div class="row">
+                    </div>
+                    <div id="divbtnConfirmarAgrupamento" class="row pull-right" style="margin-top: -40px; position: relative; padding-right: 15px;">
+                        <button id="btnConfirmarAgrupamento" class="btn btn-sm btn-warning" >
+                            Confirmar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

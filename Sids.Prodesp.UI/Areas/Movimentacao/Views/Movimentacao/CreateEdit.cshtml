@@ -1,0 +1,199 @@
+﻿
+@using Sids.Prodesp.UI.Areas.Movimentacao.Models
+
+@model Sids.Prodesp.Model.Entity.Movimentacao.MovimentacaoOrcamentaria
+
+@{
+
+    var tipo = Request.QueryString["tipo"];
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var action = ViewContext.RouteData.GetRequiredString("action");
+    string msgRetorno = ViewBag.MsgRetorno;
+
+    var titulo = (Model.Id > 1 ? (tipo == "a" || tipo == "i" ? "Alterar Movimentação Orçamentária" : "Visualizar Movimentação Orçamentária") : "Cadastrar Movimentação Orçamentária");
+
+    if (action.ToLower().Equals("estornar"))
+    {
+        titulo = "Estornar Movimentação Orçamentária";
+    }
+
+    ViewBag.Title = titulo;
+
+    //var rotuloNumSiafco = (Model.TransmitidoSiafem ? "Nº Ap. Subempenho SIAFEM");
+    var rotuloProdesp = "Prodesp";
+    var rotuloSiafem = "SIAFEM";
+    var numProdesp = "Nº  Prodesp";
+}
+
+<script>
+    window.area = @Html.Raw(Json.Encode(area));
+    window.controller = @Html.Raw(Json.Encode(controller));
+    window.action = @Html.Raw(Json.Encode(action));
+
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+    var estruturaInfo = @Html.Raw(Json.Encode(ViewBag.Estrutura));
+    var programasInfo = @Html.Raw(Json.Encode(ViewBag.Programas));
+
+    var regionais = @Html.Raw(Json.Encode(ViewBag.Regionais));
+
+    var obj = '@controller';
+    var ModelItem = @Html.Raw(Json.Encode(Model));
+
+    var urlVoltar = '@Url.Action("AtualizarIndex", new { Area = "Movimentacao" })';
+</script>
+
+<div class="col-md-12">
+    <h2>@ViewBag.Title</h2>
+    @Html.Partial("_modalDadosMovimentacao")
+
+    <div id="divPainelCadastrar" class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("DownloadFile", "Movimentacao", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.Hidden("Codigo", Model.Id, new { @id = "Codigo" })
+
+                <div class="row margT10">
+                    <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <span>Informe o sistema:</span>
+
+                            @Html.LabelFor(x => x.TransmitirProdesp, rotuloProdesp, new { @class = "label-inline margL10" })
+                            @Html.CheckBoxFor(x => x.TransmitirProdesp, new { @id = "TransmitirProdesp", @name = "transmitir", @class = "lockProdesp" })
+
+                            @Html.LabelFor(x => x.TransmitirSiafem, rotuloSiafem, new { @class = "label-inline margL10" })
+                            @Html.CheckBoxFor(x => x.TransmitirSiafem, new { @id = "TransmitirSiafem", @name = "transmitir", @class = "lockSiafem" })
+
+                        </div>
+                    </div>
+                </div>
+
+                @Html.Partial("~/Areas/Movimentacao/Views/Shared/_DadoMovimentacao.cshtml", ViewBag.DadoMovimentacao as DadoMovimentacaoViewModel)
+
+                @Html.Partial("~/Areas/Movimentacao/Views/Shared/_ValorMovimentacao.cshtml", new ValorMovimentacaoViewModel())
+
+                <br />
+
+                <div class="row">
+                    <div id="divEspecDespesa" class="col-md-3 form-group form-group-sm has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Código de Especificação de Despesa</label>
+                        <div class="col-md-10 input-group">
+                            @Html.TextBoxFor(model => model.EspecDespesa, new { @class = "form-control prodesp pReserva lockProdesp", @maxlength = "3", @id = "EspecDespesa" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="divDescEspecificacaoDespesa" class="form-group form-group-sm has-feedback col-sm-12 col-lg-7 col-md-7 prodesp" style="width: 760px; ">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Especificação da Despesa (Prodesp)</label>
+                        <div id="DescEspecificacaoDespesa" name="DescEspecificacaoDespesa" class="input-group-sm txtarea" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;">
+                            <input type="text" class="Proximo prodesp area lockProdesp" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area lockProdesp" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area lockProdesp" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area lockProdesp" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area lockProdesp" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area lockProdesp" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area lockProdesp" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area lockProdesp" maxlength="79" />
+                            <input type="text" class="Proximo prodesp area lockProdesp" maxlength="79" />
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="row">
+
+                        <div id="divObservacaoCancelamento" class="form-group form-group-sm has-feedback col-sm-12 col-lg-2 col-md-2" style="width: 760px; ">
+                            @Html.LabelFor(model => model.ObservacaoCancelamento, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                            <div id="DescObservacao" name="DescObservacao" class="input-group-sm txtarea" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;height:100px;">
+                                @Html.TextBoxFor(model => model.ObservacaoCancelamento, new { @class = "Proximo area lockSiafem lockSiafisico", @maxlength = 77 })
+                                @Html.TextBoxFor(model => model.ObservacaoCancelamento2, new { @class = "Proximo area lockSiafem lockSiafisico", @maxlength = 77 })
+                                @Html.TextBoxFor(model => model.ObservacaoCancelamento3, new { @class = "Proximo area lockSiafem lockSiafisico", @maxlength = 77 })
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="row">
+
+                        <div id="divObservacaoNC" class="form-group form-group-sm has-feedback col-sm-12 col-lg-2 col-md-2" style="width: 760px; ">
+                            @Html.LabelFor(model => model.ObservacaoNC, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                            <div id="DescObservacao" name="DescObservacao" class="input-group-sm txtarea" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;height:100px;">
+
+                                @Html.TextBoxFor(model => model.ObservacaoNC, new { @class = "Proximo area lockSiafem lockSiafisico", @maxlength = 77 })
+                                @Html.TextBoxFor(model => model.ObservacaoNC2, new { @class = "Proximo area lockSiafem lockSiafisico", @maxlength = 77 })
+                                @Html.TextBoxFor(model => model.ObservacaoNC3, new { @class = "Proximo area lockSiafem lockSiafisico", @maxlength = 77 })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div id="divNew" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                            <button id="new" type="button" class="btn btn-primary btn-sm lockSiafem lockProdesp"><i class="fa fa-plus"></i>  Adicionar</button>
+                        </div>
+
+                        <div id="divSaveCancelamentoReducao" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                            <button id="saveCancelamentoReducao" type="button" class="btn btn-primary btn-sm"><i class="fa fa-save"></i>  Salvar</button>
+                        </div>
+                        <div id="divSaveDistribuicaoSuplementacao" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                            <button id="saveDistribuicaoSuplementacao" type="button" class="btn btn-primary btn-sm"><i class="fa fa-save"></i>  Salvar</button>
+                        </div>
+                    </div>
+
+
+                    @Html.Partial("~/Areas/Movimentacao/Views/Shared/_DadoCancelamentoReducaoGrid.cshtml", ViewBag.DadoCancelamentoReducaoGrid as IList<DadoCancelamentoReducaoViewModel>)
+                    @Html.Partial("~/Areas/Movimentacao/Views/Shared/_DadoNotaCreditoGrid.cshtml", ViewBag.DadoNotaCreditoGrid as IList<DadoNotaCreditoViewModel>)
+                    @Html.Partial("~/Areas/Movimentacao/Views/Shared/_DadoDistribuicaoSuplementacaoGrid.cshtml", ViewBag.DadoDistribuicaoSuplementacaoGrid as IList<DadoDistribuicaoSuplementacaoViewModel>)
+
+
+                    @Html.Partial("~/Areas/Movimentacao/Views/Shared/_DadoAssinatura.cshtml", ViewBag.DadoAssinatura as Sids.Prodesp.UI.Areas.Movimentacao.Models.DadoAssinaturaViewModel)
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="tituloItensPagina"></h3>
+                            <hr class="margT10" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12 col-md-12">
+                            @if (((Model.StatusProdesp == "N") || (Model.StatusSiafem == "N")) || Model.Id == 0)
+                            {
+                                <button type='button' id='btnCancelar' class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Cancelar</button>
+                                <button type='button' id='btnSalvar' class='btn btn-sm btn-success'><i class='fa fa-save'></i> Salvar</button>
+                                <button type='button' id='btnTransmitir' class='btn btn-sm btn-primary'><i class='fa fa-share'></i> Transmitir</button>
+                            }
+                            else
+                            {
+                                <button type="button" id="btnAtualizarIndex" class="btn btn-sm btn-primary" onclick="javascript: AtualizarIndex();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                            }
+                            <button type="button" id="btnVoltar" class="btn btn-sm btn-primary" onclick="javascript: window.history.back();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                        </div>
+                    </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section script {
+    <script src="~/Content/BootstrapValidator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/BootstrapValidator/js/language/pt_BR.js"></script>
+
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+
+    <script src="~/Content/js/scriptImpressao.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+    <script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+    <script src="~/Content/js/Movimentacao/Movimentacao.js"></script>
+    <script src="~/Content/js/Movimentacao/MovimentacaoValidator.js"></script>
+    <script src="~/Content/js/Consultas.js"></script>
+}
+

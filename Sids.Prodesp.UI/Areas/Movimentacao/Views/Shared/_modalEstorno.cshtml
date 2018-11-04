@@ -1,0 +1,61 @@
+﻿
+<div class="modal fade scroll" id="modalEstorno" tabindex="-1" role="dialog" data-focus-on="input:first" aria-labelledby="modalConsultaContrato-label"  >
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content" style="width: 452px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalConsultaContrato-label">Estorno de Valores</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <form method="post" id="frm-estornar-movimentacao">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">Deseja Estornar:</label>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="radio" id="doc" name="estornar" value="1" checked />
+                                <label class="control-label" for="doc">Documento</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="radio" id="agrup" name="estornar" value="2" />
+                                <label class="control-label" for="agrup">Agrupamento</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                @*<div class="row">
+                    <div class="col-md-12">
+                        <label class="control-label">Deseja Estornar :</label>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="radio" id="doc" name="estornar" checked />
+                        <label class="control-label" for="doc">Documento</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="radio" id="agrup" name="estornar" />
+                        <label class="control-label" for="agrup">Agrupamento</label>
+                    </div>
+                </div>*@
+
+                <div class="row margT10">
+                    <div class="col-md-12">
+                        @*<button type='button' id='btnCancel' data-dismiss="modal"  class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Cancelar</button>
+                        <button type='button' id='btnEstornar' class='btn btn-sm btn-success'><i class='fa fa-save'></i> Estornar</button>*@
+                        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="button" data-button="btnEstornar" class="btn btn-sm btn-success">Estornar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

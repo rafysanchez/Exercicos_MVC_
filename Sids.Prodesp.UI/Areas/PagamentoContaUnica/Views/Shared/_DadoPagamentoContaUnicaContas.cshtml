@@ -1,0 +1,146 @@
+﻿
+
+@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model DadoPagamentoContaUnicaContasViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var isPreparacaoDePagamento = controller == "PreparacaoDePagamento";
+}
+<div class="documentoGerador orgaoDespData manual PDBEC">
+
+
+    <div class="row">
+        <hr style="height:1pt;" />
+    </div>
+
+    @if (isPreparacaoDePagamento)
+    {
+        <div class="row">
+            <div id="divbtnConsultarOrgaoDespDataVenc" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+                <div class="input-group-btn">
+                    <button id="btnConsultarPorDataVencimento" type="button" class="btn btn-primary btn-sm  lockProdesp lockSiafem " onclick="ConsultarOrgaoDataVenc()"><i class="fa fa-search"></i> Consultar!</button>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <div class="row documentoGerador">
+        <div class="col-md-12">
+            @*<h3 class="tituloItensPagina">Conta do Credor (Prodesp)</h3>*@
+            <h3 class="tituloItensPagina">Conta Pagadora</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+    @if (controller == "ProgramacaoDesembolso")
+    {
+        <div class="row">
+            <div id="divNumeroCNPJCPFCredor" class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp siafem notanl">
+                @Html.LabelFor(model => model.NumeroCnpjcpfCredor, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.NumeroCnpjcpfCredor, new { @class = "form-control lockSiafem cnpjcpfUgCredor", @maxlength = 6 })
+                </div>
+            </div>
+            <div id="divCodigoGestaoCredor" class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp siafem notanl">
+                @Html.LabelFor(model => model.GestaoCredor, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.GestaoCredor, new { @class = "form-control lockSiafem gestaoCredor", @maxlength = 5 })
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row documentoGerador">
+        <div class="col-sm-12 col-lg-2 col-md-2   form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroBancoCredor, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroBancoCredor, new { @class = "form-control lockProdesp lockSiafem banco", @maxlength = 3 })
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroAgenciaCredor, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroAgenciaCredor, new { @class = "form-control lockProdesp lockSiafem agencia", @maxlength = 5 })
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroContaCredor, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroContaCredor, new { @class = "form-control lockProdesp lockSiafem", @maxlength = 10 })
+            </div>
+        </div>
+    </div>
+
+    <hr style="height:1pt;" />
+
+</div>
+<div class="documentoGerador orgaoDespData manual PDBEC">
+
+    <div class="row documentoGerador">
+        <div class="col-md-12">
+            @*<h3 class="tituloItensPagina">Conta de Pagamento (Prodesp)</h3>*@
+            <h3 class="tituloItensPagina">Conta do Favorecido</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+    @if (controller == "ProgramacaoDesembolso")
+    {
+        <div class="row">
+            <div id="divNumeroCNPJCPFCredor" class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp siafem notanl">
+                @Html.LabelFor(model => model.NumeroCnpjcpfPagto, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.NumeroCnpjcpfPagto, new { @class = "form-control lockSiafem cnpjcpfUgCredor", @maxlength = 14 })
+                </div>
+            </div>
+            <div id="divCodigoGestaoCredor" class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp siafem notanl">
+                @Html.LabelFor(model => model.GestaoPagto, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.GestaoPagto, new { @class = "form-control lockSiafem gestaoCredor", @maxlength = 5 })
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row documentoGerador">
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroBancoPagto, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroBancoPagto, new { @class = "form-control lockProdesp lockSiafem banco", @maxlength = 3 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroAgenciaPagto, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroAgenciaPagto, new { @class = "form-control lockProdesp lockSiafem agencia", @maxlength = 5 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroContaPagto, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroContaPagto, new { @class = "form-control lockProdesp lockSiafem ", @maxlength = 10 })
+            </div>
+        </div>
+    </div>
+
+    @if (controller != "ProgramacaoDesembolso")
+    {
+        <div class="row">
+            @*Op quantidade e Valor Total*@
+            <div class="col-sm-12 col-lg-3 col-md-2 form-group-sm form-group has-feedback lockProdesp">
+                @Html.LabelFor(model => model.QuantidadeOpPreparada, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.QuantidadeOpPreparada, new { @class = "form-control lockProdesp lockSiafem qtTESTE", @ReadOnly = true, @maxlength = "" })
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-3 col-md-2 form-group-sm form-group has-feedback lockProdesp">
+                @Html.LabelFor(model => model.ValorTotal, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.ValorTotal, new { @class = "form-control lockProdesp lockSiafem real", @ReadOnly = true, @maxlength = "" })
+                </div>
+            </div>
+        </div>
+    }
+</div>

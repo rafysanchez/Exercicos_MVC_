@@ -1,0 +1,32 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model DadoObservacaoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+<div id="DadoObservacao" class="siafem siafisico">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-7 col-md-7  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.DescricaoObservacao1, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div id="DescObservacao" name="DescObservacao" class="input-group-sm txtarea" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;">
+                @Html.TextBoxFor(model => model.DescricaoObservacao1, new { @class = "Proximo area lockSiafem lockSiafisico descricaoObservacao", @maxlength = 77 })
+                @Html.TextBoxFor(model => model.DescricaoObservacao2, new { @class = "Proximo area lockSiafem lockSiafisico descricaoObservacao", @maxlength = 77 })
+                @Html.TextBoxFor(model => model.DescricaoObservacao3, new { @class = "Proximo area lockSiafem lockSiafisico descricaoObservacao", @maxlength = 77 })
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,74 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model DadoPagamentoContaUnicaAgrupamentoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+
+<div class="row robo">
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-12 col-md-12">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="row">
+                    <div id="divRegional" class='col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback orgaoDespData'>
+                        @Html.LabelFor(model => model.Orgao, new {@class = "control-label label-form-DER"})<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.DropDownListFor(model => model.Orgao, Model.RegionalListItems, "Selecione", new {@class = "form-control lockProdesp lockSiafem", @id = "Orgao"})
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4   form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.DataVencimento, new {@class = "control-label label-form-DER"})<span class='text-danger'></span>
+                        <div class='input-group-sm'>
+                            @Html.TextBoxFor(model => model.DataVencimento, new {@class = "form-control data datepicker lockProdesp lockSiafem data", @id = "DTVencimento"})
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.TipoDespesa, new {@class = "control-label label-form-DER"})<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.TipoDespesa, new {@class = "form-control lockProdesp lockSiafem ", @maxlength = 2})
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER" style="margin-top: 30px;"><span class="text-danger"></span>OU</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.DocumentoTipoId, new {@class = "control-label label-form-DER"})<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.DropDownListFor(model => model.DocumentoTipoId, Model.DocumentoTipoListItems, "Selecione", new {@class = "form-control lockProdesp lockSiafem DocumentoTipo", @id = "DocumentoTipo" })
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.NumeroDocumento, new {@class = "control-label label-form-DER"})<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.NumeroDocumento, new {@class = "form-control lockProdesp lockSiafem NumeroDocumento", @maxlength = "19",@id= "Documento" })
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 form-group-sm" style="margin-top: 24px; padding-right: 0pt; padding-left: 0px;">
+                        @if(!Model.TransmitidoSiafem)
+                        {
+                            <button class="btn btn-primary btn-sm lockSiafem lock" type="button" onclick="ConsultarDocumentoGerador()"><span class="glyphicon glyphicon-search"></span>&nbsp; Consultar</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-success btn-sm lockSiafem lock" type="button" onclick="desembolsoAgrupamento.edit();"><span class="glyphicon	glyphicon-wrench"></span>&nbsp; Editar</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_LiqDespesas" elementFormDefault="qualified" targetNamespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_LiqDespesas" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Procedure_AnulacaoRequisicaoRAP" type="tns:Procedure_AnulacaoRequisicaoRAPType" />
+  <element name="Procedure_AnulacaoRequisicaoRAPResponse" type="tns:Procedure_AnulacaoRequisicaoRAPResponseType" />
+  <element name="Procedure_AnulacaoSubEmpenho" type="tns:Procedure_AnulacaoSubEmpenhoType" />
+  <element name="Procedure_AnulacaoSubEmpenhoResponse" type="tns:Procedure_AnulacaoSubEmpenhoResponseType" />
+  <element name="Procedure_AnulacaoSubEmpenhoApoio" type="tns:Procedure_AnulacaoSubEmpenhoApoioType" />
+  <element name="Procedure_AnulacaoSubEmpenhoApoioResponse" type="tns:Procedure_AnulacaoSubEmpenhoApoioResponseType" />
+  <element name="Procedure_ConsultaContratoTodos" type="tns:Procedure_ConsultaContratoTodosType" />
+  <element name="Procedure_ConsultaContratoTodosResponse" type="tns:Procedure_ConsultaContratoTodosResponseType" />
+  <element name="Procedure_ConsultaEmpenhoCredor" type="tns:Procedure_ConsultaEmpenhoCredorType" />
+  <element name="Procedure_ConsultaEmpenhoCredorResponse" type="tns:Procedure_ConsultaEmpenhoCredorResponseType" />
+  <element name="Procedure_ConsultaEmpenhoInscrito" type="tns:Procedure_ConsultaEmpenhoInscritoType" />
+  <element name="Procedure_ConsultaEmpenhoInscritoResponse" type="tns:Procedure_ConsultaEmpenhoInscritoResponseType" />
+  <element name="Procedure_ConsultaEmpenhoSaldoRAP" type="tns:Procedure_ConsultaEmpenhoSaldoRAPType" />
+  <element name="Procedure_ConsultaEmpenhoSaldoRAPResponse" type="tns:Procedure_ConsultaEmpenhoSaldoRAPResponseType" />
+  <element name="Procedure_ConsultaSubEmpenho" type="tns:Procedure_ConsultaSubEmpenhoType" />
+  <element name="Procedure_ConsultaSubEmpenhoResponse" type="tns:Procedure_ConsultaSubEmpenhoResponseType" />
+  <element name="Procedure_InclusaoSubEmpenho" type="tns:Procedure_InclusaoSubEmpenhoType" />
+  <element name="Procedure_InclusaoSubEmpenhoResponse" type="tns:Procedure_InclusaoSubEmpenhoResponseType" />
+  <element name="Procedure_InclusaoSubEmpenhoApoio" type="tns:Procedure_InclusaoSubEmpenhoApoioType" />
+  <element name="Procedure_InclusaoSubEmpenhoApoioResponse" type="tns:Procedure_InclusaoSubEmpenhoApoioResponseType" />
+  <element name="Procedure_InscricaoRAP" type="tns:Procedure_InscricaoRAPType" />
+  <element name="Procedure_InscricaoRAPResponse" type="tns:Procedure_InscricaoRAPResponseType" />
+  <element name="Procedure_RequisicaoRAP" type="tns:Procedure_RequisicaoRAPType" />
+  <element name="Procedure_RequisicaoRAPResponse" type="tns:Procedure_RequisicaoRAPResponseType" />
+  <element name="Procedure_RequisicaoRAPApoio" type="tns:Procedure_RequisicaoRAPApoioType" />
+  <element name="Procedure_RequisicaoRAPApoioResponse" type="tns:Procedure_RequisicaoRAPApoioResponseType" />
+  <element name="Procedure_anulacaoRequisicaoRAPApoio" type="tns:Procedure_anulacaoRequisicaoRAPApoioType" />
+  <element name="Procedure_anulacaoRequisicaoRAPApoioResponse" type="tns:Procedure_anulacaoRequisicaoRAPApoioResponseType" />
+  <element name="wsResourceCreate" type="tns:wsResourceCreateType" />
+  <element name="wsResourceCreateResponse" type="tns:wsResourceCreateResponseType" />
+  <element name="wsResourceDestroy" type="tns:wsResourceDestroyType" />
+  <element name="wsResourceDestroyResponse" type="tns:wsResourceDestroyResponseType" />
+  <complexType name="Procedure_AnulacaoRequisicaoRAPFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumRequisicaoRAP" nillable="true" type="string" />
+      <element minOccurs="0" name="inAutFls" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumProcesso" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inSaldoAnteriorSubEmp" nillable="true" type="string" />
+      <element minOccurs="0" name="inSaldoAposAnulacao" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorAnulado" nillable="true" type="string" />
+      <element minOccurs="0" name="inImprimir" nillable="true" type="string" />
+      <element minOccurs="0" name="inInfoNESiafem" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoRequisicaoRAPRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outNumeroAnulacao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outTipoDocumento" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoRequisicaoRAPType">
+    <sequence>
+      <element name="Procedure_AnulacaoRequisicaoRAPFilters" type="tns:Procedure_AnulacaoRequisicaoRAPFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoRequisicaoRAPResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_AnulacaoRequisicaoRAPRecord" type="tns:Procedure_AnulacaoRequisicaoRAPRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoSubEmpenhoFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroSubEmpenho" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorAnular" nillable="true" type="string" />
+      <element minOccurs="0" name="inAutFls" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumProcesso" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inImprimir" nillable="true" type="string" />
+      <element minOccurs="0" name="inInfoNESiafem" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoSubEmpenhoRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outDataRealizacao" type="string" />
+      <element name="outSaldoAnteriorAnul" type="string" />
+      <element name="outValorRealizado" type="string" />
+      <element name="outVencimento" type="string" />
+      <element name="outNumeroAnulacao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outTipoDocumento" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoSubEmpenhoType">
+    <sequence>
+      <element name="Procedure_AnulacaoSubEmpenhoFilters" type="tns:Procedure_AnulacaoSubEmpenhoFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoSubEmpenhoResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_AnulacaoSubEmpenhoRecord" type="tns:Procedure_AnulacaoSubEmpenhoRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoSubEmpenhoApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroSubEmpenho" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorAnular" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoSubEmpenhoApoioRecordType">
+    <sequence>
+      <element name="outInfoTransacao" type="string" />
+      <element name="outEspecificacao1" type="string" />
+      <element name="outEspecificacao2" type="string" />
+      <element name="outEspecificacao3" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outDataRealizacao" type="string" />
+      <element name="outSaldoAnteriorAnul" type="string" />
+      <element name="outValorRealizado" type="string" />
+      <element name="outVencimento" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoSubEmpenhoApoioType">
+    <sequence>
+      <element name="Procedure_AnulacaoSubEmpenhoApoioFilters" type="tns:Procedure_AnulacaoSubEmpenhoApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoSubEmpenhoApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_AnulacaoSubEmpenhoApoioRecord" type="tns:Procedure_AnulacaoSubEmpenhoApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaContratoTodosFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inIdentContratoAno" nillable="true" type="string" />
+      <element minOccurs="0" name="inIdentContratoNum" nillable="true" type="string" />
+      <element minOccurs="0" name="inIdentContratoOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDocumento" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaContratoTodosRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outAssinado" type="string" />
+      <element name="outCED" type="string" />
+      <element name="outCodObra" type="string" />
+      <element name="outContratada" type="string" />
+      <element name="outContrato" type="string" />
+      <element name="outCPFCNPJ" type="string" />
+      <element name="outInicio" type="string" />
+      <element name="outObjeto" type="string" />
+      <element name="outProcesSiafem" type="string" />
+      <element name="outPrograma" type="string" />
+      <element name="outSituacao" type="string" />
+      <element name="outTipo" type="string" />
+      <element name="outTipoContrato" type="string" />
+      <element name="outUltMed" type="string" />
+      <element name="outData" type="string" />
+      <element name="outEvento" type="string" />
+      <element name="outNumero" type="string" />
+      <element name="outValor" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaContratoTodosType">
+    <sequence>
+      <element name="Procedure_ConsultaContratoTodosFilters" type="tns:Procedure_ConsultaContratoTodosFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaContratoTodosResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConsultaContratoTodosRecord" type="tns:Procedure_ConsultaContratoTodosRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoCredorFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inAno" nillable="true" type="string" />
+      <element minOccurs="0" name="inCGC" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeCredor" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrganiz" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoCredorRecordType">
+    <sequence>
+      <element name="outSucesso" type="string" />
+      <element name="outCGC" type="string" />
+      <element name="outOrganiz" type="string" />
+      <element name="outContrato" type="string" />
+      <element name="outDisponivelSubEmpenhar" type="string" />
+      <element name="outLiqEmpenhado" type="string" />
+      <element name="outLiqSubEmpenhado" type="string" />
+      <element name="outNrEmpenho" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outCredorReduzido" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoCredorType">
+    <sequence>
+      <element name="Procedure_ConsultaEmpenhoCredorFilters" type="tns:Procedure_ConsultaEmpenhoCredorFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoCredorResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConsultaEmpenhoCredorRecord" type="tns:Procedure_ConsultaEmpenhoCredorRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoInscritoFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inEmpenho" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoInscritoRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outLinhaDados" type="string" />
+      <element name="outSaldoReq_SUB" type="string" />
+      <element name="outTotalUtilizado_SUB" type="string" />
+      <element name="outValorAnul_EMP" type="string" />
+      <element name="outValorAnulRAP_SUB" type="string" />
+      <element name="outValorIniRef_EMP" type="string" />
+      <element name="outValorInscRAP_SUB" type="string" />
+      <element name="outValorLiqEmp_EMP" type="string" />
+      <element name="outValorPagar_PAG" type="string" />
+      <element name="outValorpagoExerc_SUB" type="string" />
+      <element name="outValorReq_PAG" type="string" />
+      <element name="outValorReqRAP_SUB" type="string" />
+      <element name="outValorSubEmp_PAG" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoInscritoType">
+    <sequence>
+      <element name="Procedure_ConsultaEmpenhoInscritoFilters" type="tns:Procedure_ConsultaEmpenhoInscritoFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoInscritoResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConsultaEmpenhoInscritoRecord" type="tns:Procedure_ConsultaEmpenhoInscritoRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoSaldoRAPFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inAno" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoSaldoRAPRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outDescOrgao" type="string" />
+      <element name="outOrgao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outAplicacao" type="string" />
+      <element name="outDispSubEmpenhar" type="string" />
+      <element name="outNrEmpenho" type="string" />
+      <element name="outValorAtual" type="string" />
+      <element name="outValorSubEmpenhado" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoSaldoRAPType">
+    <sequence>
+      <element name="Procedure_ConsultaEmpenhoSaldoRAPFilters" type="tns:Procedure_ConsultaEmpenhoSaldoRAPFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaEmpenhoSaldoRAPResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConsultaEmpenhoSaldoRAPRecord" type="tns:Procedure_ConsultaEmpenhoSaldoRAPRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaSubEmpenhoFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inSubEmpenho" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaSubEmpenhoRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outCED" type="string" />
+      <element name="outCFP" type="string" />
+      <element name="outCodAplicacao" type="string" />
+      <element name="outCodObra" type="string" />
+      <element name="outCredor1" type="string" />
+      <element name="outCredor2" type="string" />
+      <element name="outDataEmissao" type="string" />
+      <element name="outDataRealizacao" type="string" />
+      <element name="outDataReg" type="string" />
+      <element name="outDataVencimento" type="string" />
+      <element name="outNumContrato" type="string" />
+      <element name="outNumProcesso" type="string" />
+      <element name="outOrgao" type="string" />
+      <element name="outQuota" type="string" />
+      <element name="outSaldo" type="string" />
+      <element name="outTarefa" type="string" />
+      <element name="outValorAnulado" type="string" />
+      <element name="outValorOriginal" type="string" />
+      <element name="outValorReal" type="string" />
+      <element name="outAutorizador" type="string" />
+      <element name="outCargoAutorizador" type="string" />
+      <element name="outCargoExaminador" type="string" />
+      <element name="outCargoResponsavel" type="string" />
+      <element name="outDespesa_1" type="string" />
+      <element name="outDespesa_2" type="string" />
+      <element name="outDespesa_3" type="string" />
+      <element name="outDespesa_4" type="string" />
+      <element name="outDespesa_5" type="string" />
+      <element name="outDespesa_6" type="string" />
+      <element name="outDespesa_7" type="string" />
+      <element name="outDespesa_8" type="string" />
+      <element name="outExaminador" type="string" />
+      <element name="outResponsavel" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaSubEmpenhoType">
+    <sequence>
+      <element name="Procedure_ConsultaSubEmpenhoFilters" type="tns:Procedure_ConsultaSubEmpenhoFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaSubEmpenhoResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConsultaSubEmpenhoRecord" type="tns:Procedure_ConsultaSubEmpenhoRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InclusaoSubEmpenhoFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodDespesa" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodTarefa" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataRealizacao" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroEmpenho" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroRecibo" nillable="true" type="string" />
+      <element minOccurs="0" name="inPrazoPagto" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorRealizado" nillable="true" type="string" />
+      <element minOccurs="0" name="inNotaFiscal" nillable="true" type="string" />
+      <element minOccurs="0" name="inAutFls" nillable="true" type="string" />
+      <element minOccurs="0" name="inCaucaoNumGuia" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspDespesa" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inLista" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inImprimir" nillable="true" type="string" />
+      <element minOccurs="0" name="inNatureza" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumMedicao" nillable="true" type="string" />
+      <element minOccurs="0" name="inNLRetInss" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumProcesso" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inQutoGeralAuto" nillable="true" type="string" />
+      <element minOccurs="0" name="inReferencia" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorCaucionado" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inCGC_CPF" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrganizacao" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InclusaoSubEmpenhoRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outAplicObra" type="string" />
+      <element name="outCED" type="string" />
+      <element name="outCFP" type="string" />
+      <element name="outCGC" type="string" />
+      <element name="outCredo2" type="string" />
+      <element name="outCredor1" type="string" />
+      <element name="outOrganiz" type="string" />
+      <element name="outOrgao" type="string" />
+      <element name="outNumSubEmpenho" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outTipoDoc" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outContrato" type="string" />
+      <element name="outCredor2" type="string" />
+      <element name="outNatureza" type="string" />
+      <element name="outNumMedicao" type="string" />
+      <element name="outInformacao" type="string" />
+      <element name="outDataVencimento" type="string" />
+      <element name="outReferencia" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InclusaoSubEmpenhoType">
+    <sequence>
+      <element name="Procedure_InclusaoSubEmpenhoFilters" type="tns:Procedure_InclusaoSubEmpenhoFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InclusaoSubEmpenhoResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_InclusaoSubEmpenhoRecord" type="tns:Procedure_InclusaoSubEmpenhoRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InclusaoSubEmpenhoApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodDespesa" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodTarefa" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataRealizacao" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroEmpenho" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroRecibo" nillable="true" type="string" />
+      <element minOccurs="0" name="inPrazoPagto" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorRealizado" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InclusaoSubEmpenhoApoioRecordType">
+    <sequence>
+      <element name="outAplicObra" type="string" />
+      <element name="outCED" type="string" />
+      <element name="outCFP" type="string" />
+      <element name="outCGC" type="string" />
+      <element name="outCredor1" type="string" />
+      <element name="outInfoTransacao" type="string" />
+      <element name="outOrganiz" type="string" />
+      <element name="outOrgao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outContrato" type="string" />
+      <element name="outCredor2" type="string" />
+      <element name="outNatureza" type="string" />
+      <element name="outNumMedicao" type="string" />
+      <element name="outNotaFiscal" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InclusaoSubEmpenhoApoioType">
+    <sequence>
+      <element name="Procedure_InclusaoSubEmpenhoApoioFilters" type="tns:Procedure_InclusaoSubEmpenhoApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InclusaoSubEmpenhoApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_InclusaoSubEmpenhoApoioRecord" type="tns:Procedure_InclusaoSubEmpenhoApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InscricaoRAPFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inAno" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinAUTOGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinAUTOGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinEXAMGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinEXAMGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinRESPGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinRESPGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inFolhasGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inFolhasGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAUTOGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAUTOGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoEXAMGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoEXAMGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoRESPGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoRESPGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumEmpenho" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAUTOGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAUTOGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoEXAMGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoEXAMGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoRESPGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoRESPGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcessoGrupo3" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcessoGrupo4" nillable="true" type="string" />
+      <element minOccurs="0" name="inAutorizadoPor" nillable="true" type="string" />
+      <element minOccurs="0" name="inImprimir" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InscricaoRAPRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outAplicObra" type="string" />
+      <element name="outCED" type="string" />
+      <element name="outCFP" type="string" />
+      <element name="outCodDesp" type="string" />
+      <element name="outCodEspecifDesp" type="string" />
+      <element name="outCredorNum" type="string" />
+      <element name="outCredorOrg" type="string" />
+      <element name="outDocEmitido" type="string" />
+      <element name="outDPReal" type="string" />
+      <element name="outEspecifDesp01" type="string" />
+      <element name="outEspecifDesp02" type="string" />
+      <element name="outEspecifDesp03" type="string" />
+      <element name="outEspecifDesp04" type="string" />
+      <element name="outEspecifDesp05" type="string" />
+      <element name="outEspecifDesp06" type="string" />
+      <element name="outOrgao" type="string" />
+      <element name="outTarefa" type="string" />
+      <element name="outNumero" type="string" />
+      <element name="outTipoDoc" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InscricaoRAPType">
+    <sequence>
+      <element name="Procedure_InscricaoRAPFilters" type="tns:Procedure_InscricaoRAPFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_InscricaoRAPResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_InscricaoRAPRecord" type="tns:Procedure_InscricaoRAPRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_RequisicaoRAPFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumSubEmpenho" nillable="true" type="string" />
+      <element minOccurs="0" name="inRecibo" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodDespesa" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodTarefa" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataRealizacao" nillable="true" type="string" />
+      <element minOccurs="0" name="inPrazoPagto" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorRealizado" nillable="true" type="string" />
+      <element minOccurs="0" name="inAutFls" nillable="true" type="string" />
+      <element minOccurs="0" name="inCaucaoNumGuia" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspDespesa" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inLista" nillable="true" type="string" />
+      <element minOccurs="0" name="inNLRetInss" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumProcesso" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP" nillable="true" type="string" />
+      <element minOccurs="0" name="inReferencia" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorCaucionado" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacaoDesp_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inImprimir" nillable="true" type="string" />
+      <element minOccurs="0" name="inGCGCPF" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrganizacao" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroNFF" nillable="true" type="string" />
+      <element minOccurs="0" name="inNatureza" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumMedicao" nillable="true" type="string" />
+      <element minOccurs="0" name="inTarefa" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_RequisicaoRAPRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outNumRAP" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outTipoDoc" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outValorSubEmpenhar" type="string" />
+      <element name="outDataVencimento" type="string" />
+      <element name="outReferencia" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_RequisicaoRAPType">
+    <sequence>
+      <element name="Procedure_RequisicaoRAPFilters" type="tns:Procedure_RequisicaoRAPFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_RequisicaoRAPResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_RequisicaoRAPRecord" type="tns:Procedure_RequisicaoRAPRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_RequisicaoRAPApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumSubEmpenho" nillable="true" type="string" />
+      <element minOccurs="0" name="inRecibo" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_RequisicaoRAPApoioRecordType">
+    <sequence>
+      <element name="outAplicObra" type="string" />
+      <element name="outCED" type="string" />
+      <element name="outCFP" type="string" />
+      <element name="outCGC" type="string" />
+      <element name="outCredor1" type="string" />
+      <element name="outCredor2" type="string" />
+      <element name="outInfoTransacao" type="string" />
+      <element name="outOrganiz" type="string" />
+      <element name="outOrgao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outContrato" type="string" />
+      <element name="outDataRealizacao" type="string" />
+      <element name="outMedicao" type="string" />
+      <element name="outNatureza" type="string" />
+      <element name="outNFF" type="string" />
+      <element name="outPrazoPagto" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_RequisicaoRAPApoioType">
+    <sequence>
+      <element name="Procedure_RequisicaoRAPApoioFilters" type="tns:Procedure_RequisicaoRAPApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_RequisicaoRAPApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_RequisicaoRAPApoioRecord" type="tns:Procedure_RequisicaoRAPApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_anulacaoRequisicaoRAPApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumRequisicaoRAP" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_anulacaoRequisicaoRAPApoioRecordType">
+    <sequence>
+      <element name="outAplicObra" type="string" />
+      <element name="outCED" type="string" />
+      <element name="outCFP" type="string" />
+      <element name="outCodDespesa" type="string" />
+      <element name="outCodTarefa" type="string" />
+      <element name="outCredor1" type="string" />
+      <element name="outCredor2" type="string" />
+      <element name="outOrgao" type="string" />
+      <element name="outInfoTransacao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outEspecificacao1" type="string" />
+      <element name="outEspeficicacao2" type="string" />
+      <element name="outEspeficicacao3" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_anulacaoRequisicaoRAPApoioType">
+    <sequence>
+      <element name="Procedure_anulacaoRequisicaoRAPApoioFilters" type="tns:Procedure_anulacaoRequisicaoRAPApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_anulacaoRequisicaoRAPApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_anulacaoRequisicaoRAPApoioRecord" type="tns:Procedure_anulacaoRequisicaoRAPApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="ModelVariablesType">
+    <all>
+      <element minOccurs="0" name="cics" nillable="true" type="string" />
+    </all>
+  </complexType>
+  <complexType name="wsResourceCreateType">
+    <sequence>
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="wsResourceCreateResponseType">
+    <sequence>
+      <element name="SessionId" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="wsResourceDestroyType">
+    <sequence>
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="wsResourceDestroyResponseType" />
+  <complexType name="EnvironmentVariablesType">
+    <sequence>
+      <element minOccurs="0" name="DomainName" nillable="true" type="string" />
+      <element minOccurs="0" name="ServerName" nillable="true" type="string" />
+      <element minOccurs="0" name="SessionId" nillable="true" type="string" />
+      <element minOccurs="0" name="Password" nillable="true" type="string" />
+      <element minOccurs="0" name="Username" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+</schema>

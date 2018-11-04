@@ -1,0 +1,304 @@
+﻿@model Sids.Prodesp.Model.Entity.Reserva.Reserva
+@{
+    ViewBag.Title = "Cancelar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    var value = "";
+    var obj = "a operação";
+</script>
+
+<div id="divContent" class="col-md-12">
+    <h1>Cancelamento Desdobramento de Pagamento</h1>
+
+    @Html.AntiForgeryToken()
+    <div id="divPainelalterar" class="panel panel-default">
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 col-md-12" style="padding-left:1pt">
+                    <div class="col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Tipo de Documento</label>
+                        <input type="text" class="form-control" id="tipoDocumento" disabled />
+                    </div>
+                    <div class="col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Nº do Documento</label>
+                        <input type="text" class="form-control" id="nDocumento" disabled />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm">
+                    <label class="control-label label-form-DER">Credor</label>
+                    <input type="text" class="form-control" disabled />
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm">
+                    <label class="control-label label-form-DER">Tipo de Despesa</label>
+                    <input type="text" class="form-control" disabled />
+                </div>
+            </div>
+            <div class="row col-sm-12 col-lg-8 col-md-8 form-group-sm">
+                <table class="table table-responsive table-hover" id="tabelaISSQN">
+                    <thead>
+                        <tr>
+                            <th>Desdobramento</th>
+                            <th>Nome Reduzido do Credor</th>
+                            <th>Valor</th>
+
+                            <th>Tipo de Bloqueio</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><br /></td>
+                            <td><br /></td>
+                            <td><br /></td>
+                            <td><br /></td>
+                            
+                        </tr>
+                        <tr>
+                            <td><br /></td>
+                            <td><br /></td>
+                            <td><br /></td>
+                            <td><br /></td>
+                           
+                        </tr>
+                        <tr>
+                            <td><br /></td>
+                            <td><br /></td>
+                            <td><br /></td>
+                            <td><br /></td>
+                           
+                        </tr>
+                        <!-- <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button type="button" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-edit"></span></button>
+                                <button type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                            </td>
+                        </tr>-->
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+
+
+            <div class="row margT10">
+                <div class="col-md-12 form-group-sm">
+                    <button class="btn btn-primary" onclick="history.go(-1)"><i class="fa fa-arrow-left"></i> Voltar</button>
+                    <button class="btn btn-success" onclick="history.go(-1)"><i class="fa fa-plus"></i> Cadastrar à Partir Deste</button>
+                    <button class="btn btn-success" onclick="history.go(-1)"><i class="glyphicon glyphicon-share-alt"></i> Transmitir Cancelamento</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        
+    </div>
+
+</div>
+
+@section script{
+    <script type="text/javascript">
+        $('.botao').click(function (e) {
+            var isValid = true;
+            $('select[required],input[required=required]').each(function () {
+                if ($.trim($(this).val()) == '') {
+                    isValid = false;
+                    $('#modalAlerta').modal();
+                    $('#modalAlerta #value').html('Campo obrigatório não preenchido');
+                    $(this).addClass('campoVazio');
+                }
+                else {
+                    $(this).removeClass('campoVazio');
+                }
+            });
+            if (isValid == false) {
+                e.preventDefault();
+            }
+
+            else {
+                $('#modalAlerta').modal();
+                $('#modalAlerta #value').html('Transmissão realizada com sucesso');
+            }
+        });
+
+        $('select[name=opcoesDesdobramento]').change(function () {
+            var opcao = $(this).val();
+            if (opcao == '1') {
+                document.getElementById('tipo2').style.display = 'none';
+                document.getElementById('tipo1').style.display = 'block';
+
+            }
+
+
+            else if (opcao == '2') {
+                document.getElementById('tipo2').style.display = 'block';
+
+
+                document.getElementById('tipo1').style.display = 'none';
+
+            }
+            else {
+                document.getElementById('tipo2').style.display = 'none';
+
+
+                document.getElementById('tipo1').style.display = 'none';
+
+            }
+        })
+
+        function adicionar() {
+            var desdobramento = document.getElementById("opcoesTipoDesdobramento").options[document.getElementById("opcoesTipoDesdobramento").selectedIndex].text;
+            var nomeReduzidoCredor = document.getElementById("nomeReduzidoCredor").value;
+            var valorDistribuicao = document.getElementById("valorDistribuicao").value;
+            var valorDesdobrado = document.getElementById("valorDesdobrado").value;
+            var opcoesNaoReter = document.getElementById("opcoesNaoReter").options[document.getElementById("opcoesNaoReter").selectedIndex].text;
+            //var nomeReduzidoCredor = document.getElementById("nomeReduzidoCredor").value;
+            var table = document.getElementById("tabelaISSQN");
+            var table_len = (table.rows.length) - 1;
+            var row = table.insertRow(table_len).outerHTML = "<tr id='row_" + table_len + "' ><td style='text-align:center;' id='opcoesTipoDesdobramento_" + table_len + "'>" + desdobramento + "</td><td style='text-align:center;' id='nomeReduzidoCredor_" + table_len + "'>" + nomeReduzidoCredor + "</td><td style='text-align:center;' id='valorDistribuicao_" + table_len + "'>" + valorDistribuicao + "</td><td style='text-align:center;'>-</td><td style='text-align:center;' id='valorDesdobrado_" + table_len + "'>" + valorDesdobrado + "</td><td style='text-align:center;' id='opcoesNaoReter_" + table_len + "'>" + opcoesNaoReter + "</td><td><button type='button' title='Editar' class='btn btn-xs btn-info' onclick='editarLinha(" + table_len + ")'><span class='glyphicon glyphicon-edit'></span></button>&nbsp;<button type='button' title='Deletar' class='btn btn-xs btn-danger' onclick='deletarLinha(" + table_len + ")'><span class='glyphicon glyphicon-trash'></span></button><br/><button type='button' style='margin-top:5pt; width: 40pt; display:none;' title='Salvar Alterações' class='btn btn-xs btn-success' id='botaoSalvarTabela" + table_len + "' onclick='salvarLinha(" + table_len + ")'><span class='glyphicon glyphicon-floppy-disk'></span></button></td></tr>";
+            document.getElementById("opcoesTipoDesdobramento").value = "0";
+            document.getElementById("nomeReduzidoCredor").value = "";
+            document.getElementById("valorDistribuicao").value = "";
+            document.getElementById("valorDesdobrado").value = "";
+            document.getElementById("opcoesNaoReter").value = "0";
+        }
+
+        function deletarLinha(no) {
+            document.getElementById("row_" + no + "").outerHTML = "";
+        }
+
+        function editarLinha(no) {
+            document.getElementById("botaoSalvarTabela" + no).style.display = 'block';
+            var desdobramento = document.getElementById("opcoesTipoDesdobramento_" + no);
+            var nomeReduzidoCredor = document.getElementById("nomeReduzidoCredor_" + no);
+            var valorDistribuicao = document.getElementById("valorDistribuicao_" + no);
+            var valorDesdobrado = document.getElementById("valorDesdobrado_" + no);
+            var opcoesNaoReter = document.getElementById("opcoesNaoReter_" + no);
+            var desdobramento_data = desdobramento.innerHTML;
+            var nomeReduzidoCredor_data = nomeReduzidoCredor.innerHTML;
+            var valorDistribuicao_data = valorDistribuicao.innerHTML;
+            var valorDesdobrado_data = valorDesdobrado.innerHTML;
+            var opcoesNaoReter_data = opcoesNaoReter.innerHTML;
+
+            desdobramento.innerHTML = "<select class='form-control' id='opcoesTipoDesdobramento__" + no + "'>" + desdobramento_data + "<option value='0'>Selecione</option><option value='1'>Tipo 1</option><option value='2'>Tipo 2</option></select>";
+            nomeReduzidoCredor.innerHTML = "<input class='form-control' type='text' style='text-align:center' id='nomeReduzidoCredor__" + no + "' value='" + nomeReduzidoCredor_data + "'>";
+            valorDistribuicao.innerHTML = "<input class='form-control' type='text' style='text-align:center' id='valorDistribuicao__" + no + "' value='" + valorDistribuicao_data + "'>";
+            valorDesdobrado.innerHTML = "<input class='form-control' type='text' style='text-align:center' id='valorDesdobrado__" + no + "' value='" + valorDesdobrado_data + "'>";
+            opcoesNaoReter.innerHTML = "<select class='form-control' id='opcoesNaoReter__" + no + "'>" + opcoesNaoReter_data + "<option value='0'>Selecione</option><option value='1'>Sim</option><option value='2'>Não</option></select>";
+
+
+        }
+
+        function salvarLinha(no) {
+            var desdobramento = document.getElementById("opcoesTipoDesdobramento__" + no).options[document.getElementById("opcoesTipoDesdobramento__" + no).selectedIndex].text;
+            var nomeReduzidoCredor = document.getElementById("nomeReduzidoCredor__" + no).value;
+            var valorDistribuicao = document.getElementById("valorDistribuicao__" + no).value;
+            var valorDesdobrado = document.getElementById("valorDesdobrado__" + no).value;
+            var opcoesNaoReter = document.getElementById("opcoesNaoReter__" + no).options[document.getElementById("opcoesNaoReter__" + no).selectedIndex].text;
+            document.getElementById("opcoesTipoDesdobramento_" + no).innerHTML = desdobramento;
+            document.getElementById("nomeReduzidoCredor_" + no).innerHTML = nomeReduzidoCredor;
+            document.getElementById("valorDistribuicao_" + no).innerHTML = valorDistribuicao;
+            document.getElementById("valorDesdobrado_" + no).innerHTML = valorDesdobrado;
+            document.getElementById("opcoesNaoReter_" + no).innerHTML = opcoesNaoReter;
+
+            document.getElementById("botaoSalvarTabela" + no).style.display = 'none';
+        }
+
+
+        /*ações da tabela OUTROS*/
+        function adicionarTabela2() {
+            var nomeReduzidoCredor2 = document.getElementById("nomeReduzidoCredor2").value;
+            var percentual = document.getElementById("percentual").value;
+            var valorDistribuicao2 = document.getElementById("valorDistribuicao2").value;
+           // var opcoesTipoBloqueio = document.getElementById("opcoesTipoBloqueio").options[document.getElementById("opcoesTipoBloqueio").selectedIndex].text;
+            var opcoesTipoBloqueio = "";
+
+            var table = document.getElementById("tabelaOUTROS");
+            var table_len = (table.rows.length) - 1;
+            var row = table.insertRow(table_len).outerHTML = "<tr id='row_" + table_len + "' ><td style='font-weight:bold;'>00" + table_len + "</td><td id='nomeReduzidoCredor2_" + table_len + "'>" + nomeReduzidoCredor2 + "</td><td id='percentual_" + table_len + "'>" + percentual + "</td><td id='valorDistribuicao2_" + table_len + "'>" + valorDistribuicao2 + "</td><td  id='opcoesTipoBloqueio_" + table_len + "'>" + opcoesTipoBloqueio + "</td><td><button type='button' title='Editar' class='btn btn-xs btn-info' onclick='editarLinhaTabela2(" + table_len + ")'><span class='glyphicon glyphicon-edit'></span></button>&nbsp;<button type='button' title='Deletar' class='btn btn-xs btn-danger' onclick='deletarLinhaTabela2(" + table_len + ")'><span class='glyphicon glyphicon-trash'></span></button><br/><button type='button' style='margin-top:5pt; width: 40pt; display:none;' title='Salvar Alterações' class='btn btn-xs btn-success' id='botaoSalvarTabela2_" + table_len + "' onclick='salvarLinhaTabela2(" + table_len + ")'><span class='glyphicon glyphicon-floppy-disk'></span></button></td></tr>";
+
+            document.getElementById("nomeReduzidoCredor2").value = "";
+            document.getElementById("percentual").value = "";
+            document.getElementById("valorDistribuicao2").value = "";
+            //document.getElementById("opcoesTipoBloqueio").value = "0";
+        }
+
+        function deletarLinhaTabela2(no) {
+            document.getElementById("row_" + no + "").outerHTML = "";
+        }
+
+        function editarLinhaTabela2(no) {
+            document.getElementById("botaoSalvarTabela2_" + no).style.display = 'block';
+            var nomeReduzidoCredor2 = document.getElementById("nomeReduzidoCredor2_" + no);
+            var percentual = document.getElementById("percentual_" + no);
+            var valorDistribuicao2 = document.getElementById("valorDistribuicao2_" + no);
+            //var opcoesTipoBloqueio = document.getElementById("opcoesTipoBloqueio_" + no);
+
+            var nomeReduzidoCredor2_data = nomeReduzidoCredor2.innerHTML;
+            var percentual_data = percentual.innerHTML;
+            var valorDistribuicao2_data = valorDistribuicao2.innerHTML;
+            //var opcoesTipoBloqueio_data = opcoesTipoBloqueio.innerHTML;
+
+            nomeReduzidoCredor2.innerHTML = "<input class='form-control' type='text' style=' width:120pt;' id='nomeReduzidoCredor2__" + no + "' value='" + nomeReduzidoCredor2_data + "'>";
+            percentual.innerHTML = "<input class='form-control' type='text' style=' width:50pt;' id='percentual__" + no + "' value='" + percentual_data + "'>";
+            valorDistribuicao2.innerHTML = "<input class='form-control' type='text' style=' width:90pt;' id='valorDistribuicao2__" + no + "' value='" + valorDistribuicao2_data + "'>";
+            //opcoesTipoBloqueio.innerHTML = "<select class='form-control'  style='text-align:center;' id='opcoesTipoBloqueio__" + no + "'>" + opcoesTipoBloqueio_data + "<option value='0'>Selecione</option><option value='1'>Tipo 1</option><option value='2'>Tipo 2</option></select>";
+
+
+        }
+
+        function salvarLinhaTabela2(no) {
+
+            var nomeReduzidoCredor2 = document.getElementById("nomeReduzidoCredor2__" + no).value;
+            var percentual = document.getElementById("percentual__" + no).value;
+            var valorDistribuicao2 = document.getElementById("valorDistribuicao2__" + no).value;
+            var opcoesTipoBloqueio = document.getElementById("opcoesTipoBloqueio__" + no).options[document.getElementById("opcoesTipoBloqueio__" + no).selectedIndex].text;
+
+            document.getElementById("nomeReduzidoCredor2_" + no).innerHTML = nomeReduzidoCredor2;
+            document.getElementById("percentual_" + no).innerHTML = percentual;
+            document.getElementById("valorDistribuicao2_" + no).innerHTML = valorDistribuicao2;
+            document.getElementById("opcoesTipoBloqueio_" + no).innerHTML = opcoesTipoBloqueio;
+
+            document.getElementById("botaoSalvarTabela2_" + no).style.display = 'none';
+        }
+
+        function MostraModalTransmitir(id) {
+            $(id).modal();
+            return false;
+        }
+        function barraProgresso() {
+            $('.bar').each(function () {
+                var me = $(this);
+                var perc = me.attr("data-percentage");
+
+                var current_perc = 0;
+
+                var progress = setInterval(function () {
+                    if (current_perc >= perc) {
+                        clearInterval(progress);
+
+                    } else {
+                        current_perc += 1;
+                        me.css('width', (current_perc) + '%');
+                    }
+                    me.text((current_perc) + '%');
+                }, 50);
+                $('.bar').css('width', 0);
+            });
+        }
+        setTimeout(barraProgresso, 2000);
+
+    </script>
+}

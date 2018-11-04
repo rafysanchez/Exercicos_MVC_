@@ -1,0 +1,148 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model DadoPagamentoContaUnicaNotaViewModel
+
+@{
+  var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div id="NotaLiquidacao" class="siafem  notanl opso rinss">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Notas Fiscais</h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <span class="label-inline">Relacione as Notas Fiscais <br> (Se não houver, digite "nada consta" no primeiro campo).</span>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+    
+    <div class="row input-group-sm  has-feedback">
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota01, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota01, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "01", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota02, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota02, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "02", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota03, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota03, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "03", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota04, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota04, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "04", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota05, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota05, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "05", @maxlength = 12 })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota06, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota06, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "06", @maxlength = 12 })
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota07, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota07, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "07", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota08, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota08, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "08", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota09, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota09, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "09", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota10, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota10, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "10", @maxlength = 12 })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota11, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota11, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "11", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota12, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota12, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "12", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota13, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota13, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "13", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota14, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota14, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "14", @maxlength = 12 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.Nota15, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Nota15, new { @class = "form-control lockSiafem lockSiafisico", @id = "Nota", @name = "15", @maxlength = 12 })
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

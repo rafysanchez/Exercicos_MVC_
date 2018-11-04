@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:tns="urn:xmlns:attachmate:vhi-ws:fault-params" targetNamespace="urn:xmlns:attachmate:vhi-ws:fault-params" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/bf-2.xsd" namespace="http://docs.oasis-open.org/wsrf/bf-2" />
+  <element name="InvalidAddressingHeaderFault" type="tns:InvalidAddressingHeaderFaultType" />
+  <element name="MessageAddressingHeaderRequiredFault" type="tns:MessageAddressingHeaderRequiredFaultType" />
+  <element name="ModelFault" type="tns:ModelFaultType" />
+  <element name="OperationUndefinedFault" type="tns:OperationUndefinedFaultType" />
+  <element name="ServiceFault" type="tns:ServiceFaultType" />
+  <element name="UserFault" type="tns:UserFaultType" />
+  <element name="XMLStreamFault" type="tns:XMLStreamFaultType" />
+  <complexType name="InvalidAddressingHeaderFaultType">
+    <complexContent mixed="false">
+      <extension base="wsrf-bf:BaseFaultType">
+        <sequence />
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="MessageAddressingHeaderRequiredFaultType">
+    <complexContent mixed="false">
+      <extension base="wsrf-bf:BaseFaultType">
+        <sequence />
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ModelFaultType">
+    <complexContent mixed="false">
+      <extension base="wsrf-bf:BaseFaultType">
+        <sequence />
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OperationUndefinedFaultType">
+    <complexContent mixed="false">
+      <extension base="wsrf-bf:BaseFaultType">
+        <sequence />
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ServiceFaultType">
+    <complexContent mixed="false">
+      <extension base="wsrf-bf:BaseFaultType">
+        <sequence />
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="UserFaultType">
+    <complexContent mixed="false">
+      <extension base="wsrf-bf:BaseFaultType">
+        <sequence />
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="XMLStreamFaultType">
+    <complexContent mixed="false">
+      <extension base="wsrf-bf:BaseFaultType">
+        <sequence />
+      </extension>
+    </complexContent>
+  </complexType>
+</schema>

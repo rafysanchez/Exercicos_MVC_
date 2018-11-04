@@ -1,0 +1,145 @@
+﻿@using Sids.Prodesp.UI.Areas.Movimentacao.Models
+
+@model ValorMovimentacaoModalViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+
+    var title = "Movimenatao";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina">Valor</h3>
+        <hr class="margT10" />
+    </div>
+</div>
+
+<div class="row input-group-sm form-group has-feedback">
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes01Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes01Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "01", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes02Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes02Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "02", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes03Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes03Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "03", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.TotalQ1Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.TotalQ1Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "TotalQ1Modal", @name = "TotalQ1Modal", @maxlength = 23 })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes04Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes04Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "04", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes05Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes05Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "05", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes06Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes06Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "06", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.TotalQ2Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.TotalQ2Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "TotalQ2Modal", @name = "TotalQ2Modal", @maxlength = 23 })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes07Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes07Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "07", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes08Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes08Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "08", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes09Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes09Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "09", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.TotalQ3Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.TotalQ3Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "TotalQ3Modal", @name = "TotalQ3Modal", @maxlength = 23 })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes10Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes10Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "10", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes11Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes11Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "11", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Mes12Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.Mes12Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "ValorModal", @name = "12", @maxlength = 20 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.TotalQ4Modal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.TotalQ4Modal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico clearFields", @ReadOnly = true, @id = "TotalQ4Modal", @name = "TotalQ4Modal", @maxlength = 23 })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-3 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.TotalModal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        @*<div class="input-group-sm">*@
+            @Html.TextBoxFor(model => model.TotalModal, new { @class = "form-control  lockProdesp lockSiafem lockSiafisico", @ReadOnly = true, @id = "TotalModal", @name = "TotalModal", @maxlength = 23 })
+        @*</div>*@
+    </div>
+</div>

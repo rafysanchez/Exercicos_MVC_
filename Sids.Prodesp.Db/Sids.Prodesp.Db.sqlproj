@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Sids.Prodesp.Db</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{9a06e593-65d2-41b0-9f6c-8cf17b995d02}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Sids.Prodesp.Db</RootNamespace>
+    <AssemblyName>Sids.Prodesp.Db</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <TreatTSqlWarningsAsErrors>False</TreatTSqlWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Producao|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile />
+    <TreatTSqlWarningsAsErrors>False</TreatTSqlWarningsAsErrors>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="seguranca\" />
+    <Folder Include="seguranca\Tables\" />
+    <Folder Include="reserva\" />
+    <Folder Include="reserva\Tables\" />
+    <Folder Include="pagamento\" />
+    <Folder Include="pagamento\Tables\" />
+    <Folder Include="empenho\" />
+    <Folder Include="empenho\Tables\" />
+    <Folder Include="contaunica\" />
+    <Folder Include="contaunica\Tables\" />
+    <Folder Include="configuracao\" />
+    <Folder Include="configuracao\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Security\" />
+    <Folder Include="Compare" />
+    <Folder Include="pagamento\Procedures" />
+    <Folder Include="movimentacao\" />
+    <Folder Include="movimentacao\Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\tb_teste.sql" />
+    <Build Include="seguranca\Tables\tb_perfil.sql" />
+    <Build Include="seguranca\Tables\tb_usuario.sql" />
+    <Build Include="seguranca\Tables\tb_regional.sql" />
+    <Build Include="seguranca\Tables\tb_recurso_acao.sql" />
+    <Build Include="seguranca\Tables\tb_resultado.sql" />
+    <Build Include="seguranca\Tables\tb_recurso.sql" />
+    <Build Include="seguranca\Tables\tb_moq_siafem_usuario.sql" />
+    <Build Include="seguranca\Tables\tb_navegador.sql" />
+    <Build Include="seguranca\Tables\tb_perfil_usuario.sql" />
+    <Build Include="seguranca\Tables\tb_menu_item.sql" />
+    <Build Include="seguranca\Tables\tb_menu.sql" />
+    <Build Include="seguranca\Tables\tb_log_aplicacao.sql" />
+    <Build Include="seguranca\Tables\tb_sistema.sql" />
+    <Build Include="seguranca\Tables\tb_area.sql" />
+    <Build Include="seguranca\Tables\tb_acao.sql" />
+    <Build Include="seguranca\Tables\tb_perfil_acao.sql" />
+    <Build Include="seguranca\Tables\tb_menu_url.sql" />
+    <Build Include="seguranca\Tables\tb_perfil_recurso.sql" />
+    <Build Include="reserva\Tables\tb_chave_cicsmo.sql" />
+    <Build Include="reserva\Tables\tb_reserva.sql" />
+    <Build Include="reserva\Tables\tb_reforco.sql" />
+    <Build Include="reserva\Tables\tb_reserva_mes.sql" />
+    <Build Include="reserva\Tables\tb_tipo_reserva.sql" />
+    <Build Include="reserva\Tables\tb_cancelamento_mes.sql" />
+    <Build Include="reserva\Tables\tb_cancelamento.sql" />
+    <Build Include="reserva\Tables\tb_reforco_mes.sql" />
+    <Build Include="pagamento\Tables\tb_confirmacao_pagamento_item.sql" />
+    <Build Include="pagamento\Tables\tb_despesa.sql" />
+    <Build Include="pagamento\Tables\tb_subempenho_evento.sql" />
+    <Build Include="pagamento\Tables\tb_cenario_tipo.sql" />
+    <Build Include="pagamento\Tables\tb_evento_tipo.sql" />
+    <Build Include="pagamento\Tables\tb_nl_parametrizacao.sql" />
+    <Build Include="pagamento\Tables\tb_despesa_tipo.sql" />
+    <Build Include="pagamento\Tables\tb_codigo_evento_tipo.sql" />
+    <Build Include="pagamento\Tables\tb_rap_anulacao.sql" />
+    <Build Include="pagamento\Tables\tb_rap_requisicao.sql" />
+    <Build Include="pagamento\Tables\tb_subempenho_cancelamento.sql" />
+    <Build Include="pagamento\Tables\tb_confirmacao_pagamento.sql" />
+    <Build Include="pagamento\Tables\tb_rap_anulacao_nota.sql" />
+    <Build Include="pagamento\Tables\tb_evento.sql" />
+    <Build Include="pagamento\Tables\tb_subempenho_cancelamento_evento.sql" />
+    <Build Include="pagamento\Tables\tb_subempenho_cancelamento_item.sql" />
+    <Build Include="pagamento\Tables\tb_rap_inscricao.sql" />
+    <Build Include="pagamento\Tables\tb_natureza_tipo.sql" />
+    <Build Include="pagamento\Tables\tb_subempenho_cancelamento_nota.sql" />
+    <Build Include="pagamento\Tables\tb_rap_requisicao_nota.sql" />
+    <Build Include="pagamento\Tables\tb_subempenho_nota.sql" />
+    <Build Include="pagamento\Tables\tb_nl_tipo.sql" />
+    <Build Include="pagamento\Tables\tb_origem.sql" />
+    <Build Include="pagamento\Tables\tb_rap_inscricao_nota.sql" />
+    <Build Include="pagamento\Tables\tb_subempenho.sql" />
+    <Build Include="pagamento\Tables\tb_obra_tipo.sql" />
+    <Build Include="pagamento\Tables\tb_subempenho_item.sql" />
+    <Build Include="pagamento\Tables\tb_servico_tipo.sql" />
+    <Build Include="empenho\Tables\tb_empenho_cancelamento_item.sql" />
+    <Build Include="empenho\Tables\tb_empenho_cancelamento.sql" />
+    <Build Include="empenho\Tables\tb_empenho.sql" />
+    <Build Include="empenho\Tables\tb_aquisicao_tipo.sql" />
+    <Build Include="empenho\Tables\tb_origem_material.sql" />
+    <Build Include="empenho\Tables\tb_modalidade.sql" />
+    <Build Include="empenho\Tables\tb_licitacao.sql" />
+    <Build Include="empenho\Tables\tb_empenho_tipo.sql" />
+    <Build Include="empenho\Tables\tb_empenho_reforco_mes.sql" />
+    <Build Include="empenho\Tables\tb_empenho_reforco_item.sql" />
+    <Build Include="empenho\Tables\tb_empenho_reforco.sql" />
+    <Build Include="empenho\Tables\tb_empenho_mes.sql" />
+    <Build Include="empenho\Tables\tb_empenho_item.sql" />
+    <Build Include="empenho\Tables\tb_empenho_cancelamento_tipo.sql" />
+    <Build Include="empenho\Tables\tb_empenho_cancelamento_mes.sql" />
+    <Build Include="contaunica\Tables\tb_programacao_desembolso.sql" />
+    <Build Include="contaunica\Tables\tb_tipo_de_boleto.sql" />
+    <Build Include="contaunica\Tables\tb_para_resto_pagar.sql" />
+    <Build Include="contaunica\Tables\tb_tipo_reclassificacao_retencao.sql" />
+    <Build Include="contaunica\Tables\tb_reclassificacao_retencao_nota.sql" />
+    <Build Include="contaunica\Tables\tb_tipo_programacao_desembolso.sql" />
+    <Build Include="contaunica\Tables\tb_reclassificacao_retencao_evento.sql" />
+    <Build Include="contaunica\Tables\tb_reclassificacao_retencao.sql" />
+    <Build Include="contaunica\Tables\tb_preparacao_pagamento.sql" />
+    <Build Include="contaunica\Tables\tb_codigo_de_barras.sql" />
+    <Build Include="contaunica\Tables\tb_codigo_de_barras_boleto.sql" />
+    <Build Include="contaunica\Tables\tb_codigo_de_barras_taxas.sql" />
+    <Build Include="contaunica\Tables\tb_identificacao_desdobramento.sql" />
+    <Build Include="contaunica\Tables\tb_desdobramento.sql" />
+    <Build Include="contaunica\Tables\tb_Credor.sql" />
+    <Build Include="contaunica\Tables\tb_programacao_desembolso_execucao_tipo_pagamento.sql" />
+    <Build Include="contaunica\Tables\tb_programacao_desembolso_execucao_tipo.sql" />
+    <Build Include="contaunica\Tables\tb_programacao_desembolso_agrupamento.sql" />
+    <Build Include="contaunica\Tables\tb_programacao_desembolso_execucao.sql" />
+    <Build Include="contaunica\Tables\tb_Reter.sql" />
+    <Build Include="contaunica\Tables\tb_tipo_documento.sql" />
+    <Build Include="contaunica\Tables\tb_tipo_desdobramento.sql" />
+    <Build Include="contaunica\Tables\tb_tipo_preparacao_pagamento.sql" />
+    <Build Include="contaunica\Tables\tb_programacao_desembolso_execucao_item.sql" />
+    <Build Include="contaunica\Tables\tb_programacao_desembolso_evento.sql" />
+    <Build Include="contaunica\Tables\tb_lista_de_boletos.sql" />
+    <Build Include="configuracao\Tables\tb_fonte.sql" />
+    <Build Include="configuracao\Tables\tb_estrutura.sql" />
+    <Build Include="configuracao\Tables\tb_programa.sql" />
+    <Build Include="configuracao\Tables\tb_municipio.sql" />
+    <Build Include="configuracao\Tables\tb_destino.sql" />
+    <Build Include="dbo\Stored Procedures\PR_USUARIO_SIAFEM_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_USUARIO_SIAFEM_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_USUARIO_SIAFEM_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_USUARIO_SIAFEM_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_USUARIO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_USUARIO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_USUARIO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_USUARIO_ALTERAR_DATA_ULTIMO_ACESSO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_USUARIO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_RESERVA_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_RESERVA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_RESERVA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_RESERVA_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_RECLASSIFICACAO_RETENCAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_PROGRAMACAO_DESEMBOLSO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_PREPARACAO_PAGAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_DOCUMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_DESPESA_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_DESPESA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_DESPESA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_DESPESA_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_DESDOBRAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_TIPO_BOLETO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_SELECIONAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_NOTA_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_NOTA_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_NOTA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_NOTA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_NOTA_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_ITEM_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_ITEM_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_ITEM_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_ITEM_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_ITEM_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_EVENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_EVENTO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_EVENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_EVENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_EVENTO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_SELECIONAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_NOTA_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_NOTA_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_NOTA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_NOTA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_NOTA_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_ITEM_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_ITEM_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_ITEM_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_ITEM_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_ITEM_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_EVENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_EVENTO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_EVENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_EVENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_EVENTO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_CANCELAMENTO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SUBEMPENHO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SISTEMA_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SISTEMA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SISTEMA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SISTEMA_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_SERVICO_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RETER_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESULTADO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESTO_APAGAR_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_REFORCO_MES_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_REFORCO_MES_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_REFORCO_MES_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_REFORCO_MES_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_REFORCO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_REFORCO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_REFORCO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_REFORCO_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_REFORCO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_REFORCO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_MES_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_MES_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_MES_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_MES_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CANCELAMENTO_MES_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CANCELAMENTO_MES_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CANCELAMENTO_MES_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CANCELAMENTO_MES_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CANCELAMENTO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CANCELAMENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CANCELAMENTO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CANCELAMENTO_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CANCELAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_CANCELAMENTO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RESERVA_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_REGIONAL_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_REGIONAL_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_REGIONAL_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_REGIONAL_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECURSO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECURSO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECURSO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECURSO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECURSO_ACAO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECURSO_ACAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECURSO_ACAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECLASSIFICACAO_RETENCAO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECLASSIFICACAO_RETENCAO_NOTA_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECLASSIFICACAO_RETENCAO_NOTA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECLASSIFICACAO_RETENCAO_NOTA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECLASSIFICACAO_RETENCAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECLASSIFICACAO_RETENCAO_EVENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECLASSIFICACAO_RETENCAO_EVENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECLASSIFICACAO_RETENCAO_EVENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECLASSIFICACAO_RETENCAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RECLASSIFICACAO_RETENCAO_CONSULTA_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_REQUISICAO_SELECIONAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_REQUISICAO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_REQUISICAO_NOTA_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_REQUISICAO_NOTA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_REQUISICAO_NOTA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_REQUISICAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_REQUISICAO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_REQUISICAO_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_INSCRICAO_SELECIONAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_INSCRICAO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_INSCRICAO_NOTA_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_INSCRICAO_NOTA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_INSCRICAO_NOTA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_INSCRICAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_INSCRICAO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_INSCRICAO_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_ANULACAO_SELECIONAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_ANULACAO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_ANULACAO_NOTA_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_ANULACAO_NOTA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_ANULACAO_NOTA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_ANULACAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_ANULACAO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_RAP_ANULACAO_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_TIPO_PAGAMENTO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_TIPO_EXECUCAO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_ITEM_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_ITEM_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_ITEM_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_ITEM_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EVENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EVENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EVENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_CONSULTA_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_AGRUPAMENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_AGRUPAMENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_AGRUPAMENTO_CONSULTAR_NUMERO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_AGRUPAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMA_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMA_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PREPARACAO_PAGAMENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PREPARACAO_PAGAMENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PREPARACAO_PAGAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PREPARACAO_PAGAMENTO_CONSULTA_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFILUSUARIO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFILUSUARIO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFILUSUARIO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFILRECURSO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFILRECURSO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFILRECURSO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFIL_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFIL_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFIL_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFIL_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFIL_ACAO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFIL_ACAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PERFIL_ACAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ORIGEM_MATERIAL_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_OBRA_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_NL_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_NL_PARAMETRIZACAO_OBTER_TIPONL_DA_DESPESA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_NL_PARAMETRIZACAO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_NL_PARAMETRIZACAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_NL_PARAMETRIZACAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_NL_PARAMETRIZACAO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_NAVEGADOR_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_NATUREZA_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MUNICIPIO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MODALIDADE_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MENUITEM_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MENUITEM_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MENUITEM_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MENUITEM_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MENU_URL_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MENU_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MENU_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MENU_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MENU_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_LOG_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_LOG_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_LISTA_DE_BOLETOS_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_LISTA_DE_BOLETOS_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_LISTA_DE_BOLETOS_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_LISTA_DE_BOLETOS_CONSULTA_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_LICITACAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_LIBERAR_CHAVE.sql" />
+    <Build Include="dbo\Stored Procedures\PR_IDENTIFICACAO_DESDOBRAMENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_IDENTIFICACAO_DESDOBRAMENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_IDENTIFICACAO_DESDOBRAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_USUARIOS_POR_PERFIL.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_RECURSOS_POR_USUARIO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_RECURSOS_DISPONIVEL_POR_MENU.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_PERFILUSUARIO_POR_USUARIO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_PERFILRECURSO_POR_USUARIO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_PERFILRECURSO_POR_PERFIL.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_PERFILACAO_POR_USUARIO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_PERFILACAO_POR_PERFIL.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_PERFIL_POR_USUARIO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_MENU_ITEM_POR_USUARIO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_MENU_ITEM_POR_MENU.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_ESTRUTURA_POR_PROGRAMA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_CHAVE.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_ANOS_PROGRAMA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_ACAO_POR_USUARIO_RECURSO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_ACAO_POR_RECURSO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GERAR_PROGRAMA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_FONTE_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_FONTE_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_FONTE_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_FONTE_ALTERAR_DUPLICADO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_FONTE_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EVENTO_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EVENTO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EVENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EVENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EVENTO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ESTRUTURA_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ESTRUTURA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ESTRUTURA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ESTRUTURA_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_TIPO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_TIPO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_TIPO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_MES_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_MES_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_MES_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_MES_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_ITEM_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_ITEM_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_ITEM_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_ITEM_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_REFORCO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_MES_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_MES_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_MES_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_MES_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_ITEM_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_ITEM_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_ITEM_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_ITEM_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_MES_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_MES_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_MES_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_MES_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_ITEM_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_ITEM_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_ITEM_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_ITEM_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_CONSULTAR_ASSINATURA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_CANCELAMENTO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_EMPENHO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESTINO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESTINO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESTINO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESTINO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESPESA_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESPESA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESPESA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESPESA_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESDOBRAMENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESDOBRAMENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESDOBRAMENTO_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DESDOBRAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CREDOR_SELECIONAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CREDOR_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CREDOR_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_ITEM_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_ITEM_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_ITEM_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_ITEM_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CODIGO_EVENTO_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CODIGO_DE_BARRAS_TAXAS_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CODIGO_DE_BARRAS_TAXAS_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CODIGO_DE_BARRAS_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CODIGO_DE_BARRAS_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CODIGO_DE_BARRAS_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CODIGO_DE_BARRAS_BOLETO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CODIGO_DE_BARRAS_BOLETO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CENARIO_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_OB_ITEM_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AREA_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AREA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AREA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AREA_ALTERAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AQUISICAO_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ACAO_INCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ACAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ACAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ACAO_ALTERAR.sql" />
+    <Build Include="Security\seguranca.sql" />
+    <Build Include="Security\reserva.sql" />
+    <Build Include="Security\pagamento.sql" />
+    <Build Include="Security\empenho.sql" />
+    <Build Include="Security\contaunica.sql" />
+    <Build Include="Security\configuracao.sql" />
+    <Build Include="contaunica\Tables\tb_autorizacao_ob.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_DE_OB_ITEM_GRID.sql" />
+    <Build Include="contaunica\Tables\tb_autorizacao_ob_itens.sql" />
+    <Build Include="contaunica\Tables\tb_desdobramento_retencao_1.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_OB_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_OB_ITEM_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_DE_OB_CONSULTAR_1.sql" />
+    <Build Include="dbo\Tables\ELMAH_Error.sql" />
+    <Build Include="dbo\Stored Procedures\ELMAH_LogError.sql" />
+    <Build Include="dbo\Stored Procedures\ELMAH_GetErrorXml.sql" />
+    <Build Include="dbo\Stored Procedures\ELMAH_GetErrorsXml.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_DE_OB_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\ImplementNamingStandard.sql" />
+    <Build Include="contaunica\Tables\tb_programacao_desembolso_parametros.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_PARAMETROS_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\usp_Find_Non_Integrity_FK_Vals.sql" />
+    <Build Include="pagamento\Tables\tb_confirmacao_pagamento_tipo.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_APOIO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_DELETE.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_INSERT.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_SELECT.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_SELECT_ID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_UPDATE.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_NUMEROAGRUPAMENTO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_LISTARDESDOBRADAS.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_OB_NUMEROAGRUPAMENTO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_ITEM_EXCLUIR_NAOAGRUPADOS.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_ITEM_RELACIONARDESDOBRADOS.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_OB_EXCLUIR_NAOAGRUPADOS.sql" />
+    <Build Include="dbo\Stored Procedures\sp_confirmacao_pagamento_incluir.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_ITEM_GRID_OLD.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_ITEM_GRID_NEW.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_ITEM_CONSULTAR_OLD.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PROGRAMACAO_DESEMBOLSO_EXECUCAO_ITEM_CONSULTAR_NEW.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ARQUIVO_REMESSA_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ARQUIVO_REMESSA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ARQUIVO_REMESSA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ARQUIVO_REMESSA_CONSULTA_GRID.sql" />
+    <Build Include="Security\movimentacao.sql" />
+    <Build Include="contaunica\Tables\tb_arquivo_remessa.sql" />
+    <Build Include="contaunica\Tables\tb_arquivo.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_OB_ITEM_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_ITEM_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_ITEM_INCLUIR_OLD.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_OB_ITEM_CONSULTAR_OLD.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_OB_ITEM_CONSULTAR_NEW.sql" />
+    <Build Include="movimentacao\Tables\tb_tipo_movimentacao_orcamentaria.sql" />
+    <Build Include="movimentacao\Tables\tb_tipo_documento_movimentacao.sql" />
+    <Build Include="movimentacao\Tables\tb_reducao_suplementacao.sql" />
+    <Build Include="movimentacao\Tables\tb_movimentacao_orcamentaria_mes.sql" />
+    <Build Include="movimentacao\Tables\tb_movimentacao_orcamentaria_evento.sql" />
+    <Build Include="movimentacao\Tables\tb_movimentacao_orcamentaria.sql" />
+    <Build Include="movimentacao\Tables\tb_distribuicao_movimentacao.sql" />
+    <Build Include="movimentacao\Tables\tb_credito_movimentacao.sql" />
+    <Build Include="movimentacao\Tables\tb_cancelamento_movimentacao.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_TIPO_DOCUMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_TIPO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_REDUCAO_SUPLEMENTACAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_REDUCAO_SUPLEMENTACAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_ORCAMENTARIA_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_ORCAMENTARIA_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_ORCAMENTARIA_EVENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_ORCAMENTARIA_EVENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_ORCAMENTARIA_EVENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_ORCAMENTARIA_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_ORCAMENTARIA_AGRUPAMENTO_CONSULTAR_NUMERO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_MES_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_MES_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_MES_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_DISTRIBUICAO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_DISTRIBUICAO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_DISTRIBUICAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_CREDITO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_CREDITO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_CREDITO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_CANCELAMENTO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_CANCELAMENTO_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_CANCELAMENTO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_AUTORIZACAO_OB_ITEM_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_SUPLEMENTACAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_REDUCAOSUPLEMENTACAO_MES_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_REDUCAO_SUPLEMENTACAO_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_REDUCAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_ORCAMENTARIA_CONSULTAR_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_NC_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_DISTRIBUICAO_SUPLEMENTACAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_DISTRIBUICAO_MES_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_DIST_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_CANCELAMENTO_REDUCAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_CANCELAMENTO_MES_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_CANCEL_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_REDUCAOSUPLEMENTACAO_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_ORCAMENTARIA_GERAL_EXCLUIR.sql" />
+    <Build Include="contaunica\Tables\tb_itens_obs_rt.sql" />
+    <Build Include="contaunica\Tables\tb_itens_obs_re.sql" />
+    <Build Include="contaunica\Tables\tb_impressao_relacao_re_rt.sql" />
+    <Build Include="dbo\Stored Procedures\PR_IMPRESSAO_RELACAO_RE_RT_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_IMPRESSAO_RELACAO_RE_RT_EXCLUIR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_IMPRESSAO_RELACAO_RE_RT_CONSULTAR_ID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_IMPRESSAO_RELACAO_RE_RT_CONSULTAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_IMPRESSAO_RELACAO_RE_RT_CONSULTA_GRID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ITENS_OBS_RT_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ITENS_OBS_RE_SALVAR.sql" />
+    <Build Include="dbo\Stored Procedures\PR_IMPRESSAO_RELACAO_RE_RT_AGRUPAMENTO.sql" />
+    <Build Include="pagamento\Tables\tb_parametrizacao_forma_gerar_nl.sql" />
+    <Build Include="dbo\Stored Procedures\PR_IMPRESSAO_RELACAO_RE_RT_CONSULTAR_AGRUPAMENTO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_FORMA_GERAR_NL_CONSULTAR.sql" />
+    <Build Include="pagamento\Tables\tb_confirmacao_pagamento_totais.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GET_FORMA_GERAR_NL_POR_TIPO_DESPESA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_ITEM_ALTERAR_ID_RETENCAO_RECLASSIFICACAO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_INCLUIR_TOTAIS.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_INCLUIR_ITEM_PRODESP.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_INCLUIR_FILTRO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONFIRMACAO_PAGAMENTO_ALTERAR_VALOR_TOTAL.sql" />
+    <Build Include="dbo\Stored Procedures\PR_MOVIMENTACAO_ORCAMENTARIA_ULTIMA_ASSINATURA.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Compare\dev2project.scmp" />
+    <None Include="Compare\dev2local.scmp" />
+    <None Include="Compare\prod2local.scmp" />
+    <None Include="Compare\tabelasdominio.dcmp" />
+  </ItemGroup>
+</Project>

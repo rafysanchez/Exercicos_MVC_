@@ -1,0 +1,35 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.Desdobramento
+
+@model DadoDesdobramentoTotaisViewModel
+
+<div class="issqn">
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback issqn">
+            @Html.LabelFor(model => model.ValorIssqn, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorIssqn, new { @class = "form-control real", maxlength = "", @ReadOnly = "ReadOnly" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback issqn">
+            @Html.LabelFor(model => model.ValorIr, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorIr, new { @class = "form-control real", maxlength = "", @ReadOnly = "ReadOnly" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback issqn">
+            @Html.LabelFor(model => model.ValorInss, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorInss, new { @class = "form-control real", @maxlength = "", @ReadOnly = "ReadOnly" })
+            </div>
+        </div>
+    </div>
+</div>

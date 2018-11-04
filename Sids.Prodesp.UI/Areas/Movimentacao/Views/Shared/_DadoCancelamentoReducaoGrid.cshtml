@@ -1,0 +1,118 @@
+﻿@using System.Globalization
+@using System.Linq
+
+@model IList<Sids.Prodesp.UI.Areas.Movimentacao.Models.DadoCancelamentoReducaoViewModel>
+
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var tipo = Request.QueryString["tipo"];
+    var isConsulta = tipo != null ? tipo.Equals("c") : false;
+    var action = ViewContext.RouteData.GetRequiredString("action");
+}
+
+<div id="DadoCancelamentoReducaoGrid" class="siafisico">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina" style="font-weight:bold;">Cancelamento/Redução</h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+
+    <div class="margT0 siafisico">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-lg-12 col-md-12">
+                <table id="tblPesquisaCancelamentoReducao" class="_tbDataTables table table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>Seq</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NrNotaCancelamento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NrSuplementacaoReducao)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().UnidadeGestoraEmitente)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().UnidadeGestoraFavorecida)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NrOrgao)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Fonte)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().CategoriaGasto)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Valor)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().TransmitidoSiafem)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().TransmitidoProdesp)</th>
+                            <th><label>Ações</label></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            //if (action.ToLower().Equals("estornar"))
+                            //{
+                            //    item.NrNotaCancelamento = null;
+                            //    item.NrSuplementacaoReducao = null;
+                            //    item.TransmitidoSiafem = null;
+                            //    item.TransmitidoProdesp = null;
+                            //}
+                            <tr class="text-center">
+                                <td>@Html.DisplayFor(modelItem => item.NrSequencia)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NrNotaCancelamento)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NrSuplementacaoReducao)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UnidadeGestoraEmitente)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UnidadeGestoraFavorecida)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NrOrgao)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Fonte)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CategoriaGasto)</td>
+                                <td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(item.Valor)).ToString("N2"))</td>
+                                <td><text title="@item.MensagemSiafem">@Html.DisplayFor(modelItem => item.TransmitidoSiafem)</text></td>
+                                <td><text title="@item.MensagemProdesp">@Html.DisplayFor(modelItem => item.TransmitidoProdesp)</text></td>
+                                <td>
+                                    @if (isConsulta)
+                                    {
+                                        <text>&nbsp;</text>
+                                    }
+                                    else
+                                    {
+                                        var disableCr = string.Empty;
+
+                                        if (item.TransmitidoSiafem.Equals("Sucesso") && item.TransmitidoProdesp.Equals("Sucesso"))
+                                        {
+                                            disableCr = "disabled=disabled";
+                                        }
+
+                                        <button type="button" title="Alterar" class="btn btn-xs btn-info margL7" onclick="Movimentacao.editRowCR(this)" @disableCr><i class="fa fa-edit"></i></button>
+                                        <button type="button" title="Excluir" class="btn btn-xs btn-danger margL7" onclick="Movimentacao.removeRowCR(this)" @disableCr><i class="fa fa-trash"></i></button>
+                                    }
+                                    <button type="button" title="Visualizar" style="background-color:darkblue" class="btn btn-xs btn-info margL7" onclick="Movimentacao.viewRowCR(this)"><i class="fa fa-search"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

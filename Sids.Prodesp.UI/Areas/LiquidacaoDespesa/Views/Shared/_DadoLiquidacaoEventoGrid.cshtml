@@ -1,0 +1,81 @@
+﻿@using System.Globalization
+@using System.Linq
+
+@model IList<Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models.DadoLiquidacaoEventoViewModel>
+
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var totalGrid = "R$ "+ Model.Sum(z => Convert.ToDecimal(z.ValorUnitario) / 100).ToString("N2");
+}
+
+<div id="DadoLiquidacaoEventoGrid" class="siafisico">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+    <div class="margT0 siafisico">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-lg-12 col-md-12">
+                <table id="tblPesquisaEvento" class="_tbDataTables table table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroEvento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().InscricaoEvento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Classificacao)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Fonte)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ValorUnitario)</th>
+                            <th><label>Ações</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <td>@Html.DisplayFor(modelItem => item.NumeroEvento)</td>
+                                <td>@Html.DisplayFor(modelItem => item.InscricaoEvento)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Classificacao)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Fonte)</td>
+                                <td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(item.ValorUnitario) / 100).ToString("N2"))</td>
+                                <td>
+                                    <button type="button" title="Alterar" class="btn btn-xs btn-info margL7 lockSiafisico lockSiafem btn-edit" onclick="liquidacaoEvento.edit(this)"><i class="fa fa-edit"></i></button>
+                                    <button type="button" title="Excluir" class="btn btn-xs btn-danger margL7 lockSiafisico lockSiafem btn-trash" onclick="liquidacaoEvento.remove(this)"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="form-group-sm form-group has-feedback">
+                                    @Html.Label("Total", new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                                    <div class="input-group">
+                                        @Html.TextBox("Total", totalGrid, new { @class = "form-control lockSiafisico", @ReadOnly = true })
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

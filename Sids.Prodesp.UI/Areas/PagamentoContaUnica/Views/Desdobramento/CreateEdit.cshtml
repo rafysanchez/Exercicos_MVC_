@@ -1,0 +1,163 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.Desdobramento
+
+@model Sids.Prodesp.Model.Entity.PagamentoContaUnica.Desdobramento.Desdobramento
+
+@{ 
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title = (Model.Id > 1 ? (tipo == "a" || tipo == "i" ? "Alterar Desdobramento" : "Visualizar Desdobramento") : "Cadastrar Desdobramento") + " de Pagamento ";
+
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string msgRetorno = ViewBag.MsgRetorno;
+
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var action = ViewContext.RouteData.GetRequiredString("action");
+
+    bool transmitirProdesp = Convert.ToBoolean(Model.TransmitirProdesp);
+
+}
+
+<script>
+    window.area = @Html.Raw(Json.Encode(area));
+    window.controller = @Html.Raw(Json.Encode(controller));
+    window.action = @Html.Raw(Json.Encode(action));
+
+
+    window.Entity = @Html.Raw(Json.Encode(Model));
+    window.EntityIdentities = @Html.Raw(Json.Encode(Model.IdentificacaoDesdobramentos));
+    window.ItemList = @Html.Raw(Json.Encode(ViewBag.DesdobramentoItemGrid));
+    window.NomeReduzidoList = @Html.Raw(Json.Encode(ViewBag.NomeReduzidoCredores));
+    window.ListaCredores = @Html.Raw(Json.Encode(ViewBag.ListaCredores));
+
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+
+    var obj = 'Desdobramento';
+    var ModelItem = @Html.Raw(Json.Encode(Model));
+    var urlVoltar = '@Url.Action("AtualizarIndex", new { Area = "PagamentoContaUnica" })';
+
+    var programasInfo = @Html.Raw(Json.Encode(ViewBag.Programas));
+    var estruturaInfo = @Html.Raw(Json.Encode(ViewBag.Estrutura));
+</script>
+
+<link href="~/Content/jquery-ui-autocomplete/jquery-ui.css" rel="stylesheet" />
+
+<div class="col-md-12">
+    <h2>@ViewBag.Title</h2>
+
+    <div id="divPainelCadastrar" class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("DownloadFile", "Desdobramento", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("Codigo", Model.Id, new { @id = "Codigo" })
+
+                if (Model.TransmitidoProdesp || Model.Id > 0)
+                {
+                    <div class='row'>
+                        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm prodesp">
+                            @Html.LabelFor(model => model.DataCadastro, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+                            @Html.TextBoxFor(model => model.DataCadastro, new { @class = "form-control lockProdesp data", @ReadOnly = "True" })
+                        </div>
+
+                        @if (Model.TransmitidoProdesp)
+                        {
+
+                            <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm prodesp">
+                                @Html.LabelFor(model => model.DataTransmitidoProdesp, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+                                @Html.TextBoxFor(model => model.DataTransmitidoProdesp, new { @class = "form-control lockProdesp data", @ReadOnly = "True" })
+                            </div>
+                        }
+                        
+                    </div>
+                }
+
+
+                if (msgRetorno != null)
+                {
+                    <div class='row'>
+                        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm form-group has-feedback">
+                            <div id="retornoTransmissao">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Msg Retornada da Transmissão</label>
+                                <div class="input-group-sm">
+                                    @Html.TextArea("MsgRetorno", msgRetorno, new { @class = "form-control", @ReadOnly = "True" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_PesquisaContrato.cshtml", ViewBag.PesquisarContrato as PesquisaContratoViewModel)
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoDesdobramentoTipo.cshtml", ViewBag.DadoDesdobramentoTipo as DadoDesdobramentoTipoViewModel)
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoDesdobramento.cshtml", ViewBag.DadoDesdobramento as DadoDesdobramentoViewModel)
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoDesdobramentoIdentificacao.cshtml", ViewBag.DadoDesdobramentoIdentificacao as DadoDesdobramentoIdentificacaoViewModel)
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoDesdobramentoIdentificacaoISSQNGrid.cshtml", ViewBag.DadoDesdobramentoIdentificacaoISSQNGrid as List<DadoDesdobramentoIdentificacaoViewModel>)
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoDesdobramentoIdentificacaoOutrosGrid.cshtml", ViewBag.DadoDesdobramentoIdentificacaoOutrosGrid as List<DadoDesdobramentoIdentificacaoViewModel>)
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoDesdobramentoTotais.cshtml", ViewBag.DadoDesdobramentoTotais as DadoDesdobramentoTotaisViewModel)
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="tituloItensPagina"></h3>
+                        <hr class="margT10" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        @if (!Model.TransmitidoProdesp)
+                        {
+                            <button type='button' id='btnCancelar' class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Cancelar</button>
+                            <button type='button' id='btnSalvar' class='btn btn-sm btn-success'><i class='fa fa-save'></i> Salvar</button>
+                            <button type='button' id='btnTransmitir' class='btn btn-sm btn-primary'><i class='fa fa-share'></i> Transmitir</button>
+                        }
+                        else
+                        {
+                            <button type="button" id="btnAtualizarIndex" class="btn btn-sm btn-primary" onclick="javascript: AtualizarIndex();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                        }
+                        <button type="button" id="btnVoltar" class="btn btn-sm btn-primary" onclick="javascript: window.history.back();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section script {
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+<script src="~/Content/jquery-ui-autocomplete/jquery-ui.js"></script>
+    
+    <script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+    <script src="~/Content/js/Consultas.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+    <script src="~/Content/js/scriptImpressao.js"></script>
+    
+    <script src="~/Content/js/PagamentoContaUnica/DesdobramentoApoio.js"></script>
+    <script src="~/Content/js/PagamentoContaUnica/DesdobramentoInscricao.js"></script>
+    <script src="~/Content/js/PagamentoContaUnica/_DadoDesdobramentoIdentificacao.js"></script>
+    <script src="~/Content/js/PagamentoContaUnica/DesdobramentoValidator.js"></script>
+
+
+}
+
+
+
+
+
+
+
+
+

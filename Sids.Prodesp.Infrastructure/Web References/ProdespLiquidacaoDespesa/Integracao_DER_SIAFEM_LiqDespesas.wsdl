@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_LiqDespesas" xmlns:vhi-fault="urn:xmlns:attachmate:vhi-ws:fault" name="Integracao_DER_SIAFEM_LiqDespesas" targetNamespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_LiqDespesas" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="urn:xmlns:attachmate:vhi-ws:fault" location="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoLiqDespesas/vhi-fault.wsdl" />
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoLiqDespesas/Pool_IntegracaoLiqDespesas.xsd" namespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_LiqDespesas" />
+    </xsd:schema>
+  </types>
+  <message name="Procedure_AnulacaoRequisicaoRAP">
+    <part name="parameters" element="tns:Procedure_AnulacaoRequisicaoRAP" />
+  </message>
+  <message name="Procedure_AnulacaoRequisicaoRAPResponse">
+    <part name="parameters" element="tns:Procedure_AnulacaoRequisicaoRAPResponse" />
+  </message>
+  <message name="Procedure_AnulacaoSubEmpenho">
+    <part name="parameters" element="tns:Procedure_AnulacaoSubEmpenho" />
+  </message>
+  <message name="Procedure_AnulacaoSubEmpenhoResponse">
+    <part name="parameters" element="tns:Procedure_AnulacaoSubEmpenhoResponse" />
+  </message>
+  <message name="Procedure_AnulacaoSubEmpenhoApoio">
+    <part name="parameters" element="tns:Procedure_AnulacaoSubEmpenhoApoio" />
+  </message>
+  <message name="Procedure_AnulacaoSubEmpenhoApoioResponse">
+    <part name="parameters" element="tns:Procedure_AnulacaoSubEmpenhoApoioResponse" />
+  </message>
+  <message name="Procedure_ConsultaContratoTodos">
+    <part name="parameters" element="tns:Procedure_ConsultaContratoTodos" />
+  </message>
+  <message name="Procedure_ConsultaContratoTodosResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaContratoTodosResponse" />
+  </message>
+  <message name="Procedure_ConsultaEmpenhoCredor">
+    <part name="parameters" element="tns:Procedure_ConsultaEmpenhoCredor" />
+  </message>
+  <message name="Procedure_ConsultaEmpenhoCredorResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaEmpenhoCredorResponse" />
+  </message>
+  <message name="Procedure_ConsultaEmpenhoInscrito">
+    <part name="parameters" element="tns:Procedure_ConsultaEmpenhoInscrito" />
+  </message>
+  <message name="Procedure_ConsultaEmpenhoInscritoResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaEmpenhoInscritoResponse" />
+  </message>
+  <message name="Procedure_ConsultaEmpenhoSaldoRAP">
+    <part name="parameters" element="tns:Procedure_ConsultaEmpenhoSaldoRAP" />
+  </message>
+  <message name="Procedure_ConsultaEmpenhoSaldoRAPResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaEmpenhoSaldoRAPResponse" />
+  </message>
+  <message name="Procedure_ConsultaSubEmpenho">
+    <part name="parameters" element="tns:Procedure_ConsultaSubEmpenho" />
+  </message>
+  <message name="Procedure_ConsultaSubEmpenhoResponse">
+    <part name="parameters" element="tns:Procedure_ConsultaSubEmpenhoResponse" />
+  </message>
+  <message name="Procedure_InclusaoSubEmpenho">
+    <part name="parameters" element="tns:Procedure_InclusaoSubEmpenho" />
+  </message>
+  <message name="Procedure_InclusaoSubEmpenhoResponse">
+    <part name="parameters" element="tns:Procedure_InclusaoSubEmpenhoResponse" />
+  </message>
+  <message name="Procedure_InclusaoSubEmpenhoApoio">
+    <part name="parameters" element="tns:Procedure_InclusaoSubEmpenhoApoio" />
+  </message>
+  <message name="Procedure_InclusaoSubEmpenhoApoioResponse">
+    <part name="parameters" element="tns:Procedure_InclusaoSubEmpenhoApoioResponse" />
+  </message>
+  <message name="Procedure_InscricaoRAP">
+    <part name="parameters" element="tns:Procedure_InscricaoRAP" />
+  </message>
+  <message name="Procedure_InscricaoRAPResponse">
+    <part name="parameters" element="tns:Procedure_InscricaoRAPResponse" />
+  </message>
+  <message name="Procedure_RequisicaoRAP">
+    <part name="parameters" element="tns:Procedure_RequisicaoRAP" />
+  </message>
+  <message name="Procedure_RequisicaoRAPResponse">
+    <part name="parameters" element="tns:Procedure_RequisicaoRAPResponse" />
+  </message>
+  <message name="Procedure_RequisicaoRAPApoio">
+    <part name="parameters" element="tns:Procedure_RequisicaoRAPApoio" />
+  </message>
+  <message name="Procedure_RequisicaoRAPApoioResponse">
+    <part name="parameters" element="tns:Procedure_RequisicaoRAPApoioResponse" />
+  </message>
+  <message name="Procedure_anulacaoRequisicaoRAPApoio">
+    <part name="parameters" element="tns:Procedure_anulacaoRequisicaoRAPApoio" />
+  </message>
+  <message name="Procedure_anulacaoRequisicaoRAPApoioResponse">
+    <part name="parameters" element="tns:Procedure_anulacaoRequisicaoRAPApoioResponse" />
+  </message>
+  <message name="wsResourceCreate">
+    <part name="parameters" element="tns:wsResourceCreate" />
+  </message>
+  <message name="wsResourceCreateResponse">
+    <part name="parameters" element="tns:wsResourceCreateResponse" />
+  </message>
+  <message name="wsResourceDestroy">
+    <part name="parameters" element="tns:wsResourceDestroy" />
+  </message>
+  <message name="wsResourceDestroyResponse">
+    <part name="parameters" element="tns:wsResourceDestroyResponse" />
+  </message>
+  <portType name="Integracao_DER_SIAFEM_LiqDespesasPortType">
+    <operation name="Procedure_AnulacaoRequisicaoRAP">
+      <input message="tns:Procedure_AnulacaoRequisicaoRAP" />
+      <output message="tns:Procedure_AnulacaoRequisicaoRAPResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_AnulacaoSubEmpenho">
+      <input message="tns:Procedure_AnulacaoSubEmpenho" />
+      <output message="tns:Procedure_AnulacaoSubEmpenhoResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_AnulacaoSubEmpenhoApoio">
+      <input message="tns:Procedure_AnulacaoSubEmpenhoApoio" />
+      <output message="tns:Procedure_AnulacaoSubEmpenhoApoioResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaContratoTodos">
+      <input message="tns:Procedure_ConsultaContratoTodos" />
+      <output message="tns:Procedure_ConsultaContratoTodosResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaEmpenhoCredor">
+      <input message="tns:Procedure_ConsultaEmpenhoCredor" />
+      <output message="tns:Procedure_ConsultaEmpenhoCredorResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaEmpenhoInscrito">
+      <input message="tns:Procedure_ConsultaEmpenhoInscrito" />
+      <output message="tns:Procedure_ConsultaEmpenhoInscritoResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaEmpenhoSaldoRAP">
+      <input message="tns:Procedure_ConsultaEmpenhoSaldoRAP" />
+      <output message="tns:Procedure_ConsultaEmpenhoSaldoRAPResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_ConsultaSubEmpenho">
+      <input message="tns:Procedure_ConsultaSubEmpenho" />
+      <output message="tns:Procedure_ConsultaSubEmpenhoResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_InclusaoSubEmpenho">
+      <input message="tns:Procedure_InclusaoSubEmpenho" />
+      <output message="tns:Procedure_InclusaoSubEmpenhoResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_InclusaoSubEmpenhoApoio">
+      <input message="tns:Procedure_InclusaoSubEmpenhoApoio" />
+      <output message="tns:Procedure_InclusaoSubEmpenhoApoioResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_InscricaoRAP">
+      <input message="tns:Procedure_InscricaoRAP" />
+      <output message="tns:Procedure_InscricaoRAPResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_RequisicaoRAP">
+      <input message="tns:Procedure_RequisicaoRAP" />
+      <output message="tns:Procedure_RequisicaoRAPResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_RequisicaoRAPApoio">
+      <input message="tns:Procedure_RequisicaoRAPApoio" />
+      <output message="tns:Procedure_RequisicaoRAPApoioResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="Procedure_anulacaoRequisicaoRAPApoio">
+      <input message="tns:Procedure_anulacaoRequisicaoRAPApoio" />
+      <output message="tns:Procedure_anulacaoRequisicaoRAPApoioResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="wsResourceCreate">
+      <input message="tns:wsResourceCreate" />
+      <output message="tns:wsResourceCreateResponse" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+    </operation>
+    <operation name="wsResourceDestroy">
+      <input message="tns:wsResourceDestroy" />
+      <output message="tns:wsResourceDestroyResponse" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+  </portType>
+  <binding name="Integracao_DER_SIAFEM_LiqDespesasPortBinding" type="tns:Integracao_DER_SIAFEM_LiqDespesasPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Procedure_AnulacaoRequisicaoRAP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_AnulacaoSubEmpenho">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_AnulacaoSubEmpenhoApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaContratoTodos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaEmpenhoCredor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaEmpenhoInscrito">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaEmpenhoSaldoRAP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_ConsultaSubEmpenho">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_InclusaoSubEmpenho">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_InclusaoSubEmpenhoApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_InscricaoRAP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_RequisicaoRAP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_RequisicaoRAPApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="Procedure_anulacaoRequisicaoRAPApoio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="wsResourceCreate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="wsResourceDestroy">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="Integracao_DER_SIAFEM_LiqDespesasService">
+    <port name="Integracao_DER_SIAFEM_LiqDespesasPort" binding="tns:Integracao_DER_SIAFEM_LiqDespesasPortBinding">
+      <soap:address location="http://10.200.142.198:9680/vhi-xe/session/Pool_IntegracaoLiqDespesas" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_MovOrcamentaria" elementFormDefault="qualified" targetNamespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_MovOrcamentaria" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Procedure_MovOrcamentariaInterna" type="tns:Procedure_MovOrcamentariaInternaType" />
+  <element name="Procedure_MovOrcamentariaInternaResponse" type="tns:Procedure_MovOrcamentariaInternaResponseType" />
+  <element name="wsResourceCreate" type="tns:wsResourceCreateType" />
+  <element name="wsResourceCreateResponse" type="tns:wsResourceCreateResponseType" />
+  <element name="wsResourceDestroy" type="tns:wsResourceDestroyType" />
+  <element name="wsResourceDestroyResponse" type="tns:wsResourceDestroyResponseType" />
+  <complexType name="Procedure_MovOrcamentariaInternaFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inCED_1" nillable="true" type="string" />
+      <element minOccurs="0" name="inCED_2" nillable="true" type="string" />
+      <element minOccurs="0" name="inCED_3" nillable="true" type="string" />
+      <element minOccurs="0" name="inCED_4" nillable="true" type="string" />
+      <element minOccurs="0" name="inCED_5" nillable="true" type="string" />
+      <element minOccurs="0" name="inCFP_1" nillable="true" type="string" />
+      <element minOccurs="0" name="inCFP_2" nillable="true" type="string" />
+      <element minOccurs="0" name="inCFP_3" nillable="true" type="string" />
+      <element minOccurs="0" name="inCFP_4" nillable="true" type="string" />
+      <element minOccurs="0" name="inCFP_5" nillable="true" type="string" />
+      <element minOccurs="0" name="inExercicio" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela1" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela2" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela3" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela4" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela5" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela6" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela7" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela8" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela9" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela10" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela11" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela12" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela13" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela14" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_1_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinAUTO_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinEXAM_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodAssinRESP_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodEspecificacao_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inDestinoRec_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inFLProc_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinAUTO_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinEXAM_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inGrupoAssinRESP_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinAUTO_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinEXAM_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgaoAssinRESP_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrigemRec_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inProcesso_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota1_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota2_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota3_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota4_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inQuota5_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inS_R_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inTotal_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_1_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_2_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_3_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_4_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inEspecificacao_5_Tela15" nillable="true" type="string" />
+      <element minOccurs="0" name="inAplicObra_2_Tela9" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_MovOrcamentariaInternaRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outNumero_01" type="string" />
+      <element name="outNumero_02" type="string" />
+      <element name="outNumero_03" type="string" />
+      <element name="outNumero_04" type="string" />
+      <element name="outNumero_05" type="string" />
+      <element name="outNumero_06" type="string" />
+      <element name="outNumero_07" type="string" />
+      <element name="outNumero_08" type="string" />
+      <element name="outNumero_09" type="string" />
+      <element name="outNumero_10" type="string" />
+      <element name="outTipoDoc_01" type="string" />
+      <element name="outTipoDoc_02" type="string" />
+      <element name="outTipoDoc_03" type="string" />
+      <element name="outTipoDoc_04" type="string" />
+      <element name="outTipoDoc_05" type="string" />
+      <element name="outTipoDoc_06" type="string" />
+      <element name="outTipoDoc_07" type="string" />
+      <element name="outTipoDoc_08" type="string" />
+      <element name="outTipoDoc_09" type="string" />
+      <element name="outTipoDoc_10" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outNumero_11" type="string" />
+      <element name="outNumero_12" type="string" />
+      <element name="outNumero_13" type="string" />
+      <element name="outTipoDoc_11" type="string" />
+      <element name="outTipoDoc_12" type="string" />
+      <element name="outTipoDoc_13" type="string" />
+      <element name="outNumero_14" type="string" />
+      <element name="outNumero_15" type="string" />
+      <element name="outTipoDoc_14" type="string" />
+      <element name="outTipoDoc_15" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_MovOrcamentariaInternaType">
+    <sequence>
+      <element name="Procedure_MovOrcamentariaInternaFilters" type="tns:Procedure_MovOrcamentariaInternaFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_MovOrcamentariaInternaResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_MovOrcamentariaInternaRecord" type="tns:Procedure_MovOrcamentariaInternaRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="ModelVariablesType">
+    <all>
+      <element minOccurs="0" name="cics" nillable="true" type="string" />
+    </all>
+  </complexType>
+  <complexType name="wsResourceCreateType">
+    <sequence>
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="wsResourceCreateResponseType">
+    <sequence>
+      <element name="SessionId" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="wsResourceDestroyType">
+    <sequence>
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="wsResourceDestroyResponseType" />
+  <complexType name="EnvironmentVariablesType">
+    <sequence>
+      <element minOccurs="0" name="DomainName" nillable="true" type="string" />
+      <element minOccurs="0" name="ServerName" nillable="true" type="string" />
+      <element minOccurs="0" name="SessionId" nillable="true" type="string" />
+      <element minOccurs="0" name="Password" nillable="true" type="string" />
+      <element minOccurs="0" name="Username" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+</schema>

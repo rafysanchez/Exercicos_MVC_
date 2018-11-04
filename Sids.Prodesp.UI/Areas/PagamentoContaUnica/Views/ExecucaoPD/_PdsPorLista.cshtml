@@ -1,0 +1,31 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+@model DadoProgramacaoDesembolsoExecucaoViewModel
+
+<div class="panel panel-default ListaPD">
+    @*<div class="panel-heading">PDS por Lista</div>*@
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="form-group-sm col-md-2">
+                @Html.LabelFor(x => x.filtroListaPd.Opcao)
+                @Html.DropDownListFor(x => x.filtroListaPd.Opcao, new SelectList(new List<SelectListItem>() { new SelectListItem() { Text="Não Paga", Value="0" }, new SelectListItem() { Text = "Paga", Value = "1" }}, "Value", "Text"), new { @class = "form-control"})
+                @Html.ValidationMessageFor(x => x.filtroListaPd.Opcao)
+            </div>
+            <div class="form-group-sm col-md-2">
+                @Html.LabelFor(x => x.filtroListaPd.DataInicial)
+                @Html.TextBoxFor(x => x.filtroListaPd.DataInicial, new { @class = "form-control data datepicker", placeholder = "__/__/____" })
+                @Html.ValidationMessageFor(x => x.filtroListaPd.DataInicial)
+            </div>
+            <div class="form-group-sm col-md-2">
+                @Html.LabelFor(x => x.filtroListaPd.DataFinal)
+                @Html.TextBoxFor(x => x.filtroListaPd.DataFinal, new { @class = "form-control data datepicker", placeholder = "__/__/____" })
+                @Html.ValidationMessageFor(x => x.filtroListaPd.DataFinal)
+            </div>
+            <div class="form-group-sm col-md-2">
+                <label>&nbsp;</label>
+                <button type="button" data-button="ConsultarPD" id="btnConsultarPD" class="btn btn-primary btn-sm btn-block"><i class="fa fa-search"></i> CONSULTAR</button>
+                <input type="hidden" id="EfetuouConsulta" name="EfetuouConsulta" value="false" />           
+            </div>
+        </div>
+    </div>
+</div>

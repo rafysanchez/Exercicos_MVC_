@@ -1,0 +1,29 @@
+﻿
+@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model DadoTipoPreparacaoPagamentoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+<div class="outros issqn">
+    <hr style="height:1pt;" />
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Tipo de Preparação de Pagamento</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm form-group has-feedback prodesp issqn outros">
+            @Html.LabelFor(model => model.PreparacaoPagamentoTipoId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.PreparacaoPagamentoTipoId, Model.PreparacaoPagamentoTipoListItens, "Selecione", new { @class = "form-control  lockProdesp" })
+            </div>
+        </div>
+
+    </div>
+
+   
+</div>

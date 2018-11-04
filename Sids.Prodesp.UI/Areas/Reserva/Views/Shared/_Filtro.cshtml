@@ -1,0 +1,139 @@
+﻿@using Sids.Prodesp.Model.Extension
+@using Sids.Prodesp.UI.Areas.Reserva.Models
+
+@{
+    IFiltroViewModel filtro = ViewBag.Filtro ?? new FiltroViewModel();
+    var ProgramaListItems = filtro.Programas.Where(x => x.Ano == filtro.AnoExercicio).OrderBy(x => x.Cfp).Select(x => new SelectListItem { Selected = (filtro.Programa == x.Codigo), Value = x.Codigo.ToString(), Text = x.Cfp.Formatar("00.000.0000.0000") + " " + x.Descricao });//.Substring(0, 2) + "." + x.Cfp.Substring(2, 3) + "." + x.Cfp.Substring(5, 4) + "." + x.Cfp.Substring(9, 4) + " " + x.Descricao });
+    var PtresListItems = filtro.Programas.Where(x => x.Ano == filtro.AnoExercicio).OrderBy(x => x.Ptres).Select(x => new SelectListItem { Selected = (filtro.Ptres == x.Ptres), Value = x.Ptres, Text = x.Ptres });
+    var prgs = filtro.Programas.Where(x => x.Ano == filtro.AnoExercicio).Select(x => x.Codigo).ToList();
+    var NaturezaListItems = filtro.Estrutura.Where(x => prgs.Contains((int)x.Programa) && (x.Programa == filtro.Programa || filtro.Programa == null)).OrderBy(x => x.Natureza).Select(x => new SelectListItem { Selected = x.Codigo == filtro.Natureza, Value = x.Codigo.ToString(), Text = string.Concat(x.Natureza.Formatar("0.0.00.00"), " - ", x.Fonte) });
+}
+
+<div class="row">
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Nº Processo</label>
+        <div class="input-group-sm">
+            @Html.TextBox("Processo", filtro.Processo, new { @class = "form-control",  @maxlength = "15" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback" style="width:20%">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Nº @ViewBag.Name Prodesp</label>
+        <div class="input-group-sm">
+            @Html.TextBox("NumProdesp", filtro.NumProdesp, new { @class = "form-control",  @maxlength = "13" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Nº @ViewBag.Name SIAFEM/SIAFISICO</label>
+        <div class="input-group-sm">
+            @Html.TextBox("NumSiafemSiafisico", filtro.NumSiafemSiafisico, new { @class = "form-control nr",  @maxlength = "" })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @if (filtro.ExibirTipo)
+    {
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Tipo de Reserva</label>
+            <div class="input-group-sm">
+                @Html.DropDownList("cbxTipoReserva", new SelectList(filtro.TipoReserva, "Codigo", "Descricao", filtro.Tipo), "Selecione", new { @class = "form-control siafisico prodesp siafem" })
+            </div>
+        </div>
+    }
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Orgão(Regional)</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("Regional", new SelectList(filtro.Regional, "Id", "Descricao", filtro.RegionalId), "Selecione", new { @class = "form-control prodesp", @id = "Regional" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Ano (Exercício)</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("AnoExercicio", new SelectList(filtro.Anos, "Value", "Text", filtro.AnoExercicio), "Selecione", new { @class = "form-control  siafem prodesp siafisico", @id = "AnoExercicio" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER">PTRES</label>
+        @Html.DropDownList("Ptres", PtresListItems, "Selecione", new { @class = "form-control siafem", @id = "Ptres" })
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>C.F.P(Programa de Trabalho)</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("Programa", ProgramaListItems, "Selecione", new { @class = "form-control prodesp siafem", @id = "Programa" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>C.E.D(Natureza - Fonte)</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("Natureza", NaturezaListItems, "Selecione", new { @class = "form-control prodesp siafem", @id = "Natureza" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3  col-md-3  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Status SIAFEM/SIAFISICO</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("StatusSiafemSiafisico", new SelectList(filtro.StatusProdespListItems, "Value", "Text", filtro.StatusSiafemSiafisico), "Selecione", new { @class = "form-control", @id = "StatusSiafemSiafisico" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Status Prodesp</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("StatusTransmitidoProdesp", new SelectList(filtro.StatusProdespListItems, "Value", "Text", filtro.StatusProdesp), "Selecione", new { @class = "form-control siafisico prodesp siafem", @id = "TransmitidoProdesp" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-2 form-group-sm form-group">
+        <label class="control-label label-form-DER">Ident. do Contrato</label>
+        @Html.TextBox("Contrato", filtro.Contrato, new { @class = "form-control contrato", @maxlength = "" })
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Cod. Aplicação/Obra</label>
+        <div class="input-group-sm">
+            @Html.TextBox("Obra", filtro.Obra, new { @class = "form-control obra", @id = "Obra", @maxlength = "" })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Data de Cadastramento De:</label>
+        <div class="input-group-sm">
+            @Html.TextBox("DataInicial", filtro.DataEmissaoDe, new { @class = "form-control data datepicker data" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Data de Cadastramento Até:</label>
+        <div class="input-group-sm">
+            @Html.TextBox("DataFinal", filtro.DataEmissaoAte, new { @class = "form-control data datepicker data" })
+        </div>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+        <button type="button" id="btnPesquisar" class="btn btn-sm btn-primary" onclick="javascript: ValidaFormulario();"><i class="glyphicon glyphicon-Buscar"></i> Pesquisar</button>
+        <button type="button" id="Create" class="btn btn-sm btn-warning" onclick="javascript: window.location.href = '@Url.Action("Create", new {Area = "Reserva"})';"><i class="glyphicon glyphicon-plus"></i> Cadastrar</button>
+        <button type='button' id='btnLimpar' class='btn btn-sm btn-success' onclick='javascript: limparFormulario($("#form_filtro"));'><i class='glyphicon glyphicon-refresh'></i> Limpar</button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+    </div>
+</div>

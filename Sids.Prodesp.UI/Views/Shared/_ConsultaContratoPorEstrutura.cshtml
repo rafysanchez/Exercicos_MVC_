@@ -1,0 +1,74 @@
+﻿
+@using Sids.Prodesp.Model.Extension
+@using Sids.Prodesp.UI.Areas.Reserva.Models
+@model Sids.Prodesp.Model.Interface.Reserva.IReserva
+
+@{
+    IReservaViewModel _filtro = ViewBag.Filtro ?? new ReservaViewModel();
+    var filtroPrograma = _filtro.Programas.Where(x => x.Ano == Model.AnoExercicio).OrderBy(x => x.Cfp).Select(x => new SelectListItem { Selected = (Model.Programa == x.Codigo), Value = x.Codigo.ToString(), Text = x.Cfp.Formatar("00.000.0000.0000") + " " + x.Descricao });//.Substring(0, 2) + "." + x.Cfp.Substring(2, 3) + "." + x.Cfp.Substring(5, 4) + "." + x.Cfp.Substring(9, 4) + " " + x.Descricao });
+    var filtroPtres = _filtro.Programas.Where(x => x.Ano == Model.AnoExercicio).OrderBy(x => x.Ptres).Select(x => new SelectListItem { Selected = (_filtro.Ptres == x.Ptres), Value = x.Ptres, Text = x.Ptres });
+    var prgs = _filtro.Programas.Where(x => x.Ano == Model.AnoExercicio).Select(x => x.Codigo).ToList();
+    var filtroNatureza = _filtro.Estrutura.Where(x => prgs.Contains((int)x.Programa) && (x.Programa == Model.Programa || !Model.Programa.HasValue)).OrderBy(x => x.Natureza).Select(x => new SelectListItem { Selected = x.Codigo == Model.Estrutura, Value = x.Codigo.ToString(), Text = string.Concat(x.Natureza.Formatar("0.0.00.00"), " - ", x.Fonte) });
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina">Pesquisar por Estrutura</h3>
+        <hr class="margT10" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Ano</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("AnoExercicio", new SelectList(_filtro.Anos, "Value", "Text", @Model.AnoExercicio), "Selecione", new { @class = "form-control  siafem prodesp siafisico", @id = "AnoExercicio" })
+        </div>
+    </div>
+    <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Órgão</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("Regional", new SelectList(_filtro.Regional, "Id", "Descricao", @Model.Regional), "Selecione", new { @class = "form-control prodesp" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>CFP</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("Programa", filtroPrograma, "Selecione", new { @class = "form-control prodesp siafem" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>CED(Natureza - Fonte) </label>
+        <div class="input-group-sm">
+            @Html.DropDownList("Natureza", filtroNatureza, "Selecione", new { @class = "form-control prodesp siafem" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>PTRES</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("Ptres", filtroPtres, "Selecione", new { @class = "form-control prodesp siafem" })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2 form-group form-group-sm has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Origem do Recurso</label>
+        <div class="input-group-sm">
+            @Html.DropDownList("Fonte", new SelectList(_filtro.Fonte, "Id", "Codigo", @Model.OrigemRecurso), "", new { @class = "form-control prodesp siafem" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+        <label class="control-label label-form-DER"><span class="text-danger"></span>Nº do Processo</label>
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.Processo, new { @class = "form-control prodesp siafem required", @id = "Processo", @maxlength = "15" })
+            <span class="input-group-btn">
+                <button class="btn btn-primary btn-sm" onclick="ConsultarPorEstrutura()" type="button"><i class="fa fa-search"></i> Consultar</button>
+            </span>
+        </div>
+    </div>
+</div>

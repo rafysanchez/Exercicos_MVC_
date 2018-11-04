@@ -1,0 +1,203 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model FiltroViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var labelTitle = string.Empty;
+    var labelTitleProdesp = string.Empty;
+    var maxlength = string.Empty;
+    var sistema = controller.Contains("Rap") ? "SIAFEM" : "SIAFEM/SIAFISICO";
+    var status = string.Format("Status {0}", sistema);
+
+
+
+    switch (controller)
+    {
+        case "Subempenho":
+            labelTitle = "Subempenho";
+            labelTitleProdesp = "Nº do Empenho Prodesp";
+            maxlength = "9";
+            break;
+        case "SubempenhoCancelamento":
+            labelTitle = "Canc. do Sub.";
+            labelTitleProdesp = "Nº do Subempenho Prodesp";
+            maxlength = "13";
+            break;
+        case "RapInscricao":
+            labelTitle = "Subemp Inscrição de RAP";
+            labelTitleProdesp = "Nº do Empenho Prodesp";
+            break;
+        case "RapRequisicao":
+            labelTitle = "Requisição de RAP";
+            labelTitleProdesp = "Nº do Empenho Prodesp";
+            break;
+        case "RapAnulacao":
+            labelTitle = "Anulação de Requisição de RAP";
+            labelTitleProdesp = "Nº do Empenho Siafem";
+            break;
+    }
+
+    var lblNumeroEmpenhoProdesp = string.Format("Nº {0} Prodesp", labelTitle);
+    var lblNumeroOriginalSiafemSiafisico = string.Format("Nº {0} {1}", labelTitle, sistema);
+}
+
+<div id="selecaoFiltro">
+    <div class='row'>
+        <div class='col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.NumeroSubempenhoProdesp, lblNumeroEmpenhoProdesp, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            @Html.TextBoxFor(model => model.NumeroSubempenhoProdesp, new { @class = "form-control", @maxlength = "20" })
+        </div>
+
+        <div class='col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.NumeroSubempenhoSiafemSiafisico, lblNumeroOriginalSiafemSiafisico, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            @Html.TextBoxFor(model => model.NumeroSubempenhoSiafemSiafisico, new { @class = "form-control nl", @maxlength = "11" })
+        </div>
+
+        @if (!controller.Contains("RapAnulacao"))
+        {
+            <div class='col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback'>
+                @Html.LabelFor(model => model.NumeroEmpenhoProdesp, labelTitleProdesp, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                @Html.TextBoxFor(model => model.NumeroEmpenhoProdesp, new { @class = "form-control",maxlength })
+            </div>
+        }
+        @if (controller.Contains("RapAnulacao"))
+        {
+            <div class='col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback'>
+                @Html.LabelFor(model => model.NumeroEmpenhoSiafem, labelTitleProdesp, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                @Html.TextBoxFor(model => model.NumeroEmpenhoSiafem, new { @class = "form-control", @maxlength = "9" })
+            </div>
+        }
+        <div class='col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.NumeroProcesso, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            @Html.TextBoxFor(model => model.NumeroProcesso, new { @class = "form-control NoEspecial", @maxlength = "15" })
+        </div>
+    </div>
+
+    <div class="row">
+        @if (!controller.Contains("Rap"))
+        {
+            <div class='col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback'>
+                @Html.LabelFor(model => model.CenarioSiafemSiafisico, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                @Html.DropDownListFor(model => model.CenarioSiafemSiafisico, Model.CenarioTipoListItems, "Selecione", new { @class = "form-control" })
+            </div>
+        }
+
+        else
+        if (controller.Contains("RapInscricao") || controller.Contains("RapAnulacao"))
+        {
+            <div class='col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback'>
+                @Html.LabelFor(model => model.ServicoTipoId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                @Html.DropDownListFor(model => model.ServicoTipoId, Model.ServicoTipoListItems, "Selecione", new { @class = "form-control" })
+            </div>
+        }
+
+        <div class='col-sm-12 col-lg-3  col-md-3  form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.StatusSiafemSiafisico, status, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class='input-group-sm'>
+                @Html.DropDownListFor(model => model.StatusSiafemSiafisico, Model.StatusSiafemSiafisicoListItems, "Selecione", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class='col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.StatusProdesp, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class='input-group-sm'>
+                @Html.DropDownListFor(model => model.StatusProdesp, Model.StatusProdespListItems, "Selecione", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class='col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.CodigoAplicacaoObra, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            @Html.TextBoxFor(model => model.CodigoAplicacaoObra, new { @class = "form-control obra", @maxlength = "8" })
+        </div>
+
+
+        @if (controller.Contains("RapRequisicao"))
+        {
+        <div class='col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.ServicoTipoId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            @Html.DropDownListFor(model => model.ServicoTipoId, Model.ServicoTipoListItems, "Selecione", new { @class = "form-control" })
+        </div>
+        }
+
+
+    </div>
+
+    <div class="row">
+        <div class='col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.NumeroContrato, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            @Html.TextBoxFor(model => model.NumeroContrato, new { @class = "form-control contrato", @maxlength = "15" })
+        </div>
+
+        <div class='col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.DataCadastramentoDe, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class='input-group-sm'>
+                @Html.TextBoxFor(model => model.DataCadastramentoDe, new { @class = "form-control data datepicker data" })
+            </div>
+        </div>
+
+        <div class='col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback'>
+            @Html.LabelFor(model => model.DataCadastramentoAte, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class='input-group-sm'>
+                @Html.TextBoxFor(model => model.DataCadastramentoAte, new { @class = "form-control data datepicker data" })
+            </div>
+        </div>
+
+        @if (!controller.Contains("Rap"))
+        {
+            <div class='col-sm-12 col-lg-4 col-md-4 form-group-sm form-group-sm form-group has-feedback'>
+                @Html.LabelFor(model => model.NumeroCNPJCPFCredor, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                <div class='input-group-sm'>
+                    @Html.TextBoxFor(model => model.NumeroCNPJCPFCredor, new { @class = "form-control cnpjcpfUgCredor", @maxlength = "14" })
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!controller.Contains("Rap"))
+    {
+        <div class="row">
+            <div class='col-sm-12 col-md-3 form-group-sm form-group-sm form-group has-feedback'>
+                @Html.LabelFor(model => model.CodigoGestaoCredor, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                <div class='input-group-sm'>
+                    @Html.TextBoxFor(model => model.CodigoGestaoCredor, new { @class = "form-control", @maxlength = "6" })
+                </div>
+            </div>
+
+            @if (controller == "Subempenho")
+            {
+                <div class='col-sm-12 col-md-3 col-lg-3 form-group-sm form-group-sm form-group has-feedback'>
+                    @Html.LabelFor(model => model.CodigoCredorOrganizacao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                    <div class='input-group-sm'>
+                        @Html.TextBoxFor(model => model.CodigoCredorOrganizacao, new { @class = "form-control", @maxlength = "1" })
+                    </div>
+                </div>
+
+                <div class='col-sm-12 col-md-3 form-group-sm form-group-sm form-group has-feedback'>
+                    @Html.LabelFor(model => model.NumeroCNPJCPFFornecedor, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                    <div class='input-group-sm'>
+                        @Html.TextBoxFor(model => model.NumeroCNPJCPFFornecedor, new { @class = "form-control", @maxlength = "15" })
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+        <button type='button' id='btnPesquisar' class='btn-sm btn btn-primary' onclick='filtro.validate()'><i class='glyphicon glyphicon-search'></i> Pesquisar</button>
+        <button type='button' id='Create' class='btn btn-sm btn-warning' onclick="javascript: window.location.href = '@Url.Action("Create")';"><i class='glyphicon glyphicon-plus'></i> Cadastrar</button>
+        <button type='button' id='btnLimpar' class='btn-sm btn btn-success' onclick='javascript: limparFormulario($("#form_filtro"));'><i class='glyphicon glyphicon-refresh'></i> Limpar</button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+    </div>
+</div>

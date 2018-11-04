@@ -1,0 +1,86 @@
+﻿@using System.Globalization
+@using System.Linq
+@model IList<Sids.Prodesp.UI.Areas.Empenho.Models.DadoEmpenhoItemViewModel>
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+   
+    var ValorGeral = "R$ " + Model.Sum(z => Convert.ToDecimal(z.ValorTotal)).ToString("N2");
+}
+
+
+<div class="row siafisico">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina"></h3>
+        <hr class="margT10" />
+
+    </div>
+</div>
+
+<div class="margT0 siafisico">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 col-md-12 form-group has-feedback">
+            <table id="tblPesquisaItem" class="_tbDataTables table table-condensed table-striped small">
+                <thead>
+                    <tr>
+                        <th>@Html.LabelFor(x => x.FirstOrDefault().CodigoItemServico)</th>
+                        <th>@Html.LabelFor(x => x.FirstOrDefault().CodigoUnidadeFornecimentoItem)</th>
+                        <th>@Html.LabelFor(x => x.FirstOrDefault().QuantidadeMaterialServico)</th>
+                        <th>@Html.LabelFor(x => x.FirstOrDefault().ValorUnitario)</th>
+                        <th>@Html.LabelFor(x => x.FirstOrDefault().ValorTotal)</th>
+                        <th>@Html.LabelFor(x => x.FirstOrDefault().DescricaoJustificativaPreco)</th>
+                        <th><label>Ações</label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="text-center">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodigoItemServico)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodigoUnidadeFornecimentoItem)
+                            </td>
+                            <td>
+                                @Convert.ToDecimal(item.QuantidadeMaterialServico).ToString("N3")
+                            </td>
+                            <td>
+                                R$ @Decimal.Parse(item.ValorUnitario ?? "0.00").ToString("N2")
+                            </td>
+                            <td>
+                                R$ @Decimal.Parse(item.ValorTotal ?? "0.00").ToString("N2")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DescricaoJustificativaPreco)
+                            </td>
+                            <td>
+                                <button type="button" title="Alterar" class="btn btn-xs btn-info margL7 lockSiafisico" onclick="editRow(this)"><i class="fa fa-edit"></i></button>
+                                <button type="button" title="Excluir" class="btn btn-xs btn-danger margL7 lockSiafisico" onclick="removeRow(this)"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="form-group-sm has-feedback">
+                                @Html.Label("Total Geral", new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                                <div class="input-group-sm">
+                                    @Html.TextBoxFor(item => ValorGeral, new { @class = "form-control lockSiafisico", @ReadOnly = true })
+                                </div>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+

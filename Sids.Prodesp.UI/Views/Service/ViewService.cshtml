@@ -1,0 +1,12 @@
+﻿@model Dictionary<string, object>
+
+<div>
+    <h2>Result:</h2>
+    @foreach (var item in @Model.Keys)
+    {
+        <div>
+            <b>@Html.Raw(item) : </b> @Html.Raw(@Model[item])<br />
+        </div>
+    }
+
+</div>

@@ -1,0 +1,114 @@
+﻿@model List<Sids.Prodesp.UI.Areas.Configuracao.Models.Estrutura.EstruturaViewModel>
+
+@{
+    ViewBag.Title = "Listar Estrutura";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+<script>
+
+    var value = "";
+    var obj = "Estrutura";
+    var urld = '@Url.Action("Delete", "Estrutura")';
+    var programasInfo = @Html.Raw(Json.Encode(ViewBag.Filtro.Programas));
+    var selecionado = @Html.Raw(Json.Encode(ViewBag.Filtro.Programa));
+
+    window.onload = function () {
+        $("#AnoExercicio").change(function () {
+            selecionado = "0";
+            GerarCombo();
+        });
+        GerarCombo();
+    };
+
+    function Edit(progId){
+
+        var online = navigator.onLine;
+
+        if (online == true) {
+        } else {
+            AbrirModal("Erro de conexão");
+            return false;
+        }
+
+        var dados = ExisteReserva(progId);
+        if(dados > 0){
+            $.confirm({
+                text: "Existem reservas associadas à ao item selecionado, não é permitida a alteração.",
+                title: "Erro",
+                cancel: function (button) {
+                },
+                cancelButton: "Fechar",
+                confirmButton: ""
+            });
+        }
+        else if(dados == 0){
+            var tipo = "a";
+            AbrirDetalhe('@Url.Action("Edit", "Estrutura")' + '?id=' + progId +'&tipo=' + tipo);
+        } else {
+            AbrirModal(dados);
+        }
+        return false;
+    }
+</script>
+<link href="~/Content/DataTable/css/jquery.dataTables.min.css" rel="stylesheet" />
+<div class="col-md-12">
+    <h2>Pesquisa de Estrutura</h2>
+    @Html.Partial("_Mensagem")
+    <div class="panel panel-default" id="panelListaEstrutura">
+        <div class="panel-body">
+            @{
+                Html.RenderPartial("Filtro");
+            }
+            <div class="row">
+                <div class="col-md-10">
+                    <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+                </div>
+            </div>
+            <hr class="margT0" />
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                    <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped table-responsive small">
+                        <thead>
+                            <tr>
+                                <th>Ano</th>
+                                <th>PTRES</th>
+                                <th>CFP</th>
+                                <th>Programa</th>
+                                <th>Nomenclatura</th>
+                                <th>Natureza</th>
+                                <th>Macro</th>
+                                <th>Fonte</th>
+                                <th>Código da Aplicação</th>
+                                <th>Editar / Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>            @Html.DisplayFor(modelItem => item.Ano)        </td>
+                                    <td>            @Html.DisplayFor(modelItem => item.Ptres)        </td>
+                                    <td>            @Html.DisplayFor(modelItem => item.Cfp)        </td>
+                                    <td>            @Html.DisplayFor(modelItem => item.Programa)        </td>
+                                    <td>            @Html.DisplayFor(modelItem => item.Nomenclatura)        </td>
+                                    <td>            @Html.DisplayFor(modelItem => item.Natureza)        </td>
+                                    <td>            @Html.DisplayFor(modelItem => item.Macro)        </td>
+                                    <td>            @Html.DisplayFor(modelItem => item.Fonte)        </td>
+                                    <td>            @Html.DisplayFor(modelItem => item.Aplicacao)        </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-xs btn-info" data-button="Editar" title="Alterar" onclick="Edit(@item.Codigo)"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-xs btn-danger" data-button="Excluir" id="@item.Codigo" name="@(item.Natureza + " - " + item.Nomenclatura)" title="Excluir" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'Excluir', obj, '@(item.Natureza + " - " + item.Nomenclatura)',this)"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

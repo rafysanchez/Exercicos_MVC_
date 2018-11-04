@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D0401BA5-4E80-4B6E-A89E-E6B18FA01D29}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sids.Prodesp.Core</RootNamespace>
+    <AssemblyName>Sids.Prodesp.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG; </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Core.Debug.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Core.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Homologacao|AnyCPU'">
+    <OutputPath>bin\Homologacao\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Core.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Producao|AnyCPU'">
+    <OutputPath>bin\Producao\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Sids.Prodesp.Core.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseService.cs" />
+    <Compile Include="Base\SiafemEmpenhoBaseService.cs" />
+    <Compile Include="Base\MensagemGeral.cs" />
+    <Compile Include="Extensions\DateTimeExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Configuracao\DestinoService.cs" />
+    <Compile Include="Services\Configuracao\EstruturaService.cs" />
+    <Compile Include="Services\Configuracao\FonteService.cs" />
+    <Compile Include="Services\Configuracao\MunicipioService.cs" />
+    <Compile Include="Services\Configuracao\ProgramaService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoBaseService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoCancelamentoItemService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoItemService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoCancelamentoMesService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoMesService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoReforcoItemService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoReforcoMesService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoCancelamentoService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoReforcoService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoService.cs" />
+    <Compile Include="Services\Empenho\AquisicaoTipoService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoCancelamentoTipoService.cs" />
+    <Compile Include="Services\Empenho\OrigemMaterialService.cs" />
+    <Compile Include="Services\Empenho\LicitacaoService.cs" />
+    <Compile Include="Services\Empenho\ModalidadeService.cs" />
+    <Compile Include="Services\Empenho\EmpenhoTipoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\CenarioTipoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\LiquidacaoDespesaBaseService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\RapInscricaoNotaService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\ServicoTipoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\CodigoEventoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\ObraTipoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\NaturezaTipoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\EventoTipoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\SubempenhoBaseService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\SubempenhoCancelamentoEventoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\SubempenhoEventoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\SubempenhoCancelamentoItemService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\SubempenhoItemService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\SubempenhoCancelamentoNotaService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\RapAnulacaoNotaService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\RapRequisicaoNotaService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\SubempenhoNotaService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\SubempenhoCancelamentoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\RapInscricaoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\RapRequisicaoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\RapAnulacaoService.cs" />
+    <Compile Include="Services\LiquidacaoDespesa\SubempenhoService.cs" />
+    <Compile Include="Services\Movimentacao\MovimentacaoMesService.cs" />
+    <Compile Include="Services\Movimentacao\MovimentacaoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\AutorizacaoDeOBService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\CodigoBarraBoletoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\CodigoBarraTaxaService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\CredorService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\DesdobramentoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ListaBoletosService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ListaCodigoBarrasService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ParaRestoAPagarService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ImpressaoRelacaoRERTService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\PreparacaoPagamentoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\PreparacaoPagamentoTipoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ProgramacaoDesembolsoAgrupamentoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ProgramacaoDesembolsoEventoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ProgramacaoDesembolsoExecucaoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ProgramacaoDesembolsoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ProgramacaoDesembolsoTipoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\NotaDeLancamentoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ReclassificacaoRetencaoTipoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\DesdobramentoTipoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\DocumentoTipoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\IdentificacaoDesdobramentoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ReclassificacaoRetencaoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ReterService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ReclassificacaoRetencaoNotaService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\ReclassificacaoRetencaoEventoService.cs" />
+    <Compile Include="Services\PagamentoContaUnica\TipoBoletoService.cs" />
+    <Compile Include="Services\PagamentoDer\ArquivoRemessaService.cs" />
+    <Compile Include="Services\PagamentoDer\ConfirmacaoPagamentoService.cs" />
+    <Compile Include="Services\PagamentoDer\NlParametrizacaoService.cs" />
+    <Compile Include="Services\PagamentoDer\ParametrizacaoFormaGerarNlService.cs" />
+    <Compile Include="Services\Reserva\ReservaCancelamentoMesService.cs" />
+    <Compile Include="Services\Reserva\ReservaReforcoMesService.cs" />
+    <Compile Include="Services\Reserva\ReservaCancelamentoService.cs" />
+    <Compile Include="Services\Reserva\ReservaReforcoService.cs" />
+    <Compile Include="Services\Reserva\ReservaMesService.cs" />
+    <Compile Include="Services\Reserva\ReservaService.cs" />
+    <Compile Include="Services\Reserva\TipoReservaService.cs" />
+    <Compile Include="Services\Security\AutenticacaoService.cs" />
+    <Compile Include="Services\Seguranca\AcaoService.cs" />
+    <Compile Include="Services\Reserva\ChaveCicsmoService.cs" />
+    <Compile Include="Services\Seguranca\SistemaService.cs" />
+    <Compile Include="Services\Seguranca\RegionalService.cs" />
+    <Compile Include="Services\Seguranca\AreaService.cs" />
+    <Compile Include="Services\WebService\CommonService.cs" />
+    <Compile Include="Services\Seguranca\MenuItemService.cs" />
+    <Compile Include="Services\Seguranca\MenuService.cs" />
+    <Compile Include="Services\Seguranca\FuncionalidadeAcaoService.cs" />
+    <Compile Include="Services\Seguranca\PerfilAcaoService.cs" />
+    <Compile Include="Services\Seguranca\PerfilUsuarioService.cs" />
+    <Compile Include="Services\Seguranca\PerfilFuncionalidadeService.cs" />
+    <Compile Include="Services\Seguranca\PerfilService.cs" />
+    <Compile Include="Services\Seguranca\FuncionalidadeService.cs" />
+    <Compile Include="Services\Seguranca\UsuarioService.cs" />
+    <Compile Include="Services\WebService\Empenho\ProdespEmpenhoService.cs" />
+    <Compile Include="Services\WebService\Empenho\SiafemEmpenhoService.cs" />
+    <Compile Include="Services\WebService\LiquidacaoDespesa\ProdespLiquidacaoDespesaService.cs" />
+    <Compile Include="Services\WebService\LiquidacaoDespesa\SiafemLiquidacaoDespesaService.cs" />
+    <Compile Include="Services\WebService\Movimentacao\ProdespMovimentacaoService.cs" />
+    <Compile Include="Services\WebService\Movimentacao\SiafemMovimentacaoService.cs" />
+    <Compile Include="Services\WebService\PagamentoContaDer\ProdespPagamentoContaDerService.cs" />
+    <Compile Include="Services\WebService\PagamentoContaUnica\ProdespPagamentoContaUnicaService.cs" />
+    <Compile Include="Services\WebService\PagamentoContaUnica\SiafemPagamentoContaUnicaService.cs" />
+    <Compile Include="Services\WebService\Reserva\ProdespReservaService.cs" />
+    <Compile Include="Services\WebService\Reserva\SiafemReservaService.cs" />
+    <Compile Include="Services\WebService\Seguranca\SiafemSegurancaService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Sids.Prodesp.Core.Debug.ruleset" />
+    <None Include="Sids.Prodesp.Core.ruleset" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sids.Prodesp.Infrastructure\Sids.Prodesp.Infrastructure.csproj">
+      <Project>{a2558235-c057-49fb-82ff-d26675319826}</Project>
+      <Name>Sids.Prodesp.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sids.Prodesp.Model\Sids.Prodesp.Model.csproj">
+      <Project>{ac18da5a-0b50-4117-9363-c8fe8d0f7901}</Project>
+      <Name>Sids.Prodesp.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,98 @@
+﻿-- ===================================================================      
+-- Author:  Carlos Henrique Magalhães    
+-- Create date: 31/03/2017    
+-- Description: Procedure para consultar uma anulacao de rap    
+-- ===================================================================     
+CREATE procedure [dbo].[PR_RAP_ANULACAO_SELECIONAR]    
+ @id_rap_anulacao int    
+as      
+begin      
+      
+ SET NOCOUNT ON;      
+      
+ SELECT TOP 1    
+   [id_rap_anulacao]
+      ,[tb_estrutura_id_estrutura]
+      ,[tb_servico_tipo_id_servico_tipo]
+      ,[tb_programa_id_programa]
+      ,[tb_regional_id_regional]
+      ,[nr_siafem_siafisico]
+      ,[nr_prodesp]
+      ,[nr_prodesp_original]
+      ,[nr_empenho_siafem_siafisico]
+      ,[nr_contrato]
+      ,[nr_cnpj_cpf_credor]
+      ,[nr_despesa_processo]
+      ,[nr_recibo]
+      ,[nr_requisicao_rap]
+      ,[cd_unidade_gestora]
+      ,[cd_unidade_gestora_obra]
+      ,[cd_gestao_credor]
+      ,[cd_gestao]
+      ,[cd_aplicacao_obra]
+      ,[nr_medicao]
+      ,[vl_valor]
+      ,[vl_anulado]
+      ,[cd_nota_fiscal_prodesp]
+      ,[cd_tarefa]
+      ,[nr_classificacao]
+      ,[nr_ano_medicao]
+      ,[nr_mes_medicao]
+      ,[ds_prazo_pagamento]
+      ,[dt_realizado]
+	  ,[dt_emissao]
+      ,[ds_despesa_autorizado_supra_folha]
+      ,[ds_observacao_1]
+      ,[ds_observacao_2]
+      ,[ds_observacao_3]
+      ,[ds_despesa_referencia]
+      ,[cd_despesa]
+      ,[cd_despesa_especificacao_despesa]
+      ,[ds_despesa_especificacao_1]
+      ,[ds_despesa_especificacao_2]
+      ,[ds_despesa_especificacao_3]
+      ,[ds_despesa_especificacao_4]
+      ,[ds_despesa_especificacao_5]
+      ,[ds_despesa_especificacao_6]
+      ,[ds_despesa_especificacao_7]
+      ,[ds_despesa_especificacao_8]
+      ,[cd_assinatura_autorizado]
+      ,[cd_assinatura_autorizado_grupo]
+      ,[cd_assinatura_autorizado_orgao]
+      ,[ds_assinatura_autorizado_cargo]
+      ,[nm_assinatura_autorizado]
+      ,[cd_assinatura_examinado]
+      ,[cd_assinatura_examinado_grupo]
+      ,[cd_assinatura_examinado_orgao]
+      ,[ds_assinatura_examinado_cargo]
+      ,[nm_assinatura_examinado]
+      ,[cd_assinatura_responsavel]
+      ,[cd_assinatura_responsavel_grupo]
+      ,[cd_assinatura_responsavel_orgao]
+      ,[ds_assinatura_responsavel_cargo]
+      ,[nm_assinatura_responsavel]
+      ,[vl_saldo_anterior_subempenho]
+      ,[vl_saldo_apos_anulacao]
+      ,[cd_transmissao_status_prodesp]
+      ,[fl_transmissao_transmitido_prodesp]
+      ,[dt_transmissao_transmitido_prodesp]
+      ,[ds_transmissao_mensagem_prodesp]
+      ,[cd_transmissao_status_siafem_siafisico]
+      ,[fl_transmissao_transmitido_siafem_siafisico]
+      ,[dt_transmissao_transmitido_siafem_siafisico]
+      ,[dt_cadastro]
+      ,[ds_transmissao_mensagem_siafem_siafisico]
+      ,[fl_documento_completo]
+      ,[fl_documento_status]
+      ,[fl_sistema_siafisico]
+      ,[cd_transmissao_status_siafisico]
+      ,[fl_transmissao_transmitido_siafisico]
+	  ,[cd_cenario_prodesp]
+      ,[fl_sistema_prodesp]
+	  ,[fl_sistema_siafem_siafisico]
+
+ FROM pagamento.tb_rap_anulacao (nolock)    
+ where    
+  ( id_rap_anulacao = @id_rap_anulacao )    
+       
+end;

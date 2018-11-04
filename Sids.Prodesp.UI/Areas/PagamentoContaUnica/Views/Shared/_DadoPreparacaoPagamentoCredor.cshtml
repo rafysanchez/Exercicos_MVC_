@@ -1,0 +1,82 @@
+﻿
+@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model DadoPreparacaoPagamentoCredorViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+<div class="documentoGerador">
+    <br />
+    <hr style="height:1pt;" />
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div id="divCodigoCredorOrganizacao" class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(model => model.CodigoCredorOrganizacao, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoCredorOrganizacao, new { @class = "form-control lockProdesp credorOrgPro", @id = "CodigoCredorOrganizacaoId", @ReadOnly = true, @maxlength = 1 })
+            </div>
+        </div>
+        
+        <div id="divNumeroCNPJCPFFornecedor" class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(model => model.NumeroCNPJCPFCredor, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroCNPJCPFCredor, new { @class = "form-control lockProdesp cnpjcpfProdesp", @ReadOnly = true, @id = "NumeroCNPJCPFCredorId" })
+            </div>
+        </div>
+
+        <div id="divNumeroCNPJCPFFornecedor" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(model => model.TipoDespesaCredor, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.TipoDespesaCredor, new { @class = "form-control lockProdesp", @ReadOnly = true })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+            @Html.LabelFor(x => x.NumeroContrato, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.NumeroContrato, new { @class = "form-control contrato lockProdesp", @ReadOnly = true, @maxlength =""  })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(model => model.Credor1, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.Credor1, new { @class = "form-control lockProdesp ", @ReadOnly = true })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm form-group has-feedback prodesp">
+            <div class="input-group-sm">
+                <label><label></label></label>
+                @Html.TextBoxFor(model => model.Credor2, new { @class = "form-control lockProdesp ", @ReadOnly = true })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.DescricaoLogradouroEntrega, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.DescricaoLogradouroEntrega, new { @class = "form-control lockSiafisico", @ReadOnly = true, @maxlength = 45 })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroCEPEntrega, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroCEPEntrega, new { @class = "form-control lockProdesp cep", @ReadOnly = true, @maxlength = 9 })
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

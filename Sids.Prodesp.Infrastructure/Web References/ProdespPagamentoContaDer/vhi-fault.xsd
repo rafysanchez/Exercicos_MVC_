@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="urn:xmlns:attachmate:vhi-ws:fault-params" targetNamespace="urn:xmlns:attachmate:vhi-ws:fault-params" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ModelFault" type="tns:ModelFaultType" />
+  <element name="OperationUndefinedFault" type="tns:OperationUndefinedFaultType" />
+  <element name="ServiceFault" type="tns:ServiceFaultType" />
+  <element name="UserFault" type="tns:UserFaultType" />
+  <element name="XMLStreamFault" type="tns:XMLStreamFaultType" />
+  <element name="ResourceUnavailableFault" type="tns:ResourceUnavailableFaultType" />
+  <element name="ResourceUnknownFault" type="tns:ResourceUnknownFaultType" />
+  <complexType name="ModelFaultType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Description" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="OperationUndefinedFaultType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Description" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="ServiceFaultType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Description" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="UserFaultType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Description" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="XMLStreamFaultType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Description" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="ResourceUnavailableFaultType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Description" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="ResourceUnknownFaultType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Description" type="string" />
+    </sequence>
+  </complexType>
+</schema>

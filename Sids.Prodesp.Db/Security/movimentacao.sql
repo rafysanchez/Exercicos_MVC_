@@ -1,0 +1,37 @@
+﻿CREATE SCHEMA [movimentacao]
+    AUTHORIZATION [dbo];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

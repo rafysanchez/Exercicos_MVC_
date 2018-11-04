@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DA65E1A8-E1E7-4C78-BE42-6379E7E6F038}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sids.Prodesp.Interface</RootNamespace>
+    <AssemblyName>Sids.Prodesp.Interface</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG; </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\ICrudBase.cs" />
+    <Compile Include="Interface\Configuracao\ICrudDestino.cs" />
+    <Compile Include="Interface\Configuracao\ICrudMes.cs" />
+    <Compile Include="Interface\Configuracao\ICrudMunicipio.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenho.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoItem.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoMes.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoCancelamento.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoReforco.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoCancelamentoItem.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoReforcoItem.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoCancelamentoMes.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoReforcoMes.cs" />
+    <Compile Include="Interface\Empenho\ICrudAquisicaoTipo.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoCancelamentoTipo.cs" />
+    <Compile Include="Interface\Empenho\ICrudOrigemMaterial.cs" />
+    <Compile Include="Interface\Empenho\ICrudLicitacao.cs" />
+    <Compile Include="Interface\Empenho\ICrudModalidade.cs" />
+    <Compile Include="Interface\Empenho\ICrudEmpenhoTipo.cs" />
+    <Compile Include="Interface\ICrudShared.cs" />
+    <Compile Include="Interface\Reserva\ICrudReservaCancelamento.cs" />
+    <Compile Include="Interface\Configuracao\ICrudEstrutura.cs" />
+    <Compile Include="Interface\Configuracao\ICrudFonte.cs" />
+    <Compile Include="Interface\Reserva\ICrudMes.cs" />
+    <Compile Include="Interface\Configuracao\ICrudPrograma.cs" />
+    <Compile Include="Interface\Reserva\ICrudReservaCancelamentoMes.cs" />
+    <Compile Include="Interface\Reserva\ICrudReservaReforcoMes.cs" />
+    <Compile Include="Interface\Reserva\ICrudReservaReforco.cs" />
+    <Compile Include="Interface\Reserva\ICrudReserva.cs" />
+    <Compile Include="Interface\Reserva\ICrudReservaMes.cs" />
+    <Compile Include="Interface\Reserva\ITipoReserva.cs" />
+    <Compile Include="Interface\Security\IAutenticacao.cs" />
+    <Compile Include="Interface\Log\ILog.cs" />
+    <Compile Include="Interface\Seguranca\IAcao.cs" />
+    <Compile Include="Interface\Seguranca\IArea.cs" />
+    <Compile Include="Interface\Reserva\IChaveCicsmo.cs" />
+    <Compile Include="Interface\Service\Empenho\IProdespEmpenho.cs" />
+    <Compile Include="Interface\Service\Empenho\ISiafemEmpenho.cs" />
+    <Compile Include="Interface\Service\ICommon.cs" />
+    <Compile Include="Interface\Seguranca\ICrudMenu.cs" />
+    <Compile Include="Interface\Seguranca\ICrudMenuItem.cs" />
+    <Compile Include="Interface\Seguranca\ICrudPerfil.cs" />
+    <Compile Include="Interface\Seguranca\ICrudFuncionalidadeAcao.cs" />
+    <Compile Include="Interface\Seguranca\ICrudPerfilAcao.cs" />
+    <Compile Include="Interface\Seguranca\ICrudPerfilUsuario.cs" />
+    <Compile Include="Interface\Seguranca\ICrudPerfilFuncionalidade.cs" />
+    <Compile Include="Interface\Seguranca\ICrudFuncionalidade.cs" />
+    <Compile Include="Interface\Seguranca\IRegional.cs" />
+    <Compile Include="Interface\Seguranca\ISistema.cs" />
+    <Compile Include="Interface\Seguranca\ICrudUsuario.cs" />
+    <Compile Include="Interface\Service\Reserva\IProdespReserva.cs" />
+    <Compile Include="Interface\Service\Reserva\ISiafemReserva.cs" />
+    <Compile Include="Interface\Service\Seguranca\ISiafemReserva.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sids.Prodesp.Model\Sids.Prodesp.Model.csproj">
+      <Project>{ac18da5a-0b50-4117-9363-c8fe8d0f7901}</Project>
+      <Name>Sids.Prodesp.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

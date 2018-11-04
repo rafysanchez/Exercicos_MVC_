@@ -1,0 +1,64 @@
+﻿@{
+    Sids.Prodesp.Model.Entity.Log.LogFilter filtro = ViewBag.Filtro;
+    if (filtro == null)
+    {
+        filtro = new Sids.Prodesp.Model.Entity.Log.LogFilter();
+    }
+}
+@*<script src="~/Content/js/bootstrap-datepicker.js"></script>*@
+<link href="~/Content/css/bootstrap-datepicker.css" rel="stylesheet" />
+@using (Html.BeginForm("Index", "Log", FormMethod.Post, new { name = "form_filtro", id = "form_filtro" }))
+{
+    <h3 class="margT0 tituloItensPagina">Filtros</h3>
+                    <hr class="margT0" />
+                    <div class="row">
+
+                        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm datetimepicker">
+                            <label class="control-label label-form-DER">De:</label>
+                            @*@Html.TextBox("DataInicial", String.Format("{0:dd/MM/yyy}", filtro.DataInicial), new { @class = "form-control data datepicker" })*@
+                            @Html.TextBox("DataInicial", filtro.DataInicial, new {@class = "form-control data datepicker data" })
+                        </div>
+                        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm datetimepicker">
+                            <label class="control-label label-form-DER">Até:</label>
+                            @Html.TextBox("DataFinal",  filtro.DataFinal, new {@class = "form-control data datepicker data" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-3 col-md-4 form-group-sm ">
+                            <label class="control-label label-form-DER">Funcionalidade:</label>
+                            @Html.DropDownList("ddlRecurso", new SelectList(filtro.Recursos, "Codigo", "Nome", filtro.IdRecurso), "Selecione", new { @class = "form-control ddlRecurso" })
+                        </div>
+                        <div class="col-sm-12 col-lg-3 col-md-4 form-group-sm form-group">
+                            <label class="control-label label-form-DER">Ação:</label>
+                            @Html.DropDownList("ddlAcao", new SelectList(filtro.LogAcao, "Id", "Descricao", filtro.IdAcao), "Selecione", new { @class = "form-control ddlAcao" })
+                        </div>
+                        <div class="col-sm-12 col-lg-3 col-md-4 form-group-sm form-group">
+                            <label class="control-label label-form-DER">Resultado da Ação:</label>
+                            @Html.DropDownList("ddlResultado", new SelectList(filtro.LogResultado, "Id", "Descricao", filtro.IdResultado), "Selecione", new { @class = "form-control ddlResultado" })
+                        </div>
+                        <div class="col-sm-12 col-lg-3 col-md-4 form-group-sm form-group">
+                            <label class="control-label label-form-DER">Usuário:</label>
+                            @Html.DropDownList("ddlUsuario", new SelectList(filtro.Usuarios, "Codigo", "Nome", filtro.IdUsuario), "Selecione", new { @class = "form-control ddlUsuario" })
+                        </div>
+
+                        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group">
+                            <label class="control-label label-form-DER">Argumento</label>
+                            @Html.TextBox("ddlArgumento", filtro.Argumento, new { @class = "form-control ddlArgumento", @maxlength = "100" })
+
+                        </div>
+
+                        <div class='row'>
+                            <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                            <button type="button"  id="btnPesquisar" onclick="ValidaFormulario();" class="btn btn-sm btn-primary" ><i class="glyphicon glyphicon-Buscar"></i> Pesquisar</button>
+                            <button type="button" id="btnLimpar" class="btn btn-sm btn-success" onclick="javascript: limparFormulario($('#form_filtro'));"><i class="glyphicon glyphicon-refresh"></i> Limpar</button>
+                        </div>
+
+                        <div class='row'>
+                            <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                            </div>
+                        </div>
+                    </div>
+}

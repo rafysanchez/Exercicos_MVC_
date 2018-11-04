@@ -1,0 +1,1121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{308C3130-0F77-4862-A040-E83A798F5962}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sids.Prodesp.UI</RootNamespace>
+    <AssemblyName>Sids.Prodesp.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <IncludeAppPool>false</IncludeAppPool>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>Sids.Prodesp.UI.Debug.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Sids.Prodesp.UI.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elmah, Version=1.2.13605.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.1.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Web.2012.1.0.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Web.2012.1.0.0\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Web.2012.1.0.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Web.2012.1.0.0\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\Configuracao\ConfiguracaoAreaRegistration.cs" />
+    <Compile Include="Areas\Empenho\Controllers\EmpenhoBaseController.cs" />
+    <Compile Include="Areas\Empenho\Controllers\EmpenhoController.cs" />
+    <Compile Include="Areas\Empenho\Controllers\EmpenhoCancelamentoController.cs" />
+    <Compile Include="Areas\Empenho\Controllers\EmpenhoReforcoController.cs" />
+    <Compile Include="Areas\Empenho\EmpenhoAreaRegistration.cs" />
+    <Compile Include="Areas\Empenho\Models\DadoDespesaViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\DadoAssinaturaViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\DadoEntregaViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\DadoCancelamentoViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\DadoReforcoViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\FiltroGridViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\PesquisaCTViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\ValorEmpenhoViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\PesquisaEmpenhoReforcoViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\PesquisaNotaEmpenhoViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\DadoEmpenhoItemViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\DadoEmpenhoViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\DadoObraViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\FiltroViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\PesquisaReservaContratoViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\PesquisaReservaEstruturaViewModel.cs" />
+    <Compile Include="Areas\Empenho\Models\PesquisaReservaViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Controllers\LiquidacaoDespesaController.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Controllers\SubempenhoCancelamentoController.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Controllers\RapInscricaoController.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Controllers\RapRequisicaoController.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Controllers\RapAnulacaoController.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoInscricaoViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoApropriacaoViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoCaucaoViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoReferenciaViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoDespesaViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoLiquidacaoEventoViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoLiquidacaoItemViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoObservacaoViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoRequisicaoRapViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoSaldoValorAnulacao.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\FiltroGridViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\FiltroViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoLiquidacaoNotaViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\PesqEmpenhoRapViewModel .cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\PesquisaRequisicaoRapViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\PesquisaSaldoRapViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\PesqSubempInscritoRapViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\PesquisaEmpenhoCredorViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\PesquisaTipoApropriacaoViewModel.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Models\DadoApropriacaoEstruturaViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Controllers\MovimentacaoBaseController.cs" />
+    <Compile Include="Areas\Movimentacao\Controllers\MovimentacaoController.cs" />
+    <Compile Include="Areas\Movimentacao\Models\DadoAssinaturaViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\DadoCancelamentoViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\DadoReducaoSuplementacaoViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\DadoSuplementacaoViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\DadoDistribuicaoViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\DadoReducaoViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\DadoDistribuicaoSuplementacaoViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\DadoNotaCreditoViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\DadoCancelamentoReducaoViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\DadoMovimentacaoViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\MovimentacaoFiltroViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\FiltroGridViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\ValorMovimentacao3ViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\ValorMovimentacao2ViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\ValorMovimentacaoModalViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\Models\ValorMovimentacaoViewModel.cs" />
+    <Compile Include="Areas\Movimentacao\MovimentacaoAreaRegistration.cs" />
+    <Compile Include="Areas\PagamentoContaDer\Controllers\ArquivoRemessaController.cs" />
+    <Compile Include="Areas\PagamentoContaDer\Controllers\ConfirmacaoPagamentoController.cs" />
+    <Compile Include="Areas\PagamentoContaDer\Controllers\PagamentoContaDerBaseController.cs" />
+    <Compile Include="Areas\PagamentoContaDer\Models\ArquivoRemessaFiltroViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaDer\Models\DadoAssinaturaViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaDer\Models\DadoConfirmacaoPagamentoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaDer\Models\DadoPagamentoContaUnicaContasViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaDer\Models\ArquivoRemessaFiltroGridViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaDer\Models\ConfirmacaoPagamentoFiltroViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaDer\PagamentoContaDerAreaRegistration.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\AutorizacaoDeOBController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\CredorController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\DesdobramentoAnulacaoController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\DesdobramentoController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\ExecucaoPDController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\ImpressaoRelacaoRERTController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\ListaDeBoletosController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\Base\PagamentoContaUnicaController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\PreparacaoDePagamentoController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\ProgramacaoDesembolsoController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Controllers\ReclassificacaoRetencaoController.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoAutorizacaoDeOBViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoImpressaoRelacaoReRtConsultaViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoImpressaoRelacaoReRtCadastrarViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoPagamentoContaUnicaAgrupamentoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoProgramacaoDesembolsoExecucaoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoProgramacaoDesembolsoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoProgramacaoDesembolsoPDBECViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoTipoProgramacaoDesembolsoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\ListaDeBoletos\DadoCodigoDeBarrasViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoCredorGridViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoListaBoletosValorViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\ListaDeBoletos\DadoListaBoletosViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoPagamentoContaUnicaEventoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoPagamentoContaUnicaNotaViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoObservacaoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoPagamentoContaUnicaContasViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoPreparacaoPagamentoCredorViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoPreparacaoPagamentoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoReclassificacaoRetencaoTipoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoReclassificacaoRetencaoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoTipoPreparacaoPagamentoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\Desdobramento\DadoDesdobramentoCancelarGridViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\Desdobramento\DadoDesdobramentoIdentificacaoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\Desdobramento\DadoDesdobramentoTipoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\Desdobramento\DadoDesdobramentoTotaisViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\DadoDesdobramentoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\FiltroGridViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\FiltroViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\PesquisaContratoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\PesquisaDocumentoGeradorViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\PesquisaEmpenhoCredorViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\PesquisaImpressaoRelacaoRERTVoViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\Models\PesquisaImpressaoRelacaoRERTViewModel.cs" />
+    <Compile Include="Areas\PagamentoContaUnica\PagamentoContaUnicaAreaRegistration.cs" />
+    <Compile Include="Areas\Parametrizacao\Controllers\ParametrizacaoNotaLancamentoController.cs" />
+    <Compile Include="Areas\Parametrizacao\Models\NlParametrizacaoDespesaViewModel.cs" />
+    <Compile Include="Areas\Parametrizacao\Models\NlParametrizacaoEventoViewModel.cs" />
+    <Compile Include="Areas\Parametrizacao\Models\NlParametrizacaoViewModel.cs" />
+    <Compile Include="Areas\Parametrizacao\ParametrizacaoAreaRegistration.cs" />
+    <Compile Include="Areas\Reserva\Controllers\ReservaCancelamentoController.cs" />
+    <Compile Include="Areas\Reserva\Controllers\ReservaReforcoController.cs" />
+    <Compile Include="Areas\Reserva\Controllers\ReservaController.cs" />
+    <Compile Include="Areas\Reserva\Models\IFiltroViewModel.cs" />
+    <Compile Include="Areas\Reserva\Models\IReservaViewModel.cs" />
+    <Compile Include="Areas\Reserva\Models\ReservaCancelamentoViewModel.cs" />
+    <Compile Include="Areas\Reserva\Models\ReservaReforcoViewModel.cs" />
+    <Compile Include="Areas\Reserva\Models\FiltroViewModel.cs" />
+    <Compile Include="Areas\Reserva\Models\ReservaViewModel.cs" />
+    <Compile Include="Areas\Reserva\ReservaAreaRegistration.cs" />
+    <Compile Include="Areas\Seguranca\SegurancaAreaRegistration.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\Controllers\SubempenhoController.cs" />
+    <Compile Include="Areas\LiquidacaoDespesa\LiquidacaoDespesaAreaRegistration.cs" />
+    <Compile Include="Controllers\AcessoNegadoController.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\CepController.cs" />
+    <Compile Include="Areas\Configuracao\Controllers\EstruturaController.cs" />
+    <Compile Include="Areas\Configuracao\Controllers\FonteController.cs" />
+    <Compile Include="Areas\Seguranca\Controllers\LogController.cs" />
+    <Compile Include="Controllers\EnderecoController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Areas\Seguranca\Controllers\PerfilController.cs" />
+    <Compile Include="Areas\Seguranca\Controllers\FuncionalidadeController.cs" />
+    <Compile Include="Areas\Configuracao\Controllers\ProgramaController.cs" />
+    <Compile Include="Areas\Seguranca\Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\Base\ConsutasBaseController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Configuracao\Models\Estrutura\EstruturaViewModel.cs" />
+    <Compile Include="Areas\Configuracao\Models\Estrutura\FiltroViewModel.cs" />
+    <Compile Include="Areas\Seguranca\Models\Funcionalidade\DTOAcoesFuncionalidades.cs" />
+    <Compile Include="Areas\Seguranca\Models\Funcionalidade\FuncionalidadeViewModel.cs" />
+    <Compile Include="Helpers\SidsHelper.cs" />
+    <Compile Include="ModelBinders\DecimalModelBinder.cs" />
+    <Compile Include="Models\Log\FiltroLogViewModel.cs" />
+    <Compile Include="Models\Log\LogViewModel.cs" />
+    <Compile Include="Areas\Seguranca\Models\Perfil\DtoFuncionalidadeAcaoViewModel.cs" />
+    <Compile Include="Areas\Seguranca\Models\Perfil\FuncionalidadeAcaoViewModel.cs" />
+    <Compile Include="Areas\Seguranca\Models\Usuario\DTOPerfilUsuarioViewModel.cs" />
+    <Compile Include="Areas\Seguranca\Models\Usuario\GridUsuarioViewModel.cs" />
+    <Compile Include="Areas\Seguranca\Models\Usuario\UsuarioViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Report\HelperReport.cs" />
+    <Compile Include="Security\PermissaoAcesso.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="android-icon-36x36.png" />
+    <Content Include="App_Readme\Elmah.SqlServer.sql" />
+    <Content Include="App_Readme\Elmah.SqlServer.txt" />
+    <Content Include="Areas\Empenho\Views\EmpenhoReforco\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Desdobramento\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Desdobramento\Index.cshtml" />
+    <Content Include="Content\Bootstrap Validator\js\bootstrapvalidator.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapvalidator\css\bootstrapValidator.css" />
+    <Content Include="Content\bootstrapvalidator\css\bootstrapValidator.min.css" />
+    <Content Include="Content\bootstrapvalidator\js\bootstrapValidator.js" />
+    <Content Include="Content\bootstrapvalidator\js\bootstrapValidator.min.js" />
+    <Content Include="Content\bootstrapvalidator\js\language\en_US.js" />
+    <Content Include="Content\bootstrapvalidator\js\language\pt_BR.js" />
+    <Content Include="Content\css\bootstrap.datatables.min.css" />
+    <Content Include="Content\css\ConfirmacaoPagamento\ConfirmacaoPagamento.css" />
+    <Content Include="Content\css\Error.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\DataTable\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTable\js\bootstrap.datatables.min.js" />
+    <Content Include="Content\DataTable\js\datetime-moment.js" />
+    <Content Include="Content\DataTable\js\moment.min.js" />
+    <Content Include="Content\fonts\opensans-light-webfont.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\segoeuil.ttf.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\hotkeys\hotkeys.js" />
+    <Content Include="Content\images\ajax-loader.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\Brasao_do_estado_de_Sao_Paulo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\computer-error-mesenger.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\logo_der.png" />
+    <Content Include="Content\images\_ajax-loader.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\jquery-ui-autocomplete\jquery-ui.css" />
+    <Content Include="Content\jquery-ui-autocomplete\jquery-ui.js" />
+    <Content Include="Content\jquery-ui-autocomplete\jquery-ui.min.css" />
+    <Content Include="Content\jquery-ui-autocomplete\jquery-ui.min.js" />
+    <Content Include="Content\jquery.confirm\jquery.confirm.js" />
+    <Content Include="Content\jquery.confirm\jquery.confirm1.min.js" />
+    <Content Include="Content\jquery.confirm\website\css\bootstrap.min.css" />
+    <Content Include="Content\jquery.confirm\website\css\font-awesome.min.css" />
+    <Content Include="Content\jquery.confirm\website\css\highlight.dark.css" />
+    <Content Include="Content\jquery.confirm\website\css\main.css" />
+    <Content Include="Content\jquery.confirm\website\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\js\cascade.js" />
+    <Content Include="Content\js\ConfirmacaoPagamento\ConfirmacaoPagamento.js" />
+    <Content Include="Content\js\ConfirmacaoPagamento\ConfirmacaoPagamentoCadastro.js" />
+    <Content Include="Content\js\ConfirmacaoPagamento\ModalVisualizarDetalhes.js" />
+    <Content Include="Content\js\Consultas.js" />
+    <Content Include="Content\js\Empenho\Empenho.js" />
+    <Content Include="Content\js\Empenho\EmpenhoListar.js" />
+    <Content Include="Content\js\Empenho\EmpenhoCancelamento.js" />
+    <Content Include="Content\js\Empenho\EmpenhoReforco.js" />
+    <Content Include="Areas\PagamentoContaUnica\Views\AutorizacaoDeOB\Index.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\AutorizacaoDeOB\_Filtro.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\AutorizacaoDeOB\_FiltroGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\AutorizacaoDeOB\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\AutorizacaoDeOB\_ObsPorLista.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\AutorizacaoDeOB\_ItemsAutorizacaoOB.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\AutorizacaoDeOB\_DadosParaAutorizacao.cshtml" />
+    <Content Include="Content\js\LiquidacaoDespesa\SubempenhoCancelamento.js" />
+    <Content Include="Content\js\LiquidacaoDespesa\Subempenho.js" />
+    <Content Include="Content\js\LiquidacaoDespesa\_DadoLiquidacaoEvento.js" />
+    <Content Include="Content\js\LiquidacaoDespesa\_DadoLiquidacaoItem.js" />
+    <Content Include="Content\js\LiquidacaoDespesa\_LiquidacaoDespesa.js" />
+    <Content Include="Content\js\LiquidacaoDespesa\_LiquidacaoDespesaApoio.js" />
+    <Content Include="Content\js\LiquidacaoDespesa\_LiquidacaoDespesaContrato.js" />
+    <Content Include="Content\js\LiquidacaoDespesa\_LiquidacaoDespesaFiltro.js" />
+    <Content Include="Content\js\LiquidacaoDespesa\_LiquidacaoDespesaValidator.js" />
+    <Content Include="Content\js\LiquidacaoDespesa\_Listar.js" />
+    <Content Include="Content\js\Empenho\EmpenhoValidacao.js" />
+    <Content Include="Content\js\Movimentacao\MovimentacaoValidator.js" />
+    <Content Include="Content\js\Movimentacao\MovimentacaoListar.js" />
+    <Content Include="Content\js\Movimentacao\Movimentacao.js" />
+    <Content Include="Content\js\PagamentoContaDer\ArquivoRemessa.js" />
+    <Content Include="Content\js\PagamentoContaDer\ArquivoRemessaApoio.js" />
+    <Content Include="Content\js\PagamentoContaDer\ArquivoRemessaValidator.js" />
+    <Content Include="Content\js\PagamentoContaDer\ArquivoRemessaListar.js" />
+    <Content Include="Content\js\PagamentoContaUnica\AutorizacaoDeOB\autorizacao.de.ob.js" />
+    <Content Include="Content\js\PagamentoContaUnica\CodigoDeBarrasGrid.js" />
+    <Content Include="Content\js\PagamentoContaUnica\BoletosListar.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ConsultaDesdobramento.js" />
+    <Content Include="Content\js\PagamentoContaUnica\Credor.js" />
+    <Content Include="Content\js\PagamentoContaUnica\DesdobramentoApoio.js" />
+    <Content Include="Content\js\PagamentoContaUnica\DesdobramentoCancelamento.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ImpressaoRelacaoRERTListar.js" />
+    <Content Include="Content\js\PagamentoContaUnica\DesdobramentoListar.js" />
+    <Content Include="Content\js\PagamentoContaUnica\DesdobramentoInscricao.js" />
+    <Content Include="Content\js\PagamentoContaUnica\DesdobramentoValidator.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ListaDeBoletos.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ListaDeBoletosValidator.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ProgramacaoDesembolsoExecucao\programacao.desembolso.execucao.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolsoApoio.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolsoValidator.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolso.js" />
+    <Content Include="Content\js\PagamentoContaUnica\PreparacaoPagamento.js" />
+    <Content Include="Content\js\PagamentoContaUnica\PreparacaoPagamentoApoio.js" />
+    <Content Include="Content\js\PagamentoContaUnica\PreparacaoPagamentoListar.js" />
+    <Content Include="Content\js\PagamentoContaUnica\PreparacaoPagamentoValidator.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolsoListar.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ProgramacaoDesembolso\ProgramacaoDesembolsoAgrupamento.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ReclassificacaoRetencao.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ReclassificacaoRetencaoCreate.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ReclassificacaoRetencaoListar.js" />
+    <Content Include="Content\js\PagamentoContaUnica\ReclassificacaoRetencaoValidator.js" />
+    <Content Include="Content\js\PagamentoContaUnica\_DadoDesdobramentoIdentificacao.js" />
+    <Content Include="Content\js\PagamentoContaUnica\_DadoPagamentoContaUnicaEvento.js" />
+    <Content Include="Content\js\ParametrizacaoNl\parametrizacaonl.js" />
+    <Content Include="Content\js\Reservas\ReservaCancelamento.js" />
+    <Content Include="Content\js\Reservas\ReservaReforco.js" />
+    <Content Include="Content\js\Reservas\ReservaCancelamentoListar.js" />
+    <Content Include="Content\js\Reservas\ReservaReforcoListar.js" />
+    <Content Include="Content\js\Reservas\Reserva.js" />
+    <Content Include="Content\js\Reservas\ReservaListar.js" />
+    <Content Include="Content\js\_Consulta.js" />
+    <Content Include="Content\js\_Impressao.js" />
+    <Content Include="Content\js\scriptEstruturaPrograma.js" />
+    <Content Include="Content\js\scriptFonte.js" />
+    <Content Include="Content\js\scriptEstrutura.js" />
+    <Content Include="Content\js\scriptImpressao.js" />
+    <Content Include="Content\js\scriptPrograma.js" />
+    <Content Include="Areas\Configuracao\Views\Programa\CreateEdit.cshtml" />
+    <Content Include="Areas\Configuracao\Views\Programa\Index.cshtml" />
+    <Content Include="Areas\Seguranca\Views\web.config" />
+    <Content Include="Areas\Reserva\Views\web.config" />
+    <Content Include="Areas\Reserva\Views\Reserva\Index.cshtml" />
+    <Content Include="Areas\Reserva\Views\Shared\_Filtro.cshtml" />
+    <Content Include="Areas\Reserva\Views\Reserva\CreateEdit.cshtml" />
+    <Content Include="Areas\Reserva\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Reserva\Views\Shared\_Layout.cshtml" />
+    <Content Include="Content\js\scriptTransmissao.js" />
+    <Content Include="Content\js\_Transmissao.js" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ReclassificacaoRetencao\Index.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ReclassificacaoRetencao\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_PesquisaEmpenhoCredor.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_PesquisaContrato.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoObservacao.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoPagamentoContaUnicaEvento.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoPagamentoContaUnicaEventoGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoPagamentoContaUnicaNota.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ReclassificacaoRetencao\_Filtro.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ReclassificacaoRetencao\_FiltroGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\DesdobramentoAnulacao\Cancelar.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoDesdobramentoCancelarGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoReclassificacaoRetencao.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoReclassificacaoRetencaoTipo.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ListaDeBoletos\Index.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ListaDeBoletos\_Filtro.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ListaDeBoletos\_FiltroGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ListaDeBoletos\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoListaBoletos.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoCodigoDeBarras.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoCodigoDeBarrasList.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoListaBoletosValor.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoCodigoDeBarrasTaxa.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoCodigoDeBarrasBoleto.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\PreparacaoDePagamento\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\PreparacaoDePagamento\Index.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\PreparacaoDePagamento\_Filtro.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoTipoPreparacaoPagamento.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoPreparacaoPagamento.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_PesquisaDocumentoGerador.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoReferencia.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoPagamentoContaUnicaContas.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoPreparacaoPagamentoCredor.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\PreparacaoDePagamento\_FiltroGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoAssinatura.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ProgramacaoDesembolso\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ProgramacaoDesembolso\_Filtro.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ProgramacaoDesembolso\_FiltroGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ProgramacaoDesembolso\Index.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoTipoProgramacaoDesembolso.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoProgramacaoDesembolso.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoPagamentoContaUnicaAgrupamento.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoPagamentoContaUnicaAgrupamentoGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ExecucaoPD\Index.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ExecucaoPD\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ExecucaoPD\_Filtro.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ExecucaoPD\_FiltroGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ExecucaoPD\_PdsPorLista.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ExecucaoPD\_PdsPorNumeroPD.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ExecucaoPD\_ConfirmacaoExecucao.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ExecucaoPD\_ItemsExecucaoPD.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ExecucaoPD\_DadosParaExecucao.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ExecucaoPD\LayoutExecutarPD.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoProgramacaoDesembolsoBEC.cshtml" />
+    <Content Include="Areas\Parametrizacao\Views\web.config" />
+    <Content Include="Areas\Parametrizacao\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Parametrizacao\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Parametrizacao\Views\ParametrizacaoNotaLancamento\CreateEdit.cshtml" />
+    <Content Include="Areas\Parametrizacao\Views\ParametrizacaoNotaLancamento\_modalAtualizar.cshtml" />
+    <Content Include="Areas\Parametrizacao\Views\ParametrizacaoNotaLancamento\_modalConsulta.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\web.config" />
+    <Content Include="Areas\PagamentoContaDer\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\Index.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\Cancelar.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\_modalConsulta.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\_modalTransmitir.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\_modalVisualizarDetalhes.cshtml" />
+    <Content Include="Content\js\jquery.customextensions.js" />
+    <Content Include="Areas\PagamentoContaUnica\Views\AutorizacaoDeOB\_ConfirmacaoExecucao.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_PesquisaEmpenhoRap.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ArquivoRemessa\_Filtro.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\_Filtro.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ArquivoRemessa\_FiltroGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ArquivoRemessa\Index.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ArquivoRemessa\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\Shared\_DadoAssinatura.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\Shared\_DadoPagamentoContaUnicaContas.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\_FiltroCadastro.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\_FiltroGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\Visualiza.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\Altera.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\Exclui.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\_FiltroAtualizar.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\Shared\_modalCancelarArquivo.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ArquivoRemessa\Visualizar.cshtml" />
+    <Content Include="Areas\PagamentoContaDer\Views\ConfirmacaoPagamento\_ListarPagamentosConfirmar.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Movimentacao\Index.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Movimentacao\_FiltroGrid.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Movimentacao\_Filtro.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\web.config" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Movimentacao\CreateEdit.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_DadoMovimentacao.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_DadoAssinatura.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_ValorMovimentacao.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_DadoCancelamentoReducaoGrid.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_DadoNotaCreditoGrid.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_DadoDistribuicaoSuplementacaoGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ImpressaoRelacaoRERT\CreateEdit.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ImpressaoRelacaoRERT\Index.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ImpressaoRelacaoRERT\_Filtro.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\ImpressaoRelacaoRERT\_FiltroGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoImpressaoRelacaoOB.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_modalDadosMovimentacao.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_modalEstorno.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_modalImprimir.cshtml" />
+    <Content Include="Areas\Movimentacao\Views\Shared\_ValorMovimentacaoModal.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoImpressaoRelacaoLista.cshtml" />
+    <None Include="Properties\PublishProfiles\Homologacao.pubxml" />
+    <None Include="Properties\PublishProfiles\Producao.pubxml" />
+    <None Include="Scripts\jquery-2.2.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.4.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.map" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\_modalConsultaContrato.cshtml" />
+    <Content Include="Views\Shared\_modalDadosEmpenho.cshtml" />
+    <Content Include="Views\Shared\_modalDadosReserva.cshtml" />
+    <Content Include="Views\Shared\_modalGeral.cshtml" />
+    <Content Include="Areas\Reserva\Views\ReservaReforco\CreateEdit.cshtml" />
+    <Content Include="Areas\Reserva\Views\ReservaCancelamento\CreateEdit.cshtml" />
+    <Content Include="Areas\Reserva\Views\ReservaReforco\Index.cshtml" />
+    <Content Include="Areas\Reserva\Views\ReservaCancelamento\Index.cshtml" />
+    <Content Include="Areas\Configuracao\Views\web.config" />
+    <Content Include="Areas\Empenho\Views\web.config" />
+    <Content Include="Areas\Empenho\Views\EmpenhoReforco\Index.cshtml" />
+    <Content Include="Areas\Empenho\Views\Empenho\CreateEdit.cshtml" />
+    <Content Include="Areas\Empenho\Views\Empenho\Index.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_FiltroGrid.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Empenho\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_PesquisaReservaContrato.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_PesquisaReserva.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_PesquisaReservaEstrutura.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_DadoEmpenho.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_DadoEntrega.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_DadoEmpenhoItem.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_ValorEmpenho.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_DadoAssinatura.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_PesquisaCT.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_DadoObra.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_DadoEmpenhoItemGrid.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_PesquisaEmpenhoReforco.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_PesquisaNotaEmpenho.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_Filtro.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_DadoReforco.cshtml" />
+    <Content Include="Areas\Empenho\Views\EmpenhoCancelamento\CreateEdit.cshtml" />
+    <Content Include="Areas\Empenho\Views\EmpenhoCancelamento\Index.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_DadoCancelamento.cshtml" />
+    <Content Include="Areas\Empenho\Views\Shared\_DadoDespesa.cshtml" />
+    <Content Include="Content\Bootstrap Validator\css\bootstrap-theme.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Bootstrap Validator\css\bootstrap.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Bootstrap Validator\css\bootstrapValidator.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Bootstrap Validator\js\bootstrap.min.js" />
+    <Content Include="Content\Bootstrap Validator\js\bootstrapvalidator.min.js" />
+    <Content Include="Content\Bootstrap Validator\js\modernizr.js" />
+    <Content Include="Content\DataTable\Config\buildDataTable.js" />
+    <Content Include="Content\DataTable\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTable\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTable\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTable\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTable\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTable\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTable\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTable\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTable\css\dataTables.material.css" />
+    <Content Include="Content\DataTable\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTable\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTable\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTable\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTable\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTable\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTable\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTable\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTable\images\favicon.ico" />
+    <Content Include="Content\DataTable\images\sort_asc.png" />
+    <Content Include="Content\DataTable\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTable\images\sort_both.png" />
+    <Content Include="Content\DataTable\images\sort_desc.png" />
+    <Content Include="Content\DataTable\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTable\js\dataTables.bootstrap.js" />
+    <Content Include="Content\DataTable\js\dataTables.bootstrap.min.js" />
+    <Content Include="Content\DataTable\js\dataTables.bootstrap4.js" />
+    <Content Include="Content\DataTable\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\DataTable\js\dataTables.foundation.js" />
+    <Content Include="Content\DataTable\js\dataTables.foundation.min.js" />
+    <Content Include="Content\DataTable\js\dataTables.jqueryui.js" />
+    <Content Include="Content\DataTable\js\dataTables.jqueryui.min.js" />
+    <Content Include="Content\DataTable\js\dataTables.material.js" />
+    <Content Include="Content\DataTable\js\dataTables.material.min.js" />
+    <Content Include="Content\DataTable\js\dataTables.semanticui.js" />
+    <Content Include="Content\DataTable\js\dataTables.semanticui.min.js" />
+    <Content Include="Content\DataTable\js\dataTables.uikit.js" />
+    <Content Include="Content\DataTable\js\dataTables.uikit.min.js" />
+    <Content Include="Content\DataTable\js\jquery.dataTables.js" />
+    <Content Include="Content\DataTable\js\jquery.dataTables.min.js" />
+    <Content Include="Content\DataTable\js\jquery.js" />
+    <Content Include="Content\jquery.confirm\website\default.twig" />
+    <Content Include="Content\jquery.confirm\website\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\jquery.confirm\website\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\jquery.confirm\website\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\jquery.confirm\website\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\opensans-light-webfont.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\opensans-light-webfont.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\opensans-light-webfont.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoCaucao.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoDespesa.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_Filtro.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_FiltroGrid.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoLiquidacaoNota.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_PesquisaTipoApropriacao.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Subempenho\CreateEdit.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Subempenho\Index.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\web.config" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\SubempenhoCancelamento\Index.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\SubempenhoCancelamento\CreateEdit.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoApropriacao.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoLiquidacaoItem.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoLiquidacaoItemGrid.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoObservacao.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoLiquidacaoEvento.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoLiquidacaoEventoGrid.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoReferencia.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\RapRequisicao\CreateEdit.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\RapRequisicao\Index.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\RapInscricao\CreateEdit.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\RapInscricao\Index.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\RapAnulacao\CreateEdit.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\RapAnulacao\Index.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_PesquisaSaldoRap.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoInscricao.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_PesquisaSubempenhoInscritoRap.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoApropriacaoEstrutura.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoRequisicaoRap.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_PesquisaRequisicaoRap.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_DadoSaldoValorAnulacao.cshtml" />
+    <Content Include="Areas\LiquidacaoDespesa\Views\Shared\_PesquisaEmpenhoCredor.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\web.config" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoDesdobramentoTipo.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoDesdobramento.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoDesdobramentoIdentificacao.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoDesdobramentoTotais.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Credor\Index.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Desdobramento\_Filtro.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Desdobramento\_FiltroGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_PesquisaContrato.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoDesdobramentoIdentificacaoOutrosGrid.cshtml" />
+    <Content Include="Areas\PagamentoContaUnica\Views\Shared\_DadoDesdobramentoIdentificacaoISSQNGrid.cshtml" />
+    <None Include="Content\js\jquery.validate-vsdoc.js" />
+    <Content Include="Content\js\jquery.validate.js" />
+    <Content Include="Content\js\jquery.validate.min.js" />
+    <Content Include="Content\js\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\js\Log.js" />
+    <Content Include="Content\css\bootstrap-datepicker.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\bootstrap-datetimepicker.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\bootstrap-duallistbox.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\font-awesome.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\fullcalendar.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\jquery.realperson.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\style.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\bg_form.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\logo_prodesp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\js\bootstrap-datepicker.js" />
+    <Content Include="Content\js\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="Content\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\js\fullcalendar.js" />
+    <Content Include="Content\js\jquery.bootstrap-duallistbox.js" />
+    <Content Include="Content\js\jquery.mask.js" />
+    <Content Include="Content\js\jquery.realperson.js" />
+    <Content Include="Content\js\moment.js" />
+    <Content Include="Content\js\npm.js" />
+    <Content Include="Content\js\pt-br.js" />
+    <Content Include="Content\js\recaptcha.js" />
+    <Content Include="Content\js\recaptcha__pt_br.js" />
+    <Content Include="Content\js\scriptAtualizarSenha.js" />
+    <Content Include="Content\js\scriptLogin.js" />
+    <Content Include="Content\js\scriptFuncionalidade.js" />
+    <Content Include="Content\js\scriptAlterarSenha.js" />
+    <Content Include="Content\js\scriptUsuario.js" />
+    <Content Include="Content\js\scripts.js" />
+    <Content Include="Content\js\scriptPerfil.js" />
+    <Content Include="Content\js\waiting.js" />
+    <Content Include="Content\MaskMoney\jquery.maskMoney.js" />
+    <Content Include="Content\MaskMoney\jquery.maskMoney.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Fonts\fre3of9x.ttf" />
+    <Content Include="Fonts\free3of9.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\AcessoNegado\Index.cshtml" />
+    <Content Include="Views\Shared\_Mensagem.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Perfil\CreateEdit.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Perfil\Filtro.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Funcionalidade\Filtro.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Usuario\Filtro.cshtml" />
+    <Content Include="Views\Shared\_LayoutModal.cshtml" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\FontAwesome.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\DataTable\images\Sorting icons.psd" />
+    <Content Include="Views\Shared\_Mensagem2.cshtml" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <Content Include="Areas\Seguranca\Views\Log\Filtro.cshtml" />
+    <Content Include="Views\Shared\_modalConfirmaExclusao.cshtml" />
+    <Content Include="Views\Shared\_modalExclusaoEfetuada.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Log\Detalhe.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_mainMenu.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\_modalAlteraSenhaSIAFEM.cshtml" />
+    <Content Include="Views\Shared\_modalMessage.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Funcionalidade\CreateEdit.cshtml" />
+    <Content Include="Views\Shared\_modalConfirmar.cshtml" />
+    <Content Include="Views\Shared\_modalSalvementoEfetuado.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Usuario\CreateEdit.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Usuario\Index.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Usuario\_modalSenhaAlterada.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Usuario\AlterarSenha.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Areas\Configuracao\Views\Fonte\CreateEdit.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Log\Index.cshtml" />
+    <Content Include="Areas\Configuracao\Views\Estrutura\Index.cshtml" />
+    <Content Include="Areas\Configuracao\Views\Estrutura\CreateEdit.cshtml" />
+    <Content Include="Areas\Configuracao\Views\Estrutura\Filtro.cshtml" />
+    <Content Include="Areas\Configuracao\Views\Fonte\Index.cshtml" />
+    <Content Include="Views\Shared\_ConsultaAssinatura.cshtml" />
+    <Content Include="Views\Shared\_modalConsultaPorEstrutura.cshtml" />
+    <Content Include="Views\Shared\_ConsultaContratoPorEstrutura.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Views\Shared\_modalConsultaEmpenhos.cshtml" />
+    <Content Include="Views\Shared\_modalDadosEmpenhoSIAFEM.cshtml" />
+    <Content Include="Views\Service\ViewService.cshtml" />
+    <Content Include="Views\Shared\_modalConsultaEmpenhoSaldo.cshtml" />
+    <Content Include="Views\Shared\_modalConsultaEmpenhoCredor.cshtml" />
+    <Content Include="Views\Shared\_modalDadosSubempenho.cshtml" />
+    <Content Include="Views\Shared\_modalConsultaDesdobramento.cshtml" />
+    <Content Include="Views\ConsutasBase\ConsultaDesdobramento.cshtml" />
+    <Content Include="Views\Shared\_modalPagamentosPreparar.cshtml" />
+    <Content Include="Views\Shared\_modalPagamentosPreparar1.cshtml" />
+    <Content Include="Views\Shared\_modalBloqueioPagamento.cshtml" />
+    <Content Include="Views\Shared\_modalDocumentoGerador.cshtml" />
+    <Content Include="Views\Shared\_modalImpressora.cshtml" />
+    <Content Include="Views\Shared\_modalImprimir.cshtml" />
+    <Content Include="Views\Shared\_modalConsultaPD.cshtml" />
+    <Content Include="Views\Shared\_modalExcluiItem.cshtml" />
+    <Content Include="Views\Base\Info.cshtml" />
+    <None Include="Sids.Prodesp.UI.ruleset" />
+    <None Include="Sids.Prodesp.UI.Debug.ruleset" />
+    <Content Include="Views\Shared\_modalConsultaEmpenhoRAP.cshtml" />
+    <Content Include="Views\Shared\_LayoutConfirmacaoPagamento.cshtml" />
+    <Content Include="Views\Shared\_modalImprimirOP.cshtml" />
+    <None Include="Web.Homologacao.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Producao.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Configuracao\Views\Shared\" />
+    <Folder Include="Areas\PagamentoContaDer\Views\PagamentoContaDerBase\" />
+    <Folder Include="Areas\Seguranca\Views\Shared\" />
+    <Folder Include="Uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sids.Prodesp.Application\Sids.Prodesp.Application.csproj">
+      <Project>{51c35be5-7841-4199-b38e-64d41f171cef}</Project>
+      <Name>Sids.Prodesp.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sids.Prodesp.Core\Sids.Prodesp.Core.csproj">
+      <Project>{d0401ba5-4e80-4b6e-a89e-e6b18fa01d29}</Project>
+      <Name>Sids.Prodesp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sids.Prodesp.Infrastructure\Sids.Prodesp.Infrastructure.csproj">
+      <Project>{A2558235-C057-49FB-82FF-D26675319826}</Project>
+      <Name>Sids.Prodesp.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sids.Prodesp.Model\Sids.Prodesp.Model.csproj">
+      <Project>{ac18da5a-0b50-4117-9363-c8fe8d0f7901}</Project>
+      <Name>Sids.Prodesp.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sids.Prodesp.UI.Reports\Sids.Prodesp.UI.Reports.csproj">
+      <Project>{6d0ccfae-2562-4673-84d2-09b52c8ce8ae}</Project>
+      <Name>Sids.Prodesp.UI.Reports</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Seguranca\Views\Funcionalidade\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Seguranca\Views\Perfil\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Homologacao|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Sids.Prodesp.UI.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49432</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49432/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

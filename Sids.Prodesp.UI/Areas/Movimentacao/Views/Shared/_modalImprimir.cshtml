@@ -1,0 +1,41 @@
+﻿<!-- IMPRESSÃO MOVIMENTAÇÃO ORÇAMENTÁRIA -->
+<div class="modal fade" id="_modalImprimir" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="false" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Impressão de Documento</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form method="post" id="frm-imprimir-movimentacao" action=@Url.Content("~/Movimentacao/Movimentacao/DownloadFile/")>
+                        <div class="row margT20">
+                            <table border="0" width="55%">
+                                <tbody>
+                                    <tr>
+                                        <td width="35%">Documento</td>
+                                        <td><input type="radio" id="documento" name="tipo" value="1" checked onclick="javascript: HabilitarOpcaoImpressao();" /></td>
+                                        <td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tipo Documento: </td>
+                                        <td>NC</td>
+                                        <td><input type="checkbox" id="nc" name="nc" value="NC" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Agrupamento</td>
+                                        <td><input type="radio" id="agrupamento" name="tipo" value="2" onclick="javascript: DesabilitarOpcaoImpressao();" /></td>
+                                        <td>NL</td>
+                                        <td><input type="checkbox" id="nl" name="nl" value="NL" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" data-button="btnImprimirConfirmar" class="btn btn-success">Imprimir</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- IMPRESSÃO MOVIMENTAÇÃO ORÇAMENTÁRIA -->

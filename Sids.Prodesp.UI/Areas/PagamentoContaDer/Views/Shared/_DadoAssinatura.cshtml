@@ -1,0 +1,91 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaDer.Models
+
+@model DadoAssinaturaViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div id="DadoAssinatura" class="prodesp documentoGerador orgaoDespData">
+    <fieldset class="fsStyles">
+        <legend>
+            @Html.Label("Assinatura", new { @class = "label-form-field" })<span class="text-danger"></span>
+        </legend>
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoAutorizadoAssinatura, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoAutorizadoAssinatura, new { @class = "form-control lockProdesp number", @maxlength = 5, @id = "CodAssAutorizado" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoAutorizadoGrupo, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoAutorizadoGrupo, new { @class = "form-control", @ReadOnly = true, @id = "txtAutorizadoGrupo" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoAutorizadoOrgao, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoAutorizadoOrgao, new { @class = "form-control", @ReadOnly = true, @id = "txtAutorizadoOrgao" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NomeAutorizadoAssinatura, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NomeAutorizadoAssinatura, new { @class = "form-control", @ReadOnly = true, @id = "txtAutorizadoNome" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.DescricaoAutorizadoCargo, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.DescricaoAutorizadoCargo, new { @class = "form-control", @ReadOnly = true, @id = "txtAutorizadoCargo" })
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="fsStyles">
+        <legend>
+            @Html.Label("Contra Assinatura:", new { @class = "label-form-field" })<span class="text-danger"></span>
+        </legend>
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoExaminadoAssinatura, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoExaminadoAssinatura, new { @class = "form-control lockProdesp number", @maxlength = 5, @id = "CodAssExaminado" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoExaminadoGrupo, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoExaminadoGrupo, new { @class = "form-control prodesp", @ReadOnly = true, @id = "txtExaminadoGrupo" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoExaminadoOrgao, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoExaminadoOrgao, new { @class = "form-control prodesp", @ReadOnly = true, @id = "txtExaminadoOrgao" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NomeExaminadoAssinatura, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NomeExaminadoAssinatura, new { @class = "form-control prodesp", @ReadOnly = true, @id = "txtExaminadoNome" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.DescricaoExaminadoCargo, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.DescricaoExaminadoCargo, new { @class = "form-control prodesp", @ReadOnly = true, @id = "txtExaminadoCargo" })
+            </div>
+        </div>
+    </fieldset>
+
+   
+</div>

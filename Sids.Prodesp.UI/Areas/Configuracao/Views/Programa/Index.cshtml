@@ -1,0 +1,127 @@
+﻿@using Sids.Prodesp.Model.Extension
+@model IEnumerable<Sids.Prodesp.Model.Entity.Configuracao.Programa>
+
+    @{
+        var Anos = ViewBag.Anos;
+        var AnoSelecionado = ViewBag.AnosSelect;
+
+        ViewBag.Title = "Listar Programas";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <script>
+        var anoCadastro = @Html.Raw(Json.Encode(ViewBag.AnoCadastrado));
+        var value = "";
+        var urld = '@Url.Action("Delete", "Programa")';
+        var obj = "Programa";
+
+        function Edit(progId){
+
+            var online = navigator.onLine;
+
+            if (online == true) {
+            } else {
+                AbrirModal("Erro de conexão");
+                return false;
+            }
+
+            var dados = ExisteReserva(progId);
+            if(dados > 0){
+                $.confirm({
+                    text: "Existem reservas associadas ao programa, não é permitida a alteração.",
+                    title: "Erro",
+                    cancel: function (button) {
+                    },
+                    cancelButton: "Fechar",
+                    confirmButton: ""
+                });
+            }
+            else if(dados == 0){
+                var tipo = "a";
+                AbrirDetalhe('@Url.Action("Edit", "Programa")' + '?id=' + progId +'&tipo=' + tipo);
+            } else {
+                AbrirModal(dados);
+            }
+        return false;
+    }
+
+    </script>
+
+    <link href="~/Content/DataTable/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <div class="col-md-12">
+        <h2>Pesquisa de Programas</h2>
+        @Html.Partial("_Mensagem")
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @using (Html.BeginForm("Index", "Programa", FormMethod.Post, new { name = "form_filtro", id = "form_filtro" }))
+                {
+                    <h3 class="margT0 tituloItensPagina">Lista de Programas</h3>
+                    <hr class="margT0" />
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm anoRef">
+                            <label class="control-label label-form-DER">Ano Referência</label>
+                            @Html.DropDownList("ddlAnos", new SelectList(Anos, "Value", "Text", AnoSelecionado), "Selecione", new { @class = "form-control ddlAnos" })
+
+                        </div>
+                        <div class='row row-filter'>
+                            <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group">
+                            <button type="button" id="Create" class="btn btn-sm btn-warning" onclick="javascript: window.location.href = '@Url.Action("Create","Programa",new {Area = "Configuracao"})';"><i class="glyphicon glyphicon-plus"></i> Cadastrar</button>
+                        </div>
+                        <div class='row row-filter'>
+                            <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+                    </div>
+                </div>
+                <hr class="margT0" />
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                        <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped table-responsive small">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-3">PTRES</th>
+                                    <th class="col-md-3">CFP</th>
+                                    <th class="col-md-4">Programa</th>
+                                    <th class="col-md-2">Editar / Excluir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)    
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Ptres)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Cfp).ToString().Formatar("00.000.0000.0000")
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Descricao)
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-xs btn-info" data-button="Editar" title="Alterar" onclick="Edit(@item.Codigo)"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-xs btn-danger" data-button="Excluir" id="@item.Codigo" name="@item.Descricao" title="Excluir" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'Excluir', obj, '@item.Descricao',this)"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <button id="GerarEstrutura" data-button="Cadastrar" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-plus"></i> Gerar Nova Tabela de Estruturas</button>
+            </div>
+        </div>
+    </div>
+
+
+@section script{
+    <script src="~/Content/js/scriptPrograma.js"></script>
+}

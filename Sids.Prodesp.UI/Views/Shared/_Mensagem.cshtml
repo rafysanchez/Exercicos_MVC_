@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "";
+}
+<div id="divMensagem">
+    @if (TempData["Sucesso"] != null && (bool)TempData["Sucesso"] == true)
+    {
+        <div class="alert alert-success mensagemAlerta fade in">
+            <button data-dismiss="alert" class="close" type="button">×</button>
+            <div>
+                <strong>Sucesso!</strong> @TempData["Mensagem"]
+            </div>
+        </div>
+    }
+    else if (TempData["Sucesso"] != null && (bool)TempData["Sucesso"] == false)
+    {
+        @*<div class="alert alert-danger mensagemAlerta  fade in">*@
+
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button data-dismiss="alert" class="close" type="button">×</button>
+            @TempData["Mensagem"]
+        </div>
+    }
+</div>

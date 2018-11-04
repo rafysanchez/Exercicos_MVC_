@@ -1,0 +1,407 @@
+﻿@model List<Sids.Prodesp.UI.Areas.PagamentoContaDer.Models.ConfirmacaoPagamentoFiltroViewModel>
+@{
+    ViewBag.Title = "Visualizar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="divContent" class="col-md-12">
+    <h1>Visualizar Confirmação de Pagamento</h1>
+    @Html.AntiForgeryToken()
+
+    <div id="divPainelCadastrarConfirmacaoPagamento" class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 form-inline">
+                    <label class="label-control">Informe o sistema:</label>
+                    <input type="checkbox" name="sistemaDer1" checked/> Prodesp
+                    <input type="checkbox" name="sistemaDer1" /> SIAFEM
+                </div>
+            </div>
+            <div class="row padB20 padT20">
+                <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                    <label class="control-label label-form-DER"><span class="text-danger"></span>Data de Cadastro</label>
+                    <div class="input-group-sm">
+                        <input type="text" id="dataCadastro" name="dataPreparacao" class="form-control data datepicker data" value="14/11/2017" placeholder="14/11/2017" />
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                    <label class="control-label label-form-DER"><span class="text-danger"></span>Data da Transmissão</label>
+                    <div class="input-group-sm">
+                        <input type="text" id="dataTransmissao" name="dataPreparacao" class="form-control data datepicker data" value="16/11/2017" placeholder="16/11/2017" />
+                    </div>
+                </div>
+            </div>
+            <div class="row padB20">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <h3 id="tituloDesdobramento">Tipo de Confirmação</h3>
+                    <hr style="margin-left: 15px; margin-right: 15px;" />
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                            <label class="label-control">Tipo de Confirmação</label>
+                            <select class="form-control" id="opcoesConfirmacao" name="opcoesConfirmacao">
+                                <option value="0">Selecione</option>
+                                <option value="1" selected>Confirmação de Pagamento Por Documento</option>
+                                <option value="2">Confirmação de Pagamento Por Lote</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pagamentoPorDocumentoC">
+                <div class="row padB20">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h3 id="tituloDesdobramento">Consulta Pagamentos a Confirmar</h3>
+                        <hr style="margin-left: 15px; margin-right: 15px;" />
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Tipo de Documento</label>
+                                <div class="input-group-sm">
+                                    <select class="form-control" id="opcoesDocumento">
+                                        <option value="0">Selecione</option>
+                                        <option value="1" selected>Subempenho</option>
+                                        <option value="2">Requisição de RAP</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Nº do Documento</label>
+                                <input type="text" class="form-control" value="00000001"/>
+                            </div>
+                            <div class="col-md-3 col-lg-3 form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Tipo de Pagamento</label>
+                                <div class="input-group-sm">
+                                    <select class="form-control" id="opcoesTipoPagamento">
+                                        <option value="0">Selecione</option>
+                                        <option value="1" selected>11 - ORDEM BANCARIA</option>
+                                        <option value="2">12 - CHEQUE PGTO</option>
+                                        <option value="3">13 - CHEQUE PRACA</option>
+                                        <option value="4">14 - CHEQUE FORA</option>
+                                        <option value="5">15 - DINHEIRO</option>
+                                        <option value="6">16 - LIMITE DE SAQUE</option>
+                                        <option value="7">17 - SUPRIMENTO</option>
+                                        <option value="8">18 - DESPESA-COMPENS</option>
+                                        <option value="9">19 - RECEITA-COMPENS</option>
+                                        <option value="10">21 - BOLETIM</option>
+                                        <option value="11">22 - CAUCAO TITULOS</option>
+                                        <option value="12">23 - CREDORES</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Data da Confirmação</label>
+                                <div class="input-group-sm">
+                                    <input type="text" id="dataConfirmcao" name="dataPreparacao" class="form-control data datepicker data" value="14/11/2017" placeholder="__/__/____" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagamentoPorLoteC" style="display:none">
+                <div class="row padB20">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h3 id="tituloDesdobramento">Consulta Pagamentos a Confirmar</h3>
+                        <hr style="margin-left: 15px; margin-right: 15px;" />
+                        <div class="row">
+                            <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Código da Conta</label>
+                                <input type="text" class="form-control" value="010101"/>
+                            </div>
+                            <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Data da Preparação</label>
+                                <div class="input-group-sm">
+                                    <input type="text" id="dataPreparacao" name="dataPreparacao" class="form-control data datepicker data" value="14/11/2017" placeholder="14/11/2017" />
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3 form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Tipo de Pagamento</label>
+                                <div class="input-group-sm">
+                                    <select class="form-control" id="opcoesTipoPagamento">
+                                        <option value="0">Selecione</option>
+                                        <option value="1" selected>11 - ORDEM BANCARIA</option>
+                                        <option value="2">12 - CHEQUE PGTO</option>
+                                        <option value="3">13 - CHEQUE PRACA</option>
+                                        <option value="4">14 - CHEQUE FORA</option>
+                                        <option value="5">15 - DINHEIRO</option>
+                                        <option value="6">16 - LIMITE DE SAQUE</option>
+                                        <option value="7">17 - SUPRIMENTO</option>
+                                        <option value="8">18 - DESPESA-COMPENS</option>
+                                        <option value="9">19 - RECEITA-COMPENS</option>
+                                        <option value="10">21 - BOLETIM</option>
+                                        <option value="11">22 - CAUCAO TITULOS</option>
+                                        <option value="12">23 - CREDORES</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2 form-group-sm form-group has-feedback">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Data da Confirmação</label>
+                                <div class="input-group-sm">
+                                    <input type="text" id="dataConfirmacao2" name="dataConfirmacao2" class="form-control data datepicker data" value="14/11/2017" placeholder="14/11/2017" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resultadosBusca">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h3 id="resultadoBusca">Resultado da Busca</h3>
+                        <hr style="margin-left: 15px; margin-right: 15px;" />
+                        <div class="row">
+                            <div class="col-md-6" style="z-index:999">
+
+                            </div>
+
+                            <div class="col-md-4 form-inline padT25" style="z-index:999">
+                                <label>Pesquisar:</label>
+                                <input type="text" class="form-control" style="width:200px;" />
+                            </div>
+                            <div class="col-md-12 col-lg-12" id="tblCadastrarAutorizacao_wrapper" style="margin-top: -29px;">
+                                <table id="tblCadastrarAutorizacao" class="table table-condensed table-striped table-responsive small table-Cadastrar-Autorizacao">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Nº da OP</th>
+                                            <th class="text-center">Órgão</th>
+                                            <th class="text-center">Tipo de Despesa</th>
+                                            <th class="text-center">Nº do Documento</th>
+                                            <th class="text-center">Nome Reduzido do Credor</th>
+                                            <th class="text-center">CPF/CNPJ Credor</th>
+                                            <th class="text-center">Valor</th>
+                                            <th class="text-center">Banco</th>
+                                            <th class="text-center">Agência</th>
+                                            <th class="text-center">Conta</th>
+                                            <th class="text-center">Transmissão da Confirmação</th>
+                                            <th class="text-center">Nº da NL de Baixa/Repasse</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id="linhaAutorizacao_1">
+                                            <td class="text-center">1111</td>
+                                            <td class="text-center">Órgão XPTO_1</td>
+                                            <td class="text-center">Tipo de Despesa XPTO_1</td>
+                                            <td class="text-center">1122</td>
+                                            <td class="text-center">Nome XPTO_1</td>
+                                            <td class="text-center">000.000.000-00</td>
+                                            <td class="text-center">R$1.000,00</td>
+                                            <td class="text-center">Banco do Brasil</td>
+                                            <td class="text-center">123-x</td>
+                                            <td class="text-center">12345-x</td>
+                                            <td class="text-center">Sucesso</td>
+                                            <td class="text-center">0000</td>
+                                        </tr>
+                                        <tr id="linhaAutorizacao_2">
+                                            <td class="text-center">1111</td>
+                                            <td class="text-center">Órgão XPTO_2</td>
+                                            <td class="text-center">Tipo de Despesa XPTO_2</td>
+                                            <td class="text-center">1122</td>
+                                            <td class="text-center">Nome XPTO_2</td>
+                                            <td class="text-center">000.000.000-00</td>
+                                            <td class="text-center">R$1.000,00</td>
+                                            <td class="text-center">Banco do Brasil</td>
+                                            <td class="text-center">123-x</td>
+                                            <td class="text-center">12345-x</td>
+                                            <td class="text-center">Sucesso</td>
+                                            <td class="text-center">0000</td>
+                                        </tr>
+                                        <tr id="linhaAutorizacao_3">
+                                            <td class="text-center">1111</td>
+                                            <td class="text-center">Órgão XPTO_3</td>
+                                            <td class="text-center">Tipo de Despesa XPTO_3</td>
+                                            <td class="text-center">1122</td>
+                                            <td class="text-center">Nome XPTO_3</td>
+                                            <td class="text-center">000.000.000-00</td>
+                                            <td class="text-center">R$1.000,00</td>
+                                            <td class="text-center">Banco do Brasil</td>
+                                            <td class="text-center">123-x</td>
+                                            <td class="text-center">12345-x</td>
+                                            <td class="text-center">Sucesso</td>
+                                            <td class="text-center">0000</td>
+                                        </tr>
+                                        <tr id="linhaAutorizacao_4">
+                                            <td class="text-center">1111</td>
+                                            <td class="text-center">Órgão XPTO_4</td>
+                                            <td class="text-center">Tipo de Despesa XPTO_4</td>
+                                            <td class="text-center">1122</td>
+                                            <td class="text-center">Nome XPTO_4</td>
+                                            <td class="text-center">000.000.000-00</td>
+                                            <td class="text-center">R$1.000,00</td>
+                                            <td class="text-center">Banco do Brasil</td>
+                                            <td class="text-center">123-x</td>
+                                            <td class="text-center">12345-x</td>
+                                            <td class="text-center">Sucesso</td>
+                                            <td class="text-center">0000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <button class="btn btn-primary btn-sm pull-right" onclick="MostraModal('#modalVisualizarDetalhes')">Visualizar Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h3 id="resultadoBusca">Valores a Confirmar Por Fonte</h3>
+                        <hr style="margin-left: 15px; margin-right: 15px;" />
+                        <div class="row">
+
+                            <div class="col-md-12 col-lg-12">
+                                <table class="table table-condensed table-striped table-responsive small table-Cadastrar-Autorizacao">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Fonte</th>
+                                            <th class="text-center">Valor Total a Confirmar ISSQN</th>
+                                            <th class="text-center">Valor Total a Confirmar IR</th>
+                                            <th class="text-center">Valor Total a Confirmar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id="linhaAutorizacao_1">
+                                            <td class="text-center">Fonte XPTO_1</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                        </tr>
+                                        <tr id="linhaAutorizacao_2">
+                                            <td class="text-center">Fonte XPTO_2</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                        </tr>
+                                        <tr id="linhaAutorizacao_3">
+                                            <td class="text-center">Fonte XPTO_3</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                        </tr>
+                                        <tr id="linhaAutorizacao_4">
+                                            <td class="text-center">Fonte XPTO_4</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                            <td class="text-center">R$ 1.000,00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margT10">
+                    <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm">
+                        <label class="control-label label-form-DER">Valor Total a Confirmar</label>
+                        <input type="text" class="form-control" value="R$1.000,00" disabled />
+                    </div>
+                </div>
+
+                <div class="row margT10">
+                    <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm">
+                        <label class="control-label label-form-DER">Nº do Agrupamento</label>
+                        <input type="text" class="form-control" value="0001" disabled />
+                    </div>
+                    <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm">
+                        <label class="control-label label-form-DER">Valor Total Confirmado</label>
+                        <input type="text" class="form-control" value="R$1.000,00" disabled />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row margT10">
+                <div class="col-md-12 form-group-sm">
+                    <button class="btn btn-primary" onclick="history.go(-1)"><i class="fa fa-arrow-left"></i> Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_modalVisualizarDetalhes")
+
+@section script{
+    <script type="text/javascript">
+        $('#select-all_Autorizacao').click(function (event) {
+            if (this.checked) {
+                // Iterate each checkbox
+                $('.checkTodosAutorizacao').each(function () {
+                    this.checked = true;
+                });
+            }
+            else {
+                $('.checkTodosAutorizacao').each(function () {
+                    this.checked = false;
+                });
+            }
+        });
+        $(".checkTodosAutorizacao").on("change", function () {
+            if (!$(this).is(":checked")) {
+                $("#select-all_Autorizacao").prop('checked', false);
+            }
+            if ($(".checkTodosAutorizacao:checked").length == $(".checkTodosAutorizacao").length) {
+                $("#select-all_Autorizacao").prop('checked', true);
+            }
+        });
+
+        //seleciona apenas um checkbox do grupo
+        $("input:checkbox").on('click', function () {
+            var $box = $(this);
+            if ($box.is(":checked")) {
+                var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+            } else {
+                $box.prop("checked", false);
+            }
+        });
+
+        $('.botao').click(function (e) {
+            var isValid = true;
+            $('select[required],input[required=required]').each(function () {
+                if ($.trim($(this).val()) == '') {
+                    isValid = false;
+                    $('#modalAlerta').modal();
+                    $('#modalAlerta #value').html('Campo obrigatório não preenchido');
+                    $(this).addClass('campoVazio');
+                }
+                else {
+                    $(this).removeClass('campoVazio');
+                }
+            });
+            if (isValid == false) {
+                e.preventDefault();
+            }
+
+            else {
+                $('#modalAlerta').modal();
+                $('#modalAlerta #value').html('Transmissão realizada com sucesso');
+            }
+        });
+
+        $('select[name=opcoesConfirmacao]').change(function () {
+            var opcao = $(this).val();
+            if (opcao == '1') {
+                $('.pagamentoPorDocumentoC').show();
+                $('.pagamentoPorLoteC').hide();
+                $('.resultadosBusca').show();
+            }
+
+            else if (opcao == '2') {
+                $('.pagamentoPorLoteC').show();
+                $('.pagamentoPorDocumentoC').hide();
+                $('.resultadosBusca').show();
+            }
+            else {
+                $('.pagamentoPorLoteC').hide();
+                $('.pagamentoPorDocumentoC').hide();
+                $('.resultadosBusca').hide();
+            }
+        })
+    </script>
+}

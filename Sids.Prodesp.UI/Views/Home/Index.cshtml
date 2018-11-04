@@ -1,0 +1,21 @@
+﻿@{
+    bool acesso = ViewBag.AlterarSenha || ViewBag.AlterarSenhaSiafem;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_modalAlteraSenhaSIAFEM")
+
+@section script{
+    <script src="~/Content/js/scriptAtualizarSenha.js"></script>
+    <script>
+        $(document).ready(function () {
+            var acesso = @Html.Raw(Json.Encode(acesso));
+            if(acesso == true) {
+                ModalAlterarSenha(true, '#modalAlteraSenhaSiafem');
+            }
+            $(".conteudo").css("min-height", (screen.height - 350) + "px");
+        });
+
+    </script>
+}

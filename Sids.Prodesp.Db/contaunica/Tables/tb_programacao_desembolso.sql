@@ -1,0 +1,57 @@
+﻿CREATE TABLE [contaunica].[tb_programacao_desembolso] (
+    [id_programacao_desembolso]                   INT           IDENTITY (1, 1) NOT NULL,
+    [id_tipo_programacao_desembolso]              INT           NULL,
+    [id_tipo_documento]                           INT           NULL,
+    [dt_cadastro]                                 DATE          NULL,
+    [nr_siafem_siafisico]                         VARCHAR (11)  NULL,
+    [nr_contrato]                                 VARCHAR (13)  NULL,
+    [nr_processo]                                 VARCHAR (15)  NULL,
+    [nr_documento]                                VARCHAR (19)  NULL,
+    [cd_unidade_gestora]                          VARCHAR (6)   NULL,
+    [cd_gestao]                                   VARCHAR (5)   NULL,
+    [vl_total]                                    DECIMAL (18)  NULL,
+    [dt_emissao]                                  DATE          NULL,
+    [id_regional]                                 SMALLINT      NULL,
+    [cd_aplicacao_obra]                           VARCHAR (140) NULL,
+    [nr_lista_anexo]                              VARCHAR (11)  NULL,
+    [nr_nl_referencia]                            VARCHAR (11)  NULL,
+    [ds_finalidade]                               VARCHAR (40)  NULL,
+    [cd_despesa]                                  VARCHAR (2)   NULL,
+    [dt_vencimento]                               DATE          NULL,
+    [nr_cnpj_cpf_credor]                          VARCHAR (15)  NULL,
+    [cd_gestao_credor]                            VARCHAR (140) NULL,
+    [nr_banco_credor]                             VARCHAR (30)  NULL,
+    [nr_agencia_credor]                           VARCHAR (10)  NULL,
+    [nr_conta_credor]                             VARCHAR (15)  NULL,
+    [nr_cnpj_cpf_pgto]                            VARCHAR (15)  NULL,
+    [cd_gestao_pgto]                              VARCHAR (140) NULL,
+    [nr_banco_pgto]                               VARCHAR (30)  NULL,
+    [nr_agencia_pgto]                             VARCHAR (10)  NULL,
+    [nr_conta_pgto]                               VARCHAR (15)  NULL,
+    [fl_sistema_siafem_siafisico]                 BIT           NULL,
+    [cd_transmissao_status_siafem_siafisico]      CHAR (1)      CONSTRAINT [DF_tb_programacao_desembolso_cd_transmissao_status_siafem_siafisico] DEFAULT ('N') NULL,
+    [fl_transmissao_transmitido_siafem_siafisico] BIT           NULL,
+    [dt_transmissao_transmitido_siafem_siafisico] DATE          NULL,
+    [ds_transmissao_mensagem_siafem_siafisico]    VARCHAR (140) NULL,
+    [bl_cadastro_completo]                        BIT           NULL,
+    [nr_documento_gerador]                        VARCHAR (22)  NULL,
+    [nr_agrupamento]                              INT           NULL,
+    [ds_causa_cancelamento]                       VARCHAR (200) NULL,
+    [bl_bloqueio]                                 BIT           NULL,
+    [bl_cancelado]                                BIT           NULL,
+    [obs]                                         VARCHAR (231) NULL,
+    [nr_ne]                                       VARCHAR (11)  NULL,
+    [nr_ct]                                       VARCHAR (11)  NULL,
+    [rec_despesa]                                 VARCHAR (8)   NULL,
+    CONSTRAINT [PK_tb_programacao_desembolso] PRIMARY KEY CLUSTERED ([id_programacao_desembolso] ASC),
+    CONSTRAINT [CK_tb_programacao_desembolso_cd_transmissao_status_siafem_siafisico] CHECK ([cd_transmissao_status_siafem_siafisico]='N' OR [cd_transmissao_status_siafem_siafisico]='E' OR [cd_transmissao_status_siafem_siafisico]='S'),
+    CONSTRAINT [FK_tb_programacao_desembolso_tb_regional] FOREIGN KEY ([id_regional]) REFERENCES [seguranca].[tb_regional] ([id_regional]),
+    CONSTRAINT [FK_tb_programacao_desembolso_tb_tipo_programacao_desembolso] FOREIGN KEY ([id_tipo_programacao_desembolso]) REFERENCES [contaunica].[tb_tipo_programacao_desembolso] ([id_tipo_programacao_desembolso])
+);
+
+
+
+
+
+
+

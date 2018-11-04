@@ -1,0 +1,84 @@
+﻿@using System.Globalization
+@using System.Linq
+
+@model Sids.Prodesp.Model.Entity.PagamentoContaUnica.ProgramacaoDesembolso.ProgramacaoDesembolso
+
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var ValorTotal = "R$ "+ Model.Agrupamentos.Sum(z => Convert.ToDecimal(z.Valor/ 100)).ToString("N2");
+}
+
+<div id="DadoLiquidacaAgrupamentoGrid" class="robo">
+        @Html.HiddenFor(model => model.NumeroContrato, new { @class = "form-control contrato lockProdesp lockSiafem", @maxlength = 13 })
+        @Html.HiddenFor(model => model.CodigoAplicacaoObra)
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+    <div class="margT0 siafisico">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-lg-12 col-md-12">
+                <table id="tblPesquisaAgrupamento" class="_tbDataTables table table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.Agrupamentos.FirstOrDefault().NumeroDocumentoGerador)</th>
+                            <th>@Html.LabelFor(x => x.Agrupamentos.FirstOrDefault().NomeCredorReduzido)</th>
+                            <th>@Html.LabelFor(x => x.Agrupamentos.FirstOrDefault().NumeroCnpjcpfCredor)</th>
+                            <th>@Html.LabelFor(x => x.Agrupamentos.FirstOrDefault().DataVencimento)</th>
+                            <th>@Html.LabelFor(x => x.Agrupamentos.FirstOrDefault().Valor)</th>
+                            <th>@Html.LabelFor(x => x.Agrupamentos.FirstOrDefault().Fonte)</th>
+                            <th>@Html.LabelFor(x => x.Agrupamentos.FirstOrDefault().NumeroSiafem)</th>
+                            <th>@Html.LabelFor(x => x.Agrupamentos.FirstOrDefault().MensagemServicoSiafem)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Agrupamentos)
+                        {
+                            <tr class="text-center">
+                                <td>@Html.DisplayFor(modelItem => item.NumeroDocumentoGerador)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NomeCredorReduzido)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NumeroCnpjcpfPagto)</td>
+                                <td>@item.DataVencimento.ToShortDateString()</td>
+                                <td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(item.Valor / 100)).ToString("N2"))</td>
+                                <th>@Html.DisplayFor(modelItem => item.Fonte)</th>
+                                <td>@Html.DisplayFor(modelItem => item.NumeroSiafem)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MensagemServicoSiafem)</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="form-group-sm form-group has-feedback">
+                                    @Html.Label("Total", new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                                    <div class="input-group-sm">
+                                        @Html.TextBoxFor(total => ValorTotal, new { @class = "form-control lockSiafisico lockSiafem", @ReadOnly = true })
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

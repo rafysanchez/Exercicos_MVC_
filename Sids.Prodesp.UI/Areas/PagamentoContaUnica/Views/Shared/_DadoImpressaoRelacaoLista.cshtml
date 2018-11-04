@@ -1,0 +1,323 @@
+﻿@using System.Globalization
+
+@model Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.DadoImpressaoRelacaoReRtConsultaViewModel
+
+@{
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var action = ViewContext.RouteData.GetRequiredString("action");
+    var agrupamento = Request.QueryString["idAgrupamento"];
+    var compararReRt = "";
+    var codigoReRt = "";
+    var prefixoReRt = "";
+    var codigoRE = "";
+    var codigoRT = "";
+    int countRE = 0, countRT = 0;
+}
+    
+<div class="row">
+    <div class="col-lg-2 form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.CodigoUnidadeGestora, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @if (action == "CreateListar")
+            {
+                @Html.TextBoxFor(model => model.CodigoUnidadeGestora, new { @class = "form-control", @maxlength = "6", @id = "CodigoUnidadeGestora", @disabled = true })
+            }
+            else
+            {
+                @Html.TextBoxFor(model => model.CodigoUnidadeGestora, new { @class = "form-control", @maxlength = "6", @id = "CodigoUnidadeGestora" })
+            }
+
+        </div>
+    </div>
+
+    <div class="col-lg-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.CodigoGestao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @if (action == "CreateListar")
+            {
+                @Html.TextBoxFor(model => model.CodigoGestao, new { @class = "form-control", @maxlength = "5", @id = "CodigoGestao", @disabled = true })
+            }
+            else
+            {
+                @Html.TextBoxFor(model => model.CodigoGestao, new { @class = "form-control", @maxlength = "5", @id = "CodigoGestao" })
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.CodigoBanco, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @if (action == "CreateListar")
+            {
+                @Html.TextBoxFor(model => model.CodigoBanco, new { @class = "form-control", @maxlength = "3", @id = "CodigoBanco", @disabled = true })
+            }
+            else
+            {
+                @Html.TextBoxFor(model => model.CodigoBanco, new { @class = "form-control", @maxlength = "3", @id = "CodigoBanco" })
+            }           
+        </div>
+    </div>
+
+    @*Div que mantem o número do agrupamento enquanto está sendo transmitido as RE / RT*@
+    <div class="row margT10">
+        <div class="form-group-sm col-md-4">
+            <input type="hidden" id="MantemAgrupamento" name="MantemAgrupamento" class="form-control" value="@agrupamento" />
+        </div>
+    </div>
+</div>
+
+@if (action == "CreateListar")
+{
+    @*<div class="row">
+        <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+            <form method="post" action=@Url.Content("~/PagamentoContaUnica/" + controller + "/DownloadFile/") id="frmExport">
+                <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped small">
+                    @foreach (var item in Model.Filhos)
+                    {
+                        prefixoReRt = string.IsNullOrWhiteSpace(item.CodigoRelacaoRERT) ? "" : item.CodigoRelacaoRERT.Substring(4, 2);
+                        codigoRE = string.IsNullOrWhiteSpace(item.CodigoRelacaoRERT) ? "" : item.CodigoRelacaoRERT.Substring(4, 2) == "RE" ? item.CodigoRelacaoRERT : "";
+                        codigoRT = string.IsNullOrWhiteSpace(item.CodigoRelacaoRERT) ? "" : item.CodigoRelacaoRERT.Substring(4, 2) == "RT" ? item.CodigoRelacaoRERT : "";
+                        codigoReRt = string.IsNullOrWhiteSpace(codigoRE) ? codigoRT : codigoRE;
+
+                        if (prefixoReRt == "RT")
+                        {
+                            if (codigoReRt != compararReRt)
+                            {
+                                <thead>
+                                    <tr><th colspan="9" style="font-size:large"><b>OB's da @prefixoReRt @codigoReRt</b></th></tr>
+                                </thead>
+                                }
+                                if (codigoReRt != compararReRt)
+                                    {
+                                    compararReRt = codigoReRt;
+                                    <thead>
+                                        <tr>
+                                            <th>@Html.LabelFor(x => x.NumeroOB)</th>
+                                            <th>@Html.LabelFor(x => x.ContaBancariaEmitente)</th>
+                                            <th>@Html.LabelFor(x => x.UnidadeGestoraFavorecida)</th>
+                                            <th>@Html.LabelFor(x => x.GestaoFavorecida)</th>
+                                            <th>@Html.LabelFor(x => x.MnemonicoUfFavorecida)</th>
+                                            <th>@Html.LabelFor(x => x.BancoFavorecido)</th>
+                                            <th>@Html.LabelFor(x => x.AgenciaFavorecida)</th>
+                                            <th>@Html.LabelFor(x => x.ContaFavorecida)</th>
+                                            <th>@Html.LabelFor(x => x.ValorOB)</th>
+                                        </tr>
+                                    </thead>
+                                }
+                                <tbody>
+                                    <tr class="text-center">
+                                        <td>@Html.DisplayFor(modelItem => item.NumeroOB)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ContaBancariaEmitente)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.UnidadeGestoraFavorecida)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.GestaoFavorecida)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MnemonicoUfFavorecida)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.BancoFavorecido)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AgenciaFavorecida)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ContaFavorecida)</td>
+                                        <td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(item.ValorOB)).ToString("N2"))</td>
+                                    </tr>
+                                </tbody>
+                            }
+                        }
+                 </table>
+            </form>
+        </div>
+    </div>*@
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    foreach (var item in Model.Filhos)
+    {
+        prefixoReRt = string.IsNullOrWhiteSpace(item.CodigoRelacaoRERT) ? "" : item.CodigoRelacaoRERT.Substring(4, 2);
+        codigoRE = string.IsNullOrWhiteSpace(item.CodigoRelacaoRERT) ? "" : item.CodigoRelacaoRERT.Substring(4, 2) == "RE" ? item.CodigoRelacaoRERT : "";
+        codigoRT = string.IsNullOrWhiteSpace(item.CodigoRelacaoRERT) ? "" : item.CodigoRelacaoRERT.Substring(4, 2) == "RT" ? item.CodigoRelacaoRERT : "";
+        codigoReRt = string.IsNullOrWhiteSpace(codigoRE) ? codigoRT : codigoRE;
+
+        if (prefixoReRt == "RE")
+        {
+            if (codigoReRt != compararReRt)
+            {
+                compararReRt = codigoReRt;
+                countRE++;
+            }
+        }
+        else
+        {
+            if (codigoReRt != compararReRt)
+            {
+                compararReRt = codigoReRt;
+                countRT++;
+            }
+        }
+    }
+    compararReRt = "";
+
+    <div class="row">
+        <div class="col-md-10">
+            <h3 class="margT0 tituloItensPagina">Resultado da Busca Lista RE : <b>@countRE</b></h3>
+        </div>
+    </div>
+
+    if (countRE == 0)
+    {
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                <form method="post" action=@Url.Content("~/PagamentoContaUnica/" + controller + "/DownloadFile/") id="frmExport">
+                    <table id="tblPesquisaRE">
+                        <tr class="text-center">
+                            <td colspan="9">Nenhum registro encontrado.</td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                <form method="post" action=@Url.Content("~/PagamentoContaUnica/" + controller + "/DownloadFile/") id="frmExport">
+                    <table id="tblPesquisaRE" class="_tbDataTables table dataTable table-condensed table-striped small" style="border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th>@Html.LabelFor(x => x.NumeroRE)</th>
+                                <th>@Html.LabelFor(x => x.NumeroOB)</th>
+                                <th>@Html.LabelFor(x => x.FlagPrioridade)</th>
+                                <th>@Html.LabelFor(x => x.TipoOB)</th>
+                                <th>@Html.LabelFor(x => x.NomeFavorecido)</th>
+                                <th>@Html.LabelFor(x => x.BancoFavorecido)</th>
+                                <th>@Html.LabelFor(x => x.AgenciaFavorecida)</th>
+                                <th>@Html.LabelFor(x => x.ContaFavorecida)</th>
+                                <th>@Html.LabelFor(x => x.ValorOB)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var re in Model.Filhos)
+                            {
+                                prefixoReRt = string.IsNullOrWhiteSpace(re.CodigoRelacaoRERT) ? "" : re.CodigoRelacaoRERT.Substring(4, 2);
+                                codigoRE = string.IsNullOrWhiteSpace(re.CodigoRelacaoRERT) ? "" : re.CodigoRelacaoRERT.Substring(4, 2) == "RE" ? re.CodigoRelacaoRERT : "";
+                                codigoReRt = string.IsNullOrWhiteSpace(codigoRE) ? codigoRT : codigoRE;
+
+                                if (prefixoReRt == "RE")
+                                {
+                                    <tr class="text-center">
+                                        @*@if (compararReRt != codigoReRt)
+                                        {
+                                            compararReRt = codigoReRt;
+                                            <td>@compararReRt</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }*@
+                                        <td>@Html.DisplayFor(modelItem => re.CodigoRelacaoRERT)</td>
+                                        <td>@Html.DisplayFor(modelItem => re.NumeroOB)</td>
+                                        <td>@Html.DisplayFor(modelItem => re.FlagPrioridade)</td>
+                                        <td>@Html.DisplayFor(modelItem => re.TipoOB)</td>
+                                        <td>@Html.DisplayFor(modelItem => re.NomeFavorecido)</td>
+                                        <td>@Html.DisplayFor(modelItem => re.BancoFavorecido)</td>
+                                        <td>@Html.DisplayFor(modelItem => re.AgenciaFavorecida)</td>
+                                        <td>@Html.DisplayFor(modelItem => re.ContaFavorecida)</td>
+                                        <td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(re.ValorOB)).ToString("N2"))</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <h3 class="margT0 tituloItensPagina">Resultado da Busca Lista RT : <b>@countRT</b></h3>
+        </div>
+    </div>
+
+    if (countRT == 0)
+    {
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                <form method="post" action=@Url.Content("~/PagamentoContaUnica/" + controller + "/DownloadFile/") id="frmExport">
+                    <table id="tblPesquisaRT">
+                        <tr class="text-center">
+                            <td colspan="9">Nenhum registro encontrado.</td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                <form method="post" action=@Url.Content("~/PagamentoContaUnica/" + controller + "/DownloadFile/") id="frmExport">
+                    <table id="tblPesquisaRT" class="_tbDataTables table dataTable table-condensed table-striped small" style="border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th>@Html.LabelFor(x => x.NumeroRT)</th>
+                                <th>@Html.LabelFor(x => x.NumeroOB)</th>
+                                <th>@Html.LabelFor(x => x.ContaBancariaEmitente)</th>
+                                <th>@Html.LabelFor(x => x.UnidadeGestoraFavorecida)</th>
+                                <th>@Html.LabelFor(x => x.GestaoFavorecida)</th>
+                                <th>@Html.LabelFor(x => x.MnemonicoUfFavorecida)</th>
+                                <th>@Html.LabelFor(x => x.BancoFavorecido)</th>
+                                <th>@Html.LabelFor(x => x.AgenciaFavorecida)</th>
+                                <th>@Html.LabelFor(x => x.ContaFavorecida)</th>
+                                <th>@Html.LabelFor(x => x.ValorOB)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var rt in Model.Filhos)
+                            {
+                                prefixoReRt = string.IsNullOrWhiteSpace(rt.CodigoRelacaoRERT) ? "" : rt.CodigoRelacaoRERT.Substring(4, 2);
+                                codigoRT = string.IsNullOrWhiteSpace(rt.CodigoRelacaoRERT) ? "" : rt.CodigoRelacaoRERT.Substring(4, 2) == "RT" ? rt.CodigoRelacaoRERT : "";
+                                codigoReRt = string.IsNullOrWhiteSpace(codigoRT) ? codigoRE : codigoRT;
+
+                                if (prefixoReRt == "RT")
+                                {
+                                    <tr class="text-center">
+                                        @*@if (compararReRt != codigoReRt)
+                                        {
+                                            compararReRt = codigoReRt;
+                                            <td>@compararReRt</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }*@
+                                        <td>@Html.DisplayFor(modelItem => rt.CodigoRelacaoRERT)</td>
+                                        <td>@Html.DisplayFor(modelItem => rt.NumeroOB)</td>
+                                        <td>@Html.DisplayFor(modelItem => rt.ContaBancariaEmitente)</td>
+                                        <td>@Html.DisplayFor(modelItem => rt.UnidadeGestoraFavorecida)</td>
+                                        <td>@Html.DisplayFor(modelItem => rt.GestaoFavorecida)</td>
+                                        <td>@Html.DisplayFor(modelItem => rt.MnemonicoUfFavorecida)</td>
+                                        <td>@Html.DisplayFor(modelItem => rt.BancoFavorecido)</td>
+                                        <td>@Html.DisplayFor(modelItem => rt.AgenciaFavorecida)</td>
+                                        <td>@Html.DisplayFor(modelItem => rt.ContaFavorecida)</td>
+                                        <td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(rt.ValorOB)).ToString("N2"))</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,39 @@
+﻿<div class="modal fade" id="modalImpressora" tabindex="-1" role="dialog" aria-labelledby="modalImpressora-label">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalImpressora-label">Configurar Impressora</h4>
+            </div>
+            <form id="validarImpressora">
+                <div class="modal-body">
+                    <p>Informe o código da Impressora:</p>
+                    <div class="row">
+                        <div id="impressora132-error" class="col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                            <label class="control-label label-form-DER">Impressora (132)</label>
+                            <input id="impressora132" name="impressora132" type="text" class="form-control textoNumero"  maxlength="4" />
+                            <span id="impressora132-span" class="form-control-feedback"></span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 form-group-sm" style="margin-top: 25px;">
+                            <button class="btn btn-primary btn-sm" type="button" onclick="validarCampo('impressora132', 'http://emuladorreflection.der.sp.gov.br/mss/RWebSession.do?link=Impressora*u0020132*u0020caracteres*u0020por*u0020linha*u0020*u002d*u0020Paisagem')">&nbsp; Ativar Impressora 132</button>
+                        </div>
+                        <div id="impressora80-error" class="col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                            <label class="control-label label-form-DER"><span class="text-danger"></span>Impresora (80)</label>
+                            <input id="impressora80" name="impressora80" type="text" class="form-control textoNumero" maxlength="4" />
+                            <span id="impressora80-span" class="form-control-feedback"></span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 form-group-sm" style="margin-top: 25px;">
+                            <button class="btn btn-primary btn-sm" type="button" onclick="validarCampo('impressora80', 'http://emuladorreflection.der.sp.gov.br/mss/RWebSession.do?link=Impressora*u0020080*u0020caracteres*u0020por*u0020linha*u0020*u002d*u0020Retrato')">&nbsp; Ativar Impressora 80</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar</button>
+                        <button type="button" class="btn btn-primary" onclick="validarCampoS();">Confirmar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

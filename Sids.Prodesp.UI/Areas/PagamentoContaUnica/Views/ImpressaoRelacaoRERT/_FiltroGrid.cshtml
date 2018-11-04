@@ -1,0 +1,253 @@
+﻿@using System.Globalization
+@model IEnumerable<Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.FiltroGridViewModel>
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    int i = 0;
+}
+
+<script>
+    var objExc = "Impressão Relação RE e RT";
+    var urld = '@Url.Action("Delete", "ImpressaoRelacaoRERT")';
+    function Edit(id, editar) {
+
+        if (editar) {
+            AbrirModal("Impressão Relação transmitido com sucesso, não são permitidas alterarações após a transmissão.");
+            return false;
+        }
+
+        if (navigator.onLine != true) {
+            AbrirModal("Erro de conexão");
+            return false;
+        }
+
+        AbrirDetalhe('@Url.Action("Edit")' + '?id=' + id + '&tipo=a');
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-10">
+        <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+    </div>
+</div>
+
+<br />
+
+<div class="margT0">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+            <form method="post" action=@Url.Content("~/PagamentoContaUnica/" + controller + "/DownloadFile/") id="frmExport">
+                <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped small" style="border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroAgrupamento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroRE)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroRT)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().UnidadeGestora)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Gestao)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroBanco)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().DataSolicitacao)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Cancelado)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().StatusSiafem)</th>
+
+                            <th><label>Ações</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <input type="hidden" name="Items[@i].id" value="@item.Id" />
+                                <input type="hidden" name="Items[@i].codigoAgrupamento" value="@item.NumeroAgrupamento" />
+                                <input type="hidden" name="Items[@i].codigoUnidadeGestora" value="@item.UnidadeGestora" />
+                                <input type="hidden" name="Items[@i].codigoGestao" value="@item.Gestao" />
+                                <input type="hidden" name="Items[@i].codigoRE" value="@item.NumeroRE" />
+                                <input type="hidden" name="Items[@i].codigoRT" value="@item.NumeroRT" />
+                                <input type="hidden" name="Items[@i].codigoBanco" value="@item.NumeroBanco" />
+                                <input type="hidden" name="Items[@i].dataSolicitacao" value="@item.DataSolicitacao" />
+                                <input type="hidden" name="Items[@i].flagCancelamento" value="1" /> @* Quando for cancelar, envia a flag (true)*@
+                                <td>@Html.DisplayFor(modelItem => item.NumeroAgrupamento)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NumeroRE)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NumeroRT)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UnidadeGestora)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Gestao)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NumeroBanco)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DataSolicitacao)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Cancelado)</td>
+                                <td><text title="@item.MensagemSiafem">@Html.DisplayFor(modelItem => item.StatusSiafem)</text></td>
+                                <td style="width: 100px;">
+                                    
+                                    @if (item.FlagTransmitidoSiafem == "Não" && item.StatusSiafem != "Sucesso")
+                                    {
+                                        <button class="btn btn-xs btn-info margL7" type="button" hidden="hidden" data-button="Editar" title="Alterar" onclick="AbrirDetalhe('@Url.Action("Edit", new {id = item.Id, tipo = "a"})')" data-toggle="tooltip"><i class="fa fa-edit"></i></button>
+                                    }
+                                        <button class="btn btn-xs btn-primary margL7" type="button" data-button="Visualizar" title="Visualizar" onclick="AbrirDetalhe('@Url.Action("Edit", new {id = item.Id, tipo = "c"})')" data-toggle="tooltip"><i class="fa fa-search"></i></button>
+                                    @if (item.Cancelado == "Não" && item.FlagTransmitidoSiafem == "Sim" && item.StatusSiafem != "Erro")
+                                    {
+                                        <button class="btn btn-xs btn-warning margL7" type="button" title="Imprimir" data-button="Imprimir" data-toggle="tooltip"><i class="fa fa-print"></i></button>
+                                        <button class="btn btn-xs btn-danger margL7" type="button" data-button="Cancelar" title="Cancelar" data-toggle="tooltip"><i class="fa fa-close"></i></button>
+                                    }
+                                    @if (item.StatusSiafem != "Sucesso")
+                                    {
+                                        <button class="btn btn-xs btn-danger margL7" type="button" data-button="Excluir" title="Excluir" data-toggle="tooltip"><i class="fa fa-trash-o"></i></button>
+                                    }
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                        @if (!Model.Any())
+                        {
+                            <tr class="text-center">
+                                <td colspan="18">Nenhum registro encontrado.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- CANCELAR IMPRESSÃO RELAÇÃO RE e RT -->
+<div class="modal fade" id="_modalCancelarImpressaoRelacaoReRt" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="false" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Cancelamento da Impressão Relação RE e RT</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form method="post" id="frm-cancelar-impressaoRelacaoReRt">
+
+                        <div class="row margT10">
+                            <div class="form-group-sm col-md-4">
+                                <label>Unidade Gestora</label>
+                                <input type="hidden" name="unidadeGestora" class="form-control" />
+                                <input type="text" name="unidadeGestora-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="unidadeGestora" data-valmsg-replace="true"></span>
+                            </div>
+
+                            <div class="form-group-sm col-md-4">
+                                <label>Gestão</label>
+                                <input type="hidden" name="gestao" class="form-control" />
+                                <input type="text" name="gestao-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="gestao" data-valmsg-replace="true"></span>
+                            </div>
+
+                            <div class="form-group-sm col-md-4">
+                                <label>Número da Relação</label>
+                                <input type="hidden" name="numeroRelacaoReRt" class="form-control" />
+                                <input type="text" name="numeroRelacaoReRt-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="numeroRelacaoReRt" data-valmsg-replace="true"></span>
+                            </div>
+
+                            @* Divs para captura apenas do valor. Estão inibidos na model *@
+                            <div style="display:none" class="form-group-sm col-md-4">
+                                <label>Id</label>
+                                <input type="hidden" name="id" class="form-control" />
+                                <input type="text" name="id-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="id" data-valmsg-replace="true"></span>
+                            </div>
+
+                            <div style="display:none" class="form-group-sm col-md-4">
+                                <label>PrefixoREouRT</label>
+                                <input type="hidden" name="prefixoREouRT" class="form-control" />
+                                <input type="text" name="prefixoREouRT-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="prefixoREouRT" data-valmsg-replace="true"></span>
+                            </div>
+
+                            <div style="display:none" class="form-group-sm col-md-4">
+                                <label>NumREouRT</label>
+                                <input type="hidden" name="numREouRT" class="form-control" />
+                                <input type="text" name="numREouRT-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="numREouRT" data-valmsg-replace="true"></span>
+                            </div>
+
+                            <div style="display:none" class="form-group-sm col-md-4">
+                                <label>FlagCancelamento</label>
+                                <input type="hidden" name="flagCancelamento" class="form-control" />
+                                <input type="text" name="flagCancelamento-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="flagCancelamento" data-valmsg-replace="true"></span>
+                            </div>
+                            @* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  *@
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+                <button type="button" id="btn-transmitir-impressaoRelacaoReRt" class="btn btn-danger">Transmitir</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- CANCELAR IMPRESSÃO RELAÇÃO RE e RT -->
+
+<!-- EXCLUSAO IMPRESSÃO RELAÇÃO RE e RT -->
+<div class="modal fade" id="_modalExclusaoImpressaoRelacaoReRt" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="false" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form method="post" id="frm-excluir-impressaoRelacaoReRt">
+
+                        <div class="row margT10">
+                            <div class="form-group-sm col-md-8">
+                                <input type="hidden" name="codigoReRt" class="form-control" />
+                                <p>Deseja excluir Impressão Relação RE e RT?
+                                @*<input type="hidden" name="codigoReRt-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="codigoReRt" data-valmsg-replace="true"></span>*@
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                    <button type="button" id="btn-excluir-impressaoRelacaoReRt" class="btn btn-danger">Sim</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- EXCLUSAO IMPRESSÃO RELAÇÃO RE e RT -->
+
+<!-- IMPRESSAO IMPRESSÃO RELAÇÃO RE e RT -->
+<div class="modal fade" id="_modalImprimirImpressaoRelacaoReRt" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="false" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Impressão de Documento</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form method="post" id="frm-imprimir-impressaoRelacaoReRt">
+                        
+                        <div class="row margT20">
+                            <div class="form-group-sm col-md-6">
+                                <p>Selecione o documento a ser impresso:</p>
+                                <p> <label><input type="radio" id="ordem_relacao" name="tipo" value="1" checked="checked" /> Relação</label> </p>
+                                <p> <label><input type="radio" id="agrupamento" name="tipo" value="2" /> Agrupamento</label>  </p>
+                                <span class="field-validation-valid" data-valmsg-for="tipo" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" data-button="btnImprimirConfirmar" class="btn btn-success">Imprimir</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- IMPRESSAO IMPRESSÃO RELAÇÃO RE e RT -->

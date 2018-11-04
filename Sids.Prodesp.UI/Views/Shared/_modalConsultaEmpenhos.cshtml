@@ -1,0 +1,66 @@
+﻿<div class="modal fade scroll" id="modalConsultaEmpenhos" tabindex="-1" data-focus-on="input:first" role="dialog" aria-labelledby="modalConsultaContrato-label">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content scroll">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalConsultaPorEstrutura-label">Lista Nota de Empenho</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label">Unidade Gestora</label>
+                        <input id="txtUnidadeGestora" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="control-label">Gestão</label>
+                        <input id="txtGestao" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="control-label">Licitação</label>
+                        <input id="txtLicitacao" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="control-label">Fonte</label>
+                        <input id="txtFonte" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="control-label">Mod. Emp.</label>
+                        <input id="txtModalidade" type="text" class="form-control" readonly="True" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="control-label">Natureza</label>
+                        <input id="txtNatureza" type="text" class="form-control" readonly="True" />
+                    </div>
+                </div>
+                                    
+               
+                <div class="row margT0">
+                    <div class="col-md-12">
+                        <h3 class="margT10 tituloItensPagina">Resultado da Busca</h3>
+                        <hr class="margT0">
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <table id="tblListaEmpenhos" class="table table-condensed table-striped table-responsive small">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Número</th>
+                                <th class="text-center">Evento</th>
+                                    <th class="text-center">Naturesa</th>
+                                    <th class="text-right">Credor</th>
+                                    <th class="text-center">Valor</th>
+                                    <th class="text-center"></th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-right"></tbody>   @*Body preenchido no javascript : Consulta.js*@
+                        </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

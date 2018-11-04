@@ -1,0 +1,52 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model IEnumerable<FiltroGridViewModel>
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    ViewBag.Title = "Listar Preparação de Pagamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var action = ViewContext.RouteData.GetRequiredString("action");
+}
+
+<link rel="stylesheet" href="~/Content/DataTable/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="~/Content/DataTable/css/jquery.dataTables.min.css" />
+
+
+<div class="col-md-12">
+    <h2>Pesquisa de Preparação de Pagamento</h2>
+
+        @Html.Partial("_Mensagem")
+        @Html.Partial("_modalImprimir")
+
+    <div class="panel panel-default" id="">
+        <div class="panel-body">
+
+            @using (Html.BeginForm("Index", "PreparacaoDePagamento", FormMethod.Post, new { name = "form_filtro", id = "form_filtro" }))
+            {
+                Html.RenderPartial("_Filtro", ViewBag.Filtro as FiltroViewModel);
+            }
+
+            @Html.Partial("~/Areas/PagamentoContaUnica/Views/PreparacaoDePagamento/_FiltroGrid.cshtml", Model)
+
+        </div>
+    </div>
+</div>
+
+
+@section script{
+
+    <script>
+        var area = @Html.Raw(Json.Encode(area));
+        var controller = @Html.Raw(Json.Encode(controller));
+        var action = @Html.Raw(Json.Encode(action));
+    </script>
+
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+    <script src="~/Content/js/Consultas.js"></script>
+    <script src="~/Content/js/PagamentoContaUnica/PreparacaoPagamentoListar.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+}

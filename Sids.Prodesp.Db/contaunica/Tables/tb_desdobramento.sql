@@ -1,0 +1,38 @@
+﻿CREATE TABLE [contaunica].[tb_desdobramento] (
+    [id_desdobramento]                INT             IDENTITY (1, 1) NOT NULL,
+    [id_tipo_desdobramento]           INT             NULL,
+    [id_tipo_documento]               INT             NULL,
+    [id_credor]                       INT             NULL,
+    [nr_documento]                    VARCHAR (19)    NULL,
+    [nr_contrato]                     VARCHAR (13)    NULL,
+    [cd_servico]                      VARCHAR (5)     NULL,
+    [ds_servico]                      VARCHAR (50)    NULL,
+    [ds_credor]                       VARCHAR (50)    NULL,
+    [nm_reduzido_credor]              VARCHAR (14)    NULL,
+    [cd_tipo_despesa]                 VARCHAR (25)    NULL,
+    [bl_aceitar_credor]               BIT             NULL,
+    [nr_tipo_desdobramento]           INT             NULL,
+    [vr_distribuicao]                 DECIMAL (18, 2) NULL,
+    [vr_total_issqn]                  DECIMAL (18, 2) NULL,
+    [vr_total_ir]                     DECIMAL (18, 2) NULL,
+    [vr_total_inss]                   DECIMAL (18, 2) NULL,
+    [dt_emissao]                      DATETIME        NULL,
+    [cd_aplicacao_obra]               VARCHAR (8)     NULL,
+    [bl_transmitir_prodesp]           BIT             NULL,
+    [bl_transmitido_prodesp]          BIT             NULL,
+    [ds_status_prodesp]               CHAR (1)        NULL,
+    [dt_transmitido_prodesp]          DATETIME        NULL,
+    [ds_transmissao_mensagem_prodesp] VARCHAR (128)   NULL,
+    [ds_status_documento]             BIT             NULL,
+    [bl_cadastro_completo]            BIT             NULL,
+    [bl_situacao_desdobramento]       CHAR (1)        NULL,
+    [dt_cadastro]                     DATE            NULL,
+    [id_regional]                     SMALLINT        NULL,
+    CONSTRAINT [PK_tb_desdobramento] PRIMARY KEY CLUSTERED ([id_desdobramento] ASC),
+    CONSTRAINT [FK_tb_desdobramento_tb_Credor] FOREIGN KEY ([id_credor]) REFERENCES [contaunica].[tb_Credor] ([id_credor]),
+    CONSTRAINT [FK_tb_desdobramento_tb_regional] FOREIGN KEY ([id_regional]) REFERENCES [seguranca].[tb_regional] ([id_regional]),
+    CONSTRAINT [FK_tb_desdobramento_tb_tipo_desdobramento] FOREIGN KEY ([id_tipo_desdobramento]) REFERENCES [contaunica].[tb_tipo_desdobramento] ([id_tipo_desdobramento])
+);
+
+
+

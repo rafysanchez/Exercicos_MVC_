@@ -1,0 +1,205 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model Sids.Prodesp.Model.Entity.PagamentoContaUnica.ProgramacaoDesembolso.ProgramacaoDesembolso
+
+@{
+
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title = (Model.Id > 0? (tipo == "a" || tipo == "i" ? "Alterar " : "Visualizar ") : "Cadastrar ") + " Programação de Desembolso ";
+    var fromConsulta = (Model.Id > 0 ? 0 : 1);
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string msgRetorno = ViewBag.MsgRetorno;
+
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var action = ViewContext.RouteData.GetRequiredString("action");
+}
+
+
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<div class="col-md-12">
+    <h2>@ViewBag.Title</h2>
+
+    @Html.Partial("_modalPagamentosPreparar")
+    <div id="divPainelCadastrar" class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("DownloadFile", "ProgramacaoDesembolso", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("Codigo", Model.Id, new { @id = "Codigo" })
+
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm siafem">
+                        @Html.LabelFor(model => model.NumeroSiafem, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+                        @Html.TextBoxFor(model => model.NumeroSiafem, new { @class = "form-control lockSiafem", @ReadOnly = "True", style = "width:90%" })
+                    </div>
+                </div>
+
+                @Html.Hidden("fromConsulta", fromConsulta);
+
+                if (Model.TransmitidoSiafem || Model.Id > 0)
+                                {
+                    <div class='row'>
+                        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm prodesp">
+                            @Html.LabelFor(model => model.DataCadastro, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+                            @Html.TextBoxFor(model => model.DataCadastro, new { @class = "form-control lockSiafem data", @ReadOnly = "True" })
+                        </div>
+
+                        @if (Model.TransmitidoSiafem)
+                    {
+
+                            <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm prodesp">
+                                @Html.LabelFor(model => model.DataTransmitidoSiafem, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+                                @Html.TextBoxFor(model => model.DataTransmitidoSiafem, new { @class = "form-control lockSiafem data", @ReadOnly = "True" })
+                            </div>
+                        }
+
+                    </div>
+                }
+
+                if (msgRetorno != null)
+                {
+                    <div class='row'>
+                        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm form-group has-feedback">
+                            <div id="retornoTransmissao">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Msg Retornada da Transmissão</label>
+                                <div class="input-group-sm">
+                                    @Html.TextArea("MsgRetorno", msgRetorno, new { @class = "form-control", @ReadOnly = "True" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <!-- _DadoTipoProgramacaoDesembolso.cshtml -->
+                <div class="area">
+                    @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoTipoProgramacaoDesembolso.cshtml", ViewBag.DadoTipoProgramacaoDesembolso as DadoTipoProgramacaoDesembolsoViewModel)
+                </div>
+                <!-- _DadoTipoProgramacaoDesembolso.cshtml -->
+
+                <!-- _PesquisaDocumentoGerador.cshtml -->
+                <div class="area">
+                    @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_PesquisaDocumentoGerador.cshtml", ViewBag.PesquisaDocumentoGerador as PesquisaDocumentoGeradorViewModel)
+                </div>
+                <!-- _PesquisaDocumentoGerador.cshtml -->
+
+                <!-- _DadoProgramacaoDesembolso.cshtml -->
+                <div class="area">
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoProgramacaoDesembolso.cshtml", ViewBag.DadoProgramacaoDesembolso as DadoProgramacaoDesembolsoViewModel)
+                </div>
+                <!-- _DadoProgramacaoDesembolso.cshtml -->
+
+                 <!-- _DadoProgramacaoDesembolsoBEC.cshtml -->
+                <div class="area">
+                    @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoProgramacaoDesembolsoBEC.cshtml", ViewBag.DadoProgramacaoDesembolsoPDBEC as DadoProgramacaoDesembolsoPDBECViewModel)
+                </div>
+                <!-- _DadoProgramacaoDesembolsoBEC.cshtml -->
+
+                <!-- _DadoPagamentoContaUnicaEvento.cshtml -->
+                <div class="area">
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoPagamentoContaUnicaEvento.cshtml", ViewBag.DadoPagamentoContaUnicaEvento as DadoPagamentoContaUnicaEventoViewModel)
+                </div>
+                <!-- _DadoPagamentoContaUnicaEvento.cshtml -->
+
+                <!-- _DadoPagamentoContaUnicaEventoGrid.cshtml -->
+                <div class="area">
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoPagamentoContaUnicaEventoGrid.cshtml", ViewBag.DadoPagamentoContaUnicaEventoGrid as IList<DadoPagamentoContaUnicaEventoViewModel>)
+                </div>
+                <!-- _DadoPagamentoContaUnicaEventoGrid.cshtml -->
+
+                <!-- _DadoPagamentoContaUnicaContas.cshtml -->
+                <div class="area">
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoPagamentoContaUnicaContas.cshtml", ViewBag.DadoPagamentoContaUnicaContas as DadoPagamentoContaUnicaContasViewModel)
+                </div>
+                <!-- _DadoPagamentoContaUnicaContas.cshtml -->
+
+                <!-- _DadoPagamentoContaUnicaAgrupamento.cshtml -->
+                <div class="area">
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoPagamentoContaUnicaAgrupamento.cshtml", ViewBag.DadoPagamentoContaUnicaAgrupamento as DadoPagamentoContaUnicaAgrupamentoViewModel)
+                </div>
+                <!-- _DadoPagamentoContaUnicaAgrupamento.cshtml -->
+
+                <!-- _DadoPagamentoContaUnicaAgrupamentoGrid.cshtml -->
+                <div class="area">
+                @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoPagamentoContaUnicaAgrupamentoGrid.cshtml", Model)
+                </div>
+                <!-- _DadoPagamentoContaUnicaAgrupamentoGrid.cshtml -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="tituloItensPagina"></h3>
+                        <hr class="margT10" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        @if (!Model.TransmitidoSiafem)
+                        {
+                            <button type='button' id='btnCancelar' class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Cancelar</button>
+                            <button type='button' id='btnSalvar' class='btn btn-sm btn-success'><i class='fa fa-save'></i> Salvar</button>
+                            <button type='button' id='btnTransmitir' class='btn btn-sm btn-primary'><i class='fa fa-share'></i> Transmitir</button>
+                        }
+                        else
+                        {
+                            <button type="button" id="btnAtualizarIndex" class="btn btn-sm btn-primary" onclick="javascript: AtualizarIndex();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                        }
+                        <button type="button" id="btnVoltar" class="btn btn-sm btn-primary" onclick="javascript: window.history.back();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section script {
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+
+    <script src="~/Content/js/Consultas.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+    <script src="~/Content/js/scriptImpressao.js"></script>
+
+    <script>
+        window.action = @Html.Raw(Json.Encode(action));
+        window.AgrupamentoList = @Html.Raw(Json.Encode(Model.Agrupamentos));
+        window.area = @Html.Raw(Json.Encode(area));
+        window.controller = @Html.Raw(Json.Encode(controller));
+        window.Entity = @Html.Raw(Json.Encode(Model));
+        window.EventoList = @Html.Raw(Json.Encode(Model.Eventos));
+
+        var ModelItem = @Html.Raw(Json.Encode(Model));
+        var obj = 'ProgramacaoDesembolso';
+        var urlVoltar = '@Url.Action("AtualizarIndex", new { Area = "PagamentoContaUnica" })';
+        var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+    </script>
+
+    <script src="~/Content/js/PagamentoContaUnica/ProgramacaoDesembolso/ProgramacaoDesembolso.js"></script>
+    <script src="~/Content/js/PagamentoContaUnica/_DadoPagamentoContaUnicaEvento.js"></script>
+    <script src="~/Content/js/PagamentoContaUnica/ProgramacaoDesembolso/ProgramacaoDesembolsoValidator.js"></script>
+    <script src="~/Content/js/PagamentoContaUnica/ProgramacaoDesembolso/ProgramacaoDesembolsoApoio.js"></script>
+    <script src="~/Content/js/PagamentoContaUnica/ProgramacaoDesembolso/ProgramacaoDesembolsoAgrupamento.js"></script>
+}
+
+
+
+
+
+
+
+
+
+
+

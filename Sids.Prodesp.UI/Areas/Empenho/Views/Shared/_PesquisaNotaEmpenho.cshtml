@@ -1,0 +1,106 @@
+﻿@using Sids.Prodesp.UI.Areas.Empenho.Models
+
+@model PesquisaNotaEmpenhoViewModel
+
+@{ 
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Pesquisar Nota de Empenho SIAFEM / SIAFISICO</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+         <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+           @Html.LabelFor(model => model.CodigoUnidadeGestora, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+           <div class="input-group-sm">
+              @Html.TextBoxFor(model => model.CodigoUnidadeGestora, new { @class = "form-control lockProdesp lockSiafem lockSiafisico", @maxlength =6 })
+           </div>
+        </div>
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+           @Html.LabelFor(model => model.CodigoGestao, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoGestao, new { @class = "form-control lockProdesp lockSiafem lockSiafisico", @maxlength = 5 })
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+           @Html.LabelFor(model => model.CodigoEmpenhoOriginal, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoEmpenhoOriginal, new { @class = "form-control lockProdesp lockSiafem lockSiafisico ne", @maxlength =11 })
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+           @Html.LabelFor(model => model.DataEmissao, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.DataEmissao, new { @class = "form-control data datepicker data lockProdesp lockSiafem lockSiafisico" })
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+           @Html.LabelFor(model => model.NumeroCNPJCPFUGCredor, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroCNPJCPFUGCredor, new { @class = "form-control lockProdesp lockSiafem lockSiafisico", @maxlength = 14 })
+            </div>
+        </div>
+    </div>
+
+     
+    <div class="row">
+        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoGestaoCredor, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoGestaoCredor, new { @class = "form-control lockProdesp lockSiafem lockSiafisico", @maxlength = 5 })
+            </div>
+        </div>
+              
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.CodigoNaturezaNe, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.CodigoNaturezaNe, Model.NaturezaListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem lockSiafisico" })
+            </div>
+        </div>
+          
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.ModalidadeId, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.ModalidadeId, Model.ModalidadeListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem lockSiafisico" })
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.LicitacaoId, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.LicitacaoId, Model.LicitacaoListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem lockSiafisico" })
+            </div>
+        </div>
+   </div>
+
+<div class="row">
+
+    <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.CodigoFonteSiafisico, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group">
+            @Html.DropDownListFor(model => model.CodigoFonteSiafisico, Model.FonteListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem lockSiafisico" })
+            <span class="input-group-btn">
+                <button class="btn btn-primary btn-sm lockProdesp lockSiafem lockSiafisico" onclick="ConsultarNotaEmpenho()" type="button">Consultar</button>
+            </span>
+        </div>
+    </div>
+    @*<div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.NumeroProcessoNE, new {@class = "control-label label-form-DER"})<span class="text-danger"></span>
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.NumeroProcessoNE, new {@class = "form-control lockProdesp lockSiafem lockSiafisico", @maxlength = 15})
+            <span class="input-group-btn">
+                   <button class="btn btn-primary btn-sm lockProdesp lockSiafem lockSiafisico" onclick="ConsultarNotaEmpenho()" type="button">Consultar</button>   
+               </span> 
+        </div>
+    </div>*@
+</div>
+
+
+

@@ -1,0 +1,122 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.Desdobramento
+
+@model IEnumerable<Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.FiltroGridViewModel>
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<script>
+    var objExc = "Desdobramento";
+    var urld = '@Url.Action("Delete", "Desdobramento")';
+    function Edit(id, editar) {
+
+        if (editar) {
+            AbrirModal("Apropriação/Subempenho transmitido com sucesso, não são permitidas alterarações após a transmissão.");
+            return false;
+        }
+
+        if (navigator.onLine != true) {
+            AbrirModal("Erro de conexão");
+            return false;
+        }
+
+        AbrirDetalhe('@Url.Action("Edit")' + '?id=' + id + '&tipo=a');
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-10">
+        <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+        <label class="margR10">
+            <input type="checkbox" id="idSelecionar" name="nmRetransmitirTodos" value="0" />
+            <small class="margL10">Selecionar Todos</small>
+        </label>
+        <button id="btnReTransmitir" type="button" class="btn btn-sm btn-primary">
+            <i class="fa fa-share"></i>Retransmitir
+        </button>
+    </div>
+</div>
+
+<br />
+
+
+<div class="margT0">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+            <form method="post" action=@Url.Content("~/PagamentoContaUnica/" + controller+ "/DownloadFile/") id="frmExport">
+                <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().DesdobramentoTipo)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().DocumentoTipo)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroDocumento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Data)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ValorIssqn)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ValorIr)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ValorInss)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ValorDocumento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().StatusProdesp)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Cancelado)</th>
+                            <th><label>Todos</label></th>
+                            <th><label>Ações</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <td>@Html.DisplayFor(modelItem => item.DesdobramentoTipo)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DocumentoTipo)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NumeroDocumento)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ValorIssqn)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ValorIr)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ValorInss)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ValorDocumento)</td>
+                                <td><text title="@item.MensagemProdesp">@Html.DisplayFor(modelItem => item.StatusProdesp)</text></td>
+                                <td>@Html.DisplayFor(modelItem => item.Cancelado)</td>
+
+
+                                @if (item.CadastroCompleto && !item.TransmitidoProdesp)
+                                {
+                                    <td class="text-center"><input type="checkbox" data-button='Transmitir' class="idRetrasmitir margL5" name="nmRetransmitir" value="@item.Id" /></td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+
+                                <td style="width: 37px;">
+                                    @if (!item.TransmitidoProdesp)
+                                    {
+                                        <button class="btn btn-xs btn-info margL7" type="button" hidden="hidden" data-button="Editar" title="Alterar" onclick="Edit(@item.Id, @(item.TransmitidoProdesp ? "true" : "false"))"><i class="fa fa-edit"></i></button>
+                                    }
+                                    <button class="btn btn-xs btn-primary margL7" type="button" data-button="Visualizar" title="Visualizar" onclick="AbrirDetalhe('@Url.Action("Edit", new {id = item.Id, tipo = "c"})')"><i class="fa fa-search"></i></button>
+                                    @if (!item.TransmitidoProdesp)
+                                    {
+                                        <button class="btn btn-xs btn-danger margL7" type="button" data-button="Excluir" id="@item.Id" name="@item.Id" title="Excluir" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'Excluir', objExc, @item.Id, this)"><i class="fa fa-trash"></i></button>
+                                    }
+                                    <button class="btn btn-xs btn-success margL7" type="button" id="Create" data-button="Cadastrar" title="Cadastar A partir desta" onclick="AbrirDetalhe('@Url.Action("CreateThis", new {id = item.Id})')"><i class="fa fa-plus"></i></button>
+
+                                    @if (item.Cancelado == "Não" && item.TransmitidoProdesp)
+                                    {
+                                        <button class="btn btn-xs btn-primary margL7" type="button" data-button="Imprimir" title="Imprimir" onclick="Imprimir(@item.Id, '@controller', $('#frmExport'))"><i class="fa fa-print"></i></button>
+
+                                        <button class="btn btn-xs btn-danger margL7" type="button" data-button="Cancelar" title="Cancelar" onclick="AbrirDetalhe('@Url.Action("Cancelar", "DesdobramentoAnulacao", new { id= item.Id})')"><i class="fa fa-remove"></i></button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

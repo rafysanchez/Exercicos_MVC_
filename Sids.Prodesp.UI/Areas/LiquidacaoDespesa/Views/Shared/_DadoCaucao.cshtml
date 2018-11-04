@@ -1,0 +1,57 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model DadoCaucaoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var quotaTitle = controller.Contains("Rap") ? "Uso Autorizado Por" : "Quotas -Uso Autorizado Por";
+    var guiaTitle = controller.Contains("Rap") ? "Dados da Caução" : "Dados da Caução - Número da Guia";
+}
+
+<div id="DadoCaucao" class="prodesp">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+    <div class="row input-group-sm form-group has-feedback">
+
+        <div id="divQuotaGeralAutorizadaPor" class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.QuotaGeralAutorizadaPor, quotaTitle, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.QuotaGeralAutorizadaPor, new { @class = "form-control lockProdesp", @maxlength = 35 })
+            </div>
+        </div>
+
+        <div id="divNumeroGuia" class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.NumeroGuia, guiaTitle, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroGuia, new { @class = "form-control lockProdesp unidGest", @maxlength = 6 })
+            </div>
+        </div>
+
+        <div id="divValorCaucionado" class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.ValorCaucionado, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ValorCaucionado, new { @class = "form-control lockProdesp real", @maxlength = 18 })
+            </div>
+        </div>
+
+        @if (controller.Contains("RapInscricao"))
+        {
+            <div id="divValorRealizado" class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                @Html.LabelFor(model => model.ValorRealizado, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.ValorRealizado, new { @class = "form-control lockProdesp real", @maxlength = 18 })
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,75 @@
+﻿    <div class="modal fade scroll" id="modalConsultaContrato" tabindex="-1" data-focus-on="input:first" role="dialog" aria-labelledby="modalConsultaContrato-label">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content scroll">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalConsultaContrato-label">Histórico do Contrato</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">Identificação do Contrato</label>
+                        <input id="Contrato" type="text" class="form-control classContrato"  readonly="True" />
+                    </div>
+                </div>
+                <div class="row margT10">
+                    <div class="col-md-4">
+                        <label class="control-label">CNPJ</label>
+                        <input id="txtCNPJ" type="text" class="form-control cnpj" readonly="True" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Código da Obra</label>
+                        <input id="txtObra" type="text" class="form-control" readonly="True" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label">Contratada</label>
+                        <input id="txtContratada" type="text" class="form-control" readonly="True" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Processo SIAFEM</label>
+                        <input id="ProcessoSiafem" type="text" class="form-control" readonly="True" />
+                    </div>
+                </div>
+                <div class="row margT10">
+                    <div class="col-md-6">
+                        <label class="control-label">CFP</label>
+                        <input id="txtPragmatica" type="text" class="form-control" readonly="True" />
+                    </div>
+                    <div id="DivtxtCED" class="col-md-4">
+                        <label class="control-label">CED</label>
+                        <input id="txtCED" type="text" class="form-control" readonly="True" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label">Objeto</label>
+                        <input id="txtObjeto" type="text" class="form-control"  readonly="True" />
+                    </div>
+                </div>
+                <div class="row margT10">
+                    <div class="col-md-2 margT10">
+                        <button id="btnConfirmarContratoTodos" class="btn btn-warning" data-dismiss="modal" onclick="ConfirmarContrato()">Confirmar</button>
+                    </div>
+                </div>
+                <div class="row margT0">
+                    <div class="col-md-12">
+                        <h3 class="margT10 tituloItensPagina">Resultado da Busca</h3>
+                        <hr class="margT0">
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <table id="tblListaContrato" class="_tbDataTables table dataTable table-condensed table-striped table-responsive small">
+                            <thead>
+                                <tr>
+                                    <th>Evento</th>
+                                    <th>Número</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

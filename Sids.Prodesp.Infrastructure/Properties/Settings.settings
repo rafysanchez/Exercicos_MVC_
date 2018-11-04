@@ -1,0 +1,48 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Sids.Prodesp.Infrastructure.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UnidadeGestora" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">200164</Value>
+    </Setting>
+    <Setting Name="siafem" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://siafemhom.intra.fazenda.sp.gov.br/siafisico/RecebeMSG.asmx</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Infrastructure_Siafem_RecebeMSG" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://siafemhom.intra.fazenda.sp.gov.br/siafisico/RecebeMSG.asmx</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Prodesp_Reserva_Desevolvomento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.200.142.198:9680/vhi-xe/session/Pool_IntegracaoReserva</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Infrastructure_siafemProd_RecebeMSG" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www6.fazenda.sp.gov.br/siafisico/RecebeMSG.asmx</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Prodesp_Reserva_Homologacao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.200.77.62:9680/vhi-xe/session/Pool_IntegracaoReserva</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Prodesp_Reserva_Producao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.200.77.62:9680/vhi-xe/session/Pool_IntegracaoReserva</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Prodesp_Empenho_Desevolvomento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.200.142.198:9680/vhi-xe/session/Pool_IntegracaoEmpenho</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Prodesp_Empenho_Homologacao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.200.77.62:9680/vhi-xe/session/Pool_IntegracaoEmpenho</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Prodesp_Empenho_Producao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.200.77.62:9680/vhi-xe/session/Pool_IntegracaoEmpenho</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Infrastructure_ProdespLiquidacaoDespesa_Integracao_DER_SIAFEM_LiqDespesasService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.200.142.198:9680/vhi-xe/session/Pool_IntegracaoLiqDespesas</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Infrastructure_ProdespPagtoContaUnica_Integracao_DER_SIAFEM_PagtoContaUnicaService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.72.1.40:9680/vhi-xe/session/Pool_IntegracaoPagtoContaUnica</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Infrastructure_ProdespPagamentoContaDer_Integracao_DER_SIAFEM_PagtoContaDERService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.200.142.198:9680/vhi-xe/session/Pool_IntegracaoPagtoContaDER</Value>
+    </Setting>
+    <Setting Name="Sids_Prodesp_Infrastructure_ProdespMovimentacao_Integracao_DER_SIAFEM_MovOrcamentariaService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.200.142.198:9680/vhi-xe/session/Pool_IntegracaoMovOrcamentaria</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,35 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model PesquisaContratoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina">Pesquisar Contrato</h3>
+        <hr class="margT10" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(x => x.NumeroContrato, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.NumeroContrato, new { @class = "form-control contrato lockProdesp", @id = "Contrato" , @maxlength = 13 })
+            <span class="input-group-btn">
+                <button id="btnConsultarContratoTodos" type="button" class="btn btn-primary btn-sm lockProdesp lockSiafem lockSiafisico" onclick="ConsultarContrato()"><i class="fa fa-search"></i>  Consultar</button>
+            </span>
+        </div>
+    </div>
+    
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback" >
+        @Html.LabelFor(x => x.CodigoAplicacaoObra, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.CodigoAplicacaoObra, new { @class = "form-control obra", @maxlength = 8 ,@disabled= "disabled" })
+        </div>
+    </div>
+
+</div>

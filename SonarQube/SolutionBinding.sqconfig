@@ -1,0 +1,11 @@
+{
+  "ServerUri": "http://10.72.4.48:9000/sonar/",
+  "Organization": null,
+  "ProjectKey": "sids",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AWJsV06ZUXeGrcRGyBH0",
+      "ProfileTimestamp": "2018-03-28T08:21:23-03:00"
+    }
+  }
+}

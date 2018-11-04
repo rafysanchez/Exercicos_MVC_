@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Info";
+    var settings = (List<KeyValuePair<string, string>>)ViewBag.AppSettings;
+    var assemblies = (List<Tuple<string, string, string>>)ViewBag.Assemblies;
+}
+
+<style>
+    textarea {
+        height: 300px;
+    }
+</style>
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" data-target="#bodyCn" aria-expanded="false">
+            <h2>Connection String</h2>
+        </div>
+        <div class="panel-body collapse" id="bodyCn">
+            <div class="col-xs-12">
+                <p>@ViewBag.ConnectionString</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" data-target="#bodyAppSettings" aria-expanded="true">
+            <h2>AppSettings</h2>
+        </div>
+
+        <div class="panel-body collapse in" id="bodyAppSettings">
+            <div class="col-xs-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Key</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in settings)
+                        {
+                            <tr>
+                                <td>@item.Key</td>
+                                <td>@item.Value</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" data-target="#bodyAssemblies" aria-expanded="true">
+            <h2>Assemblies</h2>
+        </div>
+
+        <div class="panel-body collapse" id="bodyAssemblies">
+            <div class="col-xs-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Assembly</th>
+                            <th>Versão</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in assemblies)
+            {
+                            <tr>
+                                <td>@item.Item1</td>
+                                <td>@item.Item2</td>
+                                <td>@item.Item3</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default hidden">
+        <div class="panel-heading">
+            <h2>Consultas</h2>
+        </div>
+
+        <div class="panel-body">
+            <div class="col-xs-12 form-group">
+                <textarea class="form-control" rows="10"></textarea>
+            </div>
+            <div class="col-xs-12 text-right">
+                <button class="btn btn-default">Enviar</button>
+            </div>
+            <div id="divsqlresultado" class="col-xs-12">...</div>
+        </div>
+    </div>

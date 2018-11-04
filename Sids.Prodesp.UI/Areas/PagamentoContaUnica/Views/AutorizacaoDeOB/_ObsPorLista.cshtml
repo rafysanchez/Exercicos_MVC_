@@ -1,0 +1,30 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+@model DadoAutorizacaoDeOBViewModel
+
+<div class="panel panel-default ListaOB">
+    @*<div class="panel-heading">PDS por Lista</div>*@
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="form-group col-md-2">
+                @Html.LabelFor(x => x.UGPagadora)
+                @Html.TextBoxFor(x => x.UGPagadora, new { @class = "form-control", @maxlength = "6" })
+                @Html.ValidationMessageFor(x => x.UGPagadora)
+            </div>
+            <div class="form-group col-md-2">
+                @Html.LabelFor(x => x.GestaoPagadora)
+                @Html.TextBoxFor(x => x.GestaoPagadora, new { @class = "form-control", @maxlength = "5" })
+                @Html.ValidationMessageFor(x => x.GestaoPagadora)
+            </div>
+            @*<div class="form-group-sm col-md-4">
+                @Html.LabelFor(x => x.filtroListaOB.TipoPagamento)
+                @Html.DropDownListFor(x => x.filtroListaOB.TipoPagamento, new SelectList(ViewBag.TiposPagamento, "Codigo", "Descricao"), "SELECIONE", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.filtroListaOB.TipoPagamento)
+            </div>*@
+            <div class="form-group-sm col-md-2">
+                <label>&nbsp;</label>
+                <button type="button" class="btn btn-primary btn-sm btn-block" id="btnConsultarOB">CONSULTAR</button>
+            </div>
+        </div>
+    </div>
+</div>

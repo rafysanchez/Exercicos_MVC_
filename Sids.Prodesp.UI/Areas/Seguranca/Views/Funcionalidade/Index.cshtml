@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Sids.Prodesp.UI.Areas.Seguranca.Models.Funcionalidade.FuncionalidadeViewModel>
+
+    @{
+        ViewBag.Title = "Funcionalidade";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    <link href="~/Content/DataTable/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <script>
+        var obj = "Funcionalidade";
+        var urld = '@Url.Action("Delete", "Funcionalidade")';
+        var urla = '@Url.Action("AlterarStatus", "Funcionalidade")';
+    </script>
+    <div class="col-md-12">
+        <h2>Pesquisa de Funcionalidades</h2>
+        @Html.Partial("_Mensagem")
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    @{
+                        Html.RenderPartial("Filtro");
+                    }
+                </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+                        </div>
+                    </div>
+                    <hr class="margT0" />
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                            <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped table-responsive small">
+                                <thead>
+                                    <tr>
+                                        <th class="col-md-2">Nome</th>
+                                        <th class="col-md-2">Detalhes</th>
+                                        <th class="col-md-2">Caminho Físico</th>
+                                        <th class="col-md-3">Ações (Funcionalidade)</th>
+                                        <th class="col-md-3"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Detalhes)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.CaminhoFisico)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Acao)</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-xs btn-info" data-button="Editar" title="Alterar" onclick="AbrirDetalhe('@Url.Action("Edit", "Funcionalidade", new { Area="Seguranca", id = item.Id, tipo = "a" })')"><i class="fa fa-edit"></i></button>
+                                                <button class="btn btn-xs btn-primary" data-button="Visualizar" title="Visualizar" onclick="AbrirDetalhe('@Url.Action("Edit", "Funcionalidade", new { Area="Seguranca", id = item.Id, tipo = "c" })')"><i class="fa fa-search"></i></button>
+                                                <button class="btn btn-xs @(item.Status == true ? "btn-warning": "btn-success")" data-button="AtivarDesativar" data-status="@item.Status" id="@item.Id" name="@item.Nome" title="@(item.Status == true ? "Desativar": "Ativar")" onclick="ModalSistema(true, '#modalConfirmaExclusao', '@(item.Status == true ? "Desativar": "Ativar")', obj, '@item.Nome',this)"><i class="@(item.Status == true ? "fa fa-ban" : "fa fa-check-square-o")"></i></button>
+                                                <button class="btn btn-xs btn-danger" data-button="Excluir" id="@item.Id" name="@item.Nome" title="Excluir" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'Excluir', obj, '@item.Nome',this)"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>

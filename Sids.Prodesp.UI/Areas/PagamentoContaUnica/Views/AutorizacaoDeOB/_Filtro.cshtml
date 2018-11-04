@@ -1,0 +1,88 @@
+﻿@model Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.FiltroViewModel
+
+<h3 class="margT0 tituloItensPagina">Filtros</h3>
+<hr class="margT0">
+<div class="row">
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.CodigoUnidadeGestora)
+        @Html.TextBoxFor(model => model.CodigoUnidadeGestora, new { @class = "form-control", @maxlength = "6" })
+        @Html.ValidationMessageFor(model => model.CodigoUnidadeGestora)
+    </div>
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.CodigoGestao)
+        @Html.TextBoxFor(model => model.CodigoGestao, new { @class = "form-control", @maxlength = "5" })
+        @Html.ValidationMessageFor(model => model.CodigoGestao)
+    </div>
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.NumeroOB)
+        @Html.TextBoxFor(model=>model.NumeroOB, new { @class="form-control ob" })
+        @Html.ValidationMessageFor(model => model.NumeroOB)
+    </div>
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.Favorecido)
+        @Html.TextBoxFor(model => model.Favorecido, new { @class = "form-control", maxlength = 14 })
+        @Html.ValidationMessageFor(model => model.Favorecido)
+    </div>
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.Despesa)
+        @Html.TextBoxFor(model => model.Despesa, new { @class = "form-control", maxlength = 2 })
+        @Html.ValidationMessageFor(model => model.Despesa)
+    </div>
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.Valor)
+        @Html.TextBoxFor(model => model.Valor, new { @class = "form-control realOB", maxlength = 18 })
+        @Html.ValidationMessageFor(model => model.Valor)
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.StatusSiafem)
+        @Html.DropDownListFor(model => model.StatusSiafem, Model.StatusSiafemListItems, "Selecione", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.StatusSiafem)
+    </div>
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.StatusProdesp)
+        @Html.DropDownListFor(model => model.StatusProdesp, Model.StatusSiafemListItems, "Selecione", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.StatusProdesp)
+    </div>
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.CadastradoEmDe)
+        @Html.TextBoxFor(model => model.CadastradoEmDe, new { @placeholder = "__/__/____", @class = "form-control data datepicker", id = "DataInicial", autocomplete = "off" })
+        @Html.ValidationMessageFor(model => model.CadastradoEmDe)
+    </div>
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.CadastradoEmAte)
+        @Html.TextBoxFor(model => model.CadastradoEmAte, new { @placeholder = "__/__/____", @class = "form-control data datepicker", id = "DataFinal", autocomplete = "off" })
+        @Html.ValidationMessageFor(model => model.CadastradoEmAte)
+    </div>
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.CodigoAplicacaoObra)
+        @Html.TextBoxFor(model => model.CodigoAplicacaoObra, new { @class = "form-control", maxlength = 7 })
+        @Html.ValidationMessageFor(model => model.CodigoAplicacaoObra)
+    </div>
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.NumeroContrato)
+        @Html.TextBoxFor(model => model.NumeroContrato, new { @class = "form-control contrato", maxlength = 13 })
+        @Html.ValidationMessageFor(model => model.NumeroContrato)
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+        <button type='button' id='btnPesquisar' class='btn-sm btn btn-primary' onclick='ValidaFormulario()'><i class='glyphicon glyphicon-search'></i> Pesquisar</button>
+        <button type='button' id='Create' class='btn btn-sm btn-warning' onclick="javascript: window.location.href = '@Url.Action("Create")';"><i class='glyphicon glyphicon-plus'></i> Cadastrar</button>
+        <button type='button' id='btnLimpar' class='btn-sm btn btn-success' onclick='javascript: limparFormulario($("#form_filtro"));'><i class='glyphicon glyphicon-refresh'></i> Limpar</button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+    </div>
+</div>
+
+

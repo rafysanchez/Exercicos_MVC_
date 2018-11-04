@@ -1,0 +1,380 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaDer.Models
+
+@using System.Globalization
+@model Sids.Prodesp.Model.Entity.PagamentoContaUnica.PagamentoDer.ArquivoRemessa
+
+
+@{
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title =  "Visualizar Arquivo Remessa ";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string msgRetorno = ViewBag.MsgRetorno;
+
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var action = ViewContext.RouteData.GetRequiredString("action");
+    var rotuloInicial = "Nº de Geração do Arquivo";
+    var rotuloData = "Data da Preparação do Arquivo";
+
+    //bool transmitirProdesp = Convert.ToBoolean(Model.TransmitidoProdesp);
+
+}
+
+<script>
+    window.area = @Html.Raw(Json.Encode(area));
+    window.controller = @Html.Raw(Json.Encode(controller));
+    window.action = @Html.Raw(Json.Encode(action));
+
+    window.Entity = @Html.Raw(Json.Encode(Model));
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+
+    var obj = 'ArquivoRemessa';
+    var ModelItem = @Html.Raw(Json.Encode(Model));
+    var urlVoltar = '@Url.Action("AtualizarIndex", new { Area = "PagamentoContaDer" })';
+</script>
+
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+<div class="col-md-12">
+    <h2>@ViewBag.Title</h2>
+
+    <div id="divPainelCadastrar" class="panel panel-default">
+
+        <div class="panel-body">
+            @using (Html.BeginForm("DownloadFile", "ArquivoRemessa", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("Codigo", Model.Id, new { @id = "Codigo" })
+
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm has-feedback" style="width:20%;">
+                        @Html.LabelFor(model => model.NumeroGeracao, rotuloInicial, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+                        @Html.TextBoxFor(model => model.NumeroGeracao, new { @class = "form-control lockProdesp ", @ReadOnly = "True", style = "width:90%" })
+                    </div>
+
+
+
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.Orgao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Orgao, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <br />
+                <div class="row">
+
+
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.Situacao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Situacao, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-sm-12 col-lg-2 col-md-2   form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.CodigoConta, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.CodigoConta, new { @class = "form-control lockProdesp codConta", @maxlength = 3 })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.Banco, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Banco, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.Agencia, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.Agencia, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                        @Html.LabelFor(model => model.NumeroConta, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                        <div class="input-group-sm">
+                            @Html.TextBoxFor(model => model.NumeroConta, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                        </div>
+                    </div>
+
+                </div>
+
+                            <br />
+                            <div class="row">
+
+                                <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback" >
+                                    @Html.LabelFor(model => model.ResultadoPreparacao, rotuloData, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                    <div class="input-group-sm">
+                                        @Html.TextBoxFor(model => model.ResultadoPreparacao, new { @class = "form-control col-md-3 lockProdesp "})
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+                                    @Html.LabelFor(model => model.DataPagamento, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                    <div class="input-group-sm">
+                                        @Html.TextBoxFor(model => model.DataPagamento, new { @class = "form-control col-md-3 lockProdesp data", @maxlength = 12 })
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="row">
+
+                                <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+                                    @Html.LabelFor(model => model.DataGeracao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                    <div class="input-group-sm">
+                                        @Html.TextBoxFor(model => model.DataGeracao, new { @class = "form-control col-md-3 lockProdesp " })
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <br />
+                            <div class="row">
+
+                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                    @Html.LabelFor(model => model.dataPrevia, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                    <div class="input-group-sm">
+                                        @Html.TextBoxFor(model => model.dataPrevia, new { @class = "form-control col-md-3 lockProdesp " })
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                    @Html.LabelFor(model => model.ResultadoPrevia, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                    <div class="input-group-sm">
+                                        @Html.TextBoxFor(model => model.ResultadoPrevia, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <br />
+                                                    <div class="row">
+
+                                                        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                            @Html.LabelFor(model => model.dataProcessamento, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                            <div class="input-group-sm">
+                                                                @Html.TextBoxFor(model => model.dataProcessamento, new { @class = "form-control col-md-3 lockProdesp "})
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                            @Html.LabelFor(model => model.ResultadoProcessamento, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                            <div class="input-group-sm">
+                                                                @Html.TextBoxFor(model => model.ResultadoProcessamento, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <br />
+                                                                            <div class="row">
+
+                                                                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                                                    @Html.LabelFor(model => model.dataConsolidado, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                                                    <div class="input-group-sm">
+                                                                                        @Html.TextBoxFor(model => model.dataConsolidado, new { @class = "form-control col-md-3 lockProdesp" })
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                                                    @Html.LabelFor(model => model.ResultadoConsolidado, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                                                    <div class="input-group-sm">
+                                                                                        @Html.TextBoxFor(model => model.ResultadoConsolidado, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="row">
+
+                                                                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                                                    @Html.LabelFor(model => model.QtOpArquivo, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                                                    <div class="input-group-sm">
+                                                                                        @Html.TextBoxFor(model => model.QtOpArquivo, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                                                    @Html.LabelFor(model => model.ValorTotal, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                                                    <div class="input-group-sm">
+                                                                                        @Html.TextBoxFor(model => model.ValorTotal, new { @class = "form-control col-md-3 lockProdesp real", @maxlength = 12 })
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <br />
+                                                                            <div class="row">
+
+                                                                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                                                    @Html.LabelFor(model => model.QtDeposito, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                                                    <div class="input-group-sm">
+                                                                                        @Html.TextBoxFor(model => model.QtDeposito, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                                                    @Html.LabelFor(model => model.ValorDep, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                                                    <div class="input-group-sm">
+                                                                                        @Html.TextBoxFor(model => model.ValorDep, new { @class = "form-control col-md-3 lockProdesp real", @maxlength = 12 })
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <br />
+                                                                            <div class="row">
+
+                                                                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                                                    @Html.LabelFor(model => model.QtDocTed, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                                                    <div class="input-group-sm">
+                                                                                        @Html.TextBoxFor(model => model.QtDocTed, new { @class = "form-control col-md-3 lockProdesp ", @maxlength = 12 })
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                                                    @Html.LabelFor(model => model.ValorDocTed, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                                                    <div class="input-group-sm">
+                                                                                        @Html.TextBoxFor(model => model.ValorDocTed, new { @class = "form-control col-md-3 lockProdesp real", @maxlength = 12 })
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <br />
+                                                                            <div class="row">
+
+                                                                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                                                    @Html.LabelFor(model => model.ValorCreditado, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                                                    <div class="input-group-sm">
+                                                                                        @Html.TextBoxFor(model => model.ValorCreditado, new { @class = "form-control col-md-3 lockProdesp real", @maxlength = 12 })
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                                                                                    @Html.LabelFor(model => model.ValorNaoCreditado, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                                                                                    <div class="input-group-sm">
+                                                                                        @Html.TextBoxFor(model => model.ValorNaoCreditado, new { @class = "form-control col-md-3 lockProdesp real", @maxlength = 12 })
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+
+                                                                            <hr class="margT10" />
+
+
+                //GRID
+                <div class="margT0">
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                            <form method="post" action=@Url.Content("~/PagamentoContaDer/" + controller+ "/DownloadFile/") id="frmExport">
+                                <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped small">
+                                    <thead>
+                                        <tr>
+                                            <th style="display:none">@Html.LabelFor(x => x.ListOps.FirstOrDefault().indice)</th>
+                                            <th>@Html.LabelFor(x => x.ListOps.FirstOrDefault().OP)</th>
+                                            <th>@Html.LabelFor(x => x.ListOps.FirstOrDefault().ContaCredito)</th>
+                                            <th>@Html.LabelFor(x => x.ListOps.FirstOrDefault().Valor)</th>
+                                            <th>@Html.LabelFor(x => x.ListOps.FirstOrDefault().Ocorrencia)</th>
+
+                                            @*<th><label>Todos</label></th>
+                                            <th><label>Ações</label></th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.ListOps)
+                                        {
+                                            <tr class="text-center">
+                                                <td style="display:none">@Html.DisplayFor(modelItem => item.indice)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.OP)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.ContaCredito)</td>
+                                                @*<td>@Html.DisplayFor(modelItem => item.Valor)</td>*@
+                                                @*<td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(item.Valor) / 100).ToString("N2"))</td>*@
+                                                <td>R$ @Html.DisplayFor(modelItem => item.Valor)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Ocorrencia)</td>
+                                                @*<td>@Html.DisplayFor(modelItem => item.NumeroDocumento)</td>*@
+                                                @*<td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(item.Total) / 100).ToString("N2"))</td>*@
+                                                @*<td>@Html.DisplayFor(modelItem => item.Data)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.DataVencimento)</td>
+                                                <td><text title="@item.MensagemSiafem">@Html.DisplayFor(modelItem => item.StatusSiafem)</text></td>
+                                                <td>@Html.DisplayFor(modelItem => item.StatusOp)</td>*@
+           
+
+
+
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                //GRID
+
+
+
+
+
+
+
+
+
+
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-12 col-md-12">
+
+                                        <button type="button" id="btnVoltar" class="btn btn-sm btn-primary" onclick="javascript: window.history.back();"><i class="fa fa-arrow-left"></i> Voltar</button>
+
+                                    </div>
+                                </div>
+
+            }
+        </div>
+
+    </div>
+
+</div>
+
+@section script {
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+
+    <script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+    <script src="~/Content/js/Consultas.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+    <script src="~/Content/js/scriptImpressao.js"></script>
+
+    <script src="~/Content/js/PagamentoContaDer/ArquivoRemessa.js"></script>
+    <script src="~/Content/js/PagamentoContaDer/ArquivoRemessaApoio.js"></script>
+    <script src="~/Content/js/PagamentoContaDer/ArquivoRemessaValidator.js"></script>
+    @*<script src="~/Content/js/PagamentoContaUnica/PreparacaoPagamento.js"></script>
+        <script src="~/Content/js/PagamentoContaUnica/PreparacaoPagamentoValidator.js"></script>
+        <script src="~/Content/js/PagamentoContaUnica/PreparacaoPagamentoApoio.js"></script>*@
+}
+

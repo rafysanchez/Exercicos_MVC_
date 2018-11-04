@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.DadoCredorGridViewModel>
+
+@{
+    ViewBag.Title = "Atualizar Credor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    var value = "";
+    var obj = "Credor";
+
+</script>
+<div class="col-md-12">
+    <h1>Atualizar Tabela de Credor</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @Html.Partial("_Mensagem")
+            @using (Html.BeginForm("Index", "Credor", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                <div class="row">
+                    <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback" style="padding-right: 0pt;">
+                        <label class="control-label label-form-DER"><span class="text-danger"></span>Nome do Credor</label>
+                        <input type="text" class="form-control" id="nomePrefeitura" />
+                    </div>
+                    <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm" style="margin-top: 18pt;">
+                        <button type="button" class="btn btn-sm btn-primary" onclick="PesquisarCredor($('#nomePrefeitura').val())"><i class="glyphicon glyphicon-search"></i> Pesquisar</button>
+                    </div>
+                </div>
+
+            <div class="row">
+                <div class="col-md-10" style="margin-top:20pt;">
+                    <h2 class="margT0 tituloItensPagina">Lista de Credores</h2>
+                </div>
+            </div>
+            <hr class="margT0" />
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 col-md-12">
+                    <div class="col-md-12" id="tblListaContrato_wrapper">
+                        <table id="credorTable" class="_tbDataTables table table-condensed table-striped table-responsive small">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-2" >ID</th>
+                                    <th class="col-md-2">CNPJ / CPF / UG Credor</th>
+                                    <th class="col-md-3">Nome do Credor</th>
+                                    <th class="col-md-2">Conveniado</th>
+                                    <th class="col-md-2">Com Base de Cálculo</th>
+                                    <th class="col-md-1">Nome Reduzido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td >
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CpfcnpjugCredor)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Prefeitura)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Conveniado)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BaseCalculo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NomeReduzidoCredor)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="row col-sm-12 col-lg-12 col-md-12" style="padding-right:0pt">
+                            <div class="col-sm-7" style="padding-right:0pt">
+                                <div class="dataTables_paginate paging_full_numbers" id="tblPesquisa_paginate">
+                                    <div style="float: right;">
+                                        <button onclick="ShowLoading()" class="btn btn-success btn-sm">Atualizar com Dados do Mainframe</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script src="~/Content/js/PagamentoContaUnica/Credor.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('input').keypress(function (e) {
+                var code = null;
+                code = (e.keyCode ? e.keyCode : e.which);
+                if (code == 13) {
+                    PesquisarCredor($(this).val());
+                    return false;
+                }
+            });
+
+
+            var table = util.getDataTable('table._tbDataTables', 'form#frmPainelCadastrar');
+            var column = table.column($(0).attr('data-column'));
+            column.visible(!column.visible());
+
+
+
+        });
+    </script>
+}

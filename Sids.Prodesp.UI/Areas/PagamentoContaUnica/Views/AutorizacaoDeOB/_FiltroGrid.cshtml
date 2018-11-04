@@ -1,0 +1,211 @@
+﻿@model IEnumerable<Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.FiltroGridViewModel>
+@using Sids.Prodesp.UI.Helpers;
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    int i = 0;
+}
+
+<div class="row">
+    <div class="col-md-10">
+        <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+    </div>
+</div>
+
+<div class="row margT20">
+    <div class="col-md-12" style="overflow: auto">
+        <form method="post" action=@Url.Content("~/PagamentoContaUnica/" + controller+ "/DownloadFile/") id="frmExport">
+            <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-bordered table-striped small" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th>Nº do Agrupamento da Autorização</th>
+                        <th>Nº OB</th>
+                        <th>Unidade Gestora</th>
+                        <th>Gestão</th>
+                        <th>Total</th>
+                        <th>Data de Cadastramento</th>
+                        <th>Status SIAFEM</th>
+                        <th>Status PRODESP</th>
+                        <th sortable="false" class="textCenter"> Todos <input type="checkbox" name="transmitirTodos" id="transmitirTodos" value="true" /> </th>
+                        <th sortable="false">&nbsp;</th>
+                        <th sortable="false">&nbsp;</th>
+                        <th sortable="false">&nbsp;</th>
+                        <th sortable="false">&nbsp;</th>
+                        @*<th sortable="false">&nbsp;</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="textCenter" width="50">
+
+                                <input type="hidden" name="Items[@i].Id" value="@item.Id" />
+                                <input type="hidden" name="Items[@i].AgrupamentoOB" value="@item.AgrupamentoOB" />
+                                <input type="hidden" name="Items[@i].NumPD" value="@item.NumeroPD" />
+                                <input type="hidden" name="Items[@i].NumOB" value="@item.NumeroOB" />
+                                <input type="hidden" name="Items[@i].UGLiquidante" value="@item.UGLiquidante" />
+                                <input type="hidden" name="Items[@i].UGPagadora" value="@item.UGPagadora" />
+                                <input type="hidden" name="Items[@i].GestaoLiquidante" value="@item.GestaoLiquidante" />
+                                <input type="hidden" name="Items[@i].GestaoPagadora" value="@item.GestaoPagadora" />
+                                <input type="hidden" name="Items[@i].UnidadeGestora" value="@item.UnidadeGestora" />
+                                <input type="hidden" name="Items[@i].Gestao" value="@item.Gestao" />
+                                <input type="hidden" name="Items[@i].SiafemDescricao" value="@item.MensagemSiafem" />
+                                <input type="hidden" name="Items[@i].SiafemStatus" value="@item.StatusSiafem" />
+                                <input type="hidden" name="Items[@i].SiafemTransmitido" value="@item.TransmitidoSiafem" />
+                                <input type="hidden" name="Items[@i].SiafemTransmitidoEm" value="" />
+
+                                @*@Html.DisplayFor(modelItem => item.AgrupamentoOB)*@
+                                @Html.DisplayFor(modelItem => item.NumeroAgrupamentoOB)
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.NumeroOB)</td>
+                            <td>@Html.DisplayFor(modelItem => item.UGPagadora)</td>
+                            <td>@Html.DisplayFor(modelItem => item.GestaoPagadora)</td>
+                            <td class="textRight">@string.Format(System.Globalization.CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", Convert.ToDecimal(item.ValorItem))</td>
+                            <td class="textCenter">@Html.DisplayFor(modelItem => item.Data)</td>
+                            <td class="textCenter" width="30"> @SidsHelper.StatusIcone(item.StatusSiafem, item.MensagemSiafem, "SIAFEM") </td>
+                            <td class="textCenter" width="30"> @SidsHelper.StatusIcone(item.StatusProdesp, item.MensagemProdesp, "PRODESP") </td>
+                            <td class="textCenter" width="30">
+                                @if (item.StatusSiafem == "N" || item.StatusSiafem == "E" || item.StatusSiafem == null)
+                                {
+                                    <input type="checkbox" value="@item.Id" name="item[i].transmitir" />
+                                }
+                            </td>
+                            <td class="textCenter" width="30"> <a class="btn btn-xs btn-info @( (item.StatusSiafem == "S" && item.StatusProdesp == "S")  ? "disabled":"") " hidden="hidden" data-button="Editar" data-toggle="tooltip" title="Alterar" href="@Url.Action("Edit", "AutorizacaoDeOB", new { Id=item.AgrupamentoOB, tipo="a" })"><i class="fa fa-edit"></i></a> </td>
+                            <td class="textCenter" width="30"> <a class="btn btn-xs btn-primary" data-button="Visualizar" data-toggle="tooltip" title="Visualizar" href="@Url.Action("Edit", "AutorizacaoDeOB", new { Id=item.AgrupamentoOB, tipo="c" })"><i class="fa fa-search"></i></a> </td>
+                            
+                            @*<td class="textCenter"> <button type="button" @( item.StatusSiafem == "S" ? " disabled='disabled' " : "") class="btn btn-xs btn-danger @( item.StatusSiafem == "S" ? "disabled":"")" data-button="Excluir1" data-toggle="tooltip" title="Excluir"><i class="fa fa-trash-o"></i></button> </td>*@
+                            <td class="textCenter" width="30"> <button type="button" @( item.StatusSiafem == "S" ? " disabled='disabled' " : "") class="btn btn-xs btn-danger" data-button="Excluir1" data-toggle="tooltip" title="Excluir"><i class="fa fa-trash-o"></i></button> </td>
+                            <td class="textCenter" width="30"> <button type="button" @( item.StatusSiafem != "S" ? " disabled='disabled' " : "") class="btn btn-xs btn-warning @( item.StatusSiafem != "S" ? "disabled":"")" data-button="Imprimir1" data-toggle="tooltip" title="Imprimir"><i class="fa fa-print"></i></button> </td>
+                            @*<td class="textCenter" width="30"> <button type="button" @( item.StatusSiafem != "S" ? " disabled='disabled' " : "") class="btn btn-xs btn-danger @( item.StatusSiafem != "S" ? "disabled":"")" data-button="Cancelar1" data-toggle="tooltip" title="Cancelar"><i class="fa fa-remove"></i></button> </td>*@
+                        </tr>
+                        i++;
+                    }
+
+                    @if (!Model.Any())
+                    {
+                        <tr class="text-center">
+                            <td colspan="14">Nenhum registro encontrado.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div class="row margT10">
+    <div class="col-md-9"></div>
+    <div class="col-md-3 textRight">
+        <button type="button" data-button="Retransmitir" class="btn btn-sm btn-primary"> <i class="fa fa-share"></i> Retransmitir selecionados </button>
+    </div>
+</div>
+
+<!-- IMPRESSAO -->
+<div class="modal fade" id="_modalImpressaoOB" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Impressão de Documento</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form method="post" id="frm-imprimir-ob">
+                        <div class="row margT20">
+                            <div class="form-group-sm col-md-12">
+                                <p>Selecione o documento a ser impresso:</p>
+                                <p> <label><input type="radio" id="ordem_bancaria" name="tipo" value="1" /> Ordem Bancária </label> </p>
+                                <p> <label><input type="radio" id="agrupamento" name="tipo" value="2" /> Agrupamento </label>  </p>
+                                <span class="field-validation-valid" data-valmsg-for="tipo" data-valmsg-replace="true"></span>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" data-button="btnImprimirConfirmar" class="btn btn-success">Imprimir</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- IMPRESSAO -->
+<!-- CANCELAR OB -->
+<div class="modal fade" id="_modalCancelarOB" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Confirmar cancelamento de OB</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form method="post" id="frm-cancelar-ob">
+
+                        <div class="row margT10">
+                            <div class="form-group-sm col-md-6">
+                                <label>Unidade Gestora</label>
+                                <input type="hidden" name="mudapah" class="form-control" />
+                                <input type="text" name="mudapah-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="mudapah" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group-sm col-md-6">
+                                <label>Gestão</label>
+                                <input type="hidden" name="gestao" class="form-control" />
+                                <input type="text" name="gestao-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="gestao" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+
+                        <div class="row margT10">
+                            <div class="form-group-sm col-md-6">
+                                <label>Ordem Bancária</label>
+                                <input type="hidden" name="OB" class="form-control" />
+                                <input type="text" name="OB-text" class="form-control" disabled="disabled" />
+                                <span class="field-validation-valid" data-valmsg-for="OB" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="row margT10">
+                            <div class="form-group-sm col-md-12">
+                                <label>Causa</label>
+                                <textarea maxlength="60" name="causa" class="form-control"></textarea>
+                                <span class="field-validation-valid" data-valmsg-for="causa" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+                <button type="button" id="btn-cancelar-ob" class="btn btn-danger">Cancelar OB</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- CANCELAR OB -->
+<!-- EXCLUSAO -->
+<div class="modal fade" id="_modalExclusaoOB" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Excluir Autorização de OB</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="frm-excluir-autorizacao-ob">
+
+                    <p>Confirma exclusão da Autorização de OB?</p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="btn-confirmar-exclusao" class="btn btn-danger">Excluir</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- EXCLUSAO -->

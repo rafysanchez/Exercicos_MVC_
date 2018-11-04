@@ -1,0 +1,82 @@
+﻿
+@model Sids.Prodesp.UI.Areas.PagamentoContaDer.Models.ArquivoRemessaFiltroViewModel
+
+
+<div class="row">
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.NumeroGeracao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.NumeroGeracao, new { @class = "form-control unidGest", @maxlength = "6" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.RegionalId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.RegionalId, Model.OrgaoListItems, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="col-sm-4 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.CodigoConta, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.CodigoConta, new { @class = "form-control codConta", @maxlength = "3" })
+        </div>
+    </div>
+
+    <div class='col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback'>
+        @Html.LabelFor(model => model.DataCadastroDe, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.DataCadastroDe, new { @class = "form-control data datepicker data", @id = "DataInicial" })
+        </div>
+    </div>
+
+    <div class='col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback'>
+        @Html.LabelFor(model => model.DataCadastroAte, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.DataCadastroAte, new { @class = "form-control data datepicker data", @id = "DataFinal" })
+        </div>
+    </div>
+
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.TransmitidoProdesp, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.TransmitidoProdesp, Model.lstStatusProdesp, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.Cancelado, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.Cancelado, Model.CanceladoListItem, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+        <button type='button' id='btnPesquisar' class='btn-sm btn btn-primary' onclick='ValidaFormulario()'><i class='glyphicon glyphicon-search'></i> Pesquisar</button>
+        <button type='button' id='Create' class='btn btn-sm btn-warning' onclick="javascript: window.location.href = '@Url.Action("Create")';"><i class='glyphicon glyphicon-plus'></i> Cadastrar</button>
+        <button type='button' id='btnLimpar' class='btn-sm btn btn-success' onclick='javascript: limparFormulario($("#form_filtro"));'><i class='glyphicon glyphicon-refresh'></i> Limpar</button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+    </div>
+</div>

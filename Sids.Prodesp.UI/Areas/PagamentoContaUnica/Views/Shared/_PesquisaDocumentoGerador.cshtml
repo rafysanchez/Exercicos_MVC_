@@ -1,0 +1,66 @@
+﻿
+@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model PesquisaDocumentoGeradorViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div class="documentoGerador manual PDBEC">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina">Consultar Documento Gerador</h3>
+            <hr class="margT10" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.DocumentoTipoId, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.DocumentoTipoId, Model.DocumentoTipoListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem DocumentoTipo" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(model => model.NumeroDocumento, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroDocumento, new { @class = "form-control  lockProdesp lockSiafem NumeroDocumento", @maxlength = 18 })
+            </div>
+        </div>
+
+
+
+        @if (controller != "ProgramacaoDesembolso")
+        {
+            <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp">
+                @Html.LabelFor(model => model.ValorDocumento, new {@class = "control-label label-form-DER"})<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.ValorDocumento, new {@class = "form-control  lockProdesp lockSiafem real", maxlength = 17})
+                </div>
+            </div>
+
+
+            <div id="divbtnConsultarDocGerador" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+                <label class="invisible">Consultar</label>
+                <div class="input-group-btn">
+                    <button id="btnConsultar" type="button" class="btn btn-primary btn-sm  lockProdesp lockSiafem " onclick="consultarDocumentoGerador()"><i class="fa fa-search"></i> Consultar</button>
+                </div>
+            </div>
+        }
+        else
+        {
+
+
+            <div id="divbtnConsultarDocGerador" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+                <label class="invisible">Consultar</label>
+                <div class="input-group-btn">
+                    <button id="btnConsultar" type="button" class="btn btn-primary btn-sm  lockProdesp lockSiafem " onclick="ConsultarDocumentoGerador()"><i class="fa fa-search"></i> Consultar</button>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>

@@ -1,0 +1,220 @@
+﻿@model Sids.Prodesp.UI.Areas.Parametrizacao.Models.NlParametrizacaoViewModel
+
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var tipo = Request.QueryString["tipo"];
+    ViewBag.Title = (Model.IdParametrizacao > 1 ? (tipo == "a" || tipo == "i" ? "Alterar Parametrização de NL" : "Visualizar Parametrização de NL") : "Cadastrar Parametrização de NL");
+
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var action = ViewContext.RouteData.GetRequiredString("action");
+}
+
+<script>
+    var obj = controller;
+    var controller = @Html.Raw(Json.Encode(controller));
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+    var ModelItem = @Html.Raw(Json.Encode(Model));
+    var regional = @Html.Raw(Json.Encode(ViewBag.Regional));
+    var urlVoltar = '@Url.Action(action, new { Area = area })';
+</script>
+
+@using (Html.BeginForm("Atualizar", "ParametrizacaoNotaLancamento", FormMethod.Post, new { id = "frmAtualizarParametrizacaoNl" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.IdParametrizacao)
+
+    <div id="divContent" class="col-md-12">
+        <h1>Atualizar Parametrização de NL</h1>
+        <div id="divPainelAtualizarParametrizacao" class="panel panel-default">
+            <div class="panel-body">
+                <h2>Pesquisar Tipo de NL</h2>
+                <form name="atualizaParametrizacao" id="atualizaParametrizacao" method="post">
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback" style="margin-right:1pt;">
+                            @Html.LabelFor(model => model.IdTipoNL, new { @class = "control-label label-form-DER" })
+                            @Html.DropDownListFor(model => model.IdTipoNL, new SelectList(ViewBag.TiposNl, "Id", "Descricao"), "SELECIONE", new { @class = "form-control", data_url_verificacao = @Url.Action("Selecionar", "ParametrizacaoNotaLancamento") })
+                            @Html.ValidationMessageFor(model => model.IdTipoNL)
+                        </div>
+                    </div>
+                    <br />
+
+                    <hr style="height:1pt;" />
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+                            @Html.Label("Forma de Gerar NL", new { @class = "control-label label-form-DER" })
+                            @Html.DropDownList("IdFormaGerarNl", new SelectList(ViewBag.TipoFormaGerarNl, "Id", "Descricao"), "SELECIONE", new { @class = "form-control ignorepost" })
+                            @Html.ValidationMessage("IdFormaGerarNl")
+                        </div>
+                    </div>
+                    <h3>Despesas</h3>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+                            @Html.Label("Tipo da Despesa", new { @class = "control-label label-form-DER" })
+                            @Html.DropDownList("IdTipoDespesa", new SelectList(ViewBag.TiposDespesa, "Id", "Descricao"), "SELECIONE", new { @class = "form-control ignorepost" })
+                            @Html.ValidationMessage("IdTipoDespesa")
+                        </div>
+                        <div class="col-sm-12 col-lg-3 col-md-3  form-group form-group-sm padT24">
+                            <label>&nbsp;</label>
+                            <button id="btnAdicionarDespesa" class="btn btn-primary btn-sm form-control" type="button" data-url-verificacao="@Url.Action("VerificarTipoDespesa", "ParametrizacaoNotaLancamento")"><span class="glyphicon glyphicon-arrow-down"></span>&nbsp; Adicionar Tipo de Despesa</button>
+                        </div>
+                    </div>
+                    <div class="row padT10 padB20">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <table class="table table-hover" id="tblDespesas">
+                                <thead>
+                                    <tr>
+                                        <th>Nº Tipo Despesa</th>
+                                        <th>Descrição Tipo Despesa</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tr-placeholder">
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr style="height:1pt;" />
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 form-group-sm">
+                                    @Html.LabelFor(model => model.Observacao, new { @class = "control-label label-form-DER" })
+                                    @Html.TextAreaFor(model => model.Observacao, new { @class = "form-control", @maxlength = "250" })
+                                    @Html.ValidationMessageFor(model => model.Observacao)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm pad-t10">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 form-group-sm padR5 padL5">
+                                    <label class="control-label label-form-DER">Transmitir ?</label>
+                                    <div class="form-group text-left" id="transmitirGroup">
+                                        @*<label for="Transmitir" class="label-form-DER padR5 required">Sim </label><input type="radio" value="true" name="Transmitir" required /> <br />
+                            <label for="Transmitir" class="label-form-DER padR5">Não </label><input type="radio" value="false" name="Transmitir" />*@
+                                        @*@Html.CheckBoxFor(model => model.Transmitir, new { @class = "label-form-DER padR5" })*@
+                                        @Html.RadioButtonFor(model => model.Transmitir, true, new { data_valor = "true" })
+                                        @Html.Label("lblTransmitirSim", "Sim")
+                                        @Html.RadioButtonFor(model => model.Transmitir, false, new { data_valor = "false" })
+                                        @Html.Label("lblTransmitirNao", "Não")
+                                        <br />
+                                        @Html.ValidationMessageFor(model => model.Transmitir)
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 form-group-sm">
+                                    @Html.LabelFor(model => model.UnidadeGestora, new { @class = "control-label label-form-DER" })
+                                    @Html.TextBoxFor(model => model.UnidadeGestora, new { @class = "form-control numeric", @maxlength = "6" })
+                                    @Html.ValidationMessageFor(model => model.UnidadeGestora)
+                                </div>
+                                <div class="col-lg-3 col-md-3 form-group-sm">
+                                    @Html.LabelFor(model => model.FavorecidaCnpjCpfUg, new { @class = "control-label label-form-DER" })
+                                    @Html.TextBoxFor(model => model.FavorecidaCnpjCpfUg, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.FavorecidaCnpjCpfUg)
+                                </div>
+                                <div class="col-lg-3 col-md-3 form-group-sm">
+                                    @Html.LabelFor(model => model.FavorecidaNumeroGestao, new { @class = "control-label label-form-DER" })
+                                    @Html.TextBoxFor(model => model.FavorecidaNumeroGestao, new { @class = "form-control number",  @maxlength = "5" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="height:1pt;" />
+                    <h3>Eventos</h3>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-6 col-md-6 form-group-sm">
+                            <input type="hidden" id="hdnEventoId" value="0" />
+                            <div class="row">
+                                <div class="col-lg-5 col-md-5 form-group-sm">
+                                    @Html.Label("Tipo de Documento", new { @class = "control-label label-form-DER" })
+                                    @Html.DropDownList("ddlIdTipoDocumento", new SelectList(ViewBag.TiposDocumento, "Id", "Descricao"), "SELECIONE", new { @class = "form-control ignorepost" })
+                                </div>
+                                <div class="col-lg-7 col-md-7 form-group-sm hidden">
+                                    @Html.Label("Tipo RAP", new { @class = "control-label label-form-DER" })
+                                    @Html.DropDownList("ddlIdTipoRap", new SelectList(ViewBag.TiposRap, "Id", "Descricao"), "SELECIONE", new { @class = "form-control ignorepost" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 col-md-6 form-group-sm">
+                            <input type="hidden" class="form-control" name="numeroLinha" id="numeroLinha" />
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 form-group-sm">
+                                    @Html.Label("Evento", new { @class = "control-label label-form-DER" })
+                                    @Html.TextBox("txtNumeroEvento", null, new { @class = "form-control ignorepost", @maxlength = "6" })
+                                </div>
+                                <div class="col-lg-3 col-md-3 form-group-sm">
+                                    @Html.Label("Classificação", new { @class = "control-label label-form-DER" })
+                                    @Html.TextBox("txtNumeroClassificacao", null, new { @class = "form-control ignorepost", @maxlength = "9" })
+                                </div>
+                                <div class="col-lg-3 col-md-3 form-group-sm">
+                                    @Html.Label("Fonte", new { @class = "control-label label-form-DER" })
+                                    @Html.TextBox("txtNumeroFonte", null, new { @class = "form-control ignorepost", @maxlength = "9" })
+                                </div>
+                                <div class="col-lg-3 col-md-3 form-group-sm">
+                                    <div class="form-group text-center margT10" style="text-align:left" id="entradaSaida">
+                                        <label for="entradaSaida" class="label-form-DER pad-r5">Entrada </label><input type="radio" name="chkEntradaSaida" id="Entrada" value="Entrada" /> <br />
+                                        <label for="entradaSaida" class="label-form-DER pad-r19">Saída </label><input type="radio" name="chkEntradaSaida" id="Saida" value="Saida" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-3 col-md-3  form-group form-group-sm">
+                            <button class="btn btn-primary btn-sm form-control" type="button" id="btnAdicionarEvento"><span class="glyphicon glyphicon-arrow-down">&nbsp;</span>Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="row margT10" id="">
+                        <div class="col-sm-12 col-lg-12 col-md-12">
+                            <table class="table table-responsive table-hover" id="tblEventos">
+                                <thead>
+                                    <tr>
+                                        <th>Tipo Documento</th>
+                                        <th>Tipo RAP</th>
+                                        <th>Evento</th>
+                                        <th>Classificação</th>
+                                        <th>Fonte</th>
+                                        <th>Entrada/Saída</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tr-placeholder">
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row margT10" id="botoes">
+                        <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm">
+                            <button id="btnCancelar" class="btn btn-sm btn-danger col-lg-1 col-md-1 marg-r5"><i class="fa fa-close"></i> Cancelar</button>
+                            <button id="btnAtualizar" class="btn btn-sm btn-primary col-lg-1 col-md-1"><span class="glyphicon glyphicon-ok"></span> Atualizar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+
+@Html.Partial("_modalAtualizar")
+@Html.Partial("_modalConsulta")
+
+
+@section script{
+    @Scripts.Render("~/bundles/parametrizacaonl")
+    @Scripts.Render("~/bundles/jqueryval")
+}

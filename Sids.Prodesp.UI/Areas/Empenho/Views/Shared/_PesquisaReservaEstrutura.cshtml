@@ -1,0 +1,87 @@
+﻿@using Sids.Prodesp.UI.Areas.Empenho.Models
+
+@model PesquisaReservaEstruturaViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var title = controller.Equals("Empenho") ? "Reserva" : "Empenho";
+}
+
+
+<script>
+    var programasInfo = @Html.Raw(Json.Encode(ViewBag.Programas)); 
+    var estruturaInfo = @Html.Raw(Json.Encode(ViewBag.Estrutura));
+    var fonteInfo = @Html.Raw(Json.Encode(ViewBag.Fontes));
+    var regionais = @Html.Raw(Json.Encode(ViewBag.Regional));
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina">Pesquisar @( title ) Por Estrutura</h3>
+        <hr class="margT10" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback prodesp">
+        @Html.LabelFor(model => model.NumeroAnoExercicio, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.DropDownListFor(model => model.NumeroAnoExercicio, Model.NumeroAnoExercicioListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem lockSiafisico", @id = "AnoExercicio" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.CodigoPtres, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.DropDownListFor(model => model.CodigoPtres, Model.CodigoPtresListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem lockSiafisico", @id = "Ptres", @maxlength = 6 })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.ProgramaId, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.DropDownListFor(model => model.ProgramaId, Model.ProgramaListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem lockSiafisico", @id = "Programa" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.NaturezaId, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group-sm">
+            @Html.DropDownListFor(model => model.NaturezaId, Model.NaturezaListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem lockSiafisico", @id = "Natureza" })
+        </div>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.RegionalId, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.RegionalId, Model.RegionalListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem lockSiafisico", @id = "Regional" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.FonteId, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.FonteId, Model.FonteListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem loackSiafisico", @id = "Fonte" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(x => x.NumeroProcesso, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.NumeroProcesso, new { @class = "form-control lockProdesp lockSiafem lockSiafisico", @id = "Processo", @maxlength = 15 })
+                <span class="input-group-btn">
+                    <button class="btn btn-primary btn-sm lockProdesp lockSiafem lockSiafisico" onclick="ConsultarPorEstrutura()" type="button"><i class="fa fa-search"></i> Consultar</button>
+                </span>
+
+            </div>
+        </div>
+
+        @*<div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback siafisico">
+                @Html.LabelFor(model => model.NumeroProcessoSiafisico, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.NumeroProcessoSiafisico, new { @class = "form-control prodesp lockSiafisico", @maxlength = 11 })
+                </div>
+            </div>*@
+    </div>

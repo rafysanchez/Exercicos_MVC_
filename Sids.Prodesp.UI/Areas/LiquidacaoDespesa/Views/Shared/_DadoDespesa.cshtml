@@ -1,0 +1,98 @@
+﻿@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model DadoDespesaViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var labelDescricao = "Especificação de Despesa(Prodesp)";
+}
+
+<div id="DadoDespesa" class="prodesp">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div id="divNumeroProcesso" class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(model => model.NumeroProcesso, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroProcesso, new { @class = "form-control lockProdesp", @maxlength = 60 })
+            </div>
+        </div>
+
+        <div id="divDescricaoAutorizadoSupraFolha" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(model => model.DescricaoAutorizadoSupraFolha, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.DescricaoAutorizadoSupraFolha, new { @class = "form-control lockProdesp", @maxlength = 4 })
+            </div>
+        </div>
+
+        <div id="divCodigoEspecificacaoDespesa" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp">
+            @Html.LabelFor(model => model.CodigoEspecificacaoDespesa, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.CodigoEspecificacaoDespesa, new { @class = "form-control lockProdesp expec", @maxlength = 3, @id = "EspecDespesa" })
+            </div>
+        </div>
+
+        @if (controller != "SubempenhoCancelamento")
+        {
+            if (!controller.Contains("RapInscricao"))
+            {
+                <div id="divNlRetencaoInss" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp">
+                    @Html.LabelFor(model => model.NlRetencaoInss, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                    <div class="input-group-sm">
+                        @Html.TextBoxFor(model => model.NlRetencaoInss, new { @class = "form-control lockProdesp numDcto", @maxlength = 11 })
+                    </div>
+                </div>
+            }
+
+            <div id="divLista" class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback prodesp siafem">
+                @Html.LabelFor(model => model.Lista, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.Lista, new { @class = "form-control lockProdesp lockSiafem numDcto", @maxlength = 11 })
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+
+        <div id="divDescricaoEspecificacaoDespesa" class="form-group form-group-sm has-feedback col-sm-12 col-lg-2 col-md-2" style="width: 682px; ">
+            @Html.LabelFor(model => model.DescricaoEspecificacaoDespesa1, labelDescricao, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+            <div id="DescEspecificacaoDespesa" name="DescEspecificacaoDespesa" class="input-group-sm txtarea" style="font: inherit; font-family:monospace; border: 1px solid #ccc;border-radius: 4px;">
+               
+                @if (controller.Contains("RapInscricao"))
+                {
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa1, new { @class = "Proximo lockProdesp area", @ReadOnly = true, @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa2, new { @class = "Proximo lockProdesp area", @ReadOnly = true, @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa3, new { @class = "Proximo lockProdesp area", @ReadOnly = true, @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa4, new { @class = "Proximo lockProdesp area", @ReadOnly = true, @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa5, new { @class = "Proximo lockProdesp area", @ReadOnly = true, @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa6, new { @class = "Proximo lockProdesp area", @ReadOnly = true, @maxlength = 79 })
+                }
+                else
+                {
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa1, new { @class = "Proximo lockProdesp area", @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa2, new { @class = "Proximo lockProdesp area", @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa3, new { @class = "Proximo lockProdesp area", @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa4, new { @class = "Proximo lockProdesp area", @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa5, new { @class = "Proximo lockProdesp area", @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa6, new { @class = "Proximo lockProdesp area", @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa7, new { @class = "Proximo lockProdesp area", @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa8, new { @class = "Proximo lockProdesp area", @maxlength = 79 })
+                    @Html.TextBoxFor(model => model.DescricaoEspecificacaoDespesa9, new { @class = "Proximo lockProdesp area", @maxlength = 79 })
+
+                }
+            </div>
+        </div>
+
+    </div>
+
+</div>

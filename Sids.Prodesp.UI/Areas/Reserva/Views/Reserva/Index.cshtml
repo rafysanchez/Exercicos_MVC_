@@ -1,0 +1,156 @@
+﻿@using System.Globalization
+@using Sids.Prodesp.Model.Extension
+
+@model List<Sids.Prodesp.Model.Entity.Reserva.Reserva>
+
+@{
+    ViewBag.Title = "Listar Reservas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.Name = "Reserva";
+}
+
+<script>
+    var obj = "Reserva/Reserva";
+    var objExc = "Reserva";
+    var urld = '@Url.Action("Delete", "Reserva")';
+
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+    var estruturaInfo = @Html.Raw(Json.Encode(ViewBag.Filtro.Estrutura));
+    var programasInfo = @Html.Raw(Json.Encode(ViewBag.Filtro.Programas));
+    var selecionado = @Html.Raw(Json.Encode(ViewBag.Filtro.Programa));
+    @*var ModelItem = @Html.Raw(Json.Encode(Model));*@
+
+    function Edit(reservaId, editar) {
+
+        if (editar) {
+            AbrirModal("A Reserva foi transmitida, não é permitida a alteração após a transmissão.");
+            return false;
+        }
+
+        var online = navigator.onLine;
+        if (online == true) {
+        } else {
+            AbrirModal("Erro de conexão");
+            return false;
+        }
+        ShowLoading();
+        var tipo = "a";
+        AbrirDetalhe('@Url.Action("Edit", "Reserva")' + '?id=' + reservaId + '&tipo=' + tipo);
+    }
+
+
+</script>
+<link href="~/Content/DataTable/css/responsive.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTable/css/jquery.dataTables.min.css" rel="stylesheet" />
+<div class="col-md-12">
+    <h2>Pesquisa de Reservas</h2>
+    @Html.Partial("_Mensagem")
+    <div class="panel panel-default" id="">
+        <div class="panel-body">
+            @using (Html.BeginForm("Index", "Reserva", FormMethod.Post, new { name = "form_filtro", id = "form_filtro" }))
+            {
+                Html.RenderPartial("_Filtro");
+            }
+            <div class="row">
+                <div class="col-md-10">
+                    <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <label class="margR10"><input type="checkbox" id="idSelecionar" onclick="MarcaTodos()" name="nmRetransmitirTodos" value="0" /><small class="margL10">Selecionar Todos</small></label>
+
+                    <button id="btnReTransmitir" type="button" class="btn btn-sm btn-primary"><i class="fa fa-share"></i>Retransmitir</button>
+                </div>
+            </div>
+            <br />
+            <div class="margT0">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto;">
+
+                        <form method="post" action=@Url.Content("~/Reserva/Reserva/DownloadFile/") id="frmExport">
+                            <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped small">
+                                <thead>
+                                    <tr>
+                                        <th>Nº Reserva SIAFEM / SIAFISICO</th>
+                                        <th>Nº Reserva Prodesp</th>
+                                        <th>Contrato</th>
+                                        <th>Processo</th>
+                                        <th>C.F.P</th>
+                                        <th>C.E.D</th>
+                                        <th>Origem Do Recurso</th>
+                                        <th>Destino Do Recurso</th>
+                                        <th>Total</th>
+                                        <th>Status SIAFEM / SIAFISICO</th>
+                                        <th>Status Prodesp</th>
+                                        <th>Todos</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="text-center">
+                                            <td>@Html.DisplayFor(modelItem => item.NumSiafemSiafisico)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.NumProdesp)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Contrato).ToString().Formatar("00.00.00000-0")</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Processo)</td>
+                                            <td style="word-wrap: break-word;">@Html.DisplayFor(modelItem => item.CfpPrograma).ToString().Formatar("00.000.0000.0000") </td> @*@Html.DisplayFor(modelItem => item.DescricaoPrograma)</td>*@
+                                            <td>@Html.DisplayFor(modelItem => item.NaturezaEstrutura).ToString().Formatar("0.0.00.00")</td>
+                                            <td>@Html.DisplayFor(modelItem => item.OrigemRecurso)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.DestinoRecurso)</td>
+                                            <td>@string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", item.ValorMes)</td>
+                                            <td><text title="@item.MsgRetornoTransSiafemSiafisico">@(item.StatusSiafemSiafisico == "N" ? "Não Transmitido" : item.StatusSiafemSiafisico == "S" ? "Sucesso" : "Erro")</text></td>
+                                            <td><text title="@item.MsgRetornoTransmissaoProdesp">@(item.StatusProdesp == "N" ? "Não Transmitido" : item.StatusProdesp == "S" ? "Sucesso" : "Erro")</text></td>
+
+
+                                            @if ((((item.TransmitirSiafem || item.TransmitirSiafisico) && item.TransmitidoSiafem == false && item.TransmitidoSiafisico == false)|| (item.TransmitirProdesp && item.TransmitidoProdesp == false)) && item.CadastroCompleto)
+                                            {
+                                                <td class="text-center"><input type="checkbox" data-button='Transmitir' class="idRetrasmitir margL5" name="nmRetransmitir" value="@item.Codigo" /></td>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+
+                                            <td>
+                                                <button class="btn btn-xs btn-info margL7" type="button" hidden="hidden" data-button="Editar" title="Alterar" onclick="Edit(@item.Codigo, @(((item.TransmitidoSiafem == true || item.TransmitidoSiafisico == true) & item.TransmitidoProdesp == true) ? "true" : "false"))"><i class="fa fa-edit"></i></button>
+
+                                                <button class="btn btn-xs btn-primary margL7" type="button" data-button="Visualizar" title="Visualizar" onclick="AbrirDetalhe('@Url.Action("Edit", "Reserva", new {Area = "Reserva", id = item.Codigo, tipo = "c"})')"><i class="fa fa-search"></i></button>
+                                                @if (item.TransmitidoSiafem == false && item.TransmitidoSiafisico == false && item.TransmitidoProdesp == false)
+                                                {
+                                                    <button class="btn btn-xs btn-danger margL7" type="button" data-button="Excluir" id="@item.Codigo" name="@item.Codigo" title="Excluir" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'Excluir', objExc, '@item.NumProdesp', this)"><i class="fa fa-trash"></i></button>
+                                                }
+                                                @if (item.TransmitidoSiafem == true || item.TransmitidoSiafisico == true)
+                                                {
+                                                    <button class="btn btn-xs btn-primary margL7" type="button" data-button="Imprimir" title="Imprimir" onclick="Imprimir(@item.Codigo, 'Reserva',$('#frmExport'))"><i class="fa fa-print"></i></button>
+                                                }
+                                                <button class="btn btn-xs btn-success margL7" type="button" id="Create" data-button="Cadastrar" title="Cadastar A partir desta" onclick="AbrirDetalhe('@Url.Action("CreateThis", "Reserva", new {id = item.Codigo})')"><i class="fa fa-plus"></i></button>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script{
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/js/Reservas/ReservaListar.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+    <script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+    <script src="~/Content/js/scriptImpressao.js"></script>
+}

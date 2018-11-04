@@ -1,0 +1,189 @@
+﻿@model List<Sids.Prodesp.UI.Areas.PagamentoContaDer.Models.ConfirmacaoPagamentoFiltroViewModel>
+
+@{
+    var tipo = Request.QueryString["tipo"];
+
+    ViewBag.Title = "Cadastrar Confirmação de Pagamento";
+
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string msgRetorno = ViewBag.MsgRetorno;
+
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var action = ViewContext.RouteData.GetRequiredString("action");
+
+}
+
+<script>
+    window.area = @Html.Raw(Json.Encode(area));
+    window.controller = @Html.Raw(Json.Encode(controller));
+    window.action = @Html.Raw(Json.Encode(action));
+
+
+    window.Entity = @Html.Raw(Json.Encode(Model));
+    window.ItemList = @Html.Raw(Json.Encode(Model));
+
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+
+    var obj = 'ConfirmacaoPagamento';
+    var ModelItem = @Html.Raw(Json.Encode(Model));
+    var urlVoltar = '@Url.Action("AtualizarIndex", new { Area = "PagamentoContaDer" })';
+</script>
+
+@*<style type="text/css">
+        .pagination {
+            float: left;
+        }
+    </style>*@
+
+<link rel="stylesheet" href="~/Content/DataTable/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="~/Content/DataTable/css/jquery.dataTables.min.css" />
+
+<div id="divContent" class="col-md-12">
+    <h1>Cadastrar Confirmação de Pagamento</h1>
+    <div id="divPainelCadastrarConfirmacaoPagamento" class="panel panel-default">
+        <div class="panel-body">
+            @{Html.RenderPartial("_FiltroCadastro", Model);}
+            @{Html.RenderPartial("_FiltroGrid", Model);}
+
+            <div class="row margT10" id="botoes">
+                <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm">
+                    <button id="btnCancelar" class="btn btn-sm btn-danger col-lg-1 col-md-1" style="margin-right:5pt;" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'cancelar', obj)"><i class="fa fa-close"></i> Cancelar</button>
+                    <button class="btn btn-sm btn-success col-lg-1 col-md-1" data-button="btnSalvarConfirmacao" id="btnSalvar" style="margin-right:5pt;"><i class="fa fa-save"></i> Salvar</button>
+                    <button type="submit" class="btn btn-sm btn-primary botao col-lg-1 col-md-1" data-button="btnTransmitirProdesp" id="transmitir" style=""><span class="glyphicon glyphicon-share-alt"></span> Transmitir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_modalConsulta")
+
+@Styles.Render("~/bundles/ConfirmacaoPagamentoCss")
+@*@Scripts.Render("~/bundles/jquery")*@
+
+@section script{
+    <script type="text/javascript" language="javascript" src="~/Content/js/ConfirmacaoPagamento/ConfirmacaoPagamentoCadastro.js"></script>
+    <script type="text/javascript">
+
+
+        //seleciona apenas um checkbox do grupo
+        $("input:checkbox").on('click', function () {
+            var $box = $(this);
+            if ($box.is(":checked")) {
+                var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+            } else {
+                $box.prop("checked", false);
+            }
+        });
+
+        $('.botao').click(function (e) {
+            var isValid = true;
+            $('select[required],input[required=required]').each(function () {
+                if ($.trim($(this).val()) == '') {
+                    isValid = false;
+                    $('#modalAlerta').modal();
+                    $('#modalAlerta #value').html('Campo obrigatório não preenchido');
+                    $(this).addClass('campoVazio');
+                }
+                else {
+                    $(this).removeClass('campoVazio');
+                }
+            });
+            if (isValid == false) {
+                e.preventDefault();
+            }
+
+            else {
+                $('#modalAlerta').modal();
+                $('#modalAlerta #value').html('Transmissão realizada com sucesso');
+            }
+        });
+
+        $('select[name=opcoesConfirmacao]').change(function () {
+            var opcao = $(this).val();
+            if (opcao == '1') {
+                $('.pagamentoPorDocumentoC').show();
+                $('.pagamentoPorLoteC').hide();
+                $('.resultadosBusca').show();
+            }
+
+            else if (opcao == '2') {
+                $('.pagamentoPorLoteC').show();
+                $('.pagamentoPorDocumentoC').hide();
+                $('.resultadosBusca').show();
+            }
+            else {
+                $('.pagamentoPorLoteC').hide();
+                $('.pagamentoPorDocumentoC').hide();
+                $('.resultadosBusca').hide();
+            }
+        })
+        $(document).ready(function () {
+            $("input").blur(function () {
+                if ($(this).val() == "") {
+                    $(this).css({ "border": "1px solid #F00", "padding": "2px" });
+                }
+            });
+            $("select").blur(function () {
+                if ($(this).val() == "") {
+                    $(this).css({ "border": "1px solid #F00", "padding": "2px" });
+                }
+            });
+            $(".consulta1").click(function () {
+                var cont = 0;
+                $("#consultaPagamentoPorDocumento input").each(function () {
+                    if ($(this).val() == "") {
+                        $(this).css({ "border": "1px solid #F00", "padding": "2px" });
+                        cont++;
+                    }
+                });
+                $("#consultaPagamentoPorDocumento select").each(function () {
+                    if ($(this).val() == "") {
+                        $(this).css({ "border": "1px solid #F00", "padding": "2px" });
+                        cont++;
+                    }
+                });
+                if (cont == 0) {
+                    return false;
+                    //$("#consultaPagamentoPorDocumento").submit();
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $("input").blur(function () {
+                if ($(this).val() == "") {
+                    $(this).css({ "border": "1px solid #F00", "padding": "2px" });
+                }
+            });
+            $("select").blur(function () {
+                if ($(this).val() == "") {
+                    $(this).css({ "border": "1px solid #F00", "padding": "2px" });
+                }
+            });
+            $(".consulta2").click(function () {
+                var cont = 0;
+                $("#consultaPagamentoPorLote input").each(function () {
+                    if ($(this).val() == "") {
+                        $(this).css({ "border": "1px solid #F00", "padding": "2px" });
+                        cont++;
+                    }
+                });
+                $("#consultaPagamentoPorLote select").each(function () {
+                    if ($(this).val() == "") {
+                        $(this).css({ "border": "1px solid #F00", "padding": "2px" });
+                        cont++;
+                    }
+                });
+                if (cont == 0) {
+                    return false;
+                    //$("#consultaPagamentoPorLote").submit();
+                }
+            });
+        });
+    </script>
+}

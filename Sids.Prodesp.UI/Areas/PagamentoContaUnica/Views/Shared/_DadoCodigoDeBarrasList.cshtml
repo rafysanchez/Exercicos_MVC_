@@ -1,0 +1,54 @@
+﻿@using System.Globalization
+@using System.Linq
+
+@model IList<Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.ListaDeBoletos.DadoCodigoDeBarrasViewModel>
+
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div class="issqn">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+    <div class="margT0 siafisico">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group has-feedback">
+
+                <table name="tblCodigoBarras" id="tblCodigoBarras" class="_tbDataTables table table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().CodigoDeBarras)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Valor)</th>
+                            <th><label>Ações</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <td>@Html.DisplayFor(modelItem => item.CodigoDeBarras)</td>
+                                <td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(item.Valor)).ToString("N2"))</td>
+                                
+                                <td>
+                                    <button type="button" title="Alterar" class="btn btn-xs btn-info margL7   btn-edit lockProdesp lockSiafem" onclick="listaDeBoletosCodicoBarras.edit(this)"><i class="fa fa-edit"></i></button>
+                                    <button type="button" title="Excluir" class="btn btn-xs btn-danger margL7  btn-trash lockProdesp lockSiafem" onclick="listaDeBoletosCodicoBarras.remove(this)"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

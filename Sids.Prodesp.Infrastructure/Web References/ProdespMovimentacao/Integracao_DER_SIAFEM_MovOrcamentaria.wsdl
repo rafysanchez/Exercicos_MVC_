@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_MovOrcamentaria" xmlns:vhi-fault="urn:xmlns:attachmate:vhi-ws:fault" name="Integracao_DER_SIAFEM_MovOrcamentaria" targetNamespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_MovOrcamentaria" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="urn:xmlns:attachmate:vhi-ws:fault" location="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoMovOrcamentaria/vhi-fault.wsdl" />
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://10.200.142.198:9680/vhi-ws/session/Pool_IntegracaoMovOrcamentaria/Pool_IntegracaoMovOrcamentaria.xsd" namespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_MovOrcamentaria" />
+    </xsd:schema>
+  </types>
+  <message name="Procedure_MovOrcamentariaInterna">
+    <part name="parameters" element="tns:Procedure_MovOrcamentariaInterna" />
+  </message>
+  <message name="Procedure_MovOrcamentariaInternaResponse">
+    <part name="parameters" element="tns:Procedure_MovOrcamentariaInternaResponse" />
+  </message>
+  <message name="wsResourceCreate">
+    <part name="parameters" element="tns:wsResourceCreate" />
+  </message>
+  <message name="wsResourceCreateResponse">
+    <part name="parameters" element="tns:wsResourceCreateResponse" />
+  </message>
+  <message name="wsResourceDestroy">
+    <part name="parameters" element="tns:wsResourceDestroy" />
+  </message>
+  <message name="wsResourceDestroyResponse">
+    <part name="parameters" element="tns:wsResourceDestroyResponse" />
+  </message>
+  <portType name="Integracao_DER_SIAFEM_MovOrcamentariaPortType">
+    <operation name="Procedure_MovOrcamentariaInterna">
+      <input message="tns:Procedure_MovOrcamentariaInterna" />
+      <output message="tns:Procedure_MovOrcamentariaInternaResponse" />
+      <fault name="ModelFault" message="vhi-fault:ModelFault" />
+      <fault name="UserFault" message="vhi-fault:UserFault" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+    <operation name="wsResourceCreate">
+      <input message="tns:wsResourceCreate" />
+      <output message="tns:wsResourceCreateResponse" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnavailableFault" message="vhi-fault:ResourceUnavailableFault" />
+    </operation>
+    <operation name="wsResourceDestroy">
+      <input message="tns:wsResourceDestroy" />
+      <output message="tns:wsResourceDestroyResponse" />
+      <fault name="OperationUndefinedFault" message="vhi-fault:OperationUndefinedFault" />
+      <fault name="ServiceFault" message="vhi-fault:ServiceFault" />
+      <fault name="XMLStreamFault" message="vhi-fault:XMLStreamFault" />
+      <fault name="ResourceUnknownFault" message="vhi-fault:ResourceUnknownFault" />
+    </operation>
+  </portType>
+  <binding name="Integracao_DER_SIAFEM_MovOrcamentariaPortBinding" type="tns:Integracao_DER_SIAFEM_MovOrcamentariaPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Procedure_MovOrcamentariaInterna">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="ModelFault">
+        <soap:fault use="literal" name="ModelFault" namespace="" />
+      </fault>
+      <fault name="UserFault">
+        <soap:fault use="literal" name="UserFault" namespace="" />
+      </fault>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="wsResourceCreate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnavailableFault">
+        <soap:fault use="literal" name="ResourceUnavailableFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="wsResourceDestroy">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="OperationUndefinedFault">
+        <soap:fault use="literal" name="OperationUndefinedFault" namespace="" />
+      </fault>
+      <fault name="ServiceFault">
+        <soap:fault use="literal" name="ServiceFault" namespace="" />
+      </fault>
+      <fault name="XMLStreamFault">
+        <soap:fault use="literal" name="XMLStreamFault" namespace="" />
+      </fault>
+      <fault name="ResourceUnknownFault">
+        <soap:fault use="literal" name="ResourceUnknownFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="Integracao_DER_SIAFEM_MovOrcamentariaService">
+    <port name="Integracao_DER_SIAFEM_MovOrcamentariaPort" binding="tns:Integracao_DER_SIAFEM_MovOrcamentariaPortBinding">
+      <soap:address location="http://10.200.142.198:9680/vhi-xe/session/Pool_IntegracaoMovOrcamentaria" />
+    </port>
+  </service>
+</definitions>

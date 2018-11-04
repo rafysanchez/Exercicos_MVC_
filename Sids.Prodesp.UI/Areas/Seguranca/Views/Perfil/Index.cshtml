@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Sids.Prodesp.Model.Entity.Seguranca.Perfil>
+
+    @{
+        ViewBag.Title = "Perfis";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    <script>
+        var obj = "Perfil";
+        var urld = '@Url.Action("Delete", "Perfil")';
+        var urla = '@Url.Action("AlterarStatus", "Perfil")';
+    </script>
+
+    <link href="~/Content/DataTable/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <div class="col-md-12">
+        <h2>Pesquisa de Perfis</h2>
+        @Html.Partial("_Mensagem")
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @{
+                    Html.RenderPartial("Filtro");
+                }
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+                    </div>
+                </div>
+                <hr class="margT0" />
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+                        <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped table-responsive small">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-4">Nome</th>
+                                    <th class="col-md-5">Detalhes</th>
+                                    <th class="col-md-3"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Detalhe)</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-xs btn-info" data-button="Editar" title="Alterar" onclick="AbrirDetalhe('@Url.Action("Edit", "Perfil", new { Area="Seguranca", id = item.Codigo, tipo = "a" })')"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-xs btn-primary" data-button="Visualizar" title="Visualizar" onclick="AbrirDetalhe('@Url.Action("Edit", "Perfil", new { Area="Seguranca", id = item.Codigo, tipo = "c" })')"><i class="fa fa-search"></i></button>
+                                            <button class="btn btn-xs @(item.Status == true ? "btn-warning": "btn-success")" data-button="AtivarDesativar" data-status="@item.Status" id="@item.Codigo" name="@item.Descricao" title="@(item.Status == true ? "Desativar": "Ativar")" onclick="ModalSistema(true, '#modalConfirmaExclusao', '@(item.Status == true ? "Desativar": "Ativar")', obj, '@item.Descricao',this)"><i class="@(item.Status == true ? "fa fa-ban" : "fa fa-check-square-o")"></i></button>
+                                            <button class="btn btn-xs btn-danger" data-button="Excluir" id="@item.Codigo" name="@item.Descricao" title="Excluir" onclick="ModalSistema(true, '#modalConfirmaExclusao', 'Excluir', obj, '@item.Descricao',this)"><i class="fa fa-trash"></i></button>
+                                        </td>
+
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

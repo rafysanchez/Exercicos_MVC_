@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="col-md-12">@ViewBag.Title</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default" style="display:none;">
+                <div class="panel-body">
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="form-group-sm col-md-offset-6 col-md-4 textRight" style="height: 30px; line-height: 30px; padding: 0;">
+                                <span> MUDAPAH ( MUDA PARAMETROS DE HABILITACAO ) </span>
+                            </div>
+                            <div class="form-group-sm col-md-2 textRight">
+                                <input type="number" onblur="MudapahOnChange(this)" maxlength="6" name="ddlMudapah" id="ddlMudapah" value="" class="form-control"/>
+                                @*<select id="" onchange="MudapahOnChange(this)" class="form-control">
+                                    <option>SELECIONE</option>
+                                    <option value="162101">162101</option>
+                                    <option value="162184">162184</option>
+                                </select>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@RenderBody()
+
+@section script
+{
+    @RenderSection("script", required: true)
+}

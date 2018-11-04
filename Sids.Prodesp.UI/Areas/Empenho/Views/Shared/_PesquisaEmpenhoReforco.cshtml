@@ -1,0 +1,27 @@
+﻿@using Sids.Prodesp.UI.Areas.Empenho.Models
+
+@model PesquisaEmpenhoReforcoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+      
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina">Pesquisar Empenho</h3>
+        <hr class="margT10" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm form-group has-feedback">
+        @Html.LabelFor(x=>x.CodigoEmpenho, new { @class = "control-label label-form-DER" })<span class="text-danger"></span>
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.CodigoEmpenho, new { @class = "form-control lockProdesp prod", @maxlength = "9" })
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-primary btn-sm lockProdesp lockSiafem lockSiafisico" onclick="DadosEmpenho($('#CodigoEmpenho').val(), 0)"><i class="fa fa-search"></i>  Consultar</button>
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@using Sids.Prodesp.UI.Areas.Empenho.Models
+
+@model DadoCancelamentoViewModel
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div class="row siafem">
+    <div class="col-md-12">
+        <h3 class="tituloItensPagina">Dados do Cancelamento</h3>
+        <hr class="margT10" />
+    </div>
+</div>
+
+<div class='row siafem'>
+    <div class='col-sm-12 col-lg-4 col-md-4  form-group-sm form-group has-feedback'>
+        @Html.LabelFor(model => model.EmpenhoCancelamentoTipoId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.EmpenhoCancelamentoTipoId, Model.EmpenhoCancelamentoTipoListItems, "Selecione", new { @class = "form-control lockProdesp lockSiafem lockSiafisico" })
+        </div>
+    </div>
+</div>

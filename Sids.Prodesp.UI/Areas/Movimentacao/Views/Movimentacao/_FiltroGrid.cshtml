@@ -1,0 +1,146 @@
+﻿
+@using Sids.Prodesp.UI.Areas.Movimentacao.Models
+@using System.Globalization
+@model IEnumerable<FiltroGridViewModel>
+
+@{
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    int i = 0;
+}
+
+<script>
+    var objExc = "Movimentação Orçamentária";
+    var urld = '@Url.Action("Delete", "Movimentacao")';
+    var urla = "";
+
+    function CreateUrl(tipoId) {
+        urla = '/Movimentacao/Bloqueio?tipo=' + tipoId;
+    }
+
+    function Edit(id, editar) {
+
+        if (editar) {
+            AbrirModal("Movimentação Orçamentária transmitida com sucesso, não são permitidas alterarações após a transmissão.");
+            return false;
+        }
+
+        if (navigator.onLine != true) {
+            AbrirModal("Erro de conexão");
+            return false;
+        }
+
+        AbrirDetalhe('@Url.Action("Edit")' + '?id=' + id + '&tipo=a');
+    }
+</script>
+
+
+<div class="row">
+    <div class="col-md-10">
+        <h3 class="margT0 tituloItensPagina">Resultado da Busca</h3>
+    </div>
+</div>
+
+@*<div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3 textRight"">
+        <button type="button" data-button="Retransmitir" class="btn btn-sm btn-primary"> <i class="fa fa-share"></i> Retransmitir</button>
+    </div>
+</div>*@
+
+<br />
+
+
+<div class="margT0">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 col-md-12" style="overflow: auto">
+            <form method="post" action=@Url.Content("~/Movimentacao/" + controller+ "/DownloadFile/") id="frmExport">
+                <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().numAgrupamento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().tipoDocumento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().numDocumento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().UnidadeGestora)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ugFavorecido)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().idCFP)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().idCED)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Valor)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().DataCadastro)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().TransmitidoSiafem)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().TransmitidoProdesp)</th>
+                            @*<th sortable="false" class="textCenter"> Todos <input type="checkbox" name="nmRetransmitirTodos" id="nmRetransmitirTodos" value="true" /> </th>*@
+                            @*<th sortable="false" class="textCenter"> Todos </th>*@
+                            <th><label>Ações</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="text-center">
+                            <input type="hidden" name="Items[@i].Id" value="@item.Id" />
+                            <input type="hidden" name="Items[@i].IdMovimentacao" value="@item.IdMovimentacao" />
+                            <input type="hidden" name="Items[@i].NumSequencia" value="@item.NumSequencia" />
+                            <input type="hidden" name="Items[@i].DescDocumento" value="@item.DescDocumento" />
+                            <input type="hidden" name="Items[@i].NumDocumento" value="@item.numDocumento" />
+                            <input type="hidden" name="Items[@i].NumAgrupamento" value="@item.numAgrupamento" />
+                            @*<input type="hidden" name="Items[@i].IdFuncionalidadeAtual" value="@item.FuncionalidadeAtual" />*@
+                            <td>@Html.DisplayFor(modelItem => item.numAgrupamento)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DescDocumento)</td>
+                            <td>@Html.DisplayFor(modelItem => item.numDocumento)</td>
+                            <td>@Html.DisplayFor(modelItem => item.UnidadeGestora)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ugFavorecido)</td>
+                            <td>@Html.DisplayFor(modelItem => item.cdCFP)</td>
+                            <td>@Html.DisplayFor(modelItem => item.cdCED)</td>
+                            <td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", item.Valor.ToString("N2"))</td>
+                            <td>@item.DataCadastro.Value.ToShortDateString()</td>
+
+                            <td><text title="@item.MensagemSiafem">@Html.DisplayFor(modelItem => item.TransmitidoSiafem)</text></td>
+                            <td><text title="@item.MensagemProdesp">@Html.DisplayFor(modelItem => item.TransmitidoProdesp)</text></td>
+
+                            @*<td class="textCenter">
+                                @if (
+                                    ((item.DescDocumento == "Cancelamento" || item.DescDocumento == "Distribuição" || item.DescDocumento == "Nota de Crédito")
+                                                && (item.TransmitidoSiafem != "Sucesso"))
+                                    ||
+                                    ((item.DescDocumento == "Redução" || item.DescDocumento == "Suplementação")
+                                                && (item.TransmitidoProdesp != "Sucesso"))
+                                    )
+                                {
+                                    <input type="checkbox" name="Items[i].Transmitir" value="@item.Id" />
+                                }
+                            </td>*@
+
+                            <td style="width: 100px;">
+                                @{
+                                    var disabledImprimir = "disabled=disabled";
+                                    var disabledEstornar = "disabled=disabled";
+                                    var disabledExcluir = item.PodeExcluir ? string.Empty : "disabled=disabled";
+                                    var disabledAlterar = item.PodeAlterar ? string.Empty : "disabled=disabled";
+
+                                    // Botão Imprimir
+                                    if ((item.TransmitidoProdesp == "Sucesso" || item.TransmitidoSiafem == "Sucesso")
+                                                        && (item.DescDocumento != "Redução" && item.DescDocumento != "Suplementação"))
+                                    {
+                                        disabledImprimir = string.Empty;
+                                    }
+                                    // Botão Estornar
+                                    if (item.TransmitidoProdesp == "Sucesso" && item.TransmitidoSiafem == "Sucesso")
+                                    {
+                                        disabledEstornar = string.Empty;
+                                    }
+                                }
+                                <button class="btn btn-xs btn-info margL7" type="button" hidden="hidden" data-button="Editar" title="Alterar" onclick="Edit(@item.IdMovimentacao, @(item.TransmitidoProdesp == "Sucesso" ? "true" : "false")) @disabledAlterar"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-xs btn-danger margL7" type="button" data-button="Excluir" data-id-mov="@item.IdMovimentacao" name="@item.IdMovimentacao" title="Excluir" @disabledExcluir><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-xs btn-primary margL7" type="button" data-button="Visualizar" title="Visualizar" onclick="AbrirDetalhe('@Url.Action("Edit", new { id = item.IdMovimentacao, tipo = "c" })')"><i class="fa fa-search"></i></button>
+                                <button class="btn btn-xs btn-warning margL7" type="button" data-button="Imprimir" title="Imprimir" @disabledImprimir data-toggle="tooltip"><i class="fa fa-print"></i></button>
+                                <button class="btn btn-xs btn-danger margL7" type="button" data-button="Estorno" id="@item.Id" name="@item.Id" title="Estorno"><i class="fa fa-close"></i></button>
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

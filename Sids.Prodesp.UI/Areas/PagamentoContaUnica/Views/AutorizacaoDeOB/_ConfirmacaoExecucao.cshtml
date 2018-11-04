@@ -1,0 +1,35 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model DadoAutorizacaoDeOBViewModel
+
+@{
+    ViewBag.Title = "_ConfirmacaoExecucao";
+}
+
+@using (Html.BeginForm("Index", "AutorizacaoDeOB", FormMethod.Post, new { name = "form_confirmacao_autorizacaoOB", id = "form_confirmacao_autorizacaoOB" }))
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                @Html.HiddenFor(model => model.IdConfirmacaoPagamento)
+                <div class="col-md-3 form-group">
+                    @Html.LabelFor(model => model.EhConfirmacaoPagamento)
+                    @Html.EnumDropDownListFor(x => x.EhConfirmacaoPagamento, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EhConfirmacaoPagamento)
+                </div>
+                <div class="col-md-4 form-group">
+                    @*@Html.LabelFor(model => model.confirmacaoPagamento.TipoPagamento)*@
+                    <label>Tipo de Pagamento</label>
+                    @Html.DropDownListFor(model => model.TipoPagamento, new SelectList(ViewBag.TiposPagamento, "Codigo", "Descricao"), "SELECIONE", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TipoPagamento)
+                </div>
+                <div class="col-md-2 form-group">
+                    @*@Html.LabelFor(model => model.confirmacaoPagamento.DataConfirmacao)*@
+                    <label>Data de Confirmação</label>
+                    @Html.TextBoxFor(model => model.DataConfirmacao, new { @placeholder = "__/__/____", @class = "form-control data datepicker", id = "Dt_Confirmacao" })
+                    @Html.ValidationMessageFor(model => model.DataConfirmacao)
+                </div>
+            </div>
+        </div>
+    </div>
+}

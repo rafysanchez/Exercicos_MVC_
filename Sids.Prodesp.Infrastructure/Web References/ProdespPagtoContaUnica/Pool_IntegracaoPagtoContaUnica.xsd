@@ -1,0 +1,2389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica" xmlns:wsa="http://www.w3.org/2005/08/addressing" elementFormDefault="qualified" targetNamespace="urn:xmlns:attachmate:vhi-ws:Integracao_DER_SIAFEM_PagtoContaUnica" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="http://10.72.1.40:9680/vhi-ws/session/Pool_IntegracaoPagtoContaUnica/ws-addr.xsd" namespace="http://www.w3.org/2005/08/addressing" />
+  <element name="Procedure_AnulacaoDesdobramento" type="tns:Procedure_AnulacaoDesdobramentoType" />
+  <element name="Procedure_AnulacaoDesdobramentoResponse" type="tns:Procedure_AnulacaoDesdobramentoResponseType" />
+  <element name="Procedure_BloqueioPagtoDoc" type="tns:Procedure_BloqueioPagtoDocType" />
+  <element name="Procedure_BloqueioPagtoDocResponse" type="tns:Procedure_BloqueioPagtoDocResponseType" />
+  <element name="Procedure_BloqueioPagtoDocApoio" type="tns:Procedure_BloqueioPagtoDocApoioType" />
+  <element name="Procedure_BloqueioPagtoDocApoioResponse" type="tns:Procedure_BloqueioPagtoDocApoioResponseType" />
+  <element name="Procedure_CancelamentoOP" type="tns:Procedure_CancelamentoOPType" />
+  <element name="Procedure_CancelamentoOPResponse" type="tns:Procedure_CancelamentoOPResponseType" />
+  <element name="Procedure_CancelamentoOPApoio" type="tns:Procedure_CancelamentoOPApoioType" />
+  <element name="Procedure_CancelamentoOPApoioResponse" type="tns:Procedure_CancelamentoOPApoioResponseType" />
+  <element name="Procedure_ConfirmacaoPagtoOP" type="tns:Procedure_ConfirmacaoPagtoOPType" />
+  <element name="Procedure_ConfirmacaoPagtoOPResponse" type="tns:Procedure_ConfirmacaoPagtoOPResponseType" />
+  <element name="Procedure_ConfirmacaoPagtoOPApoio" type="tns:Procedure_ConfirmacaoPagtoOPApoioType" />
+  <element name="Procedure_ConfirmacaoPagtoOPApoioResponse" type="tns:Procedure_ConfirmacaoPagtoOPApoioResponseType" />
+  <element name="Procedure_ConfirmacaoPagtoOrgao" type="tns:Procedure_ConfirmacaoPagtoOrgaoType" />
+  <element name="Procedure_ConfirmacaoPagtoOrgaoResponse" type="tns:Procedure_ConfirmacaoPagtoOrgaoResponseType" />
+  <element name="Procedure_ConsultaCredorReduzido" type="tns:Procedure_ConsultaCredorReduzidoType" />
+  <element name="Procedure_ConsultaCredorReduzidoResponse" type="tns:Procedure_ConsultaCredorReduzidoResponseType" />
+  <element name="Procedure_ConsultaDesdobramento" type="tns:Procedure_ConsultaDesdobramentoType" />
+  <element name="Procedure_ConsultaDesdobramentoResponse" type="tns:Procedure_ConsultaDesdobramentoResponseType" />
+  <element name="Procedure_ConsultaPagtosPrepararOrgao" type="tns:Procedure_ConsultaPagtosPrepararOrgaoType" />
+  <element name="Procedure_ConsultaPagtosPrepararOrgaoResponse" type="tns:Procedure_ConsultaPagtosPrepararOrgaoResponseType" />
+  <element name="Procedure_ConsultaPagtosPrepararSDFF" type="tns:Procedure_ConsultaPagtosPrepararSDFFType" />
+  <element name="Procedure_ConsultaPagtosPrepararSDFFResponse" type="tns:Procedure_ConsultaPagtosPrepararSDFFResponseType" />
+  <element name="Procedure_DesbloqueioPagtoDoc" type="tns:Procedure_DesbloqueioPagtoDocType" />
+  <element name="Procedure_DesbloqueioPagtoDocResponse" type="tns:Procedure_DesbloqueioPagtoDocResponseType" />
+  <element name="Procedure_DesdobramentoISSQN" type="tns:Procedure_DesdobramentoISSQNType" />
+  <element name="Procedure_DesdobramentoISSQNResponse" type="tns:Procedure_DesdobramentoISSQNResponseType" />
+  <element name="Procedure_DesdobramentoISSQNApoio" type="tns:Procedure_DesdobramentoISSQNApoioType" />
+  <element name="Procedure_DesdobramentoISSQNApoioResponse" type="tns:Procedure_DesdobramentoISSQNApoioResponseType" />
+  <element name="Procedure_DesdobramentoOutros" type="tns:Procedure_DesdobramentoOutrosType" />
+  <element name="Procedure_DesdobramentoOutrosResponse" type="tns:Procedure_DesdobramentoOutrosResponseType" />
+  <element name="Procedure_DesdobramentoOutrosApoio" type="tns:Procedure_DesdobramentoOutrosApoioType" />
+  <element name="Procedure_DesdobramentoOutrosApoioResponse" type="tns:Procedure_DesdobramentoOutrosApoioResponseType" />
+  <element name="Procedure_PreparacaoPagtoDocGerador" type="tns:Procedure_PreparacaoPagtoDocGeradorType" />
+  <element name="Procedure_PreparacaoPagtoDocGeradorResponse" type="tns:Procedure_PreparacaoPagtoDocGeradorResponseType" />
+  <element name="Procedure_PreparacaoPagtoDocGeradorApoio" type="tns:Procedure_PreparacaoPagtoDocGeradorApoioType" />
+  <element name="Procedure_PreparacaoPagtoDocGeradorApoioResponse" type="tns:Procedure_PreparacaoPagtoDocGeradorApoioResponseType" />
+  <element name="Procedure_PreparacaoPagtoOrgao" type="tns:Procedure_PreparacaoPagtoOrgaoType" />
+  <element name="Procedure_PreparacaoPagtoOrgaoResponse" type="tns:Procedure_PreparacaoPagtoOrgaoResponseType" />
+  <element name="Procedure_PreparacaoPagtoOrgaoApoio" type="tns:Procedure_PreparacaoPagtoOrgaoApoioType" />
+  <element name="Procedure_PreparacaoPagtoOrgaoApoioResponse" type="tns:Procedure_PreparacaoPagtoOrgaoApoioResponseType" />
+  <element name="wsResourceCreate" type="tns:wsResourceCreateType" />
+  <element name="wsResourceCreateResponse" type="tns:wsResourceCreateResponseType" />
+  <element name="wsResourceDestroy" type="tns:wsResourceDestroyType" />
+  <element name="wsResourceDestroyResponse" type="tns:wsResourceDestroyResponseType" />
+  <complexType name="Procedure_AnulacaoDesdobramentoFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inNumeroDocumento" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDocumento" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inConfirmacao" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoDesdobramentoRecordType">
+    <sequence>
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoDesdobramentoType">
+    <sequence>
+      <element name="Procedure_AnulacaoDesdobramentoFilters" type="tns:Procedure_AnulacaoDesdobramentoFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_AnulacaoDesdobramentoResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_AnulacaoDesdobramentoRecord" type="tns:Procedure_AnulacaoDesdobramentoRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_BloqueioPagtoDocFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoBloqueio" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inConfirmacao" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave_login2" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_BloqueioPagtoDocRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outFimTransacao" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_BloqueioPagtoDocType">
+    <sequence>
+      <element name="Procedure_BloqueioPagtoDocFilters" type="tns:Procedure_BloqueioPagtoDocFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_BloqueioPagtoDocResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_BloqueioPagtoDocRecord" type="tns:Procedure_BloqueioPagtoDocRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_BloqueioPagtoDocApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoBloqueio" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inConfirmacao" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave_login2" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_BloqueioPagtoDocApoioRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outFimTransacao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+      <element name="OutAnoNumContrato" type="string" />
+      <element name="OutNumeroDoc" type="string" />
+      <element name="OutTipoBloqueio" type="string" />
+      <element name="OutTipoDespesa" type="string" />
+      <element name="OutTipoDoc" type="string" />
+      <element name="OutVencto" type="string" />
+      <element name="outCredorReduz_01" type="string" />
+      <element name="outCredorReduz_02" type="string" />
+      <element name="outCredorReduz_03" type="string" />
+      <element name="outCredorReduz_04" type="string" />
+      <element name="outCredorReduz_05" type="string" />
+      <element name="outCredorReduz_06" type="string" />
+      <element name="outCredorReduz_07" type="string" />
+      <element name="outCredorReduz_08" type="string" />
+      <element name="outCredorReduz_09" type="string" />
+      <element name="outDescricao_01" type="string" />
+      <element name="outDescricao_02" type="string" />
+      <element name="outDescricao_03" type="string" />
+      <element name="outDescricao_04" type="string" />
+      <element name="outDescricao_05" type="string" />
+      <element name="outDescricao_06" type="string" />
+      <element name="outDescricao_07" type="string" />
+      <element name="outDescricao_08" type="string" />
+      <element name="outDescricao_09" type="string" />
+      <element name="outDescricao_10" type="string" />
+      <element name="outSequencia_01" type="string" />
+      <element name="outSequencia_02" type="string" />
+      <element name="outSequencia_03" type="string" />
+      <element name="outSequencia_04" type="string" />
+      <element name="outSequencia_05" type="string" />
+      <element name="outSequencia_06" type="string" />
+      <element name="outSequencia_07" type="string" />
+      <element name="outSequencia_08" type="string" />
+      <element name="outSequencia_09" type="string" />
+      <element name="outSequencia_10" type="string" />
+      <element name="outTipoBloq_01" type="string" />
+      <element name="outTipoBloq_02" type="string" />
+      <element name="outTipoBloq_03" type="string" />
+      <element name="outTipoBloq_04" type="string" />
+      <element name="outTipoBloq_05" type="string" />
+      <element name="outTipoBloq_06" type="string" />
+      <element name="outTipoBloq_07" type="string" />
+      <element name="outTipoBloq_08" type="string" />
+      <element name="outTipoBloq_09" type="string" />
+      <element name="outTipoBloq_10" type="string" />
+      <element name="outValor_01" type="string" />
+      <element name="outValor_02" type="string" />
+      <element name="outValor_03" type="string" />
+      <element name="outValor_04" type="string" />
+      <element name="outValor_05" type="string" />
+      <element name="outValor_06" type="string" />
+      <element name="outValor_07" type="string" />
+      <element name="outValor_08" type="string" />
+      <element name="outValor_09" type="string" />
+      <element name="outValor_10" type="string" />
+      <element name="outCredorReduz_10" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_BloqueioPagtoDocApoioType">
+    <sequence>
+      <element name="Procedure_BloqueioPagtoDocApoioFilters" type="tns:Procedure_BloqueioPagtoDocApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_BloqueioPagtoDocApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_BloqueioPagtoDocApoioRecord" type="tns:Procedure_BloqueioPagtoDocApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_CancelamentoOPFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipo" nillable="true" type="string" />
+      <element minOccurs="0" name="inConfirmacao" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave_login2" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_CancelamentoOPRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outFimTransacao" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_CancelamentoOPType">
+    <sequence>
+      <element name="Procedure_CancelamentoOPFilters" type="tns:Procedure_CancelamentoOPFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_CancelamentoOPResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_CancelamentoOPRecord" type="tns:Procedure_CancelamentoOPRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_CancelamentoOPApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipo" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_CancelamentoOPApoioRecordType">
+    <sequence>
+      <element name="outAgenciaDesd_01" type="string" />
+      <element name="outAgenciaDesd_02" type="string" />
+      <element name="outAgenciaDesd_03" type="string" />
+      <element name="outAgenciaDesd_04" type="string" />
+      <element name="outAgenciaDesd_05" type="string" />
+      <element name="outAgenciaDesd_06" type="string" />
+      <element name="outAgenciaDesd_07" type="string" />
+      <element name="outAgenciaDesd_08" type="string" />
+      <element name="outAgenciaDesd_09" type="string" />
+      <element name="outAgenciaDesd_10" type="string" />
+      <element name="outBancoDesd_01" type="string" />
+      <element name="outBancoDesd_02" type="string" />
+      <element name="outBancoDesd_03" type="string" />
+      <element name="outBancoDesd_04" type="string" />
+      <element name="outBancoDesd_05" type="string" />
+      <element name="outBancoDesd_06" type="string" />
+      <element name="outBancoDesd_07" type="string" />
+      <element name="outBancoDesd_08" type="string" />
+      <element name="outBancoDesd_09" type="string" />
+      <element name="outBancoDesd_10" type="string" />
+      <element name="outContaDesd_01" type="string" />
+      <element name="outContaDesd_02" type="string" />
+      <element name="outContaDesd_03" type="string" />
+      <element name="outContaDesd_04" type="string" />
+      <element name="outContaDesd_05" type="string" />
+      <element name="outContaDesd_06" type="string" />
+      <element name="outContaDesd_07" type="string" />
+      <element name="outContaDesd_08" type="string" />
+      <element name="outContaDesd_09" type="string" />
+      <element name="outContaDesd_10" type="string" />
+      <element name="outContaPagtoAGENCIA" type="string" />
+      <element name="outContaPagtoBANCO" type="string" />
+      <element name="outContaPagtoNUMERO" type="string" />
+      <element name="outCredorDesd_01" type="string" />
+      <element name="outCredorDesd_02" type="string" />
+      <element name="outCredorDesd_03" type="string" />
+      <element name="outCredorDesd_04" type="string" />
+      <element name="outCredorDesd_05" type="string" />
+      <element name="outCredorDesd_06" type="string" />
+      <element name="outCredorDesd_07" type="string" />
+      <element name="outCredorDesd_08" type="string" />
+      <element name="outCredorDesd_09" type="string" />
+      <element name="outCredorDesd_10" type="string" />
+      <element name="outCredorOriginal" type="string" />
+      <element name="outDecricaoDoc" type="string" />
+      <element name="outDescricaoDespesa" type="string" />
+      <element name="outNumBaseOP" type="string" />
+      <element name="outNumContrato" type="string" />
+      <element name="outNumDoc" type="string" />
+      <element name="outReferencia" type="string" />
+      <element name="outSequencia_01" type="string" />
+      <element name="outSequencia_02" type="string" />
+      <element name="outSequencia_03" type="string" />
+      <element name="outSequencia_04" type="string" />
+      <element name="outSequencia_05" type="string" />
+      <element name="outSequencia_06" type="string" />
+      <element name="outSequencia_07" type="string" />
+      <element name="outSequencia_08" type="string" />
+      <element name="outSequencia_09" type="string" />
+      <element name="outSequencia_10" type="string" />
+      <element name="outTipoDespesa" type="string" />
+      <element name="outTipoDoc" type="string" />
+      <element name="outValor" type="string" />
+      <element name="outValorDesd_01" type="string" />
+      <element name="outValorDesd_02" type="string" />
+      <element name="outValorDesd_03" type="string" />
+      <element name="outValorDesd_04" type="string" />
+      <element name="outValorDesd_05" type="string" />
+      <element name="outValorDesd_06" type="string" />
+      <element name="outValorDesd_07" type="string" />
+      <element name="outValorDesd_08" type="string" />
+      <element name="outValorDesd_09" type="string" />
+      <element name="outValorDesd_10" type="string" />
+      <element name="outVencimento" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_CancelamentoOPApoioType">
+    <sequence>
+      <element name="Procedure_CancelamentoOPApoioFilters" type="tns:Procedure_CancelamentoOPApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_CancelamentoOPApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_CancelamentoOPApoioRecord" type="tns:Procedure_CancelamentoOPApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOPFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataANO" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataDIA" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataMES" nillable="true" type="string" />
+      <element minOccurs="0" name="inDocPagtoANO" nillable="true" type="string" />
+      <element minOccurs="0" name="inDocPagtoOP" nillable="true" type="string" />
+      <element minOccurs="0" name="inDocPagtoORGAO" nillable="true" type="string" />
+      <element minOccurs="0" name="inDocPagtoTP" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipPagto" nillable="true" type="string" />
+      <element minOccurs="0" name="inConfirmacao" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave_login2" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOPRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outFimTransacao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOPType">
+    <sequence>
+      <element name="Procedure_ConfirmacaoPagtoOPFilters" type="tns:Procedure_ConfirmacaoPagtoOPFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOPResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConfirmacaoPagtoOPRecord" type="tns:Procedure_ConfirmacaoPagtoOPRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOPApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataANO" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataDIA" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataMES" nillable="true" type="string" />
+      <element minOccurs="0" name="inDocPagtoANO" nillable="true" type="string" />
+      <element minOccurs="0" name="inDocPagtoOP" nillable="true" type="string" />
+      <element minOccurs="0" name="inDocPagtoORGAO" nillable="true" type="string" />
+      <element minOccurs="0" name="inDocPagtoTP" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipPagto" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOPApoioRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outFimTransacao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outContaPagamento" type="string" />
+      <element name="outCredorOriginal" type="string" />
+      <element name="outDataConfirmacao" type="string" />
+      <element name="outDevolCalcao" type="string" />
+      <element name="outDocGeradorNUM" type="string" />
+      <element name="outDocGeradorTIPO" type="string" />
+      <element name="outDocPagtoANO" type="string" />
+      <element name="outDocPagtoNumBASE" type="string" />
+      <element name="outDocPagtoORGAO" type="string" />
+      <element name="outDocPagtoTP" type="string" />
+      <element name="outReferencia" type="string" />
+      <element name="outTipoDespesa" type="string" />
+      <element name="outTipoPagamento" type="string" />
+      <element name="outValor" type="string" />
+      <element name="outVencimento" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOPApoioType">
+    <sequence>
+      <element name="Procedure_ConfirmacaoPagtoOPApoioFilters" type="tns:Procedure_ConfirmacaoPagtoOPApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOPApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConfirmacaoPagtoOPApoioRecord" type="tns:Procedure_ConfirmacaoPagtoOPApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOrgaoFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataConfirmacaoANO" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataConfirmacaoDIA" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataConfirmacaoMES" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataPreparacaoANO" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataPreparacaoDIA" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataPreparacaoMES" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDespesa" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoPagamento" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave_login2" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOrgaoRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outODFinal" type="string" />
+      <element name="outODInicial" type="string" />
+      <element name="outQtdadeConfirmados" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outTotalConfirmado" type="string" />
+      <element name="outFimTransacao" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOrgaoType">
+    <sequence>
+      <element name="Procedure_ConfirmacaoPagtoOrgaoFilters" type="tns:Procedure_ConfirmacaoPagtoOrgaoFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConfirmacaoPagtoOrgaoResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConfirmacaoPagtoOrgaoRecord" type="tns:Procedure_ConfirmacaoPagtoOrgaoRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaCredorReduzidoFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrganizacao" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaCredorReduzidoRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outBaseCalc" type="string" />
+      <element name="outCodCredor" type="string" />
+      <element name="outConveniado" type="string" />
+      <element name="outNome" type="string" />
+      <element name="outNomeReduzido" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaCredorReduzidoType">
+    <sequence>
+      <element name="Procedure_ConsultaCredorReduzidoFilters" type="tns:Procedure_ConsultaCredorReduzidoFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaCredorReduzidoResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConsultaCredorReduzidoRecord" type="tns:Procedure_ConsultaCredorReduzidoRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaDesdobramentoFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDoc" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaDesdobramentoRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outCodCredor" type="string" />
+      <element name="outCredorDocumento" type="string" />
+      <element name="outDespesa" type="string" />
+      <element name="outServico" type="string" />
+      <element name="outTotalISSQN" type="string" />
+      <element name="outValorDocOriginal" type="string" />
+      <element name="outAliq" type="string" />
+      <element name="outBaseCalc" type="string" />
+      <element name="outCredor" type="string" />
+      <element name="outSequencia" type="string" />
+      <element name="outValor" type="string" />
+      <element name="outValorBaseCalc" type="string" />
+      <element name="outValorDistribuicao" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outDesdob" type="string" />
+      <element name="outNomeReduzCred" type="string" />
+      <element name="outTipoBloqueio" type="string" />
+      <element name="outTipoBloqueioDoc" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaDesdobramentoType">
+    <sequence>
+      <element name="Procedure_ConsultaDesdobramentoFilters" type="tns:Procedure_ConsultaDesdobramentoFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaDesdobramentoResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConsultaDesdobramentoRecord" type="tns:Procedure_ConsultaDesdobramentoRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaPagtosPrepararOrgaoFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inExibirDocs" nillable="true" type="string" />
+      <element minOccurs="0" name="inFaixaVencATEAno" nillable="true" type="string" />
+      <element minOccurs="0" name="inFaixaVencATEDia" nillable="true" type="string" />
+      <element minOccurs="0" name="inFaixaVencATEMes" nillable="true" type="string" />
+      <element minOccurs="0" name="inFaixaVencDEAno" nillable="true" type="string" />
+      <element minOccurs="0" name="inFaixaVencDEDia" nillable="true" type="string" />
+      <element minOccurs="0" name="inFaixaVencDEMes" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDespesa" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave_login2" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaPagtosPrepararOrgaoRecordType">
+    <sequence>
+      <element name="outFimTransacao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outDadosDocumento" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaPagtosPrepararOrgaoType">
+    <sequence>
+      <element name="Procedure_ConsultaPagtosPrepararOrgaoFilters" type="tns:Procedure_ConsultaPagtosPrepararOrgaoFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaPagtosPrepararOrgaoResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConsultaPagtosPrepararOrgaoRecord" type="tns:Procedure_ConsultaPagtosPrepararOrgaoRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaPagtosPrepararSDFFFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inDocumento" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipo" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDespesa" nillable="true" type="string" />
+      <element minOccurs="0" name="inVencimentoATE" nillable="true" type="string" />
+      <element minOccurs="0" name="inVencimentoDE" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaPagtosPrepararSDFFRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="ouContaFavConta" type="string" />
+      <element name="outCodCredor" type="string" />
+      <element name="outCodObra" type="string" />
+      <element name="outContaFavAgencia" type="string" />
+      <element name="outContaFavBanco" type="string" />
+      <element name="outContrato" type="string" />
+      <element name="outDataRealizacao" type="string" />
+      <element name="outDespesa" type="string" />
+      <element name="outEmpresa" type="string" />
+      <element name="outFonte" type="string" />
+      <element name="outFonteSiafem" type="string" />
+      <element name="outListaSiafem" type="string" />
+      <element name="outNaturezaDesp" type="string" />
+      <element name="outNE" type="string" />
+      <element name="outNL" type="string" />
+      <element name="outNLInss" type="string" />
+      <element name="outNotaFiscal" type="string" />
+      <element name="outNumDoc" type="string" />
+      <element name="outOrganiz" type="string" />
+      <element name="outOrganizEmpenho" type="string" />
+      <element name="outOrgao" type="string" />
+      <element name="outProcesso" type="string" />
+      <element name="outValorDoc" type="string" />
+      <element name="outVencimento" type="string" />
+      <element name="RField_25" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaPagtosPrepararSDFFType">
+    <sequence>
+      <element name="Procedure_ConsultaPagtosPrepararSDFFFilters" type="tns:Procedure_ConsultaPagtosPrepararSDFFFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_ConsultaPagtosPrepararSDFFResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_ConsultaPagtosPrepararSDFFRecord" type="tns:Procedure_ConsultaPagtosPrepararSDFFRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesbloqueioPagtoDocFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inConfirmacao" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave_login2" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesbloqueioPagtoDocRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outFimTransacao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesbloqueioPagtoDocType">
+    <sequence>
+      <element name="Procedure_DesbloqueioPagtoDocFilters" type="tns:Procedure_DesbloqueioPagtoDocFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesbloqueioPagtoDocResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_DesbloqueioPagtoDocRecord" type="tns:Procedure_DesbloqueioPagtoDocRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoISSQNFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodServico" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroDocumento" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDocumento" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_09" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_10" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_11" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_12" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_13" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_09" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_10" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_11" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_12" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_13" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_09" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_10" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_11" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_12" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_13" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_09" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_10" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_11" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_12" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_13" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_09" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_10" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_11" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_12" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_13" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_09" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_10" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_11" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_12" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_13" nillable="true" type="string" />
+      <element minOccurs="0" name="inContinuar" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_14" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_15" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_16" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_17" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_18" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_19" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_20" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_21" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_22" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_23" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_24" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_25" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_26" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_14" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_15" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_16" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_17" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_18" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_19" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_20" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_21" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_22" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_23" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_24" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_25" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_26" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_14" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_15" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_16" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_17" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_18" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_19" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_20" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_21" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_22" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_23" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_24" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_25" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_26" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_14" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_15" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_16" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_17" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_18" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_19" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_20" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_21" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_22" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_23" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_24" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_25" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_26" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_14" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_15" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_16" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_17" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_18" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_19" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_20" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_21" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_22" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_23" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_24" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_25" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_26" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_14" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_15" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_16" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_17" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_18" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_19" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_20" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_21" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_22" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_23" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_24" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_25" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_26" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_27" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_28" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_29" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_30" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_31" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_32" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_33" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_34" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_35" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_36" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_37" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_38" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_39" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_27" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_28" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_29" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_30" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_31" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_32" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_33" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_34" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_35" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_36" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_37" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_38" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_39" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_27" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_28" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_29" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_30" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_31" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_32" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_33" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_34" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_35" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_36" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_37" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_38" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_39" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_27" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_28" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_29" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_30" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_31" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_32" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_33" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_34" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_35" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_36" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_37" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_38" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_39" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_27" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_28" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_29" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_30" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_31" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_32" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_33" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_34" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_35" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_36" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_37" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_38" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_39" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_27" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_28" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_29" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_30" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_31" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_32" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_33" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_34" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_35" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_36" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_37" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_38" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_39" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_40" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_41" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_42" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_43" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_44" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_45" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_46" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_47" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_48" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_49" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_50" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_51" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_52" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_40" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_41" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_42" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_43" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_44" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_45" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_46" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_47" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_48" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_49" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_50" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_51" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_52" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_40" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_41" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_42" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_43" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_44" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_45" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_46" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_47" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_48" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_49" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_50" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_51" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_52" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_40" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_41" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_42" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_43" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_44" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_45" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_46" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_47" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_48" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_49" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_50" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_51" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_52" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_40" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_41" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_42" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_43" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_44" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_45" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_46" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_47" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_48" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_49" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_50" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_51" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_52" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_40" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_41" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_42" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_43" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_44" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_45" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_46" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_47" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_48" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_49" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_50" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_51" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_52" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_53" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_54" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_55" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_56" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_57" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_58" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_59" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_60" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_61" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_62" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_63" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_64" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_65" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_53" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_54" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_55" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_56" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_57" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_58" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_59" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_60" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_61" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_62" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_63" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_64" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_65" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_53" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_54" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_55" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_56" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_57" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_58" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_59" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_60" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_61" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_62" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_63" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_64" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_65" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_53" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_54" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_55" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_56" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_57" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_58" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_59" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_60" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_61" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_62" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_63" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_64" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_65" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_53" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_54" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_55" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_56" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_57" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_58" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_59" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_60" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_61" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_62" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_63" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_64" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_65" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_53" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_54" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_55" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_56" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_57" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_58" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_59" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_60" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_61" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_62" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_63" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_64" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_65" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_66" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_67" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_68" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_69" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_70" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_71" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_72" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_73" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_74" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_75" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_76" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_77" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_78" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_66" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_67" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_68" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_69" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_70" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_71" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_72" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_73" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_74" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_75" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_76" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_77" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_78" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_66" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_67" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_68" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_69" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_70" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_71" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_72" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_73" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_74" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_75" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_76" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_77" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_78" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_66" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_67" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_68" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_69" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_70" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_71" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_72" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_73" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_74" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_75" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_76" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_77" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_78" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_66" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_67" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_68" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_69" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_70" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_71" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_72" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_73" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_74" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_75" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_76" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_77" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_78" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_66" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_67" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_68" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_69" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_70" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_71" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_72" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_73" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_74" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_75" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_76" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_77" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_78" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_79" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_80" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_81" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_82" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_83" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_84" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_85" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_86" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_87" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_88" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_89" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_90" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_91" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_92" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_79" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_80" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_81" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_82" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_83" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_84" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_85" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_86" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_87" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_88" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_89" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_90" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_91" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_79" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_80" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_81" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_82" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_83" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_84" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_85" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_86" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_87" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_88" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_89" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_90" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_91" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_79" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_80" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_81" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_82" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_83" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_84" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_85" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_86" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_87" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_88" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_89" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_90" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_91" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_79" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_80" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_81" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_82" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_83" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_84" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_85" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_86" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_87" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_88" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_89" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_90" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_91" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_79" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_80" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_81" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_82" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_83" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_84" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_85" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_86" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_87" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_88" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_89" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_90" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_91" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_100" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_101" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_102" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_103" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_104" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_93" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_94" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_95" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_96" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_97" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_98" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_99" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_100" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_101" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_102" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_103" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_104" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_92" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_93" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_94" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_95" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_96" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_97" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_98" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_99" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_100" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_101" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_102" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_103" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_104" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_92" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_93" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_94" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_95" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_96" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_97" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_98" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_99" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_100" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_101" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_102" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_103" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_104" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_92" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_93" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_94" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_95" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_96" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_97" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_98" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_99" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_100" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_101" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_102" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_103" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_104" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_92" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_93" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_94" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_95" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_96" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_97" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_98" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_99" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_100" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_101" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_102" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_103" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_104" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_92" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_93" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_94" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_95" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_96" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_97" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_98" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_99" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_105" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_106" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_107" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_108" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_109" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_110" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_111" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_112" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_113" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_114" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_115" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_116" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_117" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_105" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_106" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_107" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_108" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_109" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_110" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_111" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_112" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_113" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_114" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_115" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_116" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_117" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_105" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_106" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_107" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_108" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_109" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_110" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_111" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_112" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_113" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_114" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_115" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_116" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_117" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_105" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_106" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_107" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_108" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_109" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_110" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_111" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_112" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_113" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_114" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_115" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_116" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_117" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_105" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_106" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_107" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_108" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_109" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_110" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_111" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_112" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_113" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_114" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_115" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_116" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_117" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_105" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_106" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_107" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_108" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_109" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_110" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_111" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_112" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_113" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_114" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_115" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_116" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_117" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_118" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_119" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_120" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_121" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_122" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_123" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_124" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_125" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_126" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_127" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_128" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_129" nillable="true" type="string" />
+      <element minOccurs="0" name="inCredorReduzido_130" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_118" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_119" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_120" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_121" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_122" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_123" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_124" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_125" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_126" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_127" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_128" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_129" nillable="true" type="string" />
+      <element minOccurs="0" name="inNaoReter_130" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_118" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_119" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_120" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_121" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_122" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_123" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_124" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_125" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_126" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_127" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_128" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_129" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDesd_130" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_118" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_119" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_120" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_121" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_122" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_123" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_124" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_125" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_126" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_127" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_128" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_129" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDesdobrado_130" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_118" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_119" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_120" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_121" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_122" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_123" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_124" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_125" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_126" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_127" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_128" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_129" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao_130" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_118" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_119" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_120" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_121" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_122" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_123" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_124" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_125" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_126" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_127" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_128" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_129" nillable="true" type="string" />
+      <element minOccurs="0" name="inBaseCalc_130" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoISSQNRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outTotalINSS" type="string" />
+      <element name="outTotalIR" type="string" />
+      <element name="outTotalISSQN" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outValorDesdobrado_01" type="string" />
+      <element name="outValorDesdobrado_02" type="string" />
+      <element name="outValorDesdobrado_03" type="string" />
+      <element name="outValorDesdobrado_04" type="string" />
+      <element name="outValorDesdobrado_05" type="string" />
+      <element name="outValorDesdobrado_06" type="string" />
+      <element name="outValorDesdobrado_07" type="string" />
+      <element name="outValorDesdobrado_08" type="string" />
+      <element name="outValorDesdobrado_09" type="string" />
+      <element name="outValorDesdobrado_10" type="string" />
+      <element name="outValorDesdobrado_11" type="string" />
+      <element name="outValorDesdobrado_12" type="string" />
+      <element name="outValorDesdobrado_13" type="string" />
+      <element name="outValorDesdobrado_14" type="string" />
+      <element name="outValorDesdobrado_15" type="string" />
+      <element name="outValorDesdobrado_16" type="string" />
+      <element name="outValorDesdobrado_17" type="string" />
+      <element name="outValorDesdobrado_18" type="string" />
+      <element name="outValorDesdobrado_19" type="string" />
+      <element name="outValorDesdobrado_20" type="string" />
+      <element name="outValorDesdobrado_21" type="string" />
+      <element name="outValorDesdobrado_22" type="string" />
+      <element name="outValorDesdobrado_23" type="string" />
+      <element name="outValorDesdobrado_24" type="string" />
+      <element name="outValorDesdobrado_25" type="string" />
+      <element name="outValorDesdobrado_26" type="string" />
+      <element name="outValorDesdobrado_27" type="string" />
+      <element name="outValorDesdobrado_28" type="string" />
+      <element name="outValorDesdobrado_29" type="string" />
+      <element name="outValorDesdobrado_30" type="string" />
+      <element name="outValorDesdobrado_31" type="string" />
+      <element name="outValorDesdobrado_32" type="string" />
+      <element name="outValorDesdobrado_33" type="string" />
+      <element name="outValorDesdobrado_34" type="string" />
+      <element name="outValorDesdobrado_35" type="string" />
+      <element name="outValorDesdobrado_36" type="string" />
+      <element name="outValorDesdobrado_37" type="string" />
+      <element name="outValorDesdobrado_38" type="string" />
+      <element name="outValorDesdobrado_39" type="string" />
+      <element name="outValorDesdobrado_40" type="string" />
+      <element name="outValorDesdobrado_41" type="string" />
+      <element name="outValorDesdobrado_42" type="string" />
+      <element name="outValorDesdobrado_43" type="string" />
+      <element name="outValorDesdobrado_44" type="string" />
+      <element name="outValorDesdobrado_45" type="string" />
+      <element name="outValorDesdobrado_46" type="string" />
+      <element name="outValorDesdobrado_47" type="string" />
+      <element name="outValorDesdobrado_48" type="string" />
+      <element name="outValorDesdobrado_49" type="string" />
+      <element name="outValorDesdobrado_50" type="string" />
+      <element name="outValorDesdobrado_51" type="string" />
+      <element name="outValorDesdobrado_52" type="string" />
+      <element name="outValorDesdobrado_53" type="string" />
+      <element name="outValorDesdobrado_54" type="string" />
+      <element name="outValorDesdobrado_55" type="string" />
+      <element name="outValorDesdobrado_56" type="string" />
+      <element name="outValorDesdobrado_57" type="string" />
+      <element name="outValorDesdobrado_58" type="string" />
+      <element name="outValorDesdobrado_59" type="string" />
+      <element name="outValorDesdobrado_60" type="string" />
+      <element name="outValorDesdobrado_61" type="string" />
+      <element name="outValorDesdobrado_62" type="string" />
+      <element name="outValorDesdobrado_63" type="string" />
+      <element name="outValorDesdobrado_64" type="string" />
+      <element name="outValorDesdobrado_65" type="string" />
+      <element name="outValorDesdobrado_66" type="string" />
+      <element name="outValorDesdobrado_67" type="string" />
+      <element name="outValorDesdobrado_68" type="string" />
+      <element name="outValorDesdobrado_69" type="string" />
+      <element name="outValorDesdobrado_70" type="string" />
+      <element name="outValorDesdobrado_71" type="string" />
+      <element name="outValorDesdobrado_72" type="string" />
+      <element name="outValorDesdobrado_73" type="string" />
+      <element name="outValorDesdobrado_74" type="string" />
+      <element name="outValorDesdobrado_75" type="string" />
+      <element name="outValorDesdobrado_76" type="string" />
+      <element name="outValorDesdobrado_77" type="string" />
+      <element name="outValorDesdobrado_78" type="string" />
+      <element name="outValorDesdobrado_79" type="string" />
+      <element name="outValorDesdobrado_80" type="string" />
+      <element name="outValorDesdobrado_81" type="string" />
+      <element name="outValorDesdobrado_82" type="string" />
+      <element name="outValorDesdobrado_83" type="string" />
+      <element name="outValorDesdobrado_84" type="string" />
+      <element name="outValorDesdobrado_85" type="string" />
+      <element name="outValorDesdobrado_86" type="string" />
+      <element name="outValorDesdobrado_87" type="string" />
+      <element name="outValorDesdobrado_88" type="string" />
+      <element name="outValorDesdobrado_89" type="string" />
+      <element name="outValorDesdobrado_90" type="string" />
+      <element name="outValorDesdobrado_91" type="string" />
+      <element name="outValorDesdobrado_92" type="string" />
+      <element name="outValorDesdobrado_93" type="string" />
+      <element name="outValorDesdobrado_94" type="string" />
+      <element name="outValorDesdobrado_95" type="string" />
+      <element name="outValorDesdobrado_96" type="string" />
+      <element name="outValorDesdobrado_97" type="string" />
+      <element name="outValorDesdobrado_98" type="string" />
+      <element name="outValorDesdobrado_99" type="string" />
+      <element name="outValorDesdobrado_100" type="string" />
+      <element name="outValorDesdobrado_101" type="string" />
+      <element name="outValorDesdobrado_102" type="string" />
+      <element name="outValorDesdobrado_103" type="string" />
+      <element name="outValorDesdobrado_104" type="string" />
+      <element name="outValorDesdobrado_105" type="string" />
+      <element name="outValorDesdobrado_106" type="string" />
+      <element name="outValorDesdobrado_107" type="string" />
+      <element name="outValorDesdobrado_108" type="string" />
+      <element name="outValorDesdobrado_109" type="string" />
+      <element name="outValorDesdobrado_110" type="string" />
+      <element name="outValorDesdobrado_111" type="string" />
+      <element name="outValorDesdobrado_112" type="string" />
+      <element name="outValorDesdobrado_113" type="string" />
+      <element name="outValorDesdobrado_114" type="string" />
+      <element name="outValorDesdobrado_115" type="string" />
+      <element name="outValorDesdobrado_116" type="string" />
+      <element name="outValorDesdobrado_117" type="string" />
+      <element name="outValorDesdobrado_118" type="string" />
+      <element name="outValorDesdobrado_119" type="string" />
+      <element name="outValorDesdobrado_120" type="string" />
+      <element name="outValorDesdobrado_121" type="string" />
+      <element name="outValorDesdobrado_122" type="string" />
+      <element name="outValorDesdobrado_123" type="string" />
+      <element name="outValorDesdobrado_124" type="string" />
+      <element name="outValorDesdobrado_125" type="string" />
+      <element name="outValorDesdobrado_126" type="string" />
+      <element name="outValorDesdobrado_127" type="string" />
+      <element name="outValorDesdobrado_128" type="string" />
+      <element name="outValorDesdobrado_129" type="string" />
+      <element name="outValorDesdobrado_130" type="string" />
+      <element name="outCredorReduzido_01" type="string" />
+      <element name="outCredorReduzido_02" type="string" />
+      <element name="outCredorReduzido_03" type="string" />
+      <element name="outCredorReduzido_04" type="string" />
+      <element name="outCredorReduzido_05" type="string" />
+      <element name="outCredorReduzido_06" type="string" />
+      <element name="outCredorReduzido_07" type="string" />
+      <element name="outCredorReduzido_08" type="string" />
+      <element name="outCredorReduzido_09" type="string" />
+      <element name="outCredorReduzido_10" type="string" />
+      <element name="outCredorReduzido_11" type="string" />
+      <element name="outCredorReduzido_12" type="string" />
+      <element name="outCredorReduzido_13" type="string" />
+      <element name="outCredorReduzido_14" type="string" />
+      <element name="outCredorReduzido_15" type="string" />
+      <element name="outCredorReduzido_16" type="string" />
+      <element name="outCredorReduzido_17" type="string" />
+      <element name="outCredorReduzido_18" type="string" />
+      <element name="outCredorReduzido_19" type="string" />
+      <element name="outCredorReduzido_20" type="string" />
+      <element name="outCredorReduzido_21" type="string" />
+      <element name="outCredorReduzido_22" type="string" />
+      <element name="outCredorReduzido_23" type="string" />
+      <element name="outCredorReduzido_24" type="string" />
+      <element name="outCredorReduzido_25" type="string" />
+      <element name="outCredorReduzido_26" type="string" />
+      <element name="outCredorReduzido_27" type="string" />
+      <element name="outCredorReduzido_28" type="string" />
+      <element name="outCredorReduzido_29" type="string" />
+      <element name="outCredorReduzido_30" type="string" />
+      <element name="outCredorReduzido_31" type="string" />
+      <element name="outCredorReduzido_32" type="string" />
+      <element name="outCredorReduzido_33" type="string" />
+      <element name="outCredorReduzido_34" type="string" />
+      <element name="outCredorReduzido_35" type="string" />
+      <element name="outCredorReduzido_36" type="string" />
+      <element name="outCredorReduzido_37" type="string" />
+      <element name="outCredorReduzido_38" type="string" />
+      <element name="outCredorReduzido_39" type="string" />
+      <element name="outCredorReduzido_40" type="string" />
+      <element name="outCredorReduzido_41" type="string" />
+      <element name="outCredorReduzido_42" type="string" />
+      <element name="outCredorReduzido_43" type="string" />
+      <element name="outCredorReduzido_44" type="string" />
+      <element name="outCredorReduzido_45" type="string" />
+      <element name="outCredorReduzido_46" type="string" />
+      <element name="outCredorReduzido_47" type="string" />
+      <element name="outCredorReduzido_48" type="string" />
+      <element name="outCredorReduzido_49" type="string" />
+      <element name="outCredorReduzido_50" type="string" />
+      <element name="outCredorReduzido_51" type="string" />
+      <element name="outCredorReduzido_52" type="string" />
+      <element name="outCredorReduzido_53" type="string" />
+      <element name="outCredorReduzido_54" type="string" />
+      <element name="outCredorReduzido_55" type="string" />
+      <element name="outCredorReduzido_56" type="string" />
+      <element name="outCredorReduzido_57" type="string" />
+      <element name="outCredorReduzido_58" type="string" />
+      <element name="outCredorReduzido_59" type="string" />
+      <element name="outCredorReduzido_60" type="string" />
+      <element name="outCredorReduzido_61" type="string" />
+      <element name="outCredorReduzido_62" type="string" />
+      <element name="outCredorReduzido_63" type="string" />
+      <element name="outCredorReduzido_64" type="string" />
+      <element name="outCredorReduzido_65" type="string" />
+      <element name="outCredorReduzido_66" type="string" />
+      <element name="outCredorReduzido_67" type="string" />
+      <element name="outCredorReduzido_68" type="string" />
+      <element name="outCredorReduzido_69" type="string" />
+      <element name="outCredorReduzido_70" type="string" />
+      <element name="outCredorReduzido_71" type="string" />
+      <element name="outCredorReduzido_72" type="string" />
+      <element name="outCredorReduzido_73" type="string" />
+      <element name="outCredorReduzido_74" type="string" />
+      <element name="outCredorReduzido_75" type="string" />
+      <element name="outCredorReduzido_76" type="string" />
+      <element name="outCredorReduzido_77" type="string" />
+      <element name="outCredorReduzido_78" type="string" />
+      <element name="outCredorReduzido_79" type="string" />
+      <element name="outCredorReduzido_80" type="string" />
+      <element name="outCredorReduzido_81" type="string" />
+      <element name="outCredorReduzido_82" type="string" />
+      <element name="outCredorReduzido_83" type="string" />
+      <element name="outCredorReduzido_84" type="string" />
+      <element name="outCredorReduzido_85" type="string" />
+      <element name="outCredorReduzido_86" type="string" />
+      <element name="outCredorReduzido_87" type="string" />
+      <element name="outCredorReduzido_88" type="string" />
+      <element name="outCredorReduzido_89" type="string" />
+      <element name="outCredorReduzido_90" type="string" />
+      <element name="outCredorReduzido_91" type="string" />
+      <element name="outCredorReduzido_92" type="string" />
+      <element name="outCredorReduzido_93" type="string" />
+      <element name="outCredorReduzido_94" type="string" />
+      <element name="outCredorReduzido_95" type="string" />
+      <element name="outCredorReduzido_96" type="string" />
+      <element name="outCredorReduzido_97" type="string" />
+      <element name="outCredorReduzido_98" type="string" />
+      <element name="outCredorReduzido_99" type="string" />
+      <element name="outCredorReduzido_100" type="string" />
+      <element name="outCredorReduzido_101" type="string" />
+      <element name="outCredorReduzido_102" type="string" />
+      <element name="outCredorReduzido_103" type="string" />
+      <element name="outCredorReduzido_104" type="string" />
+      <element name="outCredorReduzido_105" type="string" />
+      <element name="outCredorReduzido_106" type="string" />
+      <element name="outCredorReduzido_107" type="string" />
+      <element name="outCredorReduzido_108" type="string" />
+      <element name="outCredorReduzido_109" type="string" />
+      <element name="outCredorReduzido_110" type="string" />
+      <element name="outCredorReduzido_111" type="string" />
+      <element name="outCredorReduzido_112" type="string" />
+      <element name="outCredorReduzido_113" type="string" />
+      <element name="outCredorReduzido_114" type="string" />
+      <element name="outCredorReduzido_115" type="string" />
+      <element name="outCredorReduzido_116" type="string" />
+      <element name="outCredorReduzido_117" type="string" />
+      <element name="outCredorReduzido_118" type="string" />
+      <element name="outCredorReduzido_119" type="string" />
+      <element name="outCredorReduzido_120" type="string" />
+      <element name="outCredorReduzido_121" type="string" />
+      <element name="outCredorReduzido_122" type="string" />
+      <element name="outCredorReduzido_123" type="string" />
+      <element name="outCredorReduzido_124" type="string" />
+      <element name="outCredorReduzido_125" type="string" />
+      <element name="outCredorReduzido_126" type="string" />
+      <element name="outCredorReduzido_127" type="string" />
+      <element name="outCredorReduzido_128" type="string" />
+      <element name="outCredorReduzido_129" type="string" />
+      <element name="outCredorReduzido_130" type="string" />
+      <element name="outPorcentBaseCalc_01" type="string" />
+      <element name="outPorcentBaseCalc_02" type="string" />
+      <element name="outPorcentBaseCalc_03" type="string" />
+      <element name="outPorcentBaseCalc_04" type="string" />
+      <element name="outPorcentBaseCalc_05" type="string" />
+      <element name="outPorcentBaseCalc_06" type="string" />
+      <element name="outPorcentBaseCalc_07" type="string" />
+      <element name="outPorcentBaseCalc_08" type="string" />
+      <element name="outPorcentBaseCalc_09" type="string" />
+      <element name="outPorcentBaseCalc_10" type="string" />
+      <element name="outPorcentBaseCalc_11" type="string" />
+      <element name="outPorcentBaseCalc_12" type="string" />
+      <element name="outPorcentBaseCalc_13" type="string" />
+      <element name="outValorBaseCalc_01" type="string" />
+      <element name="outValorBaseCalc_02" type="string" />
+      <element name="outValorBaseCalc_03" type="string" />
+      <element name="outValorBaseCalc_04" type="string" />
+      <element name="outValorBaseCalc_05" type="string" />
+      <element name="outValorBaseCalc_06" type="string" />
+      <element name="outValorBaseCalc_07" type="string" />
+      <element name="outValorBaseCalc_08" type="string" />
+      <element name="outValorBaseCalc_09" type="string" />
+      <element name="outValorBaseCalc_10" type="string" />
+      <element name="outValorBaseCalc_11" type="string" />
+      <element name="outValorBaseCalc_12" type="string" />
+      <element name="outValorBaseCalc_13" type="string" />
+      <element name="outPorcentBaseCalc_14" type="string" />
+      <element name="outPorcentBaseCalc_15" type="string" />
+      <element name="outPorcentBaseCalc_16" type="string" />
+      <element name="outPorcentBaseCalc_17" type="string" />
+      <element name="outPorcentBaseCalc_18" type="string" />
+      <element name="outPorcentBaseCalc_19" type="string" />
+      <element name="outPorcentBaseCalc_20" type="string" />
+      <element name="outPorcentBaseCalc_21" type="string" />
+      <element name="outPorcentBaseCalc_22" type="string" />
+      <element name="outPorcentBaseCalc_23" type="string" />
+      <element name="outPorcentBaseCalc_24" type="string" />
+      <element name="outPorcentBaseCalc_25" type="string" />
+      <element name="outPorcentBaseCalc_26" type="string" />
+      <element name="outValorBaseCalc_14" type="string" />
+      <element name="outValorBaseCalc_15" type="string" />
+      <element name="outValorBaseCalc_16" type="string" />
+      <element name="outValorBaseCalc_17" type="string" />
+      <element name="outValorBaseCalc_18" type="string" />
+      <element name="outValorBaseCalc_19" type="string" />
+      <element name="outValorBaseCalc_20" type="string" />
+      <element name="outValorBaseCalc_21" type="string" />
+      <element name="outValorBaseCalc_22" type="string" />
+      <element name="outValorBaseCalc_23" type="string" />
+      <element name="outValorBaseCalc_24" type="string" />
+      <element name="outValorBaseCalc_25" type="string" />
+      <element name="outValorBaseCalc_26" type="string" />
+      <element name="outPorcentBaseCalc_27" type="string" />
+      <element name="outPorcentBaseCalc_28" type="string" />
+      <element name="outPorcentBaseCalc_29" type="string" />
+      <element name="outPorcentBaseCalc_30" type="string" />
+      <element name="outPorcentBaseCalc_31" type="string" />
+      <element name="outPorcentBaseCalc_32" type="string" />
+      <element name="outPorcentBaseCalc_33" type="string" />
+      <element name="outPorcentBaseCalc_34" type="string" />
+      <element name="outPorcentBaseCalc_35" type="string" />
+      <element name="outPorcentBaseCalc_36" type="string" />
+      <element name="outPorcentBaseCalc_37" type="string" />
+      <element name="outPorcentBaseCalc_38" type="string" />
+      <element name="outPorcentBaseCalc_39" type="string" />
+      <element name="outValorBaseCalc_27" type="string" />
+      <element name="outValorBaseCalc_28" type="string" />
+      <element name="outValorBaseCalc_29" type="string" />
+      <element name="outValorBaseCalc_30" type="string" />
+      <element name="outValorBaseCalc_31" type="string" />
+      <element name="outValorBaseCalc_32" type="string" />
+      <element name="outValorBaseCalc_33" type="string" />
+      <element name="outValorBaseCalc_34" type="string" />
+      <element name="outValorBaseCalc_35" type="string" />
+      <element name="outValorBaseCalc_36" type="string" />
+      <element name="outValorBaseCalc_37" type="string" />
+      <element name="outValorBaseCalc_38" type="string" />
+      <element name="outValorBaseCalc_39" type="string" />
+      <element name="outPorcentBaseCalc_40" type="string" />
+      <element name="outPorcentBaseCalc_41" type="string" />
+      <element name="outPorcentBaseCalc_42" type="string" />
+      <element name="outPorcentBaseCalc_43" type="string" />
+      <element name="outPorcentBaseCalc_44" type="string" />
+      <element name="outPorcentBaseCalc_45" type="string" />
+      <element name="outPorcentBaseCalc_46" type="string" />
+      <element name="outPorcentBaseCalc_47" type="string" />
+      <element name="outPorcentBaseCalc_48" type="string" />
+      <element name="outPorcentBaseCalc_49" type="string" />
+      <element name="outPorcentBaseCalc_50" type="string" />
+      <element name="outPorcentBaseCalc_51" type="string" />
+      <element name="outPorcentBaseCalc_52" type="string" />
+      <element name="outValorBaseCalc_40" type="string" />
+      <element name="outValorBaseCalc_41" type="string" />
+      <element name="outValorBaseCalc_42" type="string" />
+      <element name="outValorBaseCalc_43" type="string" />
+      <element name="outValorBaseCalc_44" type="string" />
+      <element name="outValorBaseCalc_45" type="string" />
+      <element name="outValorBaseCalc_46" type="string" />
+      <element name="outValorBaseCalc_47" type="string" />
+      <element name="outValorBaseCalc_48" type="string" />
+      <element name="outValorBaseCalc_49" type="string" />
+      <element name="outValorBaseCalc_50" type="string" />
+      <element name="outValorBaseCalc_51" type="string" />
+      <element name="outValorBaseCalc_52" type="string" />
+      <element name="outPorcentBaseCalc_53" type="string" />
+      <element name="outPorcentBaseCalc_54" type="string" />
+      <element name="outPorcentBaseCalc_55" type="string" />
+      <element name="outPorcentBaseCalc_56" type="string" />
+      <element name="outPorcentBaseCalc_57" type="string" />
+      <element name="outPorcentBaseCalc_58" type="string" />
+      <element name="outPorcentBaseCalc_59" type="string" />
+      <element name="outPorcentBaseCalc_60" type="string" />
+      <element name="outPorcentBaseCalc_61" type="string" />
+      <element name="outPorcentBaseCalc_62" type="string" />
+      <element name="outPorcentBaseCalc_63" type="string" />
+      <element name="outPorcentBaseCalc_64" type="string" />
+      <element name="outPorcentBaseCalc_65" type="string" />
+      <element name="outValorBaseCalc_53" type="string" />
+      <element name="outValorBaseCalc_54" type="string" />
+      <element name="outValorBaseCalc_55" type="string" />
+      <element name="outValorBaseCalc_56" type="string" />
+      <element name="outValorBaseCalc_57" type="string" />
+      <element name="outValorBaseCalc_58" type="string" />
+      <element name="outValorBaseCalc_59" type="string" />
+      <element name="outValorBaseCalc_60" type="string" />
+      <element name="outValorBaseCalc_61" type="string" />
+      <element name="outValorBaseCalc_62" type="string" />
+      <element name="outValorBaseCalc_63" type="string" />
+      <element name="outValorBaseCalc_64" type="string" />
+      <element name="outValorBaseCalc_65" type="string" />
+      <element name="outPorcentBaseCalc_66" type="string" />
+      <element name="outPorcentBaseCalc_67" type="string" />
+      <element name="outPorcentBaseCalc_68" type="string" />
+      <element name="outPorcentBaseCalc_69" type="string" />
+      <element name="outPorcentBaseCalc_70" type="string" />
+      <element name="outPorcentBaseCalc_71" type="string" />
+      <element name="outPorcentBaseCalc_72" type="string" />
+      <element name="outPorcentBaseCalc_73" type="string" />
+      <element name="outPorcentBaseCalc_74" type="string" />
+      <element name="outPorcentBaseCalc_75" type="string" />
+      <element name="outPorcentBaseCalc_76" type="string" />
+      <element name="outPorcentBaseCalc_77" type="string" />
+      <element name="outPorcentBaseCalc_78" type="string" />
+      <element name="outValorBaseCalc_66" type="string" />
+      <element name="outValorBaseCalc_67" type="string" />
+      <element name="outValorBaseCalc_68" type="string" />
+      <element name="outValorBaseCalc_69" type="string" />
+      <element name="outValorBaseCalc_70" type="string" />
+      <element name="outValorBaseCalc_71" type="string" />
+      <element name="outValorBaseCalc_72" type="string" />
+      <element name="outValorBaseCalc_73" type="string" />
+      <element name="outValorBaseCalc_74" type="string" />
+      <element name="outValorBaseCalc_75" type="string" />
+      <element name="outValorBaseCalc_76" type="string" />
+      <element name="outValorBaseCalc_77" type="string" />
+      <element name="outValorBaseCalc_78" type="string" />
+      <element name="outPorcentBaseCalc_79" type="string" />
+      <element name="outPorcentBaseCalc_80" type="string" />
+      <element name="outPorcentBaseCalc_81" type="string" />
+      <element name="outPorcentBaseCalc_82" type="string" />
+      <element name="outPorcentBaseCalc_83" type="string" />
+      <element name="outPorcentBaseCalc_84" type="string" />
+      <element name="outPorcentBaseCalc_85" type="string" />
+      <element name="outPorcentBaseCalc_86" type="string" />
+      <element name="outPorcentBaseCalc_87" type="string" />
+      <element name="outPorcentBaseCalc_88" type="string" />
+      <element name="outPorcentBaseCalc_89" type="string" />
+      <element name="outPorcentBaseCalc_90" type="string" />
+      <element name="outPorcentBaseCalc_91" type="string" />
+      <element name="outValorBaseCalc_79" type="string" />
+      <element name="outValorBaseCalc_80" type="string" />
+      <element name="outValorBaseCalc_81" type="string" />
+      <element name="outValorBaseCalc_82" type="string" />
+      <element name="outValorBaseCalc_83" type="string" />
+      <element name="outValorBaseCalc_84" type="string" />
+      <element name="outValorBaseCalc_85" type="string" />
+      <element name="outValorBaseCalc_86" type="string" />
+      <element name="outValorBaseCalc_87" type="string" />
+      <element name="outValorBaseCalc_88" type="string" />
+      <element name="outValorBaseCalc_89" type="string" />
+      <element name="outValorBaseCalc_90" type="string" />
+      <element name="outValorBaseCalc_91" type="string" />
+      <element name="outPorcentBaseCalc_100" type="string" />
+      <element name="outPorcentBaseCalc_101" type="string" />
+      <element name="outPorcentBaseCalc_102" type="string" />
+      <element name="outPorcentBaseCalc_103" type="string" />
+      <element name="outPorcentBaseCalc_104" type="string" />
+      <element name="outPorcentBaseCalc_92" type="string" />
+      <element name="outPorcentBaseCalc_93" type="string" />
+      <element name="outPorcentBaseCalc_94" type="string" />
+      <element name="outPorcentBaseCalc_95" type="string" />
+      <element name="outPorcentBaseCalc_96" type="string" />
+      <element name="outPorcentBaseCalc_97" type="string" />
+      <element name="outPorcentBaseCalc_98" type="string" />
+      <element name="outPorcentBaseCalc_99" type="string" />
+      <element name="outValorBaseCalc_100" type="string" />
+      <element name="outValorBaseCalc_101" type="string" />
+      <element name="outValorBaseCalc_102" type="string" />
+      <element name="outValorBaseCalc_103" type="string" />
+      <element name="outValorBaseCalc_104" type="string" />
+      <element name="outValorBaseCalc_92" type="string" />
+      <element name="outValorBaseCalc_93" type="string" />
+      <element name="outValorBaseCalc_94" type="string" />
+      <element name="outValorBaseCalc_95" type="string" />
+      <element name="outValorBaseCalc_96" type="string" />
+      <element name="outValorBaseCalc_97" type="string" />
+      <element name="outValorBaseCalc_98" type="string" />
+      <element name="outValorBaseCalc_99" type="string" />
+      <element name="outPorcentBaseCalc_105" type="string" />
+      <element name="outPorcentBaseCalc_106" type="string" />
+      <element name="outPorcentBaseCalc_107" type="string" />
+      <element name="outPorcentBaseCalc_108" type="string" />
+      <element name="outPorcentBaseCalc_109" type="string" />
+      <element name="outPorcentBaseCalc_110" type="string" />
+      <element name="outPorcentBaseCalc_111" type="string" />
+      <element name="outPorcentBaseCalc_112" type="string" />
+      <element name="outPorcentBaseCalc_113" type="string" />
+      <element name="outPorcentBaseCalc_114" type="string" />
+      <element name="outPorcentBaseCalc_115" type="string" />
+      <element name="outPorcentBaseCalc_116" type="string" />
+      <element name="outPorcentBaseCalc_117" type="string" />
+      <element name="outValorBaseCalc_105" type="string" />
+      <element name="outValorBaseCalc_106" type="string" />
+      <element name="outValorBaseCalc_107" type="string" />
+      <element name="outValorBaseCalc_108" type="string" />
+      <element name="outValorBaseCalc_109" type="string" />
+      <element name="outValorBaseCalc_110" type="string" />
+      <element name="outValorBaseCalc_111" type="string" />
+      <element name="outValorBaseCalc_112" type="string" />
+      <element name="outValorBaseCalc_113" type="string" />
+      <element name="outValorBaseCalc_114" type="string" />
+      <element name="outValorBaseCalc_115" type="string" />
+      <element name="outValorBaseCalc_116" type="string" />
+      <element name="outValorBaseCalc_117" type="string" />
+      <element name="outValorBaseCalc_118" type="string" />
+      <element name="outValorBaseCalc_119" type="string" />
+      <element name="outValorBaseCalc_120" type="string" />
+      <element name="outValorBaseCalc_121" type="string" />
+      <element name="outValorBaseCalc_122" type="string" />
+      <element name="outValorBaseCalc_123" type="string" />
+      <element name="outValorBaseCalc_124" type="string" />
+      <element name="outValorBaseCalc_125" type="string" />
+      <element name="outValorBaseCalc_126" type="string" />
+      <element name="outValorBaseCalc_127" type="string" />
+      <element name="outValorBaseCalc_128" type="string" />
+      <element name="outValorBaseCalc_129" type="string" />
+      <element name="outValorBaseCalc_130" type="string" />
+      <element name="outPorcentBaseCalc_118" type="string" />
+      <element name="outPorcentBaseCalc_119" type="string" />
+      <element name="outPorcentBaseCalc_120" type="string" />
+      <element name="outPorcentBaseCalc_121" type="string" />
+      <element name="outPorcentBaseCalc_122" type="string" />
+      <element name="outPorcentBaseCalc_123" type="string" />
+      <element name="outPorcentBaseCalc_124" type="string" />
+      <element name="outPorcentBaseCalc_125" type="string" />
+      <element name="outPorcentBaseCalc_126" type="string" />
+      <element name="outPorcentBaseCalc_127" type="string" />
+      <element name="outPorcentBaseCalc_128" type="string" />
+      <element name="outPorcentBaseCalc_129" type="string" />
+      <element name="outPorcentBaseCalc_130" type="string" />
+      <element name="outCredor" type="string" />
+      <element name="outCredorReduz" type="string" />
+      <element name="outDescricaoServico" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoISSQNType">
+    <sequence>
+      <element name="Procedure_DesdobramentoISSQNFilters" type="tns:Procedure_DesdobramentoISSQNFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoISSQNResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_DesdobramentoISSQNRecord" type="tns:Procedure_DesdobramentoISSQNRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoISSQNApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodServico" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroDocumento" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDocumento" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDistribuicao" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoISSQNApoioRecordType">
+    <sequence>
+      <element name="outCredor" type="string" />
+      <element name="outCredorReduz" type="string" />
+      <element name="outDescricaoServico" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoISSQNApoioType">
+    <sequence>
+      <element name="Procedure_DesdobramentoISSQNApoioFilters" type="tns:Procedure_DesdobramentoISSQNApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoISSQNApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_DesdobramentoISSQNApoioRecord" type="tns:Procedure_DesdobramentoISSQNApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoOutrosFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroDocumento" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDocumento" nillable="true" type="string" />
+      <element minOccurs="0" name="inDesdobramento_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inDesdobramento_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inDesdobramento_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inDesdobramento_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inDesdobramento_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inDesdobramento_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inDesdobramento_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inDesdobramento_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inDesdobramento_09" nillable="true" type="string" />
+      <element minOccurs="0" name="inDesdobramento_10" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeReduzCredor_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeReduzCredor_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeReduzCredor_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeReduzCredor_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeReduzCredor_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeReduzCredor_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeReduzCredor_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeReduzCredor_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeReduzCredor_09" nillable="true" type="string" />
+      <element minOccurs="0" name="inNomeReduzCredor_10" nillable="true" type="string" />
+      <element minOccurs="0" name="inPorcentagem_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inPorcentagem_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inPorcentagem_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inPorcentagem_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inPorcentagem_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inPorcentagem_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inPorcentagem_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inPorcentagem_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inPorcentagem_09" nillable="true" type="string" />
+      <element minOccurs="0" name="inPorcentagem_10" nillable="true" type="string" />
+      <element minOccurs="0" name="inValor_01" nillable="true" type="string" />
+      <element minOccurs="0" name="inValor_02" nillable="true" type="string" />
+      <element minOccurs="0" name="inValor_03" nillable="true" type="string" />
+      <element minOccurs="0" name="inValor_04" nillable="true" type="string" />
+      <element minOccurs="0" name="inValor_05" nillable="true" type="string" />
+      <element minOccurs="0" name="inValor_06" nillable="true" type="string" />
+      <element minOccurs="0" name="inValor_07" nillable="true" type="string" />
+      <element minOccurs="0" name="inValor_08" nillable="true" type="string" />
+      <element minOccurs="0" name="inValor_09" nillable="true" type="string" />
+      <element minOccurs="0" name="inValor_10" nillable="true" type="string" />
+      <element minOccurs="0" name="inContinuar" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoOutrosRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outTipoBloqueio_01" type="string" />
+      <element name="outTipoBloqueio_02" type="string" />
+      <element name="outTipoBloqueio_03" type="string" />
+      <element name="outTipoBloqueio_04" type="string" />
+      <element name="outTipoBloqueio_05" type="string" />
+      <element name="outTipoBloqueio_06" type="string" />
+      <element name="outTipoBloqueio_07" type="string" />
+      <element name="outTipoBloqueio_08" type="string" />
+      <element name="outTipoBloqueio_09" type="string" />
+      <element name="outTipoBloqueio_10" type="string" />
+      <element name="outCredorReduzido_01" type="string" />
+      <element name="outCredorReduzido_02" type="string" />
+      <element name="outCredorReduzido_03" type="string" />
+      <element name="outCredorReduzido_04" type="string" />
+      <element name="outCredorReduzido_05" type="string" />
+      <element name="outCredorReduzido_06" type="string" />
+      <element name="outCredorReduzido_07" type="string" />
+      <element name="outCredorReduzido_08" type="string" />
+      <element name="outCredorReduzido_09" type="string" />
+      <element name="outCredorReduzido_10" type="string" />
+      <element name="outPorcentagem_01" type="string" />
+      <element name="outPorcentagem_02" type="string" />
+      <element name="outPorcentagem_03" type="string" />
+      <element name="outPorcentagem_04" type="string" />
+      <element name="outPorcentagem_05" type="string" />
+      <element name="outPorcentagem_06" type="string" />
+      <element name="outPorcentagem_07" type="string" />
+      <element name="outPorcentagem_08" type="string" />
+      <element name="outPorcentagem_09" type="string" />
+      <element name="outPorcentagem_10" type="string" />
+      <element name="outValor_01" type="string" />
+      <element name="outValor_02" type="string" />
+      <element name="outValor_03" type="string" />
+      <element name="outValor_04" type="string" />
+      <element name="outValor_05" type="string" />
+      <element name="outValor_06" type="string" />
+      <element name="outValor_07" type="string" />
+      <element name="outValor_08" type="string" />
+      <element name="outValor_09" type="string" />
+      <element name="outValor_10" type="string" />
+      <element name="outCredor01" type="string" />
+      <element name="outCredor02" type="string" />
+      <element name="outCredorReduz" type="string" />
+      <element name="outTipoDespesa" type="string" />
+      <element name="outValorOriginal" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoOutrosType">
+    <sequence>
+      <element name="Procedure_DesdobramentoOutrosFilters" type="tns:Procedure_DesdobramentoOutrosFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoOutrosResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_DesdobramentoOutrosRecord" type="tns:Procedure_DesdobramentoOutrosRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoOutrosApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroDocumento" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDocumento" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoOutrosApoioRecordType">
+    <sequence>
+      <element name="outCredor01" type="string" />
+      <element name="outCredor02" type="string" />
+      <element name="outTipoDespesa" type="string" />
+      <element name="outValorOriginal" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outCredorReduz" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoOutrosApoioType">
+    <sequence>
+      <element name="Procedure_DesdobramentoOutrosApoioFilters" type="tns:Procedure_DesdobramentoOutrosApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_DesdobramentoOutrosApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_DesdobramentoOutrosApoioRecord" type="tns:Procedure_DesdobramentoOutrosApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoDocGeradorFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave_login2" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinGrupo" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodConta" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinGrupo" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inExercicio" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inReferencia" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoDocGeradorRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outFimTransacao" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outNumeroOPFinal" type="string" />
+      <element name="outNumeroOPInicial" type="string" />
+      <element name="outQtdadeOP" type="string" />
+      <element name="outTotal" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoDocGeradorType">
+    <sequence>
+      <element name="Procedure_PreparacaoPagtoDocGeradorFilters" type="tns:Procedure_PreparacaoPagtoDocGeradorFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoDocGeradorResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_PreparacaoPagtoDocGeradorRecord" type="tns:Procedure_PreparacaoPagtoDocGeradorRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoDocGeradorApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinGrupo" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodConta" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinGrupo" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inExercicio" nillable="true" type="string" />
+      <element minOccurs="0" name="inNumeroDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDoc" nillable="true" type="string" />
+      <element minOccurs="0" name="inValorDoc" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoDocGeradorApoioRecordType">
+    <sequence>
+      <element name="outBairro" type="string" />
+      <element name="outCEP" type="string" />
+      <element name="outCidade" type="string" />
+      <element name="outContaCredor" type="string" />
+      <element name="outContaPagto" type="string" />
+      <element name="outContrato" type="string" />
+      <element name="outCPFCGC" type="string" />
+      <element name="outCredor1" type="string" />
+      <element name="outCredor2" type="string" />
+      <element name="outEndereco" type="string" />
+      <element name="outEstado" type="string" />
+      <element name="outOrganiz" type="string" />
+      <element name="outReferencia" type="string" />
+      <element name="outTipoDespesa" type="string" />
+      <element name="outVencimento" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoDocGeradorApoioType">
+    <sequence>
+      <element name="Procedure_PreparacaoPagtoDocGeradorApoioFilters" type="tns:Procedure_PreparacaoPagtoDocGeradorApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoDocGeradorApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_PreparacaoPagtoDocGeradorApoioRecord" type="tns:Procedure_PreparacaoPagtoDocGeradorApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoOrgaoFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinGrupo" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodConta" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inExercicio" nillable="true" type="string" />
+      <element minOccurs="0" name="inAnoVencimento" nillable="true" type="string" />
+      <element minOccurs="0" name="inDataVencimento" nillable="true" type="string" />
+      <element minOccurs="0" name="inExibirDocs" nillable="true" type="string" />
+      <element minOccurs="0" name="inMesVencimento" nillable="true" type="string" />
+      <element minOccurs="0" name="inTipoDespesa" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave_login2" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinGrupo" nillable="true" type="string" />
+      <element minOccurs="0" name="inOrgao" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoOrgaoRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outContaPagto" type="string" />
+      <element name="outNumOPFinal" type="string" />
+      <element name="outNumOPInicial" type="string" />
+      <element name="outOrgao" type="string" />
+      <element name="outQuantidadeOPs" type="string" />
+      <element name="outSucesso" type="string" />
+      <element name="outTipoDespesa" type="string" />
+      <element name="outTotal" type="string" />
+      <element name="outVencimento" type="string" />
+      <element name="outErro" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoOrgaoType">
+    <sequence>
+      <element name="Procedure_PreparacaoPagtoOrgaoFilters" type="tns:Procedure_PreparacaoPagtoOrgaoFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoOrgaoResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_PreparacaoPagtoOrgaoRecord" type="tns:Procedure_PreparacaoPagtoOrgaoRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoOrgaoApoioFiltersType">
+    <sequence>
+      <element minOccurs="0" name="inChave" nillable="true" type="string" />
+      <element minOccurs="0" name="inImpressora" nillable="true" type="string" />
+      <element minOccurs="0" name="inOperador" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinGrupo" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inAssinOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inCodConta" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinNumero" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinOrgao" nillable="true" type="string" />
+      <element minOccurs="0" name="inExercicio" nillable="true" type="string" />
+      <element minOccurs="0" name="inChave_login2" nillable="true" type="string" />
+      <element minOccurs="0" name="inContraAssinGrupo" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoOrgaoApoioRecordType">
+    <sequence>
+      <element name="outTerminal" type="string" />
+      <element name="outErro" type="string" />
+      <element name="outContaPagtoAGENCIA" type="string" />
+      <element name="outContaPagtoBANCO" type="string" />
+      <element name="outContaPagtoNUMERO" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoOrgaoApoioType">
+    <sequence>
+      <element name="Procedure_PreparacaoPagtoOrgaoApoioFilters" type="tns:Procedure_PreparacaoPagtoOrgaoApoioFiltersType" />
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="Procedure_PreparacaoPagtoOrgaoApoioResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Procedure_PreparacaoPagtoOrgaoApoioRecord" type="tns:Procedure_PreparacaoPagtoOrgaoApoioRecordType" />
+    </sequence>
+  </complexType>
+  <complexType name="ModelVariablesType">
+    <all>
+      <element minOccurs="0" name="cics" nillable="true" type="string" />
+    </all>
+  </complexType>
+  <complexType name="wsResourceCreateType">
+    <sequence>
+      <element minOccurs="0" name="ModelVariables" type="tns:ModelVariablesType" />
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="wsResourceCreateResponseType">
+    <sequence>
+      <element ref="wsa:EndpointReference" />
+    </sequence>
+  </complexType>
+  <complexType name="wsResourceDestroyType">
+    <sequence>
+      <element minOccurs="0" name="EnvironmentVariables" type="tns:EnvironmentVariablesType" />
+    </sequence>
+  </complexType>
+  <complexType name="wsResourceDestroyResponseType" />
+  <complexType name="SessionIdType">
+    <simpleContent>
+      <extension base="string">
+        <attribute ref="wsa:IsReferenceParameter" />
+      </extension>
+    </simpleContent>
+  </complexType>
+  <element name="SessionId" type="tns:SessionIdType" />
+  <complexType name="EnvironmentVariablesType">
+    <sequence>
+      <element minOccurs="0" name="DomainName" nillable="true" type="string" />
+      <element minOccurs="0" name="ServerName" nillable="true" type="string" />
+      <element minOccurs="0" name="SessionId" nillable="true" type="string" />
+      <element minOccurs="0" name="Password" nillable="true" type="string" />
+      <element minOccurs="0" name="Username" nillable="true" type="string" />
+    </sequence>
+  </complexType>
+</schema>

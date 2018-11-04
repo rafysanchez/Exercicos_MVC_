@@ -1,0 +1,99 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaDer.Models
+@model IEnumerable<ConfirmacaoPagamentoFiltroViewModel>
+@{
+    ViewBag.Title = "Listar";
+}
+
+<div id="divResultadosBusca">
+    @if (Model.Any())
+    {
+        <div class="col-sm-12 col-lg-12 col-md-12">
+            <h3>Resultado da Busca</h3>
+            <hr style="margin-left: 15px; margin-right: 15px;" />
+            <div class="row">
+                <table id="tblPesquisa" class="_tbDataTables table dataTable table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().CodigoAgrupamentoConfirmacaoPagamento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Orgao)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().TipoDespesa)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroDocumento)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NomeReduzidoCredor)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().CPF_CNPJ)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Valor)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().DataConfirmacao)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().OrigemConfirmacao)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().StatusTransmissaoConfirmacao)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().NumeroBaixaRepasse)</th>
+                            <th>BOTOES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Where(x => !x.Totalizador))
+                        {
+                            <tr class="text-center">
+                                <td>@Html.DisplayFor(modelItem => item.CodigoAgrupamentoConfirmacaoPagamento)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Orgao)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DespesaTipo)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NumeroDocumento)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NomeReduzidoCredor)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CPF_CNPJ_Credor)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ValorDocumentoDecimal)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DataConfirmacao)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Origem)</td>
+                                <td>@Html.DisplayFor(modelItem => item.StatusProdesp)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NumeroNLBaixaRepasse)</td>
+                                <td>BOTOES</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @*<div class="col-sm-12 col-lg-12 col-md-12" style="margin-bottom:15px;margin-left:-5px;">
+                <button class="btn btn-primary btn-sm pull-right" onclick="CONFIRMACAOPAGAMENTOCADASTRO.Modal.Mostrar('#modalVisualizarDetalhes')">Visualizar Detalhes</button>
+            </div>*@
+        </div>
+        @*<div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="row">
+                <table id="tblTabelaListaValoresTotais" class="_tbDataTables table dataTable table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Fonte)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ValorTotalConfirmarISSQN)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ValorTotalConfirmarIR)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ValorTotalConfirmar)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Where(x => x.Totalizador))
+                        {
+                            <tr class="text-center">
+                                <td>@Html.DisplayFor(modelItem => item.Fonte)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ValorTotalConfirmarISSQN)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ValorTotalConfirmarIR)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ValorTotalConfirmar)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>*@
+    }
+
+    @*<div class="row margT10">
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm">
+            @Html.LabelFor(x => x.FirstOrDefault().ValorTotalConfirmar, new { @class = "control-label label-form-DER", id = "ValorTotalConfirmadar", name = "ValorTotalConfirmadar", disabled = "disabled" })
+            @Html.TextBoxFor(x => x.FirstOrDefault().ValorTotalConfirmar, new { @class = "form-control", id = "ValorTotalConfirmar", name = "ValorTotalConfirmar", disabled = "disabled" })
+        </div>
+    </div>
+    <div class="row margT10">
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm">
+            @Html.LabelFor(x => x.FirstOrDefault().CodigoAgrupamentoConfirmacaoPagamento, new { @class = "control-label label-form-DER", id = "ValorTotalConfirmadar", name = "ValorTotalConfirmadar", disabled = "disabled" })
+            @Html.TextBoxFor(x => x.FirstOrDefault().CodigoAgrupamentoConfirmacaoPagamento, new { @class = "form-control", id = "CodigoAgrupamentoConfirmacaoPagamento", name = "CodigoAgrupamentoConfirmacaoPagamento", disabled = "disabled" })
+        </div>
+        <div class="col-sm-12 col-lg-3 col-md-3 form-group-sm">
+            @Html.LabelFor(x => x.FirstOrDefault().ValorTotalConfirmado, new { @class = "control-label label-form-DER", id = "ValorTotalConfirmado", name = "ValorTotalConfirmado", disabled = "disabled" })
+            @Html.TextBoxFor(x => x.FirstOrDefault().ValorTotalConfirmado, new { @class = "form-control", id = "ValorTotalConfirmado", name = "ValorTotalConfirmado", disabled = "disabled" })
+        </div>
+    </div>*@
+</div>

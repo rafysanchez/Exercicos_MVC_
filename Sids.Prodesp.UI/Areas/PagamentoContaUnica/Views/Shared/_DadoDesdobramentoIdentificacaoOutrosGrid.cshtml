@@ -1,0 +1,62 @@
+﻿@using System.Globalization
+@using System.Linq
+
+@model IList<Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.Desdobramento.DadoDesdobramentoIdentificacaoViewModel>
+
+
+@{
+    var tipo = Request.QueryString["tipo"];
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+}
+
+<div class="outros">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="tituloItensPagina"></h3>
+            <hr class="margT10" />
+        </div>
+
+    </div>
+
+    <div class="margT0">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-lg-12 col-md-12  form-group-sm form-group has-feedback ">
+                <table id="tblPesquisaOutros" name="tblPesquisaOutros" class="_tbDataTables table table-condensed table-striped small">
+                    <thead>
+                        <tr>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().Sequencia)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ReduzidoCredor)</th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().ValorPercentual)</th>
+                            <th><label>Valor</label></th>
+                            <th>@Html.LabelFor(x => x.FirstOrDefault().TipoBloqueio)</th>
+                            <th><label>Ações</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <td>@Html.DisplayFor(modelItem => item.Sequencia)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ReduzidoCredor)</td>
+                                <td>@string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(item.BaseCalc)).ToString("N2")) %</td>
+                                <td>R$ @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (Convert.ToDecimal(item.ValorDesdobrado)).ToString("N2"))</td>
+                                <td>@Html.DisplayFor(modelItem => item.TipoBloqueio)</td>
+                                <td>
+                                   @if (!item.TransmitidoProdesp && tipo != "c")
+                                   {
+                                        <button type="button" title="Alterar" class="btn btn-xs btn-info margL7 lockSiafisico lockSiafem btn-edit lockProdesp" onclick="desdobramentoList.editOutros(this)"><i class="fa fa-edit"></i></button>
+                                        <button type="button" title="Excluir" class="btn btn-xs btn-danger margL7 lockSiafisico lockSiafem btn-trash lockProdesp" onclick="desdobramentoList.remove(this)"><i class="fa fa-trash"></i></button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

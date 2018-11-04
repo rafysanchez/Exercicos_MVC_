@@ -1,0 +1,104 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.Desdobramento
+
+@model Sids.Prodesp.Model.Entity.PagamentoContaUnica.Desdobramento.Desdobramento
+
+
+@{
+    ViewBag.Title = "Cancelar Desdobramento de Pagamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var lblDocumentoTp = "Tipo de Documento";
+
+
+
+
+    bool transmitirProdesp = Convert.ToBoolean(Model.TransmitirProdesp);
+}
+
+<script>
+
+    window.area = @Html.Raw(Json.Encode(area));
+    window.controller = @Html.Raw(Json.Encode(controller));
+    window.Entity = @Html.Raw(Json.Encode(Model));
+
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+    var obj = 'Desdobramento';
+    var ModelItem = @Html.Raw(Json.Encode(Model));
+    var urlVoltar = '@Url.Action("AtualizarIndex", "Desdobramento", new { Area = "PagamentoContaUnica" })';
+
+
+</script>
+
+<link rel="stylesheet" href="~/Content/DataTable/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="~/Content/DataTable/css/jquery.dataTables.min.css" />
+
+<div class="col-md-12">
+    <h2>@(ViewBag.Title)</h2>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            @Html.AntiForgeryToken()
+            @Html.Hidden("Codigo", Model.Id, new { @id = "Codigo" })
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-3 col-md-1  form-group-sm form-group has-feedback">
+                    @Html.LabelFor(model => model.DocumentoTipoId, lblDocumentoTp, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                    <div class="input-group-sm">
+                        @Html.TextBoxFor(model => model.DocumentoTipo.Descricao, new { @class = "form-control", @ReadOnly = "ReadOnly" })
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-1  form-group-sm form-group has-feedback ">
+                    @Html.LabelFor(model => model.NumeroDocumento, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                    <div class="input-group-sm">
+                        @Html.TextBoxFor(model => model.NumeroDocumento, new { @class = "form-control", @ReadOnly = "ReadOnly" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-3 col-md-2  form-group-sm form-group has-feedback">
+                    @Html.LabelFor(model => model.DescricaoCredor, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                    <div class="input-group-sm">
+                        @Html.TextBoxFor(model => model.DescricaoCredor, new { @class = "form-control", @ReadOnly = "ReadOnly" })
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-3 col-md-2  form-group-sm form-group has-feedback">
+                    @Html.LabelFor(model => model.TipoDespesa, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+                    <div class="input-group-sm">
+                        @Html.TextBoxFor(model => model.TipoDespesa, new { @class = "form-control evento", @ReadOnly = "ReadOnly" })
+                    </div>
+                </div>
+            </div>
+
+            @Html.Partial("~/Areas/PagamentoContaUnica/Views/Shared/_DadoDesdobramentoCancelarGrid.cshtml", ViewBag.DadoDesdobramentoCancelarGrid as List<DadoDesdobramentoCancelarGridViewModel>)
+            <div class="row margT10">
+                <div class="col-md-12">
+                    <button type="button" id="btnVoltar" class="btn btn-sm btn-primary" onclick="javascript: AtualizarIndex();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                    <button type='button'  class='btn-sm btn btn-success' onclick="AbrirDetalhe('@Url.Action("CreateThis", "Desdobramento", new {id = Model.Id })')"><i class='fa fa-share'></i> Cadastrar a Partir Deste </button>
+                    @if (Model.SituacaoDesdobramento == "N")
+                    {
+                        <button type='button' id='btnTransmitir' class='btn-sm btn btn-success'><i class='fa fa-share'></i> Transmitir Cancelamento</button>
+                    }
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section script {
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+    <script src="~/Content/js/PagamentoContaUnica/DesdobramentoCancelamento.js"></script>
+
+}
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+﻿
+@model Sids.Prodesp.Model.Interface.Reserva.IReserva
+
+<fieldset class="fsStyles">
+    <legend>
+        <label class="label-form-field"><span class="text-danger"></span>Autorizado Por:</label>
+    </legend>
+    <div class="row form-group">
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback"  style="width:12%">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Cod. Assinatura</label>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.AutorizadoAssinatura, new { @class = "form-control prodesp number", @maxlength = "5", @id= "CodAssAutorizado" })
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-1 col-md-1  ">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Grupo</label>
+            @Html.TextBoxFor(model => model.AutorizadoGrupo, new { @class = "form-control", @maxlength = "3", @ReadOnly = "True" , @id = "txtAutorizadoGrupo" })
+        </div>
+        <div class="col-sm-12 col-lg-2 col-md-1 " style="width:10%">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Orgão</label>
+            @Html.TextBoxFor(model => model.AutorizadoOrgao, new { @class = "form-control", @maxlength = "3", @ReadOnly = "True" , @id = "txtAutorizadoOrgao" })
+        </div>
+        <div class="col-sm-12 col-lg-4 col-md-4  ">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Nome</label>
+            @Html.TextBoxFor(model => model.NomeAutorizadoAssinatura, new { @class = "form-control", @maxlength = "55", @ReadOnly = "True" , @id = "txtAutorizadoNome" })
+        </div>
+        <div class="col-sm-12 col-lg-4 col-md-4 ">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Cargo</label>
+            @Html.TextBoxFor(model => model.AutorizadoCargo, new { @class = "form-control", @maxlength = "55", @ReadOnly = "True" , @id = "txtAutorizadoCargo" })
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="fsStyles">
+    <legend>
+        <label class="label-form-field"><span class="text-danger"></span>Examinado Por:</label>
+    </legend>
+    <div class="row form-group has-feedback">
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback" style="width:12%">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Cod. Assinatura</label>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ExaminadoAssinatura, new { @class = "form-control prodesp number", @maxlength = "5", @id = "CodAssExaminado" })
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Grupo</label>
+            @Html.TextBoxFor(model => model.ExaminadoGrupo, new { @class = "form-control prodesp", @maxlength = "3", @ReadOnly = "True" , @id = "txtExaminadoGrupo"})
+        </div>
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm" style="width:10%">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Orgão</label>
+            @Html.TextBoxFor(model => model.ExaminadoOrgao, new { @class = "form-control prodesp", @maxlength = "3", @ReadOnly = "True" , @id = "txtExaminadoOrgao" })
+        </div>
+        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Nome</label>
+            @Html.TextBoxFor(model => model.NomeExaminadoAssinatura, new { @class = "form-control prodesp", @maxlength = "55", @ReadOnly = "True", @id = "txtExaminadoNome" })
+        </div>
+        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Cargo</label>
+            @Html.TextBoxFor(model => model.ExaminadoCargo, new { @class = "form-control prodesp", @maxlength = "55", @ReadOnly = "True" , @id = "txtExaminadoCargo" })
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="fsStyles">
+    <legend>
+        <label class="label-form-field"><span class="text-danger"></span>Responsável pela Emissão:</label>
+    </legend>
+    <div class="row form-group has-feedback">
+        <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback" style="width:12%">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Cod. Assinatura</label>
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.ResponsavelAssinatura, new { @class = "form-control prodesp number", @maxlength = "5", @id= "CodAssResponsavel" })
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Grupo</label>
+            @Html.TextBoxFor(model => model.ResponsavelGrupo, new { @class = "form-control prodesp", @maxlength = "3", @ReadOnly = "True", @id = "txtResponsavelGrupo" })
+        </div>
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm" style="width:10%">
+            <label class="control-label label-form-DER"><span class="text-danger" style="width:10%"></span>Orgão</label>
+            @Html.TextBoxFor(model => model.ResponsavelOrgao, new { @class = "form-control prodesp", @maxlength = "3", @ReadOnly = "True", @id = "txtResponsavelOrgao" })
+        </div>
+        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Nome</label>
+            @Html.TextBoxFor(model => model.NomeResponsavelAssinatura, new { @class = "form-control prodesp", @maxlength = "55", @ReadOnly = "True" , @id = "txtResponsavelNome" })
+        </div>
+        <div class="col-sm-12 col-lg-4 col-md-4  form-group-sm form-group">
+            <label class="control-label label-form-DER"><span class="text-danger"></span>Cargo</label>
+            @Html.TextBoxFor(model => model.ResponsavelCargo, new { @class = "form-control prodesp", @maxlength = "55", @ReadOnly = "True", @id = "txtResponsavelCargo" })
+        </div>
+    </div>
+</fieldset>
+
+
+
+
+
+@*@section script{
+   script>
+    <script src="~/Content/js/Consultas.js"></script>
+  
+}*@
+
+
+
+

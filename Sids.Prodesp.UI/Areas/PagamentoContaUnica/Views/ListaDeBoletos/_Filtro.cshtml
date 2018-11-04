@@ -1,0 +1,217 @@
+﻿@model Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.FiltroViewModel
+
+
+<div class="row">
+
+    <div class="col-sm-12 col-lg-2 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.NumeroSiafemListaBoleto, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.NumeroSiafemListaBoleto, new { @class = "form-control", @maxlength = "11" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-3 form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.CodigoUnidadeGestora, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.CodigoUnidadeGestora, new { @class = "form-control", @maxlength = "6" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.CodigoGestao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.CodigoGestao, new { @class = "form-control", @maxlength = "5" })
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-12 col-lg-4 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.NomeLista, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.NomeLista, new { @class = "form-control", @maxlength = "45" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.NumeroCnpjcpfFavorecido, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.NumeroCnpjcpfFavorecido, new { @class = "form-control numeros", @maxlength = "14" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.DocumentoTipoId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.DocumentoTipoId, Model.DocumentoTipoListItems, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.NumeroDocumento, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.NumeroDocumento, new { @class = "form-control numeroDocumento", @maxlength = "19" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.StatusSiafem, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.StatusSiafem, Model.StatusSiafemListItems, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class='col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback'>
+        @Html.LabelFor(model => model.DataEmissao, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.DataEmissao, new { @class = "form-control data datepicker data" })
+        </div>
+    </div>
+
+    <div class='col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback'>
+        @Html.LabelFor(model => model.DataCadastramentoDe, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.DataCadastramentoDe, new { @class = "form-control data datepicker data", @id = "DataInicial" })
+        </div>
+    </div>
+
+    <div class='col-sm-12 col-lg-2 col-md-2  form-group-sm form-group has-feedback'>
+        @Html.LabelFor(model => model.DataCadastramentoAte, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.TextBoxFor(model => model.DataCadastramentoAte, new { @class = "form-control data datepicker data", @id = "DataFinal" })
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback">
+        @Html.LabelFor(model => model.TipoDeBoletoId, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class='input-group-sm'>
+            @Html.DropDownListFor(model => model.TipoDeBoletoId, Model.TipoBoletoListItems, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-6 col-md-6  form-group-sm form-group has-feedback leitor">
+        @Html.LabelFor(model => model.NumeroDoCodigoDebarras, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+        <div class="input-group-sm">
+            @Html.TextBoxFor(model => model.NumeroDoCodigoDebarras, new { @class = "form-control lockSiafem numeros" })
+        </div>
+    </div>
+
+
+    <div class="boleto">
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback  boleto">
+            <div class="input-group-sm">
+              @Html.TextBoxFor(model => model.NumeroBoleto1, new { @class = "form-control lockSiafem numeros barras", @maxlength = "5" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback  boleto">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroBoleto2, new { @class = "form-control lockSiafem numeros barras", @maxlength = "5" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback  boleto">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroBoleto3, new { @class = "form-control lockSiafem numeros barras", @maxlength = "5" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback  boleto">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroBoleto4, new { @class = "form-control lockSiafem numeros barras", @maxlength = "6" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback  boleto">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroBoleto5, new { @class = "form-control lockSiafem numeros barras", @maxlength = "5" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback  boleto">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroBoleto6, new { @class = "form-control lockSiafem numeros barras", @maxlength = "6" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-1 col-md-1  form-group-sm form-group has-feedback  boleto">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroDigito, new { @class = "form-control lockSiafem numeros barras", @maxlength = "1" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-3 col-md-3  form-group-sm form-group has-feedback  boleto">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroBoleto7, new { @class = "form-control lockSiafem numeros barras", @maxlength = "14" })
+            </div>
+        </div>
+
+
+        <div id="divbtnLeitorBoleto" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            <div class="input-group-btn">
+                <button id="btnLeitorBoleto" type="button" class="btn btn-primary btn-sm lockProdesp lockSiafem lockSiafisico" onclick="UtilizarLeitor()"><i class="fa"></i>  Utilizar Leitor</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="taxa">
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback taxa">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroTaxa1, new { @class = "form-control lockSiafem numeros barras", @maxlength = "12" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback taxa">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroTaxa2, new { @class = "form-control lockSiafem numeros barras", @maxlength = "12" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback taxa">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroTaxa3, new { @class = "form-control lockSiafem numeros barras", @maxlength = "12" })
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback taxa">
+            <div class="input-group-sm">
+                @Html.TextBoxFor(model => model.NumeroTaxa4, new { @class = "form-control lockSiafem numeros barras", @maxlength = "12" })
+            </div>
+        </div>
+
+        <div id="divbtnLeitorTaxa" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group has-feedback">
+            <div class="input-group-btn">
+                <button id="btnLeitorTaxa" type="button" class="btn btn-primary btn-sm lockProdesp lockSiafem lockSiafisico" onclick="UtilizarLeitor()"><i class="fa"></i>  Utilizar Leitor</button>
+            </div>
+        </div>
+    </div>
+    
+
+
+</div>
+
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+        <button type='button' id='btnPesquisar' class='btn-sm btn btn-primary' onclick='ValidaFormulario()'><i class='glyphicon glyphicon-search'></i> Pesquisar</button>
+        <button type='button' id='Create' class='btn btn-sm btn-warning' onclick="javascript: window.location.href = '@Url.Action("Create")';"><i class='glyphicon glyphicon-plus'></i> Cadastrar</button>
+        <button type='button' id='btnLimpar' class='btn-sm btn btn-success' onclick='javascript: limparFormulario($("#form_filtro"));'><i class='glyphicon glyphicon-refresh'></i> Limpar</button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm'>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+﻿<div class="modal fade" id="modalBloqueioPagamento" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModal-label"> Bloqueio de Pagamento</h4>
+            </div>
+            <input type="hidden" id="BloOPId" />
+            <input type="hidden" id="BloOPTipoId" />
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Documento Gerador</h4>
+                        <hr class="margT0"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">Tipo de Documento</label>
+                        <input type="text" class="form-control" id="OutTipoDoc" disabled />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Nº Documento</label>
+                        <input type="text" class="form-control" id="OutNumeroDoc" disabled />
+                    </div>                    
+                    <div class="col-md-4">
+                        <label class="control-label">Tipo de Bloqueio</label>
+                        <select class="form-control" id="BloOPTipoBloqueio">
+                            <option value="">Selecione</option>
+                            <option value="11">11- Debitos a Apurar</option>
+                            <option value="12">12- Rescisão Contratual Em Andamento</option>
+                            <option value="13">13- Procuração em Revogação</option>
+                            <option value="14">14- Banco não Cadastrado</option>
+                            <option value="15">15-Despesa Não Incluida na Programação</option>
+                            <option value="21">21- Caução em Dinheiro</option>
+                            <option value="22">22- Debitos a Recolher</option>
+                            <option value="23">23- Documento a ser Anulado</option>
+                            <option value="24">24- Imposto de Renda a Recolher</option>
+                            <option value="31">31- Pagamentos a Terceiros por Procuração</option>
+                            <option value="41">41- Retenção Justiça do Trabalho</option>
+                            <option value="42">42- Retenção Poder Judiciário</option>
+                            <option value="43">43-Penhoras Efetuadas</option>
+                            <option value="97">97- Documentos Bloqueados</option>
+                            <option value="98">98- No Desdobramento Consta Credor Bloqueado</option>
+                            <option value="99">99- Bloqueios para Desdobramento</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row margT10">
+                    <div class="col-md-4">
+                        <label class="control-label">Tipo de Despesa</label>
+                        <input type="text" class="form-control" id="OutTipoDespesa" disabled />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Vencimento</label>
+                        <input type="text" class="form-control" id="OutVencto" disabled />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Ano - Nº Contrato</label>
+                        <input type="text" class="form-control" id="OutAnoNumContrato" disabled />
+                    </div>            
+                </div>
+                
+                
+                <div class="row margT20">
+                    <div class="col-md-12">
+                        <table id="tbllistaDocumentoGerador" class="table table-condensed table-striped table-responsive small">
+                            <thead>
+                                <tr>
+                                    <th>Seq.</th>
+                                    <th>Valor</th>
+                                    <th>Nm. Red. Credor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="outSequencia_01"></td>
+                                    <td id="outValor_01"></td>
+                                    <td id="outCredorReduz_01"></td>              
+                                </tr>
+                                <tr>
+                                    <td id="outSequencia_02"></td>
+                                    <td id="outValor_02"></td>
+                                    <td id="outCredorReduz_02"></td>
+                                </tr>
+                                <tr>
+                                    <td id="outSequencia_03"></td>
+                                    <td id="outValor_03"></td>
+                                    <td id="outCredorReduz_03"></td>
+                                </tr>
+                                <tr>
+                                    <td id="outSequencia_04"></td>
+                                    <td id="outValor_04"></td>
+                                    <td id="outCredorReduz_04"></td>
+                                </tr>
+                                <tr>
+                                    <td id="outSequencia_05"></td>
+                                    <td id="outValor_05"></td>
+                                    <td id="outCredorReduz_05"></td>
+                                </tr>
+                                <tr>
+                                    <td id="outSequencia_06"></td>
+                                    <td id="outValor_06"></td>
+                                    <td id="outCredorReduz_06"></td>
+                                </tr>
+                                <tr>
+                                    <td id="outSequencia_07"></td>
+                                    <td id="outValor_07"></td>
+                                    <td id="outCredorReduz_07"></td>
+                                </tr>
+                                <tr>
+                                    <td id="outSequencia_08"></td>
+                                    <td id="outValor_08"></td>
+                                    <td id="outCredorReduz_08"></td>
+                                </tr>
+                                <tr>
+                                    <td id="outSequencia_09"></td>
+                                    <td id="outValor_09"></td>
+                                    <td id="outCredorReduz_09"></td>
+                                </tr>
+                                <tr>
+                                    <td id="outSequencia_10"></td>
+                                    <td id="outValor_10"></td>
+                                    <td id="outCredorReduz_10"></td>
+                                </tr>
+                            </tbody>                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12 text-left">
+                        <button class="btn btn-sm btn-primary" onclick="FecharModal('#modalBloqueioPagamento')"><i class="fa fa-arrow-left"></i> Voltar</button>
+                        <button class="btn btn-sm btn-success botaoTransmitirModal2" id="transmitirBloqueio"><span class="glyphicon glyphicon-share-alt"></span> Transmitir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

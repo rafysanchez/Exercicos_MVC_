@@ -1,0 +1,45 @@
+﻿@using Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models
+
+@model Sids.Prodesp.UI.Areas.PagamentoContaUnica.Models.ListaDeBoletos.DadoCodigoDeBarrasViewModel
+
+<div class="outros issqn">
+    <div id="divTipoBoleto" class="row">
+        <div class="col-sm-12 col-lg-4 col-md-4 form-group-sm form-group has-feedback">
+            @Html.LabelFor(model => model.TipoBoleto, new { @class = "control-label label-form-DER" })<span class='text-danger'></span>
+            <div class="input-group-sm">
+                @Html.DropDownListFor(model => model.TipoBoleto, Model.TipoBoletoListItems, "Selecione", new { @class = "form-control lockSiafem" })
+            </div>
+        </div>
+    </div>
+    <div id="divInputCodBarras">
+        <label>Digite o Código de Barras ou Utilize o Leitor Óptico</label><span class='text-danger'></span>
+        <div class="row">
+            <div class="col-sm-12 col-lg-6 col-md-6  form-group-sm form-group has-feedback leitor">
+                <div class="input-group-sm">
+                    @Html.TextBoxFor(model => model.CodigoDeBarras, new { @class = "form-control lockSiafem numeros" })
+                </div>
+            </div>
+            @Html.Partial("_DadoCodigoDeBarrasBoleto")
+            @Html.Partial("_DadoCodigoDeBarrasTaxa")
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="input-group-btn">
+            <div id="divNewCodigo" class="col-sm-12 col-lg-1 col-md-2 form-group-sm form-group">
+                <button id="newCodigo" type="button" class="btn btn-primary btn-sm lockSiafem"><i class="fa fa-plus"></i>  Adicionar</button>
+            </div>
+
+            <div id="divDigitarCodigo" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                <button id="digitarCodigo" type="button" class="btn btn-primary btn-sm lockSiafem"><i class="fa"></i>  Digitar Código</button>
+            </div>
+
+            <div id="divSaveCodigo" class="col-sm-12 col-lg-2 col-md-2 form-group-sm form-group">
+                <button id="saveCodigo" type="button" class="btn btn-primary btn-sm lockSiafem"><i class="fa fa-plus"></i>  Salvar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

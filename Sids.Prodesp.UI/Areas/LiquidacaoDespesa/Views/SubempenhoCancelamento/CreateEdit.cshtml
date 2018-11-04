@@ -1,0 +1,203 @@
+﻿@using Sids.Prodesp.Model.Entity.LiquidacaoDespesa
+@using Sids.Prodesp.UI.Areas.LiquidacaoDespesa.Models
+
+@model SubempenhoCancelamento
+
+@{
+
+    var tipo = Request.QueryString["tipo"];
+   
+    ViewBag.Title = (Model.Id > 1 ? (tipo == "a" || tipo == "i" ? "Alterar" : "Visualizar") : "Cadastrar") + " Cancelamento de Apropriação/Subempenho";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string msgRetorno = ViewBag.MsgRetorno;
+    var area = ViewContext.RouteData.DataTokens["area"];
+    var controller = ViewContext.RouteData.GetRequiredString("controller");
+    var action = ViewContext.RouteData.GetRequiredString("action");
+
+    // var rotuloNumSiafisico = (Model.TransmitirSiafemSiafisico ? "Nº Canc. Ap./Subemp. SIAFEM" : "Nº Canc. Ap./Subemp. SIAFISICO");
+
+    var rotuloNumSiafemSiafisico = "Nº Anulação SIAFEM/SIAFISICO";
+    var rotuloNumProdesp = "Nº Canc. Subemp. Prodesp";
+    var rotuloProdesp = "Prodesp";
+    var rotuloSiafem = "SIAFEM";
+    var rotuloSiafisico = "SIAFISICO";
+}
+
+<script>
+    window.area = @Html.Raw(Json.Encode(area));
+    window.controller = @Html.Raw(Json.Encode(controller));
+    window.action = @Html.Raw(Json.Encode(action));
+    window.type = 3; //SUBEMPENHO;
+
+    window.Entity = @Html.Raw(Json.Encode(Model));
+    window.ItemList = @Html.Raw(Json.Encode(ViewBag.DadoLiquidacaoItemGrid));
+    window.EventoList = @Html.Raw(Json.Encode(ViewBag.DadoLiquidacaoEventoGrid));
+    var usuario = @Html.Raw(Json.Encode(ViewBag.Usuario));
+    window.eventoTipoList = @Html.Raw(Json.Encode(ViewBag.EventoTipoList));
+
+    var Programa = @Html.Raw(Json.Encode(ViewBag.Programa));
+    var programasInfo = @Html.Raw(Json.Encode(ViewBag.Programas));
+    var estruturaInfo = @Html.Raw(Json.Encode(ViewBag.Estruturas));
+    var regionais = @Html.Raw(Json.Encode(ViewBag.Regionais));
+
+    window.Programa = @Html.Raw(Json.Encode(ViewBag.Programa));
+    window.ProgramaList = @Html.Raw(Json.Encode(ViewBag.Programas));
+    window.EstruturaList = @Html.Raw(Json.Encode(ViewBag.Estruturas));
+
+    var obj = 'SubempenhoCancelamento';
+    var ModelItem = @Html.Raw(Json.Encode(Model));
+    var urlVoltar = '@Url.Action("AtualizarIndex", new { Area = "LiquidacaoDespesa" })';
+</script>
+
+<div class="col-md-12">
+    <h2>@ViewBag.Title</h2>
+
+    <div id="divPainelCadastrar" class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("DownloadFile", "SubempenhoCancelamento", FormMethod.Post, new { name = "frmPainelCadastrar", id = "frmPainelCadastrar" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.Hidden("Codigo", Model.Id, new { @id = "Codigo" })
+
+                <div class="row margT10">
+                    <div class="col-sm-12 col-lg-12 col-md-12 form-group-sm form-group has-feedback">
+                        <div class="input-group-sm">
+                            <span>Informe o sistema:</span>
+
+                            @Html.LabelFor(x => x.TransmitirProdesp, rotuloProdesp, new { @class = "label-inline margL10" })
+                            @Html.CheckBoxFor(x => x.TransmitirProdesp, new { @id = "transmitirProdesp", @name = "transmitir", @class = "lockProdesp" })
+
+                            @Html.LabelFor(x => x.TransmitirSiafem, rotuloSiafem, new { @class = "label-inline margL10" })
+                            @Html.RadioButtonFor(x => x.TransmitirSiafem, true, new { @id = "transmitirSIAFEM", @name = "transmitir", @class = "lockSiafem" })
+
+                            @Html.LabelFor(x => x.TransmitirSiafisico, rotuloSiafisico, new { @class = "label-inline margL10" })
+                            @Html.RadioButtonFor(x => x.TransmitirSiafem, false, new { @id = "transmitirSIAFISICO", @name = "transmitir", @class = "lockSiafisico" })
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 form-group-sm prodesp ">
+                        @Html.LabelFor(model => model.NumeroProdesp, rotuloNumProdesp, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+                        @Html.TextBoxFor(model => model.NumeroProdesp, new { @class = "form-control lockProdesp", @ReadOnly = "True", style = "width:90%" })
+                    </div>
+
+                    <div id="divNumSiafem" class="col-sm-12 col-md-4 form-group-sm siafem">
+                        @Html.LabelFor(model => model.NumeroSiafemSiafisico, rotuloNumSiafemSiafisico, new { @class = "control-label label-form-DER siafem" })<span class="text-danger"></span>
+                        @Html.TextBoxFor(model => model.NumeroSiafemSiafisico, new { @class = "form-control lockSiafemSiafisico", @ReadOnly = "True", style = "width:90%" })
+                    </div>
+                </div>
+
+                @Html.HiddenFor(model => model.CenarioProdesp)
+
+                if (Model.TransmitidoProdesp || Model.TransmitidoSiafem || Model.TransmitidoSiafisico || Model.Id > 0)
+                {
+                    <div class='row'>
+                        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm prodesp">
+                            @Html.LabelFor(model => model.DataCadastro, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+                            @Html.TextBoxFor(model => model.DataCadastro, new { @class = "form-control lockProdesp data", @ReadOnly = "True" })
+                        </div>
+
+                        @if (Model.TransmitidoProdesp)
+                        {
+
+                            <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm prodesp">
+                                @Html.LabelFor(model => model.DataTransmitidoProdesp, new { @class = "control-label label-form-DER prodesp" })<span class="text-danger"></span>
+                                @Html.TextBoxFor(model => model.DataTransmitidoProdesp, new { @class = "form-control lockProdesp data", @ReadOnly = "True" })
+                            </div>
+                        }
+                        @if (Model.TransmitidoSiafem || Model.TransmitidoSiafisico)
+                        {
+                            <div class="col-sm-12 col-lg-2 col-md-2 form-group form-group-sm siafem">
+                                @Html.LabelFor(model => model.DataTransmitidoSiafemSiafisico, new { @class = "control-label label-form-DER siafem" })<span class="text-danger"></span>
+                                @Html.TextBoxFor(model => model.DataTransmitidoSiafemSiafisico, new { @class = "form-control lockSiafem data", @ReadOnly = "True" })
+                            </div>
+                        }
+                    </div>
+                }
+
+                @Html.Partial("~/Areas/Empenho/Views/Shared/_PesquisaReservaContrato.cshtml", ViewBag.PesquisaReservaContrato as Sids.Prodesp.UI.Areas.Empenho.Models.PesquisaReservaContratoViewModel)
+
+                if (msgRetorno != null)
+                {
+                    <div class='row'>
+                        <div class='col-sm-12 col-lg-12 col-md-12 form-group-sm form-group'>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-5 col-md-5  form-group-sm form-group has-feedback">
+                            <div id="retornoTransmissao">
+                                <label class="control-label label-form-DER"><span class="text-danger"></span>Msg Retornada da Transmissão</label>
+                                <div class="input-group-sm">
+                                    @Html.TextArea("MsgRetorno", msgRetorno, new { @class = "form-control", @ReadOnly = "True" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_PesquisaTipoApropriacao.cshtml", ViewBag.PesquisaTipoApropriacao as PesquisaTipoApropriacaoViewModel)
+                @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_DadoApropriacao.cshtml", ViewBag.DadoApropriacao as DadoApropriacaoViewModel)
+                @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_DadoReferencia.cshtml", ViewBag.DadoReferencia as DadoReferenciaViewModel)
+                @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_DadoLiquidacaoEvento.cshtml", ViewBag.DadoLiquidacaoEvento as DadoLiquidacaoEventoViewModel)
+                @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_DadoLiquidacaoEventoGrid.cshtml", ViewBag.DadoLiquidacaoEventoGrid as IList<DadoLiquidacaoEventoViewModel>)
+                @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_DadoObservacao.cshtml", ViewBag.DadoObservacao as DadoObservacaoViewModel)
+                @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_DadoLiquidacaoNota.cshtml", ViewBag.DadoLiquidacaoNota as DadoLiquidacaoNotaViewModel)
+                @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_DadoLiquidacaoItem.cshtml", ViewBag.DadoLiquidacaoItem as DadoLiquidacaoItemViewModel)
+                @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_DadoLiquidacaoItemGrid.cshtml", ViewBag.DadoLiquidacaoItemGrid as IList<DadoLiquidacaoItemViewModel>)
+                @Html.Partial("~/Areas/LiquidacaoDespesa/Views/Shared/_DadoDespesa.cshtml", ViewBag.DadoDespesa as DadoDespesaViewModel)
+                @Html.Partial("~/Areas/Empenho/Views/Shared/_DadoAssinatura.cshtml", ViewBag.DadoAssinatura as Sids.Prodesp.UI.Areas.Empenho.Models.DadoAssinaturaViewModel)
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="tituloItensPagina"></h3>
+                        <hr class="margT10" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+
+                        @if (!Model.TransmitidoProdesp || !(Model.TransmitidoSiafem || Model.TransmitidoSiafisico))
+                        {
+                            <button type='button' id='btnCancelar' class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Cancelar</button>
+                            <button type='button' id='btnSalvar' class='btn btn-sm btn-success'><i class='fa fa-save'></i> Salvar</button>
+                            <button type='button' id='btnTransmitir' class='btn btn-sm btn-primary'><i class='fa fa-share'></i> Transmitir</button>
+                        }
+                        else
+                        {
+                            <button type="button" id="btnAtualizarIndex" class="btn btn-sm btn-primary" onclick="javascript: AtualizarIndex();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                        }
+                        <button type="button" id="btnVoltar" class="btn btn-sm btn-primary" onclick="javascript: window.history.back();"><i class="fa fa-arrow-left"></i> Voltar</button>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+@section script {
+   
+    <script src="~/Content/Bootstrap Validator/js/bootstrapvalidator.min.js"></script>
+    <script src="~/Content/MaskMoney/jquery.maskMoney.js"></script>
+   
+    <script src="~/Content/js/scriptImpressao.js"></script>
+    <script src="~/Content/js/scriptTransmissao.js"></script>
+    <script src="~/Content/js/scriptEstruturaPrograma.js"></script>
+    <script src="~/Content/js/LiquidacaoDespesa/_LiquidacaoDespesaApoio.js"></script>
+    <script src="~/Content/js/LiquidacaoDespesa/_LiquidacaoDespesa.js"></script>
+    <script src="~/Content/js/LiquidacaoDespesa/_LiquidacaoDespesaValidator.js"></script>
+    <script src="~/Content/js/LiquidacaoDespesa/_DadoLiquidacaoEvento.js"></script>
+    <script src="~/Content/js/LiquidacaoDespesa/_DadoLiquidacaoItem.js"></script>
+    <script src="~/Content/js/Consultas.js"></script>
+}
